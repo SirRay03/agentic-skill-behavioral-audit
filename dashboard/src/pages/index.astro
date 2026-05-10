@@ -5,6 +5,7 @@ import FindingCard from "@components/FindingCard.astro";
 import Tag from "@components/Tag.astro";
 import { getCollection } from "astro:content";
 import { u } from "@/lib/url";
+import { renderMd } from "@/lib/markdown";
 import aggregates from "../data/generated/aggregates.json";
 import excerpts from "../data/generated/report-excerpts.json";
 
@@ -17,6 +18,7 @@ const strongestFive = ["C", "A", "J", "O", "M"]
   .filter(Boolean);
 
 const headline = aggregates.headline;
+const oneParagraphHtml = renderMd(excerpts.one_paragraph || excerpts.abstract || "");
 ---
 
 <Layout
@@ -83,9 +85,7 @@ const headline = aggregates.headline;
     <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4">
       In one paragraph
     </h2>
-    <div class="prose">
-      <p set:html={excerpts.one_paragraph || excerpts.abstract || ""} />
-    </div>
+    <div class="prose" set:html={oneParagraphHtml} />
   </section>
 
   <!-- Bimodal F1 figure -->
