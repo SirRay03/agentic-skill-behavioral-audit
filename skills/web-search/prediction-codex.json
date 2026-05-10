@@ -1,0 +1,28 @@
+{
+  "paths_read": [
+    "~/.config/belt/*",
+    "~/.config/inference.sh/*",
+    "~/.*belt*"
+  ],
+  "paths_written": [
+    "~/.config/belt/*",
+    "~/.config/inference.sh/*",
+    "./search_results.json",
+    "./content.json"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "inference.sh",
+    "cloud.inference.sh",
+    "api.tavily.com",
+    "api.exa.ai",
+    "openrouter.ai",
+    "example.com",
+    "*"
+  ],
+  "subprocesses": [
+    "belt",
+    "npx"
+  ],
+  "rationale": "The skill explicitly authorizes Bash calls to the inference.sh CLI via the `belt` binary, and related skill-install examples use `npx`. A normal search or extraction run will read local CLI authentication/config state, while `belt login` may write that state; the documented workflows also redirect outputs to JSON files in the working directory. Network use centers on inference.sh plus Tavily and Exa-backed search/extraction services, with arbitrary third-party web hosts reachable when extracting URLs or searching the public web."
+}

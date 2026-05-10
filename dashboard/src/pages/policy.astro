@@ -1,0 +1,179 @@
+---
+import Layout from "@layouts/Layout.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import Tag from "@components/Tag.astro";
+import StatCard from "@components/StatCard.astro";
+import policy from "../data/generated/policy.json";
+import { u } from "@/lib/url";
+
+const bundles = policy.bundles as Array<{ skill_id: string; bundle: any }>;
+const enforcement = policy.enforcement as any;
+---
+
+<Layout title="Policy · Agentic Skill Auditor" wide>
+  <SectionHeader
+    eyebrow="§ 6 · constructive answer"
+    title="SKILL.md → policy"
+    subtitle="A SKILL.md-derived egress allowlist, generated at build time by an xhigh-effort LLM extractor and post-processed for wildcard deflation, evaluated retroactively against the n=8 production skills with non-empty observed network surface."
+  />
+
+  <!-- Headline policy stats -->
+  <section class="mb-12">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <StatCard
+        label="Legitimate-allow rate"
+        value="77%"
+        ci="3-of-3 skills WOULD COMPLETE under enforcement"
+        note="enforcement simulation, n=8 skills with non-empty observed hosts"
+        emphasis
+      />
+      <StatCard
+        label="Telemetry-catch rate"
+        value="50%"
+        ci="13/26 hosts correctly flagged as undeclared"
+        note="against the LLM-derived allowlist baseline"
+      />
+      <StatCard
+        label="Static regex baseline"
+        value="0.27"
+        ci="vs LLM 0.68 mean recall"
+        note="2.5× LLM advantage; McNemar p=0.003"
+      />
+    </div>
+  </section>
+
+  <!-- Three composition requirements -->
+  <section class="mb-12">
+    <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-5">
+      Three composition requirements (the asterisks)
+    </h2>
+    <div class="space-y-4">
+      <article class="border border-ink-200 rounded-md p-5 bg-white">
+        <div class="flex items-baseline gap-3 mb-2">
+          <span class="font-mono text-accent-700 font-bold tabular text-xl">i.</span>
+          <h3 class="font-semibold text-ink-900">Wildcard deflation</h3>
+          <Tag variant="L2-llm" size="xs" />
+          <Tag variant="policy-design" size="xs" />
+          <a href={u("/findings/wildcards-sabotage-policy-discrimination")} class="ml-auto text-xs text-accent-700 no-underline hover:underline font-mono">Finding M →</a>
+        </div>
+        <p class="text-sm text-ink-700 leading-relaxed">
+          The predictor's <code>*.cloudflare.com</code> is a correct summary of
+          declared CLI hosts but in deployment admits <code>sparrow.cloudflare.com</code>.
+          Either expand wildcards into explicit subdomain enumerations, or pair every
+          wildcard predicate with a global telemetry-suffix deny-overlay.
+        </p>
+      </article>
+      <article class="border border-ink-200 rounded-md p-5 bg-white">
+        <div class="flex items-baseline gap-3 mb-2">
+          <span class="font-mono text-accent-700 font-bold tabular text-xl">ii.</span>
+          <h3 class="font-semibold text-ink-900">Maintainer-reputation gate</h3>
+          <Tag variant="L2-llm" size="xs" />
+          <Tag variant="adversarial-maintainer" size="xs" />
+          <a href={u("/findings/structured-extraction-inherits-malice")} class="ml-auto text-xs text-accent-700 no-underline hover:underline font-mono">Finding O →</a>
+        </div>
+        <p class="text-sm text-ink-700 leading-relaxed">
+          Structured-extraction policy generators are safety-blind by construction —
+          all 3 predictor sources emit <code>attacker.example.com</code> verbatim from
+          a synthetic adversarial SKILL.md. Pair the SKILL.md-derived allowlist with a
+          separate trust check before deployment.
+        </p>
+      </article>
+      <article class="border border-ink-200 rounded-md p-5 bg-white">
+        <div class="flex items-baseline gap-3 mb-2">
+          <span class="font-mono text-accent-700 font-bold tabular text-xl">iii.</span>
+          <h3 class="font-semibold text-ink-900">Per-agent baseline subtraction</h3>
+          <Tag variant="methodology" size="xs" />
+          <Tag variant="agent-runtime-opacity" size="xs" />
+          <a href={u("/findings/cross-agent-footprint-inflation")} class="ml-auto text-xs text-accent-700 no-underline hover:underline font-mono">Finding H →</a>
+        </div>
+        <p class="text-sm text-ink-700 leading-relaxed">
+          Naive trace-based agent comparisons measure agent identity, not task
+          behaviour. The 256× ratio between Claude (10 writes) and Codex (2556 writes)
+          on the wrangler task collapses to 1:1 after subtracting Codex's
+          plugin-marketplace bootstrap (2541 writes). Run agents with empty prompts
+          to capture bootstrap, then subtract per (skill, agent) before policy generation.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- The layered policy stack -->
+  <section class="mb-12">
+    <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-5">
+      The unified architecture — layered policy stack
+    </h2>
+    <div class="border border-ink-200 rounded-md bg-white p-6">
+      <ol class="space-y-3">
+        {[
+          { label: "(a) Per-agent bootstrap-baseline filter", desc: "Subtract the agent's own startup IO before per-skill comparison", layer: "methodology" },
+          { label: "(b) SKILL.md-derived per-skill egress allowlist with wildcard deflation", desc: "LLM extraction at xhigh effort; wildcards expanded or paired with deny-overlay", layer: "L2-llm" },
+          { label: "(c) Global telemetry-suffix deny-overlay", desc: "Catches the unconditional vendor beacons (sparrow, metrics.semgrep.dev, firebase-public)", layer: "policy-design" },
+          { label: "(d) Maintainer-reputation gate on the prediction's rationale field", desc: "Trust check separate from the structured-extraction step", layer: "policy-design" },
+          { label: "(e) Runtime alignment refusal as the final-line layer", desc: "L3 (Claude) + L4 (Codex) caught 6/6 mutations the static layers couldn't fully cover", layer: "L3-runtime-claude" },
+        ].map((step, i) => (
+          <li class="flex gap-4 items-start">
+            <span class="font-mono tabular text-accent-700 font-semibold shrink-0 w-6 mt-0.5">{i + 1}.</span>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-baseline gap-2">
+                <span class="font-semibold text-ink-900">{step.label}</span>
+                <Tag variant={step.layer as any} size="xs" />
+              </div>
+              <p class="text-sm text-ink-600 mt-0.5">{step.desc}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <p class="mt-5 pt-5 border-t border-ink-100 text-sm text-ink-600 leading-relaxed">
+        None of these layers individually is sufficient; their composition is.
+        The empirical contribution is the per-layer detection rate on the
+        <a href={u("/mutation-suite")} class="font-mono">mutation suite</a>
+        and the per-pattern undeclared-rate from the failure-mode taxonomy.
+      </p>
+    </div>
+  </section>
+
+  <!-- 5 generated policy bundles -->
+  {bundles.length > 0 && (
+    <section class="mb-12">
+      <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-2">
+        Generated registry-deployable bundles
+      </h2>
+      <p class="text-sm text-ink-600 mb-4 max-w-2xl">
+        Five skill-policy.json bundles generated by
+        <code>analysis/policy-bundle-generator.py</code> as a Phase 2.I prototype.
+        Each bundle is a structured artefact a registry could deploy without per-skill
+        authoring effort.
+      </p>
+      <div class="space-y-3">
+        {bundles.map((b) => (
+          <details class="border border-ink-200 rounded-md bg-white">
+            <summary class="cursor-pointer px-5 py-3 flex items-center gap-3 hover:bg-accent-50/30 select-none">
+              <span class="font-mono font-semibold text-ink-900">{b.skill_id}</span>
+              <Tag variant="accent" label="generated" size="xs" />
+              <a href={u(`/skills/${b.skill_id}`)} class="ml-auto text-xs text-ink-500 no-underline hover:text-accent-700 font-mono">/skills/{b.skill_id} →</a>
+            </summary>
+            <pre class="border-t border-ink-100 text-xs leading-relaxed bg-ink-950 text-ink-100 px-5 py-4 overflow-auto max-h-96"><code>{JSON.stringify(b.bundle, null, 2)}</code></pre>
+          </details>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Enforcement simulation summary -->
+  {enforcement && Object.keys(enforcement).length > 0 && (
+    <section class="mb-12">
+      <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4">
+        Enforcement simulation
+      </h2>
+      <p class="text-sm text-ink-700 leading-relaxed mb-4 max-w-2xl">
+        Retroactive simulation: would the SKILL.md-derived allowlist have admitted the
+        observed legitimate traffic and blocked the undeclared telemetry, on the n=8 skills
+        with non-empty observed hosts? Full iptables-in-network-namespace deployment
+        recipe documented in
+        <code>analysis/policy-enforcement.md</code>;
+        live deployment deferred from this submission window.
+      </p>
+      <pre class="text-xs leading-relaxed bg-ink-950 text-ink-100 rounded-md p-4 overflow-auto max-h-96"><code>{JSON.stringify(enforcement, null, 2)}</code></pre>
+    </section>
+  )}
+</Layout>

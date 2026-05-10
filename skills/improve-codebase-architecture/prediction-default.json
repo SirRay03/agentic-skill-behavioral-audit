@@ -1,0 +1,19 @@
+{
+  "paths_read": [
+    "./CONTEXT.md",
+    "./docs/adr/*",
+    "./LANGUAGE.md",
+    "./INTERFACE-DESIGN.md",
+    "../grill-with-docs/CONTEXT-FORMAT.md",
+    "../grill-with-docs/ADR-FORMAT.md",
+    "./**/*"
+  ],
+  "paths_written": [
+    "./CONTEXT.md",
+    "./docs/adr/*"
+  ],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "This skill is primarily an analytical/conversational workflow: it reads the project's CONTEXT.md, ADRs under docs/adr/, and explores the codebase broadly via a sub-agent to identify shallow modules. Writes are limited to lazily creating/updating CONTEXT.md when new domain terms emerge and optionally appending new ADRs under docs/adr/ when a candidate is rejected with a load-bearing reason. No network calls or subprocess invocations are implied \u2014 exploration is via the Explore sub-agent and file reads, and no external tools, package managers, or APIs are referenced."
+}

@@ -1,0 +1,20 @@
+{
+  "paths_read": [
+    "./.firecrawl/*"
+  ],
+  "paths_written": [
+    "./.firecrawl/*"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "api.firecrawl.dev",
+    "*"
+  ],
+  "subprocesses": [
+    "firecrawl",
+    "npx",
+    "grep",
+    "head"
+  ],
+  "rationale": "The skill invokes the `firecrawl` CLI (or via `npx`) to scrape arbitrary user-supplied URLs, so it will make outbound network connections to api.firecrawl.dev (the Firecrawl API) and indirectly to any target domain the user provides. Output is written to the local `.firecrawl/` directory and may later be read back via `grep`/`head` or direct file reads. No deletions are implied by the documented commands."
+}

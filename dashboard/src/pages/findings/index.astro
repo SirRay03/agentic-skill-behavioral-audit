@@ -1,0 +1,85 @@
+---
+import Layout from "@layouts/Layout.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import FindingCard from "@components/FindingCard.astro";
+import Tag from "@components/Tag.astro";
+import { getCollection } from "astro:content";
+
+const all = (await getCollection("findings")).map((e) => e.data);
+
+// Group by structural pattern, in narrative order
+const patternOrder: Record<string, number> = {
+  "vendor-cli-underdeclaration": 0,
+  "agent-runtime-opacity": 1,
+  "adversarial-maintainer": 2,
+  "methodology": 3,
+};
+
+const sorted = [...all].sort((a, b) => {
+  const pa = patternOrder[a.pattern] ?? 99;
+  const pb = patternOrder[b.pattern] ?? 99;
+  if (pa !== pb) return pa - pb;
+  return a.id.localeCompare(b.id);
+});
+
+const patternLabels: Record<string, { title: string; subtitle: string }> = {
+  "vendor-cli-underdeclaration": {
+    title: "Pattern 1 — Vendor-CLI under-declaration",
+    subtitle:
+      "The skill maintainer documents the verb; the wrapped CLI emits beacons and fetches binaries the maintainer didn't author and may not be aware of.",
+  },
+  "agent-runtime-opacity": {
+    title: "Pattern 2 — Agent-runtime opacity",
+    subtitle:
+      "Agent-tool-mediated IO and per-agent bootstrap costs make naive trace comparisons measure agent identity, not task behaviour.",
+  },
+  "adversarial-maintainer": {
+    title: "Pattern 3 — Adversarial maintainer",
+    subtitle:
+      "When the skill maintainer is the attacker, structured-extraction policy generators inherit the malice. Defense-in-depth is necessary, not optional.",
+  },
+  methodology: {
+    title: "Methodology — observations from the audit pipeline",
+    subtitle:
+      "Findings about how to do this kind of audit reproducibly, rather than findings about specific skills.",
+  },
+};
+
+const groups: Record<string, typeof all> = {};
+for (const f of sorted) {
+  groups[f.pattern] ||= [] as any;
+  groups[f.pattern].push(f);
+}
+---
+
+<Layout title="Findings · Agentic Skill Auditor" wide>
+  <SectionHeader
+    eyebrow="15 findings · A through O"
+    title="Catalog"
+    subtitle="Findings are grouped by the three structural patterns from Section 5.7. Each card shows the section reference, defense layers it touches, severity, and one or two key numbers. Click into a finding for the full narrative."
+  />
+
+  {Object.keys(patternLabels).map((p) =>
+    groups[p] ? (
+      <section class="mb-14">
+        <header class="mb-5">
+          <div class="flex items-center gap-3 mb-2">
+            <Tag variant={p as any} />
+            <span class="text-xs text-ink-500 font-mono">
+              {groups[p].length} finding{groups[p].length === 1 ? "" : "s"}
+            </span>
+          </div>
+          <h2 class="text-xl font-semibold text-ink-950 leading-snug">
+            {patternLabels[p].title}
+          </h2>
+          <p class="mt-1 text-sm text-ink-600 leading-relaxed max-w-2xl">
+            {patternLabels[p].subtitle}
+          </p>
+        </header>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {groups[p].map((f) => <FindingCard finding={f as any} />)}
+        </div>
+      </section>
+    ) : null
+  )}
+</Layout>

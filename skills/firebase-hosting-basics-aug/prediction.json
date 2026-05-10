@@ -1,0 +1,38 @@
+{
+  "paths_read": [
+    "./firebase.json",
+    "./.firebaserc",
+    "./public/*",
+    "~/.config/configstore/firebase-tools.json",
+    "~/.config/configstore/update-notifier-firebase-tools.json",
+    "~/.cache/firebase/emulators/*",
+    "./references/*.md"
+  ],
+  "paths_written": [
+    "./firebase.json",
+    "./.firebaserc",
+    "~/.config/configstore/firebase-tools.json",
+    "~/.config/configstore/update-notifier-firebase-tools.json",
+    "~/.cache/firebase/emulators/*",
+    "./.firebase/*"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "firebase-public.firebaseio.com",
+    "github.com",
+    "release-assets.githubusercontent.com",
+    "registry.npmjs.org",
+    "firebase.googleapis.com",
+    "firebasehosting.googleapis.com",
+    "hosting.firebaseapp.com",
+    "accounts.google.com",
+    "oauth2.googleapis.com"
+  ],
+  "subprocesses": [
+    "npx",
+    "node",
+    "firebase",
+    "firebase-tools"
+  ],
+  "rationale": "The skill instructs running `npx -y firebase-tools@latest emulators:start`, which spawns npx/node and fetches the firebase-tools package from npm registry, then invokes the firebase CLI. Per the skill's own observed-runtime notes, firebase-tools queries firebase-public.firebaseio.com on every invocation and downloads emulator JARs from github.com/release-assets.githubusercontent.com, while maintaining XDG configstore state under ~/.config/configstore/. Deploys would also touch Firebase/Google API hosts and read/write firebase.json and .firebaserc in the project. No deletions are implied by the documented verbs."
+}

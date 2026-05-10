@@ -1,0 +1,293 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Tag from "@components/Tag.astro";
+import MetricBar from "@components/MetricBar.astro";
+import { getCollection } from "astro:content";
+import { u } from "@/lib/url";
+
+export async function getStaticPaths() {
+  const skills = await getCollection("skills");
+  return skills.map((s) => ({
+    params: { id: s.data.id },
+    props: { skill: s.data },
+  }));
+}
+
+const { skill } = Astro.props;
+
+function summarisePrediction(pred: any): {
+  hosts: string[];
+  paths_read: string[];
+  paths_written: string[];
+  subprocesses: string[];
+  rationale: string | null;
+} {
+  if (!pred || typeof pred !== "object") {
+    return { hosts: [], paths_read: [], paths_written: [], subprocesses: [], rationale: null };
+  }
+  return {
+    hosts: pred.hosts ?? [],
+    paths_read: pred.paths_read ?? [],
+    paths_written: pred.paths_written ?? [],
+    subprocesses: pred.subprocesses ?? [],
+    rationale: pred.rationale ?? null,
+  };
+}
+
+const orig = summarisePrediction(skill.prediction);
+const fresh = summarisePrediction(skill.prediction_fresh);
+const codex = summarisePrediction(skill.prediction_codex);
+
+const f1Full = (skill as any).f1_axes_full ?? {};
+function falseNegatives(axis: string): string[] {
+  const a = f1Full?.[axis];
+  if (!a || !Array.isArray(a.false_negatives)) return [];
+  return a.false_negatives.slice(0, 30);
+}
+
+const traceVariants = [
+  { id: "orig", label: "orig (Claude high)", on: skill.has_trace.orig },
+  { id: "codex", label: "Codex CLI", on: skill.has_trace.codex },
+  { id: "realcreds", label: "real credentials", on: skill.has_trace.realcreds },
+  { id: "stability", label: "stability (k-rep1, k-rep2)", on: skill.has_trace.stability },
+  { id: "effort", label: "effort (medium, xhigh)", on: skill.has_trace.effort },
+  { id: "multitask", label: "multi-task (l-alt1, l-alt2)", on: skill.has_trace.multitask },
+];
+---
+
+<Layout
+  title={`${skill.id} — Skills · Agentic Skill Auditor`}
+  description={`Per-skill audit record for ${skill.id}: SKILL.md, three predictions, runtime trace, and policy bundle.`}
+  wide
+>
+  <!-- Breadcrumb + identity -->
+  <nav class="text-xs text-ink-500 mb-4">
+    <a href={u("/skills")}>Skills</a> <span class="mx-1">/</span>
+    <span class="text-ink-700 font-mono">{skill.id}</span>
+  </nav>
+
+  <header class="mb-8 pb-6 border-b border-ink-200">
+    <div class="flex flex-wrap items-baseline gap-3 mb-2">
+      <h1 class="text-3xl font-semibold tracking-tight text-ink-950 font-mono">
+        {skill.id}
+      </h1>
+      <Tag variant={skill.cluster as any} />
+      <Tag variant={skill.class === "production" ? "neutral" : (skill.class as any)} label={skill.class} />
+    </div>
+    <div class="text-sm text-ink-600 flex flex-wrap gap-x-4 gap-y-1">
+      {skill.owner && <span><span class="text-ink-500">owner</span> <code>{skill.owner}</code></span>}
+      <span><span class="text-ink-500">category</span> <code>{skill.category}</code></span>
+      <span><span class="text-ink-500">role</span> <code>{skill.role}</code></span>
+    </div>
+  </header>
+
+  <!-- F1 axes -->
+  <section class="mb-12">
+    <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4">
+      F1 vs observed trace
+    </h2>
+    <div class="border border-ink-200 rounded-md bg-white p-5 space-y-3">
+      <MetricBar
+        label="paths_read"
+        value={skill.f1.paths_read}
+        status={(skill as any).f1_status?.paths_read ?? "ok"}
+        reference={0.368}
+      />
+      <MetricBar
+        label="paths_written"
+        value={skill.f1.paths_written}
+        status={(skill as any).f1_status?.paths_written ?? "ok"}
+        reference={0.375}
+      />
+      <MetricBar
+        label="hosts"
+        value={skill.f1.hosts}
+        status={(skill as any).f1_status?.hosts ?? "ok"}
+        reference={0.475}
+      />
+      <div class="text-xs text-ink-500 mt-3 pt-3 border-t border-ink-100 space-y-1.5 leading-relaxed">
+        <p>
+          Bar colour: green ≥0.7, amber ≥0.4, red &lt;0.4. Tick mark = sample
+          mean across n=25 production skills (per <code>analysis/stats.json</code>).
+          F1 uses <strong>predicate-style</strong> coverage — a single predicted
+          predicate like <code>./*.py</code> can cover hundreds of observed paths.
+        </p>
+        <p>
+          <span class="inline-block w-2 h-2 rounded-full bg-red-500 align-middle mr-1"></span>
+          <strong>miss</strong> means the predictor named patterns that matched
+          nothing observed — F1 mathematically undefined (precision = recall = 0)
+          but functionally a complete miss.
+        </p>
+        <p>
+          <span class="inline-block w-2 h-2 rounded-full bg-ink-300 align-middle mr-1"></span>
+          <code>—</code> means a true empty-vs-empty match (no observed activity
+          on this axis and no prediction either).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Predictions side-by-side -->
+  <section class="mb-12">
+    <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4">
+      Three predictions, side-by-side
+    </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
+      {[
+        { title: "orig-Claude", subtitle: "Opus 4.7 · xhigh · with project context", data: orig, on: skill.has_prediction.orig, accent: true },
+        { title: "fresh-Claude", subtitle: "Opus 4.7 · xhigh · clean home", data: fresh, on: skill.has_prediction.fresh },
+        { title: "Codex", subtitle: "GPT-family · default · clean home", data: codex, on: skill.has_prediction.codex },
+      ].map((p) => (
+        <article class:list={[
+          "border rounded-md bg-white p-4",
+          p.accent ? "border-accent-500/40" : "border-ink-200",
+        ]}>
+          <div class="flex items-center justify-between mb-1">
+            <div class="font-semibold text-ink-900">{p.title}</div>
+            {p.on ? (
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500" title="present"></span>
+            ) : (
+              <span class="text-xs text-ink-400">absent</span>
+            )}
+          </div>
+          <div class="text-[11px] text-ink-500 mb-3">{p.subtitle}</div>
+          {p.on && (
+            <>
+              <div class="grid grid-cols-2 gap-y-1.5 text-xs mb-3">
+                <span class="text-ink-500">paths_read</span><span class="font-mono tabular text-right">{p.data.paths_read.length}</span>
+                <span class="text-ink-500">paths_written</span><span class="font-mono tabular text-right">{p.data.paths_written.length}</span>
+                <span class="text-ink-500">hosts</span><span class="font-mono tabular text-right">{p.data.hosts.length}</span>
+                <span class="text-ink-500">subprocesses</span><span class="font-mono tabular text-right">{p.data.subprocesses.length}</span>
+              </div>
+              {p.data.hosts.length > 0 && (
+                <details class="mb-2">
+                  <summary class="cursor-pointer text-xs font-mono text-ink-700 hover:text-accent-700">hosts ({p.data.hosts.length})</summary>
+                  <ul class="mt-2 space-y-0.5 text-[11px] font-mono text-ink-700 max-h-48 overflow-auto pl-3">
+                    {p.data.hosts.slice(0, 50).map((h: string) => <li>{h}</li>)}
+                  </ul>
+                </details>
+              )}
+              {p.data.rationale && (
+                <details class="mt-2">
+                  <summary class="cursor-pointer text-xs font-mono text-ink-700 hover:text-accent-700">rationale</summary>
+                  <p class="mt-2 text-xs text-ink-700 leading-relaxed">{p.data.rationale}</p>
+                </details>
+              )}
+            </>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Observed -->
+  <section class="mb-12">
+    <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4">
+      Observed (skill-attributable, post-filter)
+    </h2>
+    <div class="border border-ink-200 rounded-md bg-white p-5 grid grid-cols-2 lg:grid-cols-3 gap-y-2 gap-x-6 text-sm">
+      <div>
+        <div class="text-ink-500 text-xs uppercase tracking-wider">n paths_read</div>
+        <div class="font-mono tabular text-2xl text-ink-900">{skill.observed_summary.n_paths_read}</div>
+      </div>
+      <div>
+        <div class="text-ink-500 text-xs uppercase tracking-wider">n paths_written</div>
+        <div class="font-mono tabular text-2xl text-ink-900">{skill.observed_summary.n_paths_written}</div>
+      </div>
+      <div>
+        <div class="text-ink-500 text-xs uppercase tracking-wider">n hosts</div>
+        <div class="font-mono tabular text-2xl text-ink-900">{skill.observed_summary.n_hosts}</div>
+      </div>
+    </div>
+    {(skill.observed_summary.hosts ?? []).length > 0 && (
+      <details class="mt-3">
+        <summary class="cursor-pointer text-xs font-mono text-ink-700 hover:text-accent-700">observed hosts ({skill.observed_summary.hosts.length})</summary>
+        <ul class="mt-2 space-y-0.5 text-[11px] font-mono text-ink-700 max-h-72 overflow-auto pl-3 border-l border-ink-100">
+          {skill.observed_summary.hosts.map((h: string) => <li>{h}</li>)}
+        </ul>
+      </details>
+    )}
+  </section>
+
+  <!-- False negatives (per axis) -->
+  {(falseNegatives("paths_read").length || falseNegatives("paths_written").length || falseNegatives("hosts").length) ? (
+    <section class="mb-12">
+      <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4">
+        Predictor false negatives (top 30 per axis)
+      </h2>
+      <div class="space-y-4">
+        {(["paths_read", "paths_written", "hosts"] as const).map((axis) => {
+          const fns = falseNegatives(axis);
+          if (!fns.length) return null;
+          return (
+            <details class="border border-ink-200 rounded-md bg-white p-4">
+              <summary class="cursor-pointer font-mono text-sm text-ink-800">
+                {axis} <span class="text-ink-500">({fns.length})</span>
+              </summary>
+              <ul class="mt-3 space-y-0.5 text-[11px] font-mono text-ink-700 max-h-72 overflow-auto pl-3">
+                {fns.map((p) => <li class="break-all">{p}</li>)}
+              </ul>
+            </details>
+          );
+        })}
+      </div>
+    </section>
+  ) : null}
+
+  <!-- Trace variants -->
+  <section class="mb-12">
+    <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4">
+      Trace variants on disk
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm">
+      {traceVariants.map((v) => (
+        <div
+          class:list={[
+            "border rounded p-3 flex items-center gap-2",
+            v.on ? "border-emerald-200 bg-emerald-50/30" : "border-ink-200 bg-ink-50/40 opacity-60",
+          ]}
+        >
+          <span class:list={[
+            "w-1.5 h-1.5 rounded-full shrink-0",
+            v.on ? "bg-emerald-500" : "bg-ink-300",
+          ]}></span>
+          <span class:list={["text-sm", v.on ? "text-ink-900" : "text-ink-500"]}>{v.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Policy bundle -->
+  {skill.has_policy && skill.policy && (
+    <section class="mb-12">
+      <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4 flex items-center gap-2">
+        Registry-deployable policy bundle
+        <Tag variant="accent" label="generated" size="xs" />
+      </h2>
+      <pre class="text-xs leading-relaxed bg-ink-950 text-ink-100 rounded-md p-4 overflow-auto max-h-96"><code>{JSON.stringify(skill.policy, null, 2)}</code></pre>
+      <p class="mt-2 text-xs text-ink-500">
+        Generated by <code>analysis/policy-bundle-generator.py</code> as a Phase 2.I prototype. 5 of 25 production skills.
+      </p>
+    </section>
+  )}
+
+  <!-- SKILL.md excerpt + task.md -->
+  <section class="mb-12 grid grid-cols-1 lg:grid-cols-2 gap-4">
+    <div>
+      <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-3">
+        SKILL.md (excerpt)
+      </h2>
+      <div class="border border-ink-200 rounded-md bg-white p-4 max-h-72 overflow-auto">
+        <pre class="text-xs leading-relaxed whitespace-pre-wrap font-mono text-ink-700">{skill.skill_md_excerpt}</pre>
+      </div>
+    </div>
+    <div>
+      <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-3">
+        task.md (representative invocation)
+      </h2>
+      <div class="border border-ink-200 rounded-md bg-white p-4 max-h-72 overflow-auto">
+        <pre class="text-xs leading-relaxed whitespace-pre-wrap font-mono text-ink-700">{skill.task_md || "(empty)"}</pre>
+      </div>
+    </div>
+  </section>
+</Layout>

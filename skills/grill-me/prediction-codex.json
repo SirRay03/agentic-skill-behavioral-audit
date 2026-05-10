@@ -1,0 +1,14 @@
+{
+  "paths_read": [
+    "./**"
+  ],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [
+    "rg",
+    "sed",
+    "ls"
+  ],
+  "rationale": "The skill is primarily conversational: it asks the user one question at a time and recommends answers, so it does not inherently write or delete files or use network services. However, it explicitly says that if a question can be answered by exploring the codebase, the agent should inspect the local repository, implying filesystem reads across project files. Typical codebase exploration would spawn basic read/search subprocesses such as rg, sed, and ls."
+}

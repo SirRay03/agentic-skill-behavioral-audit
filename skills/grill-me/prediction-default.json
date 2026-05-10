@@ -1,0 +1,11 @@
+{
+  "paths_read": [
+    "./*",
+    "**/*"
+  ],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "This is primarily a conversational/interview skill with no external integrations or declared endpoints. The only IO implied is filesystem reads when the skill instructs the agent to 'explore the codebase instead' of asking a question that code can answer. No writes, deletions, network calls, or subprocess invocations are implied by the prose."
+}

@@ -1,0 +1,343 @@
+{
+  "per_host": [
+    {
+      "host": "accounts.google.com",
+      "category": "auth-token-exchange",
+      "why": "Google OAuth account endpoint",
+      "n_traces": 1,
+      "trace_sources": [
+        "agent-browser/trace.json"
+      ],
+      "declared_in": [],
+      "n_predictors_declared": 0
+    },
+    {
+      "host": "add-skill.vercel.sh",
+      "category": "binary-fetch-CDN",
+      "why": "skills.sh installer dispatch (returns install scripts/binaries)",
+      "n_traces": 1,
+      "trace_sources": [
+        "find-skills/trace.json"
+      ],
+      "declared_in": [],
+      "n_predictors_declared": 0
+    },
+    {
+      "host": "android.clients.google.com",
+      "category": "runtime-config-probe",
+      "why": "Chromium platform config probe",
+      "n_traces": 1,
+      "trace_sources": [
+        "agent-browser/trace.json"
+      ],
+      "declared_in": [],
+      "n_predictors_declared": 0
+    },
+    {
+      "host": "api.firecrawl.dev",
+      "category": "post-auth-API",
+      "why": "Firecrawl scrape API, requires FIRECRAWL_API_KEY",
+      "n_traces": 1,
+      "trace_sources": [
+        "firecrawl-scrape/trace-realcreds.json"
+      ],
+      "declared_in": [
+        "codex",
+        "fresh",
+        "orig"
+      ],
+      "n_predictors_declared": 3
+    },
+    {
+      "host": "clients2.google.com",
+      "category": "runtime-config-probe",
+      "why": "Chromium component update check",
+      "n_traces": 1,
+      "trace_sources": [
+        "agent-browser/trace.json"
+      ],
+      "declared_in": [],
+      "n_predictors_declared": 0
+    },
+    {
+      "host": "content-autofill.googleapis.com",
+      "category": "auth-token-exchange",
+      "why": "Chromium autofill API (Google-account scoped)",
+      "n_traces": 1,
+      "trace_sources": [
+        "agent-browser/trace.json"
+      ],
+      "declared_in": [],
+      "n_predictors_declared": 0
+    },
+    {
+      "host": "dist.inference.sh",
+      "category": "binary-fetch-CDN",
+      "why": "inference.sh CLI binary distribution",
+      "n_traces": 1,
+      "trace_sources": [
+        "web-search/trace.json"
+      ],
+      "declared_in": [
+        "codex",
+        "fresh",
+        "orig"
+      ],
+      "n_predictors_declared": 3
+    },
+    {
+      "host": "firebase-public.firebaseio.com",
+      "category": "runtime-config-probe",
+      "why": "Firebase Realtime DB public-config startup probe",
+      "n_traces": 1,
+      "trace_sources": [
+        "firebase-hosting-basics/trace.json"
+      ],
+      "declared_in": [
+        "fresh",
+        "orig"
+      ],
+      "n_predictors_declared": 2
+    },
+    {
+      "host": "firebase.googleapis.com",
+      "category": "post-auth-API",
+      "why": "Firebase Management API (real-creds unlocks)",
+      "n_traces": 1,
+      "trace_sources": [
+        "firebase-hosting-basics/trace-realcreds.json"
+      ],
+      "declared_in": [
+        "codex",
+        "fresh",
+        "orig"
+      ],
+      "n_predictors_declared": 3
+    },
+    {
+      "host": "github.com",
+      "category": "binary-fetch-CDN",
+      "why": "Code/binary repository (release-asset & raw fetches dispatch through here)",
+      "n_traces": 2,
+      "trace_sources": [
+        "firebase-hosting-basics/trace.json",
+        "wrangler/trace-codex.json"
+      ],
+      "declared_in": [
+        "fresh"
+      ],
+      "n_predictors_declared": 1
+    },
+    {
+      "host": "metrics.semgrep.dev",
+      "category": "telemetry-beacon",
+      "why": "Semgrep usage telemetry, fires per scan",
+      "n_traces": 1,
+      "trace_sources": [
+        "semgrep/trace.json"
+      ],
+      "declared_in": [
+        "codex",
+        "fresh",
+        "orig"
+      ],
+      "n_predictors_declared": 3
+    },
+    {
+      "host": "mtalk.google.com",
+      "category": "runtime-config-probe",
+      "why": "Google Cloud Messaging endpoint (Chromium GCM keepalive)",
+      "n_traces": 1,
+      "trace_sources": [
+        "agent-browser/trace.json"
+      ],
+      "declared_in": [],
+      "n_predictors_declared": 0
+    },
+    {
+      "host": "news.ycombinator.com",
+      "category": "external-target",
+      "why": "user-specified scrape target for agent-browser",
+      "n_traces": 1,
+      "trace_sources": [
+        "agent-browser/trace.json"
+      ],
+      "declared_in": [],
+      "n_predictors_declared": 0
+    },
+    {
+      "host": "ogads-pa.clients6.google.com",
+      "category": "telemetry-beacon",
+      "why": "Google Ads/analytics beacon (Chromium-implied)",
+      "n_traces": 1,
+      "trace_sources": [
+        "agent-browser/trace.json"
+      ],
+      "declared_in": [],
+      "n_predictors_declared": 0
+    },
+    {
+      "host": "play.google.com",
+      "category": "runtime-config-probe",
+      "why": "Chromium/Play Services config",
+      "n_traces": 1,
+      "trace_sources": [
+        "agent-browser/trace.json"
+      ],
+      "declared_in": [],
+      "n_predictors_declared": 0
+    },
+    {
+      "host": "raw.githubusercontent.com",
+      "category": "binary-fetch-CDN",
+      "why": "Raw source/binary fetch (web-search inferencesh package)",
+      "n_traces": 1,
+      "trace_sources": [
+        "web-search/trace.json"
+      ],
+      "declared_in": [],
+      "n_predictors_declared": 0
+    },
+    {
+      "host": "registry.npmjs.org",
+      "category": "pkg-registry",
+      "why": "npm package registry",
+      "n_traces": 8,
+      "trace_sources": [
+        "auth0-quickstart/trace.json",
+        "cookie-sync/trace.json",
+        "find-skills/trace.json",
+        "firebase-hosting-basics/trace.json",
+        "firebase-hosting-basics/trace-realcreds.json"
+      ],
+      "declared_in": [
+        "codex",
+        "fresh",
+        "orig"
+      ],
+      "n_predictors_declared": 3
+    },
+    {
+      "host": "release-assets.githubusercontent.com",
+      "category": "binary-fetch-CDN",
+      "why": "GitHub Releases binary attachments (firebase emulator JARs)",
+      "n_traces": 1,
+      "trace_sources": [
+        "firebase-hosting-basics/trace.json"
+      ],
+      "declared_in": [],
+      "n_predictors_declared": 0
+    },
+    {
+      "host": "semgrep.dev",
+      "category": "post-auth-API",
+      "why": "Semgrep rule registry / authenticated lookups",
+      "n_traces": 1,
+      "trace_sources": [
+        "semgrep/trace.json"
+      ],
+      "declared_in": [
+        "codex",
+        "fresh",
+        "orig"
+      ],
+      "n_predictors_declared": 3
+    },
+    {
+      "host": "skills.sh",
+      "category": "external-target",
+      "why": "find-skills user-targeted catalogue host",
+      "n_traces": 1,
+      "trace_sources": [
+        "find-skills/trace.json"
+      ],
+      "declared_in": [
+        "codex",
+        "fresh",
+        "orig"
+      ],
+      "n_predictors_declared": 3
+    },
+    {
+      "host": "sparrow.cloudflare.com",
+      "category": "telemetry-beacon",
+      "why": "Cloudflare wrangler telemetry, fires unconditionally",
+      "n_traces": 3,
+      "trace_sources": [
+        "wrangler/trace.json",
+        "wrangler/trace-codex.json",
+        "wrangler/trace-realcreds.json"
+      ],
+      "declared_in": [
+        "codex",
+        "fresh",
+        "orig"
+      ],
+      "n_predictors_declared": 3
+    },
+    {
+      "host": "www.google.com",
+      "category": "external-target",
+      "why": "Chromium default-page navigation",
+      "n_traces": 1,
+      "trace_sources": [
+        "agent-browser/trace.json"
+      ],
+      "declared_in": [],
+      "n_predictors_declared": 0
+    },
+    {
+      "host": "www.googleapis.com",
+      "category": "auth-token-exchange",
+      "why": "Google API discovery + token exchange",
+      "n_traces": 1,
+      "trace_sources": [
+        "firebase-hosting-basics/trace-realcreds.json"
+      ],
+      "declared_in": [
+        "codex",
+        "fresh",
+        "orig"
+      ],
+      "n_predictors_declared": 3
+    },
+    {
+      "host": "www.gstatic.com",
+      "category": "runtime-config-probe",
+      "why": "Google static assets / Chromium runtime",
+      "n_traces": 1,
+      "trace_sources": [
+        "agent-browser/trace.json"
+      ],
+      "declared_in": [],
+      "n_predictors_declared": 0
+    }
+  ],
+  "category_counts": {
+    "auth-token-exchange": 3,
+    "binary-fetch-CDN": 5,
+    "runtime-config-probe": 6,
+    "post-auth-API": 3,
+    "telemetry-beacon": 3,
+    "external-target": 3,
+    "pkg-registry": 1
+  },
+  "category_declared": {
+    "auth-token-exchange": 1,
+    "binary-fetch-CDN": 2,
+    "runtime-config-probe": 1,
+    "post-auth-API": 3,
+    "telemetry-beacon": 2,
+    "external-target": 1,
+    "pkg-registry": 1
+  },
+  "category_undeclared": {
+    "auth-token-exchange": 2,
+    "binary-fetch-CDN": 3,
+    "runtime-config-probe": 5,
+    "post-auth-API": 0,
+    "telemetry-beacon": 1,
+    "external-target": 2,
+    "pkg-registry": 0
+  }
+}

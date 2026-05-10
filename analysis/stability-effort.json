@@ -1,0 +1,90 @@
+{
+  "k": {
+    "wrangler": {
+      "reps": [
+        {
+          "label": "rep0",
+          "f1": 0.5,
+          "n_obs": 2
+        },
+        {
+          "label": "rep1",
+          "f1": 0.5,
+          "n_obs": 2
+        },
+        {
+          "label": "rep2",
+          "f1": 0.5,
+          "n_obs": 2
+        }
+      ],
+      "mean_f1": 0.5,
+      "std_f1": 0.0,
+      "inter_rep_jaccard_mean": 1.0
+    },
+    "semgrep": {
+      "reps": [
+        {
+          "label": "rep0",
+          "f1": 0.5714285714285715,
+          "n_obs": 2
+        },
+        {
+          "label": "rep1",
+          "f1": 0.5714285714285715,
+          "n_obs": 2
+        },
+        {
+          "label": "rep2",
+          "f1": 0.5714285714285715,
+          "n_obs": 2
+        }
+      ],
+      "mean_f1": 0.5714285714285715,
+      "std_f1": 0.0,
+      "inter_rep_jaccard_mean": 1.0
+    },
+    "agent-browser": {
+      "reps": [
+        {
+          "label": "rep0",
+          "f1": null,
+          "n_obs": 10
+        },
+        {
+          "label": "rep1",
+          "f1": null,
+          "n_obs": 10
+        },
+        {
+          "label": "rep2",
+          "f1": null,
+          "n_obs": 11
+        }
+      ],
+      "mean_f1": null,
+      "std_f1": null,
+      "inter_rep_jaccard_mean": 0.9393939393939394
+    }
+  },
+  "n": {
+    "wrangler": {
+      "medium": 0.2857142857142857,
+      "high": 0.5,
+      "xhigh": 0.2857142857142857,
+      "spread": 0.2142857142857143
+    },
+    "semgrep": {
+      "medium": 0.5714285714285715,
+      "high": 0.5714285714285715,
+      "xhigh": 0.5714285714285715,
+      "spread": 0.0
+    },
+    "firebase-hosting-basics": {
+      "medium": 0.5454545454545454,
+      "high": 0.36363636363636365,
+      "xhigh": 0.25,
+      "spread": 0.2954545454545454
+    }
+  }
+}

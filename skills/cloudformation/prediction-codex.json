@@ -1,0 +1,29 @@
+{
+  "paths_read": [
+    "./*.yaml",
+    "./*.yml",
+    "./*.json",
+    "./**/*.yaml",
+    "./**/*.yml",
+    "./**/*.json",
+    "~/.aws/config",
+    "~/.aws/credentials"
+  ],
+  "paths_written": [
+    "./*.yaml",
+    "./*.yml",
+    "./*.json",
+    "./**/*.yaml",
+    "./**/*.yml",
+    "./**/*.json"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "*.amazonaws.com",
+    "docs.aws.amazon.com"
+  ],
+  "subprocesses": [
+    "aws"
+  ],
+  "rationale": "The skill's primary workflow is authoring and deploying CloudFormation templates, so the agent will read and write local YAML/JSON infrastructure files and the AWS CLI will read local AWS configuration and credentials. The documented commands invoke the AWS CLI for stack, change set, drift, and troubleshooting operations, which connect to AWS regional service endpoints including CloudFormation and related AWS services. Stack deletion is represented as an AWS API operation, not a local filesystem deletion."
+}

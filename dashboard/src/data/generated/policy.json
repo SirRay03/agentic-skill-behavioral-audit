@@ -1,0 +1,1149 @@
+{
+  "bundles": [
+    {
+      "skill_id": "auth0-quickstart",
+      "bundle": {
+        "skill_policy_schema_version": "0.1-prototype",
+        "generated_for_skill_id": "auth0-quickstart",
+        "generation_method": "Claude Opus 4.7 xhigh-effort SKILL.md-only prediction (predict.py) + wildcard deflation (Finding M post-process)",
+        "capability_declarations": {
+          "network_egress": {
+            "explicit_allow": [
+              {
+                "host": "auth0.com",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "github.com",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "auth0.github.io",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "community.auth0.com",
+                "source": "literal",
+                "type": "exact"
+              }
+            ],
+            "wildcard_residuals": [
+              {
+                "host_pattern": "*.auth0.com",
+                "subdomain_bounded_to": null,
+                "type": "wildcard-unconstrained",
+                "note": "no observed subdomain matches; runtime should reject by default"
+              }
+            ],
+            "telemetry_deny_overlay": [
+              "sparrow.cloudflare.com",
+              "metrics.semgrep.dev",
+              "ogads-pa.clients6.google.com",
+              "metrics.*.dev",
+              "analytics.*",
+              "telemetry.*",
+              "*-telemetry.*.com"
+            ],
+            "policy_decision_rule": "deny-overlay wins over allowlist wildcards; explicit_allow entries are admitted unconditionally; wildcard_residuals are subject to runtime configuration (default: reject if subdomain_bounded_to is null, else admit only the listed subdomains)."
+          },
+          "filesystem_read": {
+            "predicates": [
+              "./package.json",
+              "./requirements.txt",
+              "./Pipfile",
+              "./pyproject.toml",
+              "./angular.json",
+              "./vue.config.js",
+              "./next.config*",
+              "./app.json",
+              "./Package.swift",
+              "./build.gradle",
+              "./references/*.md"
+            ],
+            "scope": "workdir-relative + ~/.config/<vendor>/* per Finding D"
+          },
+          "filesystem_write": {
+            "predicates": [
+              ".env*"
+            ],
+            "scope": "workdir-relative; reject everything outside"
+          },
+          "subprocess_spawn": {
+            "binaries": [
+              "bash",
+              "cat",
+              "ls",
+              "grep",
+              "brew",
+              "auth0"
+            ],
+            "scope": "execve allowlist; reject other binaries"
+          },
+          "agent_tool_invocation": {
+            "note": "Read from SKILL.md frontmatter `allowed-tools` if declared; otherwise the agent-runtime base policy applies.",
+            "example_existing_skills_with_declared_allowed_tools": [
+              "gha-security-review"
+            ]
+          }
+        },
+        "maintainer_trust_hint": {
+          "maintainer_signal_from_skill_id": "auth0",
+          "trust_tier": "first-class-vendor",
+          "note": "In a deployed registry, maintainer identity should come from a separate signed assertion — Sigstore for OSS skills, an attestation chain for enterprise skills."
+        },
+        "augmentation_suggestion": {
+          "available": false
+        },
+        "headline_metrics_for_this_skill": {
+          "predicted_hosts_count": 5,
+          "observed_skill_attributable_hosts": [
+            "registry.npmjs.org"
+          ]
+        },
+        "compliance_with_topic_26_subgoals": {
+          "capability_based_permission_model": "yes (this bundle is the policy artefact)",
+          "sandboxing_granularity_supported": "per-skill (this bundle); per-tool-call by composing with SKILL.md `allowed-tools`",
+          "static_plus_semantic_detection": "yes (LLM-extracted prediction is the static + semantic step; runtime alignment is the L3 enforcement layer)"
+        },
+        "non_authoritative_disclaimer": "This bundle is generated automatically and is not a substitute for the maintainer-published SKILL.md. It is intended to be installed alongside the SKILL.md, not in place of it. The policy decision rule above is the runtime contract; deployers should implement the deny-overlay precedence rule explicitly."
+      }
+    },
+    {
+      "skill_id": "firebase-hosting-basics-aug",
+      "bundle": {
+        "skill_policy_schema_version": "0.1-prototype",
+        "generated_for_skill_id": "firebase-hosting-basics-aug",
+        "generation_method": "Claude Opus 4.7 xhigh-effort SKILL.md-only prediction (predict.py) + wildcard deflation (Finding M post-process)",
+        "capability_declarations": {
+          "network_egress": {
+            "explicit_allow": [
+              {
+                "host": "firebase-public.firebaseio.com",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "github.com",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "release-assets.githubusercontent.com",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "registry.npmjs.org",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "firebase.googleapis.com",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "firebasehosting.googleapis.com",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "hosting.firebaseapp.com",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "accounts.google.com",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "oauth2.googleapis.com",
+                "source": "literal",
+                "type": "exact"
+              }
+            ],
+            "wildcard_residuals": [],
+            "telemetry_deny_overlay": [
+              "sparrow.cloudflare.com",
+              "metrics.semgrep.dev",
+              "ogads-pa.clients6.google.com",
+              "metrics.*.dev",
+              "analytics.*",
+              "telemetry.*",
+              "*-telemetry.*.com"
+            ],
+            "policy_decision_rule": "deny-overlay wins over allowlist wildcards; explicit_allow entries are admitted unconditionally; wildcard_residuals are subject to runtime configuration (default: reject if subdomain_bounded_to is null, else admit only the listed subdomains)."
+          },
+          "filesystem_read": {
+            "predicates": [
+              "./firebase.json",
+              "./.firebaserc",
+              "./public/*",
+              "~/.config/configstore/firebase-tools.json",
+              "~/.config/configstore/update-notifier-firebase-tools.json",
+              "~/.cache/firebase/emulators/*",
+              "./references/*.md"
+            ],
+            "scope": "workdir-relative + ~/.config/<vendor>/* per Finding D"
+          },
+          "filesystem_write": {
+            "predicates": [
+              "./firebase.json",
+              "./.firebaserc",
+              "~/.config/configstore/firebase-tools.json",
+              "~/.config/configstore/update-notifier-firebase-tools.json",
+              "~/.cache/firebase/emulators/*",
+              "./.firebase/*"
+            ],
+            "scope": "workdir-relative; reject everything outside"
+          },
+          "subprocess_spawn": {
+            "binaries": [
+              "npx",
+              "node",
+              "firebase",
+              "firebase-tools"
+            ],
+            "scope": "execve allowlist; reject other binaries"
+          },
+          "agent_tool_invocation": {
+            "note": "Read from SKILL.md frontmatter `allowed-tools` if declared; otherwise the agent-runtime base policy applies.",
+            "example_existing_skills_with_declared_allowed_tools": [
+              "gha-security-review"
+            ]
+          }
+        },
+        "maintainer_trust_hint": {
+          "maintainer_signal_from_skill_id": "firebase",
+          "trust_tier": "first-class-vendor",
+          "note": "In a deployed registry, maintainer identity should come from a separate signed assertion — Sigstore for OSS skills, an attestation chain for enterprise skills."
+        },
+        "augmentation_suggestion": {
+          "available": false
+        },
+        "headline_metrics_for_this_skill": {
+          "predicted_hosts_count": 9,
+          "observed_skill_attributable_hosts": [
+            "firebase-public.firebaseio.com",
+            "github.com",
+            "registry.npmjs.org",
+            "release-assets.githubusercontent.com"
+          ]
+        },
+        "compliance_with_topic_26_subgoals": {
+          "capability_based_permission_model": "yes (this bundle is the policy artefact)",
+          "sandboxing_granularity_supported": "per-skill (this bundle); per-tool-call by composing with SKILL.md `allowed-tools`",
+          "static_plus_semantic_detection": "yes (LLM-extracted prediction is the static + semantic step; runtime alignment is the L3 enforcement layer)"
+        },
+        "non_authoritative_disclaimer": "This bundle is generated automatically and is not a substitute for the maintainer-published SKILL.md. It is intended to be installed alongside the SKILL.md, not in place of it. The policy decision rule above is the runtime contract; deployers should implement the deny-overlay precedence rule explicitly."
+      }
+    },
+    {
+      "skill_id": "firecrawl-scrape",
+      "bundle": {
+        "skill_policy_schema_version": "0.1-prototype",
+        "generated_for_skill_id": "firecrawl-scrape",
+        "generation_method": "Claude Opus 4.7 xhigh-effort SKILL.md-only prediction (predict.py) + wildcard deflation (Finding M post-process)",
+        "capability_declarations": {
+          "network_egress": {
+            "explicit_allow": [
+              {
+                "host": "api.firecrawl.dev",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "*",
+                "source": "literal",
+                "type": "exact"
+              }
+            ],
+            "wildcard_residuals": [],
+            "telemetry_deny_overlay": [
+              "sparrow.cloudflare.com",
+              "metrics.semgrep.dev",
+              "ogads-pa.clients6.google.com",
+              "metrics.*.dev",
+              "analytics.*",
+              "telemetry.*",
+              "*-telemetry.*.com"
+            ],
+            "policy_decision_rule": "deny-overlay wins over allowlist wildcards; explicit_allow entries are admitted unconditionally; wildcard_residuals are subject to runtime configuration (default: reject if subdomain_bounded_to is null, else admit only the listed subdomains)."
+          },
+          "filesystem_read": {
+            "predicates": [
+              "./.firecrawl/*"
+            ],
+            "scope": "workdir-relative + ~/.config/<vendor>/* per Finding D"
+          },
+          "filesystem_write": {
+            "predicates": [
+              "./.firecrawl/*"
+            ],
+            "scope": "workdir-relative; reject everything outside"
+          },
+          "subprocess_spawn": {
+            "binaries": [
+              "firecrawl",
+              "npx",
+              "grep",
+              "head"
+            ],
+            "scope": "execve allowlist; reject other binaries"
+          },
+          "agent_tool_invocation": {
+            "note": "Read from SKILL.md frontmatter `allowed-tools` if declared; otherwise the agent-runtime base policy applies.",
+            "example_existing_skills_with_declared_allowed_tools": [
+              "gha-security-review"
+            ]
+          }
+        },
+        "maintainer_trust_hint": {
+          "maintainer_signal_from_skill_id": "firecrawl",
+          "trust_tier": "first-class-vendor",
+          "note": "In a deployed registry, maintainer identity should come from a separate signed assertion — Sigstore for OSS skills, an attestation chain for enterprise skills."
+        },
+        "augmentation_suggestion": {
+          "available": false
+        },
+        "headline_metrics_for_this_skill": {
+          "predicted_hosts_count": 2,
+          "observed_skill_attributable_hosts": []
+        },
+        "compliance_with_topic_26_subgoals": {
+          "capability_based_permission_model": "yes (this bundle is the policy artefact)",
+          "sandboxing_granularity_supported": "per-skill (this bundle); per-tool-call by composing with SKILL.md `allowed-tools`",
+          "static_plus_semantic_detection": "yes (LLM-extracted prediction is the static + semantic step; runtime alignment is the L3 enforcement layer)"
+        },
+        "non_authoritative_disclaimer": "This bundle is generated automatically and is not a substitute for the maintainer-published SKILL.md. It is intended to be installed alongside the SKILL.md, not in place of it. The policy decision rule above is the runtime contract; deployers should implement the deny-overlay precedence rule explicitly."
+      }
+    },
+    {
+      "skill_id": "semgrep",
+      "bundle": {
+        "skill_policy_schema_version": "0.1-prototype",
+        "generated_for_skill_id": "semgrep",
+        "generation_method": "Claude Opus 4.7 xhigh-effort SKILL.md-only prediction (predict.py) + wildcard deflation (Finding M post-process)",
+        "capability_declarations": {
+          "network_egress": {
+            "explicit_allow": [
+              {
+                "host": "semgrep.dev",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "registry.semgrep.dev",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "github.com",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "raw.githubusercontent.com",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "metrics.semgrep.dev",
+                "predicate": "*.semgrep.dev",
+                "source": "wildcard-deflated",
+                "type": "exact"
+              },
+              {
+                "host": "semgrep.dev",
+                "predicate": "*.semgrep.dev",
+                "source": "wildcard-deflated",
+                "type": "exact"
+              }
+            ],
+            "wildcard_residuals": [
+              {
+                "host_pattern": "*.semgrep.dev",
+                "subdomain_bounded_to": [
+                  "metrics.semgrep.dev",
+                  "semgrep.dev"
+                ],
+                "type": "wildcard-bounded"
+              }
+            ],
+            "telemetry_deny_overlay": [
+              "sparrow.cloudflare.com",
+              "metrics.semgrep.dev",
+              "ogads-pa.clients6.google.com",
+              "metrics.*.dev",
+              "analytics.*",
+              "telemetry.*",
+              "*-telemetry.*.com"
+            ],
+            "policy_decision_rule": "deny-overlay wins over allowlist wildcards; explicit_allow entries are admitted unconditionally; wildcard_residuals are subject to runtime configuration (default: reject if subdomain_bounded_to is null, else admit only the listed subdomains)."
+          },
+          "filesystem_read": {
+            "predicates": [
+              "./**/*",
+              "./.semgrepignore",
+              "./*.yaml",
+              "./*.yml",
+              "./references/*.md"
+            ],
+            "scope": "workdir-relative + ~/.config/<vendor>/* per Finding D"
+          },
+          "filesystem_write": {
+            "predicates": [
+              "./results.sarif",
+              "./results.json",
+              "./*.yaml",
+              "./<rule-id>/*"
+            ],
+            "scope": "workdir-relative; reject everything outside"
+          },
+          "subprocess_spawn": {
+            "binaries": [
+              "semgrep",
+              "python3",
+              "pip",
+              "brew",
+              "docker"
+            ],
+            "scope": "execve allowlist; reject other binaries"
+          },
+          "agent_tool_invocation": {
+            "note": "Read from SKILL.md frontmatter `allowed-tools` if declared; otherwise the agent-runtime base policy applies.",
+            "example_existing_skills_with_declared_allowed_tools": [
+              "gha-security-review"
+            ]
+          }
+        },
+        "maintainer_trust_hint": {
+          "maintainer_signal_from_skill_id": "semgrep",
+          "trust_tier": "first-class-vendor",
+          "note": "In a deployed registry, maintainer identity should come from a separate signed assertion — Sigstore for OSS skills, an attestation chain for enterprise skills."
+        },
+        "augmentation_suggestion": {
+          "available": true,
+          "addendum_preview": "## Observed Runtime Network Endpoints\n\nIn addition to the rule-registry host (`semgrep.dev`) named above, every `semgrep scan` invocation contacts the following host that is NOT documented in this SKILL.md:\n\n- `metrics.semgrep.dev` — Semgrep emits a usage-metrics beacon to this host on every invocation. The beacon fires unconditionally and is independent of the rule-fetch traffic to `semgrep.dev`. The `--disable-metrics` flag suppresses this beacon if explicitly passed, but the default behaviour is to send.\n\nThis observation is derived from end-to-end syscall + DNS instrumentation. The host pa",
+          "addendum_length_chars": 907,
+          "note": "Append this to SKILL.md to lift hosts F1 (Finding L). Empirical lift on this skill is in analysis/per-skill.json's *-aug entry."
+        },
+        "headline_metrics_for_this_skill": {
+          "predicted_hosts_count": 5,
+          "observed_skill_attributable_hosts": [
+            "metrics.semgrep.dev",
+            "semgrep.dev"
+          ]
+        },
+        "compliance_with_topic_26_subgoals": {
+          "capability_based_permission_model": "yes (this bundle is the policy artefact)",
+          "sandboxing_granularity_supported": "per-skill (this bundle); per-tool-call by composing with SKILL.md `allowed-tools`",
+          "static_plus_semantic_detection": "yes (LLM-extracted prediction is the static + semantic step; runtime alignment is the L3 enforcement layer)"
+        },
+        "non_authoritative_disclaimer": "This bundle is generated automatically and is not a substitute for the maintainer-published SKILL.md. It is intended to be installed alongside the SKILL.md, not in place of it. The policy decision rule above is the runtime contract; deployers should implement the deny-overlay precedence rule explicitly."
+      }
+    },
+    {
+      "skill_id": "wrangler",
+      "bundle": {
+        "skill_policy_schema_version": "0.1-prototype",
+        "generated_for_skill_id": "wrangler",
+        "generation_method": "Claude Opus 4.7 xhigh-effort SKILL.md-only prediction (predict.py) + wildcard deflation (Finding M post-process)",
+        "capability_declarations": {
+          "network_egress": {
+            "explicit_allow": [
+              {
+                "host": "developers.cloudflare.com",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "api.cloudflare.com",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "sparrow.cloudflare.com",
+                "predicate": "*.cloudflare.com",
+                "source": "wildcard-deflated",
+                "type": "exact"
+              },
+              {
+                "host": "registry.npmjs.org",
+                "source": "literal",
+                "type": "exact"
+              },
+              {
+                "host": "workers.cloudflare.com",
+                "source": "literal",
+                "type": "exact"
+              }
+            ],
+            "wildcard_residuals": [
+              {
+                "host_pattern": "*.cloudflare.com",
+                "subdomain_bounded_to": [
+                  "sparrow.cloudflare.com"
+                ],
+                "type": "wildcard-bounded"
+              },
+              {
+                "host_pattern": "*.workers.dev",
+                "subdomain_bounded_to": null,
+                "type": "wildcard-unconstrained",
+                "note": "no observed subdomain matches; runtime should reject by default"
+              }
+            ],
+            "telemetry_deny_overlay": [
+              "sparrow.cloudflare.com",
+              "metrics.semgrep.dev",
+              "ogads-pa.clients6.google.com",
+              "metrics.*.dev",
+              "analytics.*",
+              "telemetry.*",
+              "*-telemetry.*.com"
+            ],
+            "policy_decision_rule": "deny-overlay wins over allowlist wildcards; explicit_allow entries are admitted unconditionally; wildcard_residuals are subject to runtime configuration (default: reject if subdomain_bounded_to is null, else admit only the listed subdomains)."
+          },
+          "filesystem_read": {
+            "predicates": [
+              "./wrangler.jsonc",
+              "./wrangler.toml",
+              "./package.json",
+              "./node_modules/wrangler/config-schema.json",
+              "./src/*",
+              "./migrations/*",
+              "./.dev.vars",
+              "./.wrangler/state/*",
+              "./vitest.config.ts",
+              "./schema.sql",
+              "./vectors.ndjson",
+              "./secrets.json",
+              "./dist/*",
+              "./worker-configuration.d.ts"
+            ],
+            "scope": "workdir-relative + ~/.config/<vendor>/* per Finding D"
+          },
+          "filesystem_write": {
+            "predicates": [
+              "./wrangler.jsonc",
+              "./package.json",
+              "./package-lock.json",
+              "./node_modules/*",
+              "./src/*",
+              "./migrations/*",
+              "./.dev.vars",
+              "./.wrangler/state/*",
+              "./worker-configuration.d.ts",
+              "./src/env.d.ts",
+              "./backup.sql",
+              "./schema.sql"
+            ],
+            "scope": "workdir-relative; reject everything outside"
+          },
+          "subprocess_spawn": {
+            "binaries": [
+              "wrangler",
+              "npm",
+              "npx",
+              "node",
+              "curl",
+              "docker"
+            ],
+            "scope": "execve allowlist; reject other binaries"
+          },
+          "agent_tool_invocation": {
+            "note": "Read from SKILL.md frontmatter `allowed-tools` if declared; otherwise the agent-runtime base policy applies.",
+            "example_existing_skills_with_declared_allowed_tools": [
+              "gha-security-review"
+            ]
+          }
+        },
+        "maintainer_trust_hint": {
+          "maintainer_signal_from_skill_id": null,
+          "trust_tier": "long-tail",
+          "note": "In a deployed registry, maintainer identity should come from a separate signed assertion — Sigstore for OSS skills, an attestation chain for enterprise skills."
+        },
+        "augmentation_suggestion": {
+          "available": true,
+          "addendum_preview": "## Observed Runtime Network Endpoints\n\nIn addition to the hosts named in the Retrieval Sources table at the top of this SKILL.md, every wrangler invocation contacts the following hosts and writes the following files that are NOT documented elsewhere in the skill:\n\n- `sparrow.cloudflare.com` — wrangler emits a telemetry beacon to this host on every invocation (including `wrangler deploy --dry-run`). The beacon fires unconditionally regardless of credentials and cannot be disabled by skill configuration. Authors of skills wrapping `wrangler` should expect this host to appear in any sandbox trace",
+          "addendum_length_chars": 1286,
+          "note": "Append this to SKILL.md to lift hosts F1 (Finding L). Empirical lift on this skill is in analysis/per-skill.json's *-aug entry."
+        },
+        "headline_metrics_for_this_skill": {
+          "predicted_hosts_count": 6,
+          "observed_skill_attributable_hosts": [
+            "registry.npmjs.org",
+            "sparrow.cloudflare.com"
+          ]
+        },
+        "compliance_with_topic_26_subgoals": {
+          "capability_based_permission_model": "yes (this bundle is the policy artefact)",
+          "sandboxing_granularity_supported": "per-skill (this bundle); per-tool-call by composing with SKILL.md `allowed-tools`",
+          "static_plus_semantic_detection": "yes (LLM-extracted prediction is the static + semantic step; runtime alignment is the L3 enforcement layer)"
+        },
+        "non_authoritative_disclaimer": "This bundle is generated automatically and is not a substitute for the maintainer-published SKILL.md. It is intended to be installed alongside the SKILL.md, not in place of it. The policy decision rule above is the runtime contract; deployers should implement the deny-overlay precedence rule explicitly."
+      }
+    }
+  ],
+  "eval": {
+    "summary": {
+      "n_skills_scored": 8,
+      "n_skills_total": 25,
+      "total_observed": 26,
+      "total_allowed_legit": 10,
+      "total_blocked_telemetry_or_undeclared": 13,
+      "total_blocked_unclassified": 3,
+      "legit_allow_rate": 0.7692307692307693,
+      "telemetry_catch_rate_against_total_observed": 0.5
+    },
+    "per_skill": [
+      {
+        "skill_id": "agent-browser",
+        "allowlist": [
+          "*"
+        ],
+        "observed_skill_attributable": [
+          "accounts.google.com",
+          "android.clients.google.com",
+          "clients2.google.com",
+          "content-autofill.googleapis.com",
+          "mtalk.google.com",
+          "news.ycombinator.com",
+          "ogads-pa.clients6.google.com",
+          "play.google.com",
+          "www.google.com",
+          "www.gstatic.com"
+        ],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [
+          "accounts.google.com",
+          "android.clients.google.com",
+          "clients2.google.com",
+          "content-autofill.googleapis.com",
+          "mtalk.google.com",
+          "ogads-pa.clients6.google.com",
+          "play.google.com",
+          "www.google.com",
+          "www.gstatic.com"
+        ],
+        "blocked_unclassified": [
+          "news.ycombinator.com"
+        ],
+        "n_observed": 10,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 9,
+        "n_blocked_unclassified": 1
+      },
+      {
+        "skill_id": "auth0-quickstart",
+        "allowlist": [
+          "auth0.com",
+          "*.auth0.com",
+          "github.com",
+          "auth0.github.io",
+          "community.auth0.com"
+        ],
+        "observed_skill_attributable": [
+          "registry.npmjs.org"
+        ],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [
+          "registry.npmjs.org"
+        ],
+        "n_observed": 1,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 1
+      },
+      {
+        "skill_id": "azure-validate",
+        "allowlist": [
+          "management.azure.com",
+          "login.microsoftonline.com",
+          "graph.microsoft.com",
+          "mcr.microsoft.com"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "caveman",
+        "allowlist": [],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "cloudformation",
+        "allowlist": [
+          "*.amazonaws.com",
+          "cloudformation.*.amazonaws.com",
+          "docs.aws.amazon.com"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "cookie-sync",
+        "allowlist": [
+          "127.0.0.1",
+          "api.browserbase.com",
+          "*.browserbase.com",
+          "registry.npmjs.org"
+        ],
+        "observed_skill_attributable": [
+          "registry.npmjs.org"
+        ],
+        "allowed_legit": [
+          "registry.npmjs.org"
+        ],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 1,
+        "n_allowed": 1,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "find-skills",
+        "allowlist": [
+          "skills.sh",
+          "registry.npmjs.org",
+          "github.com",
+          "raw.githubusercontent.com",
+          "codeload.github.com"
+        ],
+        "observed_skill_attributable": [
+          "add-skill.vercel.sh",
+          "registry.npmjs.org",
+          "skills.sh"
+        ],
+        "allowed_legit": [
+          "registry.npmjs.org",
+          "skills.sh"
+        ],
+        "blocked_telemetry_or_undeclared": [
+          "add-skill.vercel.sh"
+        ],
+        "blocked_unclassified": [],
+        "n_observed": 3,
+        "n_allowed": 2,
+        "n_blocked_telemetry": 1,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "firebase-hosting-basics",
+        "allowlist": [
+          "firebase.tools",
+          "registry.npmjs.org",
+          "*.firebaseio.com",
+          "*.googleapis.com",
+          "*.firebaseapp.com",
+          "*.web.app",
+          "localhost"
+        ],
+        "observed_skill_attributable": [
+          "firebase-public.firebaseio.com",
+          "github.com",
+          "registry.npmjs.org",
+          "release-assets.githubusercontent.com"
+        ],
+        "allowed_legit": [
+          "firebase-public.firebaseio.com",
+          "registry.npmjs.org"
+        ],
+        "blocked_telemetry_or_undeclared": [
+          "github.com",
+          "release-assets.githubusercontent.com"
+        ],
+        "blocked_unclassified": [],
+        "n_observed": 4,
+        "n_allowed": 2,
+        "n_blocked_telemetry": 2,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "firebase-security-rules-auditor",
+        "allowlist": [],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "firecrawl-scrape",
+        "allowlist": [
+          "api.firecrawl.dev",
+          "*"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "frontend-design",
+        "allowlist": [
+          "fonts.googleapis.com",
+          "fonts.gstatic.com",
+          "registry.npmjs.org",
+          "cdn.jsdelivr.net",
+          "unpkg.com"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "gha-security-review",
+        "allowlist": [],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "grill-me",
+        "allowlist": [],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "improve-codebase-architecture",
+        "allowlist": [],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "pinecone-mcp",
+        "allowlist": [
+          "*.pinecone.io",
+          "api.pinecone.io"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "prisma-postgres-setup",
+        "allowlist": [
+          "api.prisma.io",
+          "console.prisma.io",
+          "registry.npmjs.org"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "prompt-images",
+        "allowlist": [],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "react-best-practices",
+        "allowlist": [],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "semgrep",
+        "allowlist": [
+          "semgrep.dev",
+          "registry.semgrep.dev",
+          "github.com",
+          "raw.githubusercontent.com",
+          "*.semgrep.dev"
+        ],
+        "observed_skill_attributable": [
+          "metrics.semgrep.dev",
+          "semgrep.dev"
+        ],
+        "allowed_legit": [
+          "metrics.semgrep.dev",
+          "semgrep.dev"
+        ],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 2,
+        "n_allowed": 2,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "sentry-setup-ai-monitoring",
+        "allowlist": [
+          "docs.sentry.io",
+          "sentry.io",
+          "registry.npmjs.org",
+          "pypi.org"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "skill-creator",
+        "allowlist": [
+          "api.anthropic.com"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "vercel-sandbox",
+        "allowlist": [
+          "api.vercel.com",
+          "registry.npmjs.org",
+          "vercel.com",
+          "*.vercel.app",
+          "example.com"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "web-search",
+        "allowlist": [
+          "inference.sh",
+          "cloud.inference.sh",
+          "api.tavily.com",
+          "api.exa.ai",
+          "openrouter.ai"
+        ],
+        "observed_skill_attributable": [
+          "dist.inference.sh",
+          "raw.githubusercontent.com",
+          "registry.npmjs.org"
+        ],
+        "allowed_legit": [
+          "dist.inference.sh"
+        ],
+        "blocked_telemetry_or_undeclared": [
+          "raw.githubusercontent.com"
+        ],
+        "blocked_unclassified": [
+          "registry.npmjs.org"
+        ],
+        "n_observed": 3,
+        "n_allowed": 1,
+        "n_blocked_telemetry": 1,
+        "n_blocked_unclassified": 1
+      },
+      {
+        "skill_id": "wrangler",
+        "allowlist": [
+          "developers.cloudflare.com",
+          "api.cloudflare.com",
+          "*.cloudflare.com",
+          "registry.npmjs.org",
+          "workers.cloudflare.com",
+          "*.workers.dev"
+        ],
+        "observed_skill_attributable": [
+          "registry.npmjs.org",
+          "sparrow.cloudflare.com"
+        ],
+        "allowed_legit": [
+          "registry.npmjs.org",
+          "sparrow.cloudflare.com"
+        ],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 2,
+        "n_allowed": 2,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "xcode-project-setup",
+        "allowlist": [
+          "github.com",
+          "api.github.com",
+          "raw.githubusercontent.com",
+          "codeload.github.com",
+          "swift.org",
+          "download.swift.org"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      }
+    ]
+  },
+  "enforcement": [
+    {
+      "skill_id": "wrangler",
+      "trace_source": "trace-realcreds.json",
+      "allowlist": [
+        "developers.cloudflare.com",
+        "api.cloudflare.com",
+        "*.cloudflare.com",
+        "registry.npmjs.org",
+        "workers.cloudflare.com",
+        "*.workers.dev"
+      ],
+      "observed_skill_hosts": [
+        "sparrow.cloudflare.com"
+      ],
+      "per_host_classification": {
+        "sparrow.cloudflare.com": "ALLOWED-TELEMETRY"
+      },
+      "n_allowed_legit": 0,
+      "n_allowed_telemetry": 1,
+      "n_blocked_legit": 0,
+      "n_blocked_undeclared": 0,
+      "enforcement_outcome": "WOULD COMPLETE",
+      "agent_actual_outcome": "completed",
+      "agent_result_excerpt": "Dry-run succeeded. The worker bundle validates cleanly:\n\n- `worker/wrangler.jsonc` — minimal config (name, main, compatibility_date 2026-01-01)\n- `worker/src/index.ts` — basic fetch handler returning \"Hello, World!\"\n- Bundle size: 0.18 KiB, no bindings"
+    },
+    {
+      "skill_id": "firebase-hosting-basics",
+      "trace_source": "trace-realcreds.json",
+      "allowlist": [
+        "firebase.tools",
+        "registry.npmjs.org",
+        "*.firebaseio.com",
+        "*.googleapis.com",
+        "*.firebaseapp.com",
+        "*.web.app",
+        "localhost"
+      ],
+      "observed_skill_hosts": [
+        "firebase.googleapis.com",
+        "registry.npmjs.org",
+        "www.googleapis.com"
+      ],
+      "per_host_classification": {
+        "firebase.googleapis.com": "ALLOWED-LEGIT",
+        "registry.npmjs.org": "ALLOWED-LEGIT",
+        "www.googleapis.com": "ALLOWED-LEGIT"
+      },
+      "n_allowed_legit": 3,
+      "n_allowed_telemetry": 0,
+      "n_blocked_legit": 0,
+      "n_blocked_undeclared": 0,
+      "enforcement_outcome": "WOULD COMPLETE",
+      "agent_actual_outcome": "completed",
+      "agent_result_excerpt": "Emulator started successfully. Summary:\n\n**Project layout** at `./fb-test/`:\n- `public/index.html` — \"Hello World\" page\n- `firebase.json` — hosting config (public dir = `public`)\n- `.firebaserc` — default project `demo-test`\n\n**Emulator startup output** (cleaned of spinner/ANSI):\n\n```\ni  emulators: Starting emulators: hosting\ni  emulators: Detected demo project ID \"demo-test\", emulated services will use a demo configuration...\ni  hosting[demo-test]: Serving hosting files from: public\n✔  hosting["
+    },
+    {
+      "skill_id": "firecrawl-scrape",
+      "trace_source": "trace-realcreds.json",
+      "allowlist": [
+        "api.firecrawl.dev",
+        "*"
+      ],
+      "observed_skill_hosts": [
+        "api.firecrawl.dev"
+      ],
+      "per_host_classification": {
+        "api.firecrawl.dev": "ALLOWED-LEGIT"
+      },
+      "n_allowed_legit": 1,
+      "n_allowed_telemetry": 0,
+      "n_blocked_legit": 0,
+      "n_blocked_undeclared": 0,
+      "enforcement_outcome": "WOULD COMPLETE",
+      "agent_actual_outcome": "completed",
+      "agent_result_excerpt": "Saved to `./.firecrawl/page.md` (5 lines, main content only)."
+    }
+  ]
+}

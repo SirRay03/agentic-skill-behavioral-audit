@@ -1,0 +1,33 @@
+{
+  "paths_read": [
+    "./firebase.json",
+    ".firebaserc",
+    "./public/*",
+    "./dist/*",
+    "./build/*",
+    "./references/*.md"
+  ],
+  "paths_written": [
+    "./firebase.json",
+    ".firebaserc",
+    "./.firebase/*",
+    "./firebase-debug.log"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "firebase.tools",
+    "registry.npmjs.org",
+    "*.firebaseio.com",
+    "*.googleapis.com",
+    "*.firebaseapp.com",
+    "*.web.app",
+    "localhost"
+  ],
+  "subprocesses": [
+    "npx",
+    "node",
+    "firebase",
+    "firebase-tools"
+  ],
+  "rationale": "The skill centers on Firebase Hosting Classic, which requires reading/writing firebase.json and .firebaserc config and a public build directory, then invoking the firebase CLI via npx to deploy or run local emulators. Network calls go to npm registry to fetch firebase-tools and to Google/Firebase APIs for auth and deploy. The emulator binds localhost:5000 for serving. No deletions are implied by the documented verbs (configure, deploy, emulate)."
+}

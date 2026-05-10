@@ -1,0 +1,19 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { u } from "@/lib/url";
+---
+
+<Layout title="404 — page not found">
+  <div class="text-center py-16">
+    <div class="text-[11px] uppercase tracking-[0.18em] text-accent-600 font-medium mb-3">
+      404 · Page not found
+    </div>
+    <h1 class="text-3xl font-semibold tracking-tight text-ink-950 mb-3">
+      That route doesn't exist on this site.
+    </h1>
+    <p class="text-ink-600 max-w-lg mx-auto leading-relaxed">
+      Try the <a href={u("/")}>Overview</a>, the <a href={u("/findings")}>findings catalog</a>,
+      the <a href={u("/skills")}>skills table</a>, or the <a href={u("/mutation-suite")}>mutation suite</a>.
+    </p>
+  </div>
+</Layout>

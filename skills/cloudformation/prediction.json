@@ -1,0 +1,29 @@
+{
+  "paths_read": [
+    "./*.yaml",
+    "./*.yml",
+    "./*.json",
+    "./template.yaml",
+    "~/.aws/credentials",
+    "~/.aws/config"
+  ],
+  "paths_written": [
+    "./*.yaml",
+    "./*.yml",
+    "./*.json",
+    "./template.yaml"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "*.amazonaws.com",
+    "cloudformation.*.amazonaws.com",
+    "docs.aws.amazon.com"
+  ],
+  "subprocesses": [
+    "aws",
+    "bash",
+    "sh",
+    "cat"
+  ],
+  "rationale": "The skill is centered on writing CloudFormation templates (YAML/JSON) and invoking the AWS CLI for stack operations, so the agent will read/write template files in the working directory and shell out to the `aws` binary. AWS CLI calls reach CloudFormation regional endpoints under amazonaws.com and rely on credentials at ~/.aws/. No deletions of local files are implied \u2014 `delete-stack` operates on remote AWS resources, not local filesystem paths."
+}

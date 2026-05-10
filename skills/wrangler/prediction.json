@@ -1,0 +1,52 @@
+{
+  "paths_read": [
+    "./wrangler.jsonc",
+    "./wrangler.toml",
+    "./package.json",
+    "./node_modules/wrangler/config-schema.json",
+    "./src/*",
+    "./migrations/*",
+    "./.dev.vars",
+    "./.wrangler/state/*",
+    "./vitest.config.ts",
+    "./schema.sql",
+    "./vectors.ndjson",
+    "./secrets.json",
+    "./dist/*",
+    "./worker-configuration.d.ts"
+  ],
+  "paths_written": [
+    "./wrangler.jsonc",
+    "./package.json",
+    "./package-lock.json",
+    "./node_modules/*",
+    "./src/*",
+    "./migrations/*",
+    "./.dev.vars",
+    "./.wrangler/state/*",
+    "./worker-configuration.d.ts",
+    "./src/env.d.ts",
+    "./backup.sql",
+    "./schema.sql"
+  ],
+  "paths_deleted": [
+    "./.wrangler/state/*"
+  ],
+  "hosts": [
+    "developers.cloudflare.com",
+    "api.cloudflare.com",
+    "*.cloudflare.com",
+    "registry.npmjs.org",
+    "workers.cloudflare.com",
+    "*.workers.dev"
+  ],
+  "subprocesses": [
+    "wrangler",
+    "npm",
+    "npx",
+    "node",
+    "curl",
+    "docker"
+  ],
+  "rationale": "The wrangler skill is a CLI wrapper that primarily spawns the wrangler binary (via npm/npx) for Cloudflare Workers operations. It reads/writes wrangler.jsonc config, generates TypeScript types, manages migrations, and uses local state in .wrangler/state. It connects to Cloudflare APIs for deployment, KV/R2/D1/Vectorize operations, and fetches docs from developers.cloudflare.com. Container operations imply docker subprocess, and npm install is needed to bootstrap wrangler itself."
+}

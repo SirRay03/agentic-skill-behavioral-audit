@@ -1,0 +1,505 @@
+{
+  "per_skill": [
+    {
+      "skill_id": "agent-browser",
+      "maker": "Vercel Labs",
+      "maker_bucket": "established-vendor",
+      "category": "browser",
+      "skill_md_lines": 51,
+      "f1_paths_read": 0.9966442953020134,
+      "f1_paths_written": 0.9942196531791908,
+      "f1_hosts": null,
+      "length_bucket": "Q1 (<=68 lines)"
+    },
+    {
+      "skill_id": "auth0-quickstart",
+      "maker": "vendor-other",
+      "maker_bucket": "long-tail",
+      "category": "auth-identity",
+      "skill_md_lines": 261,
+      "f1_paths_read": 0.028846153846153848,
+      "f1_paths_written": null,
+      "f1_hosts": null,
+      "length_bucket": "Q4 (>=261 lines)"
+    },
+    {
+      "skill_id": "azure-validate",
+      "maker": "Microsoft",
+      "maker_bucket": "established-vendor",
+      "category": "deploy",
+      "skill_md_lines": 67,
+      "f1_paths_read": null,
+      "f1_paths_written": null,
+      "f1_hosts": null,
+      "length_bucket": "Q1 (<=68 lines)"
+    },
+    {
+      "skill_id": "caveman",
+      "maker": "solo-dev",
+      "maker_bucket": "long-tail",
+      "category": "knowledge",
+      "skill_md_lines": 74,
+      "f1_paths_read": null,
+      "f1_paths_written": null,
+      "f1_hosts": null,
+      "length_bucket": "Q2-Q3"
+    },
+    {
+      "skill_id": "cloudformation",
+      "maker": "solo-dev",
+      "maker_bucket": "long-tail",
+      "category": "deploy",
+      "skill_md_lines": 385,
+      "f1_paths_read": 0.05015673981191223,
+      "f1_paths_written": 0.2,
+      "f1_hosts": null,
+      "length_bucket": "Q4 (>=261 lines)"
+    },
+    {
+      "skill_id": "cookie-sync",
+      "maker": "vendor-other",
+      "maker_bucket": "long-tail",
+      "category": "browser-secrets",
+      "skill_md_lines": 115,
+      "f1_paths_read": 0.06015037593984962,
+      "f1_paths_written": null,
+      "f1_hosts": 0.4,
+      "length_bucket": "Q2-Q3"
+    },
+    {
+      "skill_id": "find-skills",
+      "maker": "Vercel Labs",
+      "maker_bucket": "established-vendor",
+      "category": "meta",
+      "skill_md_lines": 142,
+      "f1_paths_read": 0.019607843137254905,
+      "f1_paths_written": null,
+      "f1_hosts": 0.5,
+      "length_bucket": "Q2-Q3"
+    },
+    {
+      "skill_id": "firebase-hosting-basics",
+      "maker": "Firebase",
+      "maker_bucket": "established-vendor",
+      "category": "deploy",
+      "skill_md_lines": 46,
+      "f1_paths_read": 0.030303030303030304,
+      "f1_paths_written": 0.17391304347826086,
+      "f1_hosts": 0.36363636363636365,
+      "length_bucket": "Q1 (<=68 lines)"
+    },
+    {
+      "skill_id": "firebase-security-rules-auditor",
+      "maker": "Firebase",
+      "maker_bucket": "established-vendor",
+      "category": "audit",
+      "skill_md_lines": 45,
+      "f1_paths_read": null,
+      "f1_paths_written": null,
+      "f1_hosts": null,
+      "length_bucket": "Q1 (<=68 lines)"
+    },
+    {
+      "skill_id": "firecrawl-scrape",
+      "maker": "vendor-other",
+      "maker_bucket": "long-tail",
+      "category": "network-broad",
+      "skill_md_lines": 68,
+      "f1_paths_read": null,
+      "f1_paths_written": null,
+      "f1_hosts": null,
+      "length_bucket": "Q1 (<=68 lines)"
+    },
+    {
+      "skill_id": "frontend-design",
+      "maker": "Anthropic",
+      "maker_bucket": "established-vendor",
+      "category": "knowledge",
+      "skill_md_lines": 42,
+      "f1_paths_read": 0.9587628865979382,
+      "f1_paths_written": 0.16666666666666666,
+      "f1_hosts": null,
+      "length_bucket": "Q1 (<=68 lines)"
+    },
+    {
+      "skill_id": "gha-security-review",
+      "maker": "vendor-other",
+      "maker_bucket": "long-tail",
+      "category": "audit",
+      "skill_md_lines": 186,
+      "f1_paths_read": null,
+      "f1_paths_written": null,
+      "f1_hosts": null,
+      "length_bucket": "Q2-Q3"
+    },
+    {
+      "skill_id": "grill-me",
+      "maker": "solo-dev",
+      "maker_bucket": "long-tail",
+      "category": "knowledge",
+      "skill_md_lines": 10,
+      "f1_paths_read": 1.0,
+      "f1_paths_written": null,
+      "f1_hosts": null,
+      "length_bucket": "Q1 (<=68 lines)"
+    },
+    {
+      "skill_id": "improve-codebase-architecture",
+      "maker": "solo-dev",
+      "maker_bucket": "long-tail",
+      "category": "fs-edit",
+      "skill_md_lines": 71,
+      "f1_paths_read": 0.9722222222222222,
+      "f1_paths_written": null,
+      "f1_hosts": null,
+      "length_bucket": "Q2-Q3"
+    },
+    {
+      "skill_id": "pinecone-mcp",
+      "maker": "vendor-other",
+      "maker_bucket": "long-tail",
+      "category": "meta-mcp",
+      "skill_md_lines": 106,
+      "f1_paths_read": null,
+      "f1_paths_written": null,
+      "f1_hosts": null,
+      "length_bucket": "Q2-Q3"
+    },
+    {
+      "skill_id": "prisma-postgres-setup",
+      "maker": "vendor-other",
+      "maker_bucket": "long-tail",
+      "category": "db-setup",
+      "skill_md_lines": 263,
+      "f1_paths_read": null,
+      "f1_paths_written": null,
+      "f1_hosts": null,
+      "length_bucket": "Q4 (>=261 lines)"
+    },
+    {
+      "skill_id": "prompt-images",
+      "maker": "vendor-other",
+      "maker_bucket": "long-tail",
+      "category": "multi-modal",
+      "skill_md_lines": 206,
+      "f1_paths_read": null,
+      "f1_paths_written": null,
+      "f1_hosts": null,
+      "length_bucket": "Q2-Q3"
+    },
+    {
+      "skill_id": "react-best-practices",
+      "maker": "Vercel Labs",
+      "maker_bucket": "established-vendor",
+      "category": "knowledge",
+      "skill_md_lines": 149,
+      "f1_paths_read": 0.2975206611570248,
+      "f1_paths_written": null,
+      "f1_hosts": null,
+      "length_bucket": "Q2-Q3"
+    },
+    {
+      "skill_id": "semgrep",
+      "maker": "vendor-other",
+      "maker_bucket": "long-tail",
+      "category": "security-scan",
+      "skill_md_lines": 321,
+      "f1_paths_read": 0.996825396825397,
+      "f1_paths_written": null,
+      "f1_hosts": 0.5714285714285715,
+      "length_bucket": "Q4 (>=261 lines)"
+    },
+    {
+      "skill_id": "sentry-setup-ai-monitoring",
+      "maker": "vendor-other",
+      "maker_bucket": "long-tail",
+      "category": "observability",
+      "skill_md_lines": 217,
+      "f1_paths_read": 0.07228915662650602,
+      "f1_paths_written": 0.6923076923076923,
+      "f1_hosts": null,
+      "length_bucket": "Q2-Q3"
+    },
+    {
+      "skill_id": "skill-creator",
+      "maker": "Anthropic",
+      "maker_bucket": "established-vendor",
+      "category": "fs-write-meta",
+      "skill_md_lines": 485,
+      "f1_paths_read": 0.2601626016260163,
+      "f1_paths_written": 0.11111111111111112,
+      "f1_hosts": null,
+      "length_bucket": "Q4 (>=261 lines)"
+    },
+    {
+      "skill_id": "vercel-sandbox",
+      "maker": "Vercel Labs",
+      "maker_bucket": "established-vendor",
+      "category": "vercel-specific",
+      "skill_md_lines": 280,
+      "f1_paths_read": 0.2804878048780488,
+      "f1_paths_written": 0.75,
+      "f1_hosts": null,
+      "length_bucket": "Q4 (>=261 lines)"
+    },
+    {
+      "skill_id": "web-search",
+      "maker": "vendor-other",
+      "maker_bucket": "long-tail",
+      "category": "network",
+      "skill_md_lines": 150,
+      "f1_paths_read": 0.16,
+      "f1_paths_written": null,
+      "f1_hosts": 0.25,
+      "length_bucket": "Q2-Q3"
+    },
+    {
+      "skill_id": "wrangler",
+      "maker": "Cloudflare",
+      "maker_bucket": "established-vendor",
+      "category": "deploy",
+      "skill_md_lines": 922,
+      "f1_paths_read": 0.04411764705882353,
+      "f1_paths_written": 0.23076923076923078,
+      "f1_hosts": 0.5,
+      "length_bucket": "Q4 (>=261 lines)"
+    },
+    {
+      "skill_id": "xcode-project-setup",
+      "maker": "Firebase",
+      "maker_bucket": "established-vendor",
+      "category": "mobile-native",
+      "skill_md_lines": 87,
+      "f1_paths_read": null,
+      "f1_paths_written": 0.22222222222222224,
+      "f1_hosts": null,
+      "length_bucket": "Q2-Q3"
+    }
+  ],
+  "tests": {
+    "maker_bucket": {
+      "f1_paths_read": {
+        "U": 28.0,
+        "p": 0.7209013209013208,
+        "n_established_vendor": 8,
+        "n_long_tail": 8,
+        "median_established": 0.2703252032520326,
+        "median_long_tail": 0.116144578313253
+      },
+      "f1_paths_written": {
+        "U": 6.0,
+        "p": 0.8888888888888888,
+        "n_established_vendor": 7,
+        "n_long_tail": 2,
+        "median_established": 0.22222222222222224,
+        "median_long_tail": 0.4461538461538461
+      },
+      "f1_hosts": {
+        "U": 5.0,
+        "p": 1.0,
+        "n_established_vendor": 3,
+        "n_long_tail": 3,
+        "median_established": 0.5,
+        "median_long_tail": 0.4
+      }
+    },
+    "category": {
+      "f1_paths_read": {
+        "H": 14.294117647058826,
+        "p": 0.21714385714557827,
+        "groups": {
+          "browser": {
+            "n": 1,
+            "median": 0.9966442953020134
+          },
+          "auth-identity": {
+            "n": 1,
+            "median": 0.028846153846153848
+          },
+          "deploy": {
+            "n": 3,
+            "median": 0.04411764705882353
+          },
+          "browser-secrets": {
+            "n": 1,
+            "median": 0.06015037593984962
+          },
+          "meta": {
+            "n": 1,
+            "median": 0.019607843137254905
+          },
+          "knowledge": {
+            "n": 3,
+            "median": 0.9587628865979382
+          },
+          "fs-edit": {
+            "n": 1,
+            "median": 0.9722222222222222
+          },
+          "security-scan": {
+            "n": 1,
+            "median": 0.996825396825397
+          },
+          "observability": {
+            "n": 1,
+            "median": 0.07228915662650602
+          },
+          "fs-write-meta": {
+            "n": 1,
+            "median": 0.2601626016260163
+          },
+          "vercel-specific": {
+            "n": 1,
+            "median": 0.2804878048780488
+          },
+          "network": {
+            "n": 1,
+            "median": 0.16
+          }
+        }
+      },
+      "f1_paths_written": {
+        "H": 7.37777777777778,
+        "p": 0.28731827685825106,
+        "groups": {
+          "browser": {
+            "n": 1,
+            "median": 0.9942196531791908
+          },
+          "deploy": {
+            "n": 3,
+            "median": 0.2
+          },
+          "knowledge": {
+            "n": 1,
+            "median": 0.16666666666666666
+          },
+          "observability": {
+            "n": 1,
+            "median": 0.6923076923076923
+          },
+          "fs-write-meta": {
+            "n": 1,
+            "median": 0.11111111111111112
+          },
+          "vercel-specific": {
+            "n": 1,
+            "median": 0.75
+          },
+          "mobile-native": {
+            "n": 1,
+            "median": 0.22222222222222224
+          }
+        }
+      },
+      "f1_hosts": {
+        "H": 4.080882352941174,
+        "p": 0.39517026839089514,
+        "groups": {
+          "browser-secrets": {
+            "n": 1,
+            "median": 0.4
+          },
+          "meta": {
+            "n": 1,
+            "median": 0.5
+          },
+          "deploy": {
+            "n": 2,
+            "median": 0.4318181818181818
+          },
+          "security-scan": {
+            "n": 1,
+            "median": 0.5714285714285715
+          },
+          "network": {
+            "n": 1,
+            "median": 0.25
+          }
+        }
+      }
+    },
+    "length_bucket": {
+      "f1_paths_read": {
+        "H": 1.783088235294123,
+        "p": 0.4100221412688829,
+        "groups": {
+          "Q1 (<=68 lines)": {
+            "n": 4,
+            "median": 0.9777035909499758
+          },
+          "Q4 (>=261 lines)": {
+            "n": 6,
+            "median": 0.15515967071896425
+          },
+          "Q2-Q3": {
+            "n": 6,
+            "median": 0.116144578313253
+          }
+        }
+      },
+      "f1_paths_written": {
+        "H": 0.34444444444444144,
+        "p": 0.8417920874736442,
+        "groups": {
+          "Q1 (<=68 lines)": {
+            "n": 3,
+            "median": 0.17391304347826086
+          },
+          "Q4 (>=261 lines)": {
+            "n": 4,
+            "median": 0.2153846153846154
+          },
+          "Q2-Q3": {
+            "n": 2,
+            "median": 0.45726495726495725
+          }
+        }
+      },
+      "f1_hosts": {
+        "H": 2.8553921568627434,
+        "p": 0.2398609068517354,
+        "groups": {
+          "Q2-Q3": {
+            "n": 3,
+            "median": 0.4
+          },
+          "Q1 (<=68 lines)": {
+            "n": 1,
+            "median": 0.36363636363636365
+          },
+          "Q4 (>=261 lines)": {
+            "n": 2,
+            "median": 0.5357142857142858
+          }
+        }
+      }
+    },
+    "bimodal": {
+      "f1_paths_read": {
+        "U": 6.0,
+        "p": 0.029670329670329672,
+        "n_cli_wrapper": 12,
+        "n_pure_text": 4,
+        "median_cli_wrapper": 0.06621976628317783,
+        "median_pure_text": 0.9654925544100802
+      },
+      "f1_paths_written": {
+        "U": 7.0,
+        "p": 0.4444444444444444,
+        "n_cli_wrapper": 8,
+        "n_pure_text": 1,
+        "median_cli_wrapper": 0.22649572649572652,
+        "median_pure_text": 0.16666666666666666
+      },
+      "f1_hosts": {
+        "U": null,
+        "p": null,
+        "n_cli_wrapper": 6,
+        "n_pure_text": 0,
+        "median_cli_wrapper": 0.45,
+        "median_pure_text": null
+      }
+    }
+  }
+}

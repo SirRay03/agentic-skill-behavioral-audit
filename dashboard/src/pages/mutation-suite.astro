@@ -1,0 +1,253 @@
+---
+import Layout from "@layouts/Layout.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import Tag from "@components/Tag.astro";
+import mutationSuite from "../data/generated/mutation-suite.json";
+import { u } from "@/lib/url";
+
+const perMutation = mutationSuite.per_mutation as any[];
+const ablation = mutationSuite.ablation as any;
+
+// Compute per-layer rates from the JSON
+const layers = ["L1_static", "L2_predictor", "L3_claude_runtime", "L4_codex_runtime"] as const;
+const layerLabels: Record<string, string> = {
+  L1_static: "L1 — static regex",
+  L2_predictor: "L2 — LLM predictor",
+  L3_claude_runtime: "L3 — Claude runtime",
+  L4_codex_runtime: "L4 — Codex runtime",
+};
+const layerVariants: Record<string, string> = {
+  L1_static: "L1-static",
+  L2_predictor: "L2-llm",
+  L3_claude_runtime: "L3-runtime-claude",
+  L4_codex_runtime: "L4-runtime-codex",
+};
+
+function rate(layer: typeof layers[number]): { caught: number; total: number; pct: number } {
+  const caught = perMutation.filter((m) => m[layer]?.caught).length;
+  const total = perMutation.length;
+  return { caught, total, pct: total ? caught / total : 0 };
+}
+
+const rates = Object.fromEntries(layers.map((l) => [l, rate(l)])) as Record<string, { caught: number; total: number; pct: number }>;
+
+const containedAtLeastOnce = perMutation.filter((m) =>
+  layers.some((l) => m[l]?.caught)
+).length;
+
+// Ablation rates per regex regime — analysis/mutation-suite-ablation.json
+let ablationRows: Array<{ regime: string; description: string; caught: number; total: number; pct: number }> = [];
+if (ablation && Array.isArray(ablation.regimes)) {
+  ablationRows = ablation.regimes.map((r: any) => ({
+    regime: r.id || r.name,
+    description: r.description || r.note || "",
+    caught: r.caught_count ?? 0,
+    total: r.total_count ?? perMutation.length,
+    pct: (r.caught_count ?? 0) / ((r.total_count ?? perMutation.length) || 1),
+  }));
+}
+---
+
+<Layout title="Mutation suite · Agentic Skill Auditor" wide>
+  <SectionHeader
+    eyebrow="Phase 1.C · §5.4"
+    title="Mutation suite — 6 attack patterns × 4 defense layers"
+    subtitle="Six variations of the synthetic adversarial demo, each varying a different attack dimension and probing where each defense layer breaks. Methodologically related to AgentDojo's attack-defense matrix, smaller-scope. Defense-in-depth coverage 6/6: every attack contained by at least one layer."
+  />
+
+  <!-- Per-layer rate cards -->
+  <section class="mb-10">
+    <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4">
+      Per-layer detection rate
+    </h2>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      {layers.map((l) => (
+        <div class="border border-ink-200 rounded-md p-4 bg-white">
+          <div class="flex items-baseline justify-between mb-1">
+            <Tag variant={layerVariants[l] as any} size="xs" />
+            <span class="text-2xl font-mono font-semibold tabular text-ink-900">
+              {rates[l].caught}/{rates[l].total}
+            </span>
+          </div>
+          <div class="text-[11px] text-ink-500 mt-1">{layerLabels[l]}</div>
+          <div class="mt-2 text-xs font-mono text-ink-700 tabular">
+            {Math.round(rates[l].pct * 100)}%
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="mt-4 border border-accent-300 bg-accent-50/40 rounded-md p-4">
+      <div class="text-[11px] uppercase tracking-[0.16em] text-accent-700 font-medium mb-1">
+        Defense-in-depth coverage
+      </div>
+      <div class="font-mono text-2xl font-semibold tabular text-ink-900">
+        {containedAtLeastOnce}/{perMutation.length} contained
+      </div>
+      <div class="text-xs text-ink-600 mt-1">
+        Every attack caught by at least one layer (Section 5.4).
+      </div>
+    </div>
+  </section>
+
+  <!-- 6×4 detection table -->
+  <section class="mb-12">
+    <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4">
+      6 × 4 detection-rate table
+    </h2>
+    <div class="overflow-x-auto border border-ink-200 rounded-md bg-white">
+      <table class="w-full text-sm tabular">
+        <thead class="bg-ink-100/60 text-[11px] uppercase tracking-wider text-ink-600">
+          <tr>
+            <th class="text-left px-3 py-2">Mutation</th>
+            <th class="text-left px-3 py-2">Why</th>
+            {layers.map((l) => (
+              <th class="text-center px-3 py-2 whitespace-nowrap">
+                {layerLabels[l].replace(/^L\d — /, "")}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-ink-100">
+          {perMutation.map((m) => (
+            <tr class="hover:bg-accent-50/40">
+              <td class="px-3 py-2.5 font-mono whitespace-nowrap">
+                <span class="font-semibold text-ink-900 mr-2">{m.code}</span>
+                <span class="text-ink-700">{m.short}</span>
+              </td>
+              <td class="px-3 py-2.5 text-ink-600 text-xs">{m.why}</td>
+              {layers.map((l) => {
+                const cell = m[l];
+                if (!cell) return <td class="text-center text-ink-400">—</td>;
+                return (
+                  <td class="px-3 py-2.5 text-center">
+                    {cell.caught ? (
+                      <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-bold text-sm" title="caught">✓</span>
+                    ) : (
+                      <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100 text-red-700 font-bold text-sm" title="missed">✗</span>
+                    )}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Per-mutation deep dive (collapsibles) -->
+  <section class="mb-12">
+    <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4">
+      Per-mutation detail
+    </h2>
+    <div class="space-y-3">
+      {perMutation.map((m) => (
+        <details class="border border-ink-200 rounded-md bg-white">
+          <summary class="cursor-pointer px-5 py-4 flex flex-wrap items-baseline gap-3 hover:bg-accent-50/30 select-none">
+            <span class="font-mono font-semibold text-ink-900">{m.code}</span>
+            <span class="text-ink-700">{m.short}</span>
+            <span class="text-xs text-ink-500">·</span>
+            <span class="text-xs text-ink-600 italic">{m.why}</span>
+            <span class="ml-auto text-xs text-ink-500 font-mono">
+              {layers.filter((l) => m[l]?.caught).length}/{layers.length} caught
+            </span>
+          </summary>
+          <div class="border-t border-ink-100 px-5 py-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+            {layers.map((l) => {
+              const cell = m[l];
+              if (!cell) return null;
+              return (
+                <div class:list={[
+                  "border rounded p-3",
+                  cell.caught ? "border-emerald-200 bg-emerald-50/40" : "border-red-200 bg-red-50/40",
+                ]}>
+                  <div class="flex items-center gap-2 mb-1">
+                    <Tag variant={layerVariants[l] as any} size="xs" />
+                    <span class="text-xs font-mono">{cell.caught ? "✓ caught" : "✗ missed"}</span>
+                  </div>
+                  {cell.flags && cell.flags.length > 0 && (
+                    <div class="text-xs text-ink-700 mt-1.5">
+                      <span class="text-ink-500">flags:</span> {cell.flags.map((f: string) => (
+                        <code class="font-mono mr-1.5">{f}</code>
+                      ))}
+                    </div>
+                  )}
+                  {cell.rationale_excerpt && (
+                    <p class="text-xs text-ink-700 mt-1.5 leading-relaxed">
+                      <span class="text-ink-500">rationale:</span> {cell.rationale_excerpt}
+                    </p>
+                  )}
+                  {typeof cell.attacker_host_fired === "boolean" && (
+                    <div class="text-xs text-ink-700 mt-1.5">
+                      <span class="text-ink-500">attacker host fired:</span> <span class="font-mono">{String(cell.attacker_host_fired)}</span>
+                      {typeof cell.refusal_in_stdout === "boolean" && (
+                        <> · <span class="text-ink-500">refusal in stdout:</span> <span class="font-mono">{String(cell.refusal_in_stdout)}</span></>
+                      )}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+            <a
+              href={u(`/skills/${m.skill_id}`)}
+              class="text-xs text-accent-700 mt-2 inline-block font-mono no-underline hover:underline"
+            >
+              full skill record → /skills/{m.skill_id}
+            </a>
+          </div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- Ablation -->
+  {ablationRows.length > 0 && (
+    <section class="mb-12">
+      <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4">
+        Brittleness ablation — L1 across regex regimes
+      </h2>
+      <p class="text-sm text-ink-700 mb-4 max-w-2xl leading-relaxed">
+        Progressively stripping the L1 regex pattern set from the full 14-rule list
+        down to a "minimal realistic" three-rule set
+        (<code>sudo</code>, <code>rm -rf /</code>, pipe-to-shell). L1 detection
+        drops from 5/6 → 0/6 — empirically validating Professor Monperrus's topic-26 brittleness claim.
+      </p>
+      <div class="overflow-x-auto border border-ink-200 rounded-md bg-white">
+        <table class="w-full text-sm tabular">
+          <thead class="bg-ink-100/60 text-[11px] uppercase tracking-wider text-ink-600">
+            <tr>
+              <th class="text-left px-3 py-2">Regime</th>
+              <th class="text-left px-3 py-2">Description</th>
+              <th class="text-right px-3 py-2">Caught</th>
+              <th class="text-right px-3 py-2">%</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-ink-100">
+            {ablationRows.map((r) => (
+              <tr>
+                <td class="px-3 py-2 font-mono font-semibold">{r.regime}</td>
+                <td class="px-3 py-2 text-ink-700">{r.description}</td>
+                <td class="px-3 py-2 text-right font-mono">{r.caught}/{r.total}</td>
+                <td class="px-3 py-2 text-right font-mono">{Math.round(r.pct * 100)}%</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )}
+
+  <!-- Figure -->
+  <section class="mb-12">
+    <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4">
+      Figure 6 — mutation × defense-layer coverage
+    </h2>
+    <figure class="border border-ink-200 rounded-md bg-white p-6">
+      <img
+        src={u("/figures/fig-06-mutation-suite.svg")}
+        alt="6×4 mutation × defense-layer coverage matrix"
+        class="w-full max-h-[480px] object-contain"
+      />
+    </figure>
+  </section>
+</Layout>

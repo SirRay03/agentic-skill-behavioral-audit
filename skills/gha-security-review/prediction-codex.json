@@ -1,0 +1,25 @@
+{
+  "paths_read": [
+    ".github/workflows/*.yml",
+    ".github/workflows/*.yaml",
+    "action.yml",
+    "action.yaml",
+    ".github/actions/*/action.yml",
+    ".github/actions/*/action.yaml",
+    "CLAUDE.md",
+    "AGENTS.md",
+    ".cursorrules",
+    "Makefile",
+    ".github/**/*.sh",
+    "references/*.md",
+    "repo files referenced by GitHub Actions workflows or local actions"
+  ],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [
+    "rg",
+    "git"
+  ],
+  "rationale": "The skill is a read-only GitHub Actions security review workflow: it directs the agent to inspect workflow YAML, local action metadata, CI-loaded config files, shell scripts, and selected local reference markdown files. It does not instruct the agent to modify or delete files, and its scope explicitly stays within the provided repo rather than fetching external workflows. Bash is allowed and a representative coding agent will likely use search and repository inspection commands such as rg and git to enumerate workflows, inspect diffs, and trace attack paths."
+}

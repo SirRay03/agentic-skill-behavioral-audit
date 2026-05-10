@@ -1,0 +1,12 @@
+{
+  "paths_read": [
+    "./firestore.rules",
+    "./firebase.json",
+    "./**/*.rules"
+  ],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "The skill is a prose-only auditing rubric for evaluating Firestore security rules and requests a JSON assessment. A representative task would require reading the project\u2019s Firestore rules files and possibly Firebase config to locate them, but the SKILL.md does not instruct the agent to modify files, delete files, call external APIs, or run Firebase emulators or other subprocesses."
+}

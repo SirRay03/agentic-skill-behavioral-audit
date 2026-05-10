@@ -1,0 +1,51 @@
+{
+  "paths_read": [
+    "./wrangler.jsonc",
+    "./wrangler.toml",
+    "./package.json",
+    "./node_modules/wrangler/config-schema.json",
+    "./src/**",
+    "./migrations/*.sql",
+    "./schema.sql",
+    "./vectors.ndjson",
+    "./secrets.json",
+    "./.dev.vars",
+    "./.wrangler/state/**",
+    "./dist/**",
+    "./vitest.config.ts",
+    "./tsconfig.json"
+  ],
+  "paths_written": [
+    "./wrangler.jsonc",
+    "./worker-configuration.d.ts",
+    "./src/env.d.ts",
+    "./.dev.vars",
+    "./.wrangler/state/**",
+    "./node_modules/**",
+    "./package.json",
+    "./package-lock.json",
+    "./migrations/*.sql",
+    "backup.sql",
+    "schema.sql"
+  ],
+  "paths_deleted": [
+    "./.wrangler/state/**"
+  ],
+  "hosts": [
+    "developers.cloudflare.com",
+    "api.cloudflare.com",
+    "workers.cloudflare.com",
+    "*.cloudflare.com",
+    "registry.npmjs.org",
+    "*.workers.dev"
+  ],
+  "subprocesses": [
+    "wrangler",
+    "npx",
+    "npm",
+    "node",
+    "curl",
+    "docker"
+  ],
+  "rationale": "The skill is a comprehensive Wrangler CLI guide whose primary verbs (init, dev, deploy, types, KV/R2/D1/Vectorize/Hyperdrive/Queues/Containers operations) require spawning the wrangler binary (often via npx) and npm for installation. It reads/writes wrangler.jsonc, generates TypeScript binding files, manages .dev.vars and .wrangler/state local storage, and handles SQL/NDJSON/JSON data files for D1, Vectorize, and bulk secrets. Network calls hit Cloudflare's API and docs endpoints for deploys, auth, and retrieval, plus npm registry for installs; container workflows additionally invoke docker. Deletion is mostly limited to local .wrangler state, since remote resource deletes go via the API rather than filesystem."
+}

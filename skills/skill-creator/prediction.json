@@ -1,0 +1,41 @@
+{
+  "paths_read": [
+    "./SKILL.md",
+    "./evals/evals.json",
+    "./agents/*.md",
+    "./references/*.md",
+    "./assets/eval_review.html",
+    "<workspace>/iteration-*/eval-*/**",
+    "<workspace>/feedback.json",
+    "~/Downloads/eval_set*.json"
+  ],
+  "paths_written": [
+    "./SKILL.md",
+    "./evals/evals.json",
+    "<workspace>/skill-snapshot/**",
+    "<workspace>/iteration-*/eval-*/eval_metadata.json",
+    "<workspace>/iteration-*/eval-*/with_skill/outputs/**",
+    "<workspace>/iteration-*/eval-*/without_skill/outputs/**",
+    "<workspace>/iteration-*/eval-*/old_skill/outputs/**",
+    "<workspace>/iteration-*/eval-*/timing.json",
+    "<workspace>/iteration-*/eval-*/grading.json",
+    "<workspace>/iteration-*/benchmark.json",
+    "<workspace>/iteration-*/benchmark.md",
+    "/tmp/eval_review_*.html",
+    "/tmp/skill-name/**",
+    "./*.skill"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "api.anthropic.com"
+  ],
+  "subprocesses": [
+    "python",
+    "cp",
+    "nohup",
+    "kill",
+    "open",
+    "claude"
+  ],
+  "rationale": "This skill orchestrates a full skill-creation lifecycle: drafting SKILL.md, snapshotting skills with cp, running eval subagents, aggregating benchmarks via python scripts, launching an HTML viewer with nohup python, and packaging into .skill files. It reads/writes the skill directory, evals JSON, and a workspace tree organized by iteration and eval ID. Network egress is implied by the description-optimization loop which invokes `claude -p` (hitting api.anthropic.com) to evaluate trigger queries. Subprocess footprint includes python (aggregation, viewer, packaging, optimization loop), cp (snapshotting), kill (viewer teardown), open (HTML preview), and claude CLI."
+}

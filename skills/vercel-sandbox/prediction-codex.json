@@ -1,0 +1,47 @@
+{
+  "paths_read": [
+    "./package.json",
+    "./pnpm-lock.yaml",
+    "./vercel.json",
+    "./.env*",
+    "./app/**",
+    "./pages/**",
+    "./src/**",
+    "./server/**",
+    "./examples/environments/**"
+  ],
+  "paths_written": [
+    "./package.json",
+    "./pnpm-lock.yaml",
+    "./vercel.json",
+    "./.env*",
+    "./app/**",
+    "./pages/**",
+    "./src/**",
+    "./server/**",
+    "./examples/environments/scripts/**"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "api.vercel.com",
+    "*.vercel.com",
+    "registry.npmjs.org",
+    "*.amazonlinux.com",
+    "*.amazonaws.com",
+    "*.googleapis.com",
+    "arbitrary user-supplied browser target hosts"
+  ],
+  "subprocesses": [
+    "pnpm",
+    "npx",
+    "tsx",
+    "sh",
+    "sudo",
+    "dnf",
+    "ldconfig",
+    "npm",
+    "agent-browser",
+    "base64"
+  ],
+  "rationale": "The skill's primary verb is adding and running browser automation through @vercel/sandbox, so an agent would inspect and modify framework server files, package manifests, lockfiles, Vercel config, and environment files. At runtime it creates Vercel Sandboxes, installs npm packages and Chromium dependencies, runs agent-browser commands, and reads generated screenshot files via base64. Network use includes Vercel Sandbox APIs, npm registry access, OS package and browser download endpoints, plus arbitrary websites opened by the browser automation."
+}

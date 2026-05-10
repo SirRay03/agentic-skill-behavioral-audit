@@ -1,0 +1,29 @@
+{
+  "paths_read": [
+    "./*.xcodeproj/*",
+    "./*.xcworkspace/*",
+    "./**/*.pbxproj",
+    "./**/GoogleService-Info.plist",
+    "<SKILL_DIR>/scripts/xcode_spm_setup/*"
+  ],
+  "paths_written": [
+    "./**/*.pbxproj",
+    "./*.xcodeproj/*",
+    "./**/*.swift",
+    "./**/Package.resolved"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "github.com",
+    "api.github.com",
+    "swiftpackageindex.com",
+    "raw.githubusercontent.com",
+    "codeload.github.com"
+  ],
+  "subprocesses": [
+    "swift",
+    "xcode-select",
+    "xcodebuild"
+  ],
+  "rationale": "The skill's primary action is invoking `swift run` on a bundled Swift package that mutates an `.xcodeproj`/`.pbxproj` and links resources like `GoogleService-Info.plist`, so it reads and writes project files plus the skill's script directory. It explicitly runs `swift --version` and `swift run`, which fetches SPM dependencies (e.g., Firebase, Alamofire) from GitHub, implying network access to github.com and related code-hosting hosts. It also documents `xcode-select --install` as a fallback, and writing new Swift source files is part of the modern folder-sync workflow. No deletions are described."
+}

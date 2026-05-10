@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "fig-01-f1-distribution",
+    "title": "Figure 01 F1 Distribution",
+    "caption": "F1 distribution per skill across the three IO axes (paths_read, paths_written, hosts). Bimodal pattern is visible on the paths_read axis: CLI-wrappers cluster low, pure-text/single-output skills cluster high. Mann-Whitney p=0.030.",
+    "svg": "/figures/fig-01-f1-distribution.svg",
+    "png": "/figures/fig-01-f1-distribution.png"
+  },
+  {
+    "slug": "fig-02-predictor-variance",
+    "title": "Figure 02 Predictor Variance",
+    "caption": "Pairwise Jaccard between orig-Claude / fresh-Claude / Codex predictors across all four IO axes. Cross-LLM variance dominates cross-context variance at every axis (Finding N).",
+    "svg": "/figures/fig-02-predictor-variance.svg",
+    "png": "/figures/fig-02-predictor-variance.png"
+  },
+  {
+    "slug": "fig-03-pred-vs-obs",
+    "title": "Figure 03 Pred Vs Obs",
+    "caption": "Predicted set size vs observed set size, per skill, per axis. Diagonal line = perfect calibration. Below-diagonal = under-prediction (the headline gap).",
+    "svg": "/figures/fig-03-pred-vs-obs.svg",
+    "png": "/figures/fig-03-pred-vs-obs.png"
+  },
+  {
+    "slug": "fig-04-ci-forest",
+    "title": "Figure 04 Ci Forest",
+    "caption": "Bootstrap 95% CI forest plot per IO axis. Hosts F1 = 0.475 [0.399, 0.542]. Single-predictor variance is captured; cross-predictor variance is reported separately in Section 5.5.",
+    "svg": "/figures/fig-04-ci-forest.svg",
+    "png": "/figures/fig-04-ci-forest.png"
+  },
+  {
+    "slug": "fig-05-failure-modes",
+    "title": "Figure 05 Failure Modes",
+    "caption": "Failure-mode taxonomy: 24 host-misses × 7 categories. Telemetry-beacon and binary-fetch-CDN dominate the undeclared tier. Each category maps to a distinct enforcement granularity (suffix-deny, SHA-pinned, credential-scoped).",
+    "svg": "/figures/fig-05-failure-modes.svg",
+    "png": "/figures/fig-05-failure-modes.png"
+  },
+  {
+    "slug": "fig-06-mutation-suite",
+    "title": "Figure 06 Mutation Suite",
+    "caption": "6×4 mutation × defense-layer detection-rate table. Defense-in-depth coverage 6/6. L1 misses M3 (prose-only); L2 misses M4 (bundled sibling) and M6 (dependency confusion). Ablation drops L1 from 83% → 0% under realistic regex.",
+    "svg": "/figures/fig-06-mutation-suite.svg",
+    "png": "/figures/fig-06-mutation-suite.png"
+  }
+]

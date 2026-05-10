@@ -1,0 +1,28 @@
+# Astro build output
+dist/
+.astro/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Cloudflare Pages local
+.wrangler/
+
+# NOTE: src/data/generated/ and public/figures/ ARE committed in this public
+# repo so the site builds without running scripts/build-data.py on the deploy
+# server. Regenerate locally with `npm run data` if the audit data changes.

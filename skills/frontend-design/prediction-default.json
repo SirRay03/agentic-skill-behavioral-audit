@@ -1,0 +1,47 @@
+{
+  "paths_read": [
+    "./*",
+    "./src/*",
+    "./public/*",
+    "./package.json",
+    "./tsconfig.json",
+    "./tailwind.config.*",
+    "./vite.config.*",
+    "./next.config.*",
+    "./components/*",
+    "./styles/*",
+    "./*.html",
+    "./*.css",
+    "./*.tsx",
+    "./*.jsx"
+  ],
+  "paths_written": [
+    "./*.html",
+    "./*.css",
+    "./*.js",
+    "./*.tsx",
+    "./*.jsx",
+    "./src/*",
+    "./components/*",
+    "./styles/*",
+    "./public/*",
+    "./package.json"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "cdn.jsdelivr.net",
+    "unpkg.com",
+    "registry.npmjs.org",
+    "cdnjs.cloudflare.com"
+  ],
+  "subprocesses": [
+    "node",
+    "npm",
+    "npx",
+    "yarn",
+    "pnpm"
+  ],
+  "rationale": "This skill builds frontend interfaces (HTML/CSS/JS, React, Vue), so the agent will read existing project files (configs, components, styles) and write new component/style/markup files. Distinctive typography guidance implies fetching custom fonts, typically from Google Fonts or CDN-hosted font/library sources. React/Vue scaffolding and Motion library usage imply package management subprocesses (npm/npx/yarn/pnpm via node) to install dependencies and potentially run dev servers. No deletions are implied by the skill's creative-generation verbs."
+}

@@ -1,0 +1,44 @@
+{
+  "paths_read": [
+    "<skill-directory>/SKILL.md",
+    "<skill-directory>/references/*",
+    "<skill-directory>/agents/*",
+    "<skill-directory>/assets/eval_review.html",
+    "<skill-name>-workspace/**",
+    "evals/evals.json",
+    "~/Downloads/eval_set*.json",
+    "feedback.json",
+    "/tmp/eval_review_*.html"
+  ],
+  "paths_written": [
+    "<skill-directory>/SKILL.md",
+    "<skill-directory>/scripts/*",
+    "<skill-directory>/references/*",
+    "<skill-directory>/assets/*",
+    "evals/evals.json",
+    "<skill-name>-workspace/**",
+    "<skill-name>-workspace/**/eval_metadata.json",
+    "<skill-name>-workspace/**/timing.json",
+    "<skill-name>-workspace/**/grading.json",
+    "<skill-name>-workspace/**/benchmark.json",
+    "<skill-name>-workspace/**/benchmark.md",
+    "<skill-name>-workspace/**/feedback.json",
+    "/tmp/eval_review_*.html",
+    "*.skill"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "api.anthropic.com",
+    "*.anthropic.com"
+  ],
+  "subprocesses": [
+    "cp",
+    "python",
+    "nohup",
+    "kill",
+    "open",
+    "tail",
+    "claude"
+  ],
+  "rationale": "The skill's primary workflow creates or edits skill directories, writes SKILL.md and optional bundled resources, then creates eval JSON and iteration workspaces containing metadata, outputs, timing, grading, and benchmark files. It reads bundled helper docs, schemas, agent instructions, HTML templates, feedback, and downloaded eval sets. It invokes Python helper scripts, shell utilities for snapshotting/background viewer management, browser opening, log tailing, and the claude CLI for description optimization, which implies Anthropic network access."
+}

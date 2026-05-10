@@ -1,0 +1,10 @@
+{
+  "paths_read": [],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [
+    "*.pinecone.io"
+  ],
+  "subprocesses": [],
+  "rationale": "This skill is a pure reference document describing Pinecone MCP server tools. The agent invokes MCP tools (list-indexes, upsert-records, search-records, etc.) which communicate with Pinecone's API endpoints, but does so through the MCP protocol rather than spawning subprocesses or touching the filesystem directly. No local files are read or written, and the only network traffic is the MCP server's calls to Pinecone hosts."
+}

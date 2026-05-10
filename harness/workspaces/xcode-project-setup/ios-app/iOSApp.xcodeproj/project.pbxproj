@@ -1,0 +1,44 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8A1B2C3D4E5F6A7B8C9D0E1F /* iOSAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C3D4E5F6A7B8C9D0E1F2A /* iOSAppApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8B2C3D4E5F6A7B8C9D0E1F2A /* iOSAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppApp.swift; sourceTree = "<group>"; };
+		8C3D4E5F6A7B8C9D0E1F2A3B /* iOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = iOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXNativeTarget section */
+		8D4E5F6A7B8C9D0E1F2A3B4C /* iOSApp */ = {
+			isa = PBXNativeTarget;
+			name = iOSApp;
+			productName = iOSApp;
+			productReference = 8C3D4E5F6A7B8C9D0E1F2A3B /* iOSApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8E5F6A7B8C9D0E1F2A3B4C5D /* Project object */ = {
+			isa = PBXProject;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			knownRegions = (en, Base);
+			mainGroup = 8F6A7B8C9D0E1F2A3B4C5D6E;
+			productRefGroup = 9A7B8C9D0E1F2A3B4C5D6E7F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (8D4E5F6A7B8C9D0E1F2A3B4C);
+		};
+/* End PBXProject section */
+
+	};
+	rootObject = 8E5F6A7B8C9D0E1F2A3B4C5D /* Project object */;
+}

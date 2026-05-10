@@ -1,0 +1,8 @@
+{
+  "paths_read": [],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "The caveman skill is a pure communication-style directive that modifies the agent's prose output style (compressing tokens, dropping articles, switching to classical Chinese register). It contains no instructions to read files, write files, make network requests, or spawn subprocesses. Its entire scope is response formatting, so the runtime capability footprint is empty."
+}

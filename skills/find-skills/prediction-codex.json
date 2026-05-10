@@ -1,0 +1,27 @@
+{
+  "paths_read": [
+    "~/.npmrc",
+    "~/.npm/*",
+    "$CODEX_HOME/skills/*",
+    "~/.codex/skills/*",
+    "current working directory metadata needed by npx"
+  ],
+  "paths_written": [
+    "~/.npm/*",
+    "$CODEX_HOME/skills/*",
+    "~/.codex/skills/*",
+    "user-level skills install directory used by `npx skills add -g`"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "skills.sh",
+    "registry.npmjs.org",
+    "github.com",
+    "api.github.com",
+    "raw.githubusercontent.com"
+  ],
+  "subprocesses": [
+    "npx"
+  ],
+  "rationale": "The skill explicitly instructs the agent to check the skills.sh leaderboard, run `npx skills find`, verify GitHub reputation, and optionally install with `npx skills add <owner/repo@skill> -g -y`. That implies network access to skills.sh, npm package resolution for `npx`, and GitHub endpoints for repository metadata and source downloads. Installation writes to the user-level skills directory and npm/npx cache, while searches and installs may read npm config/cache and existing installed skills metadata."
+}

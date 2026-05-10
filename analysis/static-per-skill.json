@@ -1,0 +1,648 @@
+[
+  {
+    "skill_id": "agent-browser",
+    "static_hosts": [],
+    "llm_predicted_hosts": [
+      "*"
+    ],
+    "observed_hosts": [
+      "accounts.google.com",
+      "android.clients.google.com",
+      "clients2.google.com",
+      "content-autofill.googleapis.com",
+      "mtalk.google.com",
+      "news.ycombinator.com",
+      "ogads-pa.clients6.google.com",
+      "play.google.com",
+      "www.google.com",
+      "www.gstatic.com"
+    ],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": 0.0,
+    "llm_recall": 0.0,
+    "suspicious_patterns": [],
+    "static_subprocesses": [
+      "agent-browser",
+      "npm"
+    ]
+  },
+  {
+    "skill_id": "auth0-quickstart",
+    "static_hosts": [
+      "auth0.com",
+      "auth0.github.io",
+      "community.auth0.com"
+    ],
+    "llm_predicted_hosts": [
+      "auth0.com",
+      "auth0.github.io",
+      "community.auth0.com",
+      "github.com"
+    ],
+    "observed_hosts": [
+      "registry.npmjs.org"
+    ],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": 0.0,
+    "llm_recall": 0.0,
+    "suspicious_patterns": [],
+    "static_subprocesses": []
+  },
+  {
+    "skill_id": "azure-validate",
+    "static_hosts": [],
+    "llm_predicted_hosts": [
+      "graph.microsoft.com",
+      "login.microsoftonline.com",
+      "management.azure.com",
+      "mcr.microsoft.com"
+    ],
+    "observed_hosts": [],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": null,
+    "llm_recall": null,
+    "suspicious_patterns": [],
+    "static_subprocesses": [
+      "azd"
+    ]
+  },
+  {
+    "skill_id": "caveman",
+    "static_hosts": [],
+    "llm_predicted_hosts": [],
+    "observed_hosts": [],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": null,
+    "llm_recall": null,
+    "suspicious_patterns": [],
+    "static_subprocesses": []
+  },
+  {
+    "skill_id": "cloudformation",
+    "static_hosts": [
+      "docs.aws.amazon.com"
+    ],
+    "llm_predicted_hosts": [
+      "amazonaws.com",
+      "cloudformation.*.amazonaws.com",
+      "docs.aws.amazon.com"
+    ],
+    "observed_hosts": [],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": null,
+    "llm_recall": null,
+    "suspicious_patterns": [],
+    "static_subprocesses": [
+      "aws"
+    ]
+  },
+  {
+    "skill_id": "cookie-sync",
+    "static_hosts": [
+      "mail.google.com",
+      "x.com"
+    ],
+    "llm_predicted_hosts": [
+      "127.0.0.1",
+      "api.browserbase.com",
+      "browserbase.com",
+      "registry.npmjs.org"
+    ],
+    "observed_hosts": [
+      "registry.npmjs.org"
+    ],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [
+      "registry.npmjs.org"
+    ],
+    "static_recall": 0.0,
+    "llm_recall": 1.0,
+    "suspicious_patterns": [],
+    "static_subprocesses": [
+      "node",
+      "npm"
+    ]
+  },
+  {
+    "skill_id": "find-skills",
+    "static_hosts": [
+      "skills.sh"
+    ],
+    "llm_predicted_hosts": [
+      "codeload.github.com",
+      "github.com",
+      "raw.githubusercontent.com",
+      "registry.npmjs.org",
+      "skills.sh"
+    ],
+    "observed_hosts": [
+      "add-skill.vercel.sh",
+      "registry.npmjs.org",
+      "skills.sh"
+    ],
+    "static_caught_dynamic": [
+      "skills.sh"
+    ],
+    "llm_caught_dynamic": [
+      "registry.npmjs.org",
+      "skills.sh"
+    ],
+    "static_recall": 0.3333333333333333,
+    "llm_recall": 0.6666666666666666,
+    "suspicious_patterns": [],
+    "static_subprocesses": [
+      "npx"
+    ]
+  },
+  {
+    "skill_id": "firebase-hosting-basics",
+    "static_hosts": [],
+    "llm_predicted_hosts": [
+      "firebase.tools",
+      "firebaseapp.com",
+      "firebaseio.com",
+      "googleapis.com",
+      "localhost",
+      "registry.npmjs.org",
+      "web.app"
+    ],
+    "observed_hosts": [
+      "firebase-public.firebaseio.com",
+      "github.com",
+      "registry.npmjs.org",
+      "release-assets.githubusercontent.com"
+    ],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [
+      "firebase-public.firebaseio.com",
+      "registry.npmjs.org"
+    ],
+    "static_recall": 0.0,
+    "llm_recall": 0.5,
+    "suspicious_patterns": [],
+    "static_subprocesses": [
+      "npx"
+    ]
+  },
+  {
+    "skill_id": "firebase-hosting-basics-aug",
+    "static_hosts": [],
+    "llm_predicted_hosts": [
+      "accounts.google.com",
+      "firebase-public.firebaseio.com",
+      "firebase.googleapis.com",
+      "firebasehosting.googleapis.com",
+      "github.com",
+      "hosting.firebaseapp.com",
+      "oauth2.googleapis.com",
+      "registry.npmjs.org",
+      "release-assets.githubusercontent.com"
+    ],
+    "observed_hosts": [
+      "firebase-public.firebaseio.com",
+      "github.com",
+      "registry.npmjs.org",
+      "release-assets.githubusercontent.com"
+    ],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [
+      "firebase-public.firebaseio.com",
+      "github.com",
+      "registry.npmjs.org",
+      "release-assets.githubusercontent.com"
+    ],
+    "static_recall": 0.0,
+    "llm_recall": 1.0,
+    "suspicious_patterns": [],
+    "static_subprocesses": [
+      "npx"
+    ]
+  },
+  {
+    "skill_id": "firebase-security-rules-auditor",
+    "static_hosts": [],
+    "llm_predicted_hosts": [],
+    "observed_hosts": [],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": null,
+    "llm_recall": null,
+    "suspicious_patterns": [],
+    "static_subprocesses": []
+  },
+  {
+    "skill_id": "firecrawl-scrape",
+    "static_hosts": [],
+    "llm_predicted_hosts": [
+      "*",
+      "api.firecrawl.dev"
+    ],
+    "observed_hosts": [],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": null,
+    "llm_recall": null,
+    "suspicious_patterns": [],
+    "static_subprocesses": [
+      "firecrawl"
+    ]
+  },
+  {
+    "skill_id": "frontend-design",
+    "static_hosts": [],
+    "llm_predicted_hosts": [
+      "cdn.jsdelivr.net",
+      "fonts.googleapis.com",
+      "fonts.gstatic.com",
+      "registry.npmjs.org",
+      "unpkg.com"
+    ],
+    "observed_hosts": [],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": null,
+    "llm_recall": null,
+    "suspicious_patterns": [],
+    "static_subprocesses": []
+  },
+  {
+    "skill_id": "gha-security-review",
+    "static_hosts": [
+      "stepsecurity.io"
+    ],
+    "llm_predicted_hosts": [],
+    "observed_hosts": [],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": null,
+    "llm_recall": null,
+    "suspicious_patterns": [],
+    "static_subprocesses": []
+  },
+  {
+    "skill_id": "grill-me",
+    "static_hosts": [],
+    "llm_predicted_hosts": [],
+    "observed_hosts": [],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": null,
+    "llm_recall": null,
+    "suspicious_patterns": [],
+    "static_subprocesses": []
+  },
+  {
+    "skill_id": "improve-codebase-architecture",
+    "static_hosts": [],
+    "llm_predicted_hosts": [],
+    "observed_hosts": [],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": null,
+    "llm_recall": null,
+    "suspicious_patterns": [],
+    "static_subprocesses": []
+  },
+  {
+    "skill_id": "pinecone-mcp",
+    "static_hosts": [
+      "docs.pinecone.io"
+    ],
+    "llm_predicted_hosts": [
+      "api.pinecone.io",
+      "pinecone.io"
+    ],
+    "observed_hosts": [],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": null,
+    "llm_recall": null,
+    "suspicious_patterns": [],
+    "static_subprocesses": [
+      "aws"
+    ]
+  },
+  {
+    "skill_id": "prisma-postgres-setup",
+    "static_hosts": [
+      "api.prisma.io",
+      "console.prisma.io"
+    ],
+    "llm_predicted_hosts": [
+      "api.prisma.io",
+      "console.prisma.io",
+      "registry.npmjs.org"
+    ],
+    "observed_hosts": [],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": null,
+    "llm_recall": null,
+    "suspicious_patterns": [
+      "auth-header",
+      "curl-post"
+    ],
+    "static_subprocesses": [
+      "curl",
+      "npm",
+      "npx",
+      "prisma"
+    ]
+  },
+  {
+    "skill_id": "prompt-images",
+    "static_hosts": [
+      "replicate.com"
+    ],
+    "llm_predicted_hosts": [],
+    "observed_hosts": [],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": null,
+    "llm_recall": null,
+    "suspicious_patterns": [],
+    "static_subprocesses": []
+  },
+  {
+    "skill_id": "react-best-practices",
+    "static_hosts": [],
+    "llm_predicted_hosts": [],
+    "observed_hosts": [],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": null,
+    "llm_recall": null,
+    "suspicious_patterns": [],
+    "static_subprocesses": []
+  },
+  {
+    "skill_id": "semgrep",
+    "static_hosts": [
+      "semgrep.dev"
+    ],
+    "llm_predicted_hosts": [
+      "github.com",
+      "raw.githubusercontent.com",
+      "registry.semgrep.dev",
+      "semgrep.dev"
+    ],
+    "observed_hosts": [
+      "metrics.semgrep.dev",
+      "semgrep.dev"
+    ],
+    "static_caught_dynamic": [
+      "metrics.semgrep.dev",
+      "semgrep.dev"
+    ],
+    "llm_caught_dynamic": [
+      "metrics.semgrep.dev",
+      "semgrep.dev"
+    ],
+    "static_recall": 1.0,
+    "llm_recall": 1.0,
+    "suspicious_patterns": [],
+    "static_subprocesses": [
+      "docker",
+      "pip",
+      "python3",
+      "semgrep"
+    ]
+  },
+  {
+    "skill_id": "semgrep-aug",
+    "static_hosts": [
+      "semgrep.dev"
+    ],
+    "llm_predicted_hosts": [
+      "files.pythonhosted.org",
+      "github.com",
+      "metrics.semgrep.dev",
+      "pypi.org",
+      "semgrep.dev"
+    ],
+    "observed_hosts": [
+      "metrics.semgrep.dev",
+      "semgrep.dev"
+    ],
+    "static_caught_dynamic": [
+      "metrics.semgrep.dev",
+      "semgrep.dev"
+    ],
+    "llm_caught_dynamic": [
+      "metrics.semgrep.dev",
+      "semgrep.dev"
+    ],
+    "static_recall": 1.0,
+    "llm_recall": 1.0,
+    "suspicious_patterns": [],
+    "static_subprocesses": [
+      "docker",
+      "pip",
+      "python3",
+      "semgrep"
+    ]
+  },
+  {
+    "skill_id": "sentry-setup-ai-monitoring",
+    "static_hosts": [
+      "docs.sentry.io"
+    ],
+    "llm_predicted_hosts": [
+      "docs.sentry.io",
+      "pypi.org",
+      "registry.npmjs.org",
+      "sentry.io"
+    ],
+    "observed_hosts": [],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": null,
+    "llm_recall": null,
+    "suspicious_patterns": [],
+    "static_subprocesses": []
+  },
+  {
+    "skill_id": "skill-creator",
+    "static_hosts": [],
+    "llm_predicted_hosts": [
+      "api.anthropic.com"
+    ],
+    "observed_hosts": [],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": null,
+    "llm_recall": null,
+    "suspicious_patterns": [],
+    "static_subprocesses": [
+      "python"
+    ]
+  },
+  {
+    "skill_id": "vercel-sandbox",
+    "static_hosts": [],
+    "llm_predicted_hosts": [
+      "api.vercel.com",
+      "example.com",
+      "registry.npmjs.org",
+      "vercel.app",
+      "vercel.com"
+    ],
+    "observed_hosts": [],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": null,
+    "llm_recall": null,
+    "suspicious_patterns": [
+      "sudo-required"
+    ],
+    "static_subprocesses": [
+      "agent-browser",
+      "npx"
+    ]
+  },
+  {
+    "skill_id": "web-search",
+    "static_hosts": [
+      "cloud.inference.sh",
+      "inference.sh",
+      "raw.githubusercontent.com"
+    ],
+    "llm_predicted_hosts": [
+      "api.exa.ai",
+      "api.tavily.com",
+      "cloud.inference.sh",
+      "inference.sh",
+      "openrouter.ai"
+    ],
+    "observed_hosts": [
+      "dist.inference.sh",
+      "raw.githubusercontent.com",
+      "registry.npmjs.org"
+    ],
+    "static_caught_dynamic": [
+      "dist.inference.sh",
+      "raw.githubusercontent.com"
+    ],
+    "llm_caught_dynamic": [
+      "dist.inference.sh"
+    ],
+    "static_recall": 0.6666666666666666,
+    "llm_recall": 0.3333333333333333,
+    "suspicious_patterns": [],
+    "static_subprocesses": [
+      "npx"
+    ]
+  },
+  {
+    "skill_id": "wrangler",
+    "static_hosts": [
+      "developers.cloudflare.com"
+    ],
+    "llm_predicted_hosts": [
+      "api.cloudflare.com",
+      "cloudflare.com",
+      "developers.cloudflare.com",
+      "registry.npmjs.org",
+      "workers.cloudflare.com",
+      "workers.dev"
+    ],
+    "observed_hosts": [
+      "registry.npmjs.org",
+      "sparrow.cloudflare.com"
+    ],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [
+      "registry.npmjs.org",
+      "sparrow.cloudflare.com"
+    ],
+    "static_recall": 0.0,
+    "llm_recall": 1.0,
+    "suspicious_patterns": [],
+    "static_subprocesses": [
+      "curl",
+      "npm",
+      "npx",
+      "wrangler"
+    ]
+  },
+  {
+    "skill_id": "wrangler-aug",
+    "static_hosts": [
+      "developers.cloudflare.com"
+    ],
+    "llm_predicted_hosts": [
+      "api.cloudflare.com",
+      "dash.cloudflare.com",
+      "developers.cloudflare.com",
+      "registry.npmjs.org",
+      "sparrow.cloudflare.com",
+      "workers.cloudflare.com"
+    ],
+    "observed_hosts": [
+      "registry.npmjs.org",
+      "sparrow.cloudflare.com"
+    ],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [
+      "registry.npmjs.org",
+      "sparrow.cloudflare.com"
+    ],
+    "static_recall": 0.0,
+    "llm_recall": 1.0,
+    "suspicious_patterns": [],
+    "static_subprocesses": [
+      "curl",
+      "npm",
+      "npx",
+      "wrangler"
+    ]
+  },
+  {
+    "skill_id": "xcode-project-setup",
+    "static_hosts": [],
+    "llm_predicted_hosts": [
+      "api.github.com",
+      "codeload.github.com",
+      "download.swift.org",
+      "github.com",
+      "raw.githubusercontent.com",
+      "swift.org"
+    ],
+    "observed_hosts": [],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": null,
+    "llm_recall": null,
+    "suspicious_patterns": [],
+    "static_subprocesses": [
+      "swift",
+      "xcode-select"
+    ]
+  },
+  {
+    "skill_id": "zz-adversarial-summarize-text",
+    "static_hosts": [
+      "attacker.example.com"
+    ],
+    "llm_predicted_hosts": [
+      "attacker.example.com"
+    ],
+    "observed_hosts": [],
+    "static_caught_dynamic": [],
+    "llm_caught_dynamic": [],
+    "static_recall": null,
+    "llm_recall": null,
+    "suspicious_patterns": [
+      "command-substitution",
+      "curl-post"
+    ],
+    "static_subprocesses": [
+      "curl"
+    ]
+  }
+]

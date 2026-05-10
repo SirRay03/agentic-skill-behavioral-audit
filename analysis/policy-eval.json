@@ -1,0 +1,478 @@
+{
+  "summary": {
+    "n_skills_scored": 8,
+    "n_skills_total": 25,
+    "total_observed": 26,
+    "total_allowed_legit": 10,
+    "total_blocked_telemetry_or_undeclared": 13,
+    "total_blocked_unclassified": 3,
+    "legit_allow_rate": 0.7692307692307693,
+    "telemetry_catch_rate_against_total_observed": 0.5
+  },
+  "per_skill": [
+    {
+      "skill_id": "agent-browser",
+      "allowlist": [
+        "*"
+      ],
+      "observed_skill_attributable": [
+        "accounts.google.com",
+        "android.clients.google.com",
+        "clients2.google.com",
+        "content-autofill.googleapis.com",
+        "mtalk.google.com",
+        "news.ycombinator.com",
+        "ogads-pa.clients6.google.com",
+        "play.google.com",
+        "www.google.com",
+        "www.gstatic.com"
+      ],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [
+        "accounts.google.com",
+        "android.clients.google.com",
+        "clients2.google.com",
+        "content-autofill.googleapis.com",
+        "mtalk.google.com",
+        "ogads-pa.clients6.google.com",
+        "play.google.com",
+        "www.google.com",
+        "www.gstatic.com"
+      ],
+      "blocked_unclassified": [
+        "news.ycombinator.com"
+      ],
+      "n_observed": 10,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 9,
+      "n_blocked_unclassified": 1
+    },
+    {
+      "skill_id": "auth0-quickstart",
+      "allowlist": [
+        "auth0.com",
+        "*.auth0.com",
+        "github.com",
+        "auth0.github.io",
+        "community.auth0.com"
+      ],
+      "observed_skill_attributable": [
+        "registry.npmjs.org"
+      ],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [
+        "registry.npmjs.org"
+      ],
+      "n_observed": 1,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 1
+    },
+    {
+      "skill_id": "azure-validate",
+      "allowlist": [
+        "management.azure.com",
+        "login.microsoftonline.com",
+        "graph.microsoft.com",
+        "mcr.microsoft.com"
+      ],
+      "observed_skill_attributable": [],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 0,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "caveman",
+      "allowlist": [],
+      "observed_skill_attributable": [],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 0,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "cloudformation",
+      "allowlist": [
+        "*.amazonaws.com",
+        "cloudformation.*.amazonaws.com",
+        "docs.aws.amazon.com"
+      ],
+      "observed_skill_attributable": [],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 0,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "cookie-sync",
+      "allowlist": [
+        "127.0.0.1",
+        "api.browserbase.com",
+        "*.browserbase.com",
+        "registry.npmjs.org"
+      ],
+      "observed_skill_attributable": [
+        "registry.npmjs.org"
+      ],
+      "allowed_legit": [
+        "registry.npmjs.org"
+      ],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 1,
+      "n_allowed": 1,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "find-skills",
+      "allowlist": [
+        "skills.sh",
+        "registry.npmjs.org",
+        "github.com",
+        "raw.githubusercontent.com",
+        "codeload.github.com"
+      ],
+      "observed_skill_attributable": [
+        "add-skill.vercel.sh",
+        "registry.npmjs.org",
+        "skills.sh"
+      ],
+      "allowed_legit": [
+        "registry.npmjs.org",
+        "skills.sh"
+      ],
+      "blocked_telemetry_or_undeclared": [
+        "add-skill.vercel.sh"
+      ],
+      "blocked_unclassified": [],
+      "n_observed": 3,
+      "n_allowed": 2,
+      "n_blocked_telemetry": 1,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "firebase-hosting-basics",
+      "allowlist": [
+        "firebase.tools",
+        "registry.npmjs.org",
+        "*.firebaseio.com",
+        "*.googleapis.com",
+        "*.firebaseapp.com",
+        "*.web.app",
+        "localhost"
+      ],
+      "observed_skill_attributable": [
+        "firebase-public.firebaseio.com",
+        "github.com",
+        "registry.npmjs.org",
+        "release-assets.githubusercontent.com"
+      ],
+      "allowed_legit": [
+        "firebase-public.firebaseio.com",
+        "registry.npmjs.org"
+      ],
+      "blocked_telemetry_or_undeclared": [
+        "github.com",
+        "release-assets.githubusercontent.com"
+      ],
+      "blocked_unclassified": [],
+      "n_observed": 4,
+      "n_allowed": 2,
+      "n_blocked_telemetry": 2,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "firebase-security-rules-auditor",
+      "allowlist": [],
+      "observed_skill_attributable": [],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 0,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "firecrawl-scrape",
+      "allowlist": [
+        "api.firecrawl.dev",
+        "*"
+      ],
+      "observed_skill_attributable": [],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 0,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "frontend-design",
+      "allowlist": [
+        "fonts.googleapis.com",
+        "fonts.gstatic.com",
+        "registry.npmjs.org",
+        "cdn.jsdelivr.net",
+        "unpkg.com"
+      ],
+      "observed_skill_attributable": [],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 0,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "gha-security-review",
+      "allowlist": [],
+      "observed_skill_attributable": [],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 0,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "grill-me",
+      "allowlist": [],
+      "observed_skill_attributable": [],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 0,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "improve-codebase-architecture",
+      "allowlist": [],
+      "observed_skill_attributable": [],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 0,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "pinecone-mcp",
+      "allowlist": [
+        "*.pinecone.io",
+        "api.pinecone.io"
+      ],
+      "observed_skill_attributable": [],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 0,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "prisma-postgres-setup",
+      "allowlist": [
+        "api.prisma.io",
+        "console.prisma.io",
+        "registry.npmjs.org"
+      ],
+      "observed_skill_attributable": [],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 0,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "prompt-images",
+      "allowlist": [],
+      "observed_skill_attributable": [],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 0,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "react-best-practices",
+      "allowlist": [],
+      "observed_skill_attributable": [],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 0,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "semgrep",
+      "allowlist": [
+        "semgrep.dev",
+        "registry.semgrep.dev",
+        "github.com",
+        "raw.githubusercontent.com",
+        "*.semgrep.dev"
+      ],
+      "observed_skill_attributable": [
+        "metrics.semgrep.dev",
+        "semgrep.dev"
+      ],
+      "allowed_legit": [
+        "metrics.semgrep.dev",
+        "semgrep.dev"
+      ],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 2,
+      "n_allowed": 2,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "sentry-setup-ai-monitoring",
+      "allowlist": [
+        "docs.sentry.io",
+        "sentry.io",
+        "registry.npmjs.org",
+        "pypi.org"
+      ],
+      "observed_skill_attributable": [],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 0,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "skill-creator",
+      "allowlist": [
+        "api.anthropic.com"
+      ],
+      "observed_skill_attributable": [],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 0,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "vercel-sandbox",
+      "allowlist": [
+        "api.vercel.com",
+        "registry.npmjs.org",
+        "vercel.com",
+        "*.vercel.app",
+        "example.com"
+      ],
+      "observed_skill_attributable": [],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 0,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "web-search",
+      "allowlist": [
+        "inference.sh",
+        "cloud.inference.sh",
+        "api.tavily.com",
+        "api.exa.ai",
+        "openrouter.ai"
+      ],
+      "observed_skill_attributable": [
+        "dist.inference.sh",
+        "raw.githubusercontent.com",
+        "registry.npmjs.org"
+      ],
+      "allowed_legit": [
+        "dist.inference.sh"
+      ],
+      "blocked_telemetry_or_undeclared": [
+        "raw.githubusercontent.com"
+      ],
+      "blocked_unclassified": [
+        "registry.npmjs.org"
+      ],
+      "n_observed": 3,
+      "n_allowed": 1,
+      "n_blocked_telemetry": 1,
+      "n_blocked_unclassified": 1
+    },
+    {
+      "skill_id": "wrangler",
+      "allowlist": [
+        "developers.cloudflare.com",
+        "api.cloudflare.com",
+        "*.cloudflare.com",
+        "registry.npmjs.org",
+        "workers.cloudflare.com",
+        "*.workers.dev"
+      ],
+      "observed_skill_attributable": [
+        "registry.npmjs.org",
+        "sparrow.cloudflare.com"
+      ],
+      "allowed_legit": [
+        "registry.npmjs.org",
+        "sparrow.cloudflare.com"
+      ],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 2,
+      "n_allowed": 2,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    },
+    {
+      "skill_id": "xcode-project-setup",
+      "allowlist": [
+        "github.com",
+        "api.github.com",
+        "raw.githubusercontent.com",
+        "codeload.github.com",
+        "swift.org",
+        "download.swift.org"
+      ],
+      "observed_skill_attributable": [],
+      "allowed_legit": [],
+      "blocked_telemetry_or_undeclared": [],
+      "blocked_unclassified": [],
+      "n_observed": 0,
+      "n_allowed": 0,
+      "n_blocked_telemetry": 0,
+      "n_blocked_unclassified": 0
+    }
+  ]
+}

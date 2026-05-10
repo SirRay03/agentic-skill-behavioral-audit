@@ -1,0 +1,30 @@
+{
+  "paths_read": [
+    "./**/*",
+    "./.semgrepignore",
+    "./*.yaml",
+    "./*.yml",
+    "~/.semgrep/*"
+  ],
+  "paths_written": [
+    "./results.sarif",
+    "./results.json",
+    "./*.yaml",
+    "./<rule-id>/*"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "semgrep.dev",
+    "*.semgrep.dev",
+    "github.com",
+    "registry.semgrep.dev"
+  ],
+  "subprocesses": [
+    "semgrep",
+    "python3",
+    "pip",
+    "docker",
+    "brew"
+  ],
+  "rationale": "The skill's primary verb is running Semgrep scans and authoring custom YAML rules, which means reading source files across the project, reading/writing rule YAML and test files, and emitting SARIF/JSON result files. Installation paths spawn pip/brew/docker, and scans invoke the semgrep CLI which fetches rulesets from semgrep.dev (e.g., p/security-audit, auto config). Reference links to semgrep.dev and github.com/semgrep imply network fetches for rule registries and schemas. No deletions are described in the workflow."
+}

@@ -1,0 +1,49 @@
+{
+  "paths_read": [
+    "./wrangler.jsonc",
+    "./wrangler.toml",
+    "./package.json",
+    "./package-lock.json",
+    "./node_modules/wrangler/config-schema.json",
+    "./src/**",
+    "./.dev.vars",
+    "./migrations/**",
+    "./schema.sql",
+    "./secrets.json",
+    "./data.json",
+    "./vectors.ndjson",
+    "./local-file.txt",
+    "path/to/private-key.pem",
+    "./dist/**"
+  ],
+  "paths_written": [
+    "./wrangler.jsonc",
+    "./package.json",
+    "./package-lock.json",
+    "./node_modules/**",
+    "./worker-configuration.d.ts",
+    "./src/env.d.ts",
+    "./.dev.vars",
+    "./.wrangler/state/**",
+    "./migrations/**",
+    "./backup.sql",
+    "./schema.sql",
+    "./my-worker/**",
+    "./my-app/**"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "developers.cloudflare.com",
+    "api.cloudflare.com",
+    "*.cloudflare.com",
+    "registry.npmjs.org",
+    "localhost"
+  ],
+  "subprocesses": [
+    "wrangler",
+    "npm",
+    "npx",
+    "curl"
+  ],
+  "rationale": "The skill's primary verb is using Wrangler to initialize, configure, develop, deploy, and manage Cloudflare resources, so it will read project config, source files, local secrets, schemas, migration/data files, and built assets. It may write configuration, generated TypeScript bindings, local Wrangler state, migrations, exported SQL files, initialized project directories, and npm install artifacts. It explicitly requires fetching Cloudflare documentation, may install Wrangler from npm, and Wrangler commands connect to Cloudflare APIs and local dev endpoints. The documented commands spawn wrangler, npm, npx, and curl."
+}

@@ -1,0 +1,25 @@
+{
+  "paths_read": [
+    "./package.json",
+    "./.skills/*",
+    "~/.skills/*"
+  ],
+  "paths_written": [
+    "./.skills/*",
+    "~/.skills/*",
+    "./node_modules/*"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "skills.sh",
+    "registry.npmjs.org",
+    "github.com",
+    "raw.githubusercontent.com",
+    "codeload.github.com"
+  ],
+  "subprocesses": [
+    "npx",
+    "node"
+  ],
+  "rationale": "The skill's primary verbs are searching for and installing skills via `npx skills find/add`, which spawns npx/node subprocesses. Installing skills writes to a local or global skills directory and pulls package metadata from npm and skill source files from GitHub, while the leaderboard reference at skills.sh implies network calls to that host. No deletions are implied since the skill only adds and updates skills."
+}

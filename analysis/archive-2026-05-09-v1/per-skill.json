@@ -1,0 +1,2155 @@
+[
+  {
+    "skill_id": "agent-browser",
+    "claude_exit": 0,
+    "duration_seconds": 41,
+    "fs_metrics": {
+      "paths_read": {
+        "n_predicted": 4,
+        "n_observed": 326,
+        "n_covered": 18,
+        "n_useful_predicates": 1,
+        "precision": 0.8571428571428571,
+        "recall": 0.05521472392638037,
+        "f1": 0.1037463976945245,
+        "jaccard": 0.0547112462006079,
+        "false_negatives": [
+          ".",
+          "/System/Library/OpenSSL/certs",
+          "/home/claude/.claude/remote/.api_key",
+          "/home/claude/.claude/remote/.oauth_token",
+          "/home/sirray/.bash_login",
+          "/home/sirray/.bash_profile",
+          "/home/sirray/.bashrc",
+          "/home/sirray/.claude",
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude/CLAUDE.md",
+          "/home/sirray/.claude/debug",
+          "/home/sirray/.claude/ide",
+          "/home/sirray/.claude/mcp-needs-auth-cache.json",
+          "/home/sirray/.claude/plugins",
+          "/home/sirray/.claude/plugins/cache",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/agents",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown"
+        ],
+        "unmatched_predicates": [
+          "./*",
+          "~/.cache/agent-browser/*",
+          "~/.config/agent-browser/*"
+        ]
+      },
+      "paths_written": {
+        "n_predicted": 5,
+        "n_observed": 261,
+        "n_covered": 235,
+        "n_useful_predicates": 2,
+        "precision": 0.9873949579831933,
+        "recall": 0.9003831417624522,
+        "f1": 0.9418837675350702,
+        "jaccard": 0.8901515151515151,
+        "false_negatives": [
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude.json.tmp.3799.86132e9a29b0",
+          "/home/sirray/.claude/plugins/installed_plugins.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778258594467-al6zm4.sh",
+          "/home/sirray/.config/google-chrome-for-testing/Crash Reports/settings.dat",
+          "/home/sirray/.fontconfig/3830d5c3ddfd5cd38a049b759396e72e-le64.cache-11",
+          "/home/sirray/.fontconfig/4c599c202bc5c08e2d34565a40eac3b2-le64.cache-11",
+          "/home/sirray/.fontconfig/7ef2298fde41cc6eeb7af42e48b7d293-le64.cache-11",
+          "/home/sirray/.fontconfig/bf3b770c553c462765856025a94f1ce6-le64.cache-11",
+          "/home/sirray/.fontconfig/d589a48862398ed80a3d6066f4f56f4c-le64.cache-11",
+          "/home/sirray/.local/share/pki/nssdb/cert9.db",
+          "/home/sirray/.local/share/pki/nssdb/cert9.db-journal",
+          "/home/sirray/.local/share/pki/nssdb/key4.db",
+          "/home/sirray/.local/share/pki/nssdb/key4.db-journal",
+          "/home/sirray/.local/share/pki/nssdb/pkcs11.txt",
+          "/mnt/wslg/runtime-dir/agent-browser/.write_test",
+          "/mnt/wslg/runtime-dir/agent-browser/default.engine",
+          "/mnt/wslg/runtime-dir/agent-browser/default.pid",
+          "/mnt/wslg/runtime-dir/agent-browser/default.stream",
+          "/mnt/wslg/runtime-dir/agent-browser/default.version",
+          "/mnt/wslg/runtime-dir/dconf/user",
+          "/var/cache/fontconfig/3830d5c3ddfd5cd38a049b759396e72e-le64.cache-11",
+          "/var/cache/fontconfig/4c599c202bc5c08e2d34565a40eac3b2-le64.cache-11",
+          "/var/cache/fontconfig/7ef2298fde41cc6eeb7af42e48b7d293-le64.cache-11",
+          "/var/cache/fontconfig/bf3b770c553c462765856025a94f1ce6-le64.cache-11",
+          "/var/cache/fontconfig/d589a48862398ed80a3d6066f4f56f4c-le64.cache-11"
+        ],
+        "unmatched_predicates": [
+          "./screenshots/*",
+          "~/.cache/agent-browser/*",
+          "~/.config/agent-browser/*"
+        ]
+      },
+      "paths_deleted": {
+        "n_predicted": 2,
+        "n_observed": 217,
+        "n_covered": 55,
+        "n_useful_predicates": 1,
+        "precision": 0.9821428571428571,
+        "recall": 0.2534562211981567,
+        "f1": 0.40293040293040294,
+        "jaccard": 0.25229357798165136,
+        "false_negatives": [
+          "/home/sirray/.claude.json.tmp.3799.86132e9a29b0",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/installed_plugins_v2.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778258594467-al6zm4.sh",
+          "/home/sirray/.local/share/pki/nssdb/cert9.db-journal",
+          "/home/sirray/.local/share/pki/nssdb/key4.db-journal",
+          "/home/sirray/.local/share/pki/nssdb/pkcs11.txu",
+          "/mnt/wslg/runtime-dir/agent-browser/.write_test",
+          "/mnt/wslg/runtime-dir/agent-browser/default.engine",
+          "/mnt/wslg/runtime-dir/agent-browser/default.extensions",
+          "/mnt/wslg/runtime-dir/agent-browser/default.pid",
+          "/mnt/wslg/runtime-dir/agent-browser/default.provider",
+          "/mnt/wslg/runtime-dir/agent-browser/default.sock",
+          "/mnt/wslg/runtime-dir/agent-browser/default.stream",
+          "/mnt/wslg/runtime-dir/agent-browser/default.version",
+          "000003.log",
+          "2cc80dabc69f58b6_0",
+          "2cc80dabc69f58b6_1",
+          "5bb[a`6`2`2g0@;.6=-b@_u0@;`2.db",
+          "5bb[a`6`2`2g0@;.6=-b@_u0@;`2.journal",
+          "Account Web Data",
+          "Account Web Data-journal",
+          "Affiliation Database",
+          "Affiliation Database-journal",
+          "AutofillAiModelCache",
+          "AutofillStrikeDatabase"
+        ],
+        "unmatched_predicates": [
+          "~/.cache/agent-browser/*"
+        ]
+      }
+    },
+    "net_metrics": {
+      "hosts": {
+        "n_predicted": 1,
+        "n_observed": 11,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "accounts.google.com",
+          "android.clients.google.com",
+          "clients2.google.com",
+          "content-autofill.googleapis.com",
+          "http-intake.logs.us5.datadoghq.com",
+          "mtalk.google.com",
+          "news.ycombinator.com",
+          "ogads-pa.clients6.google.com",
+          "play.google.com",
+          "www.google.com",
+          "www.gstatic.com"
+        ],
+        "unmatched_predicates": [
+          "*"
+        ]
+      }
+    },
+    "subprocess_predicted": [
+      "agent-browser",
+      "npx",
+      "npm",
+      "node",
+      "chrome",
+      "chromium"
+    ],
+    "rationale_predicted": "The skill is a CLI wrapper around Chrome/Chromium via CDP for browser automation, so it will spawn the agent-browser binary (or via npx) and launch a browser subprocess. Browser automation implies arbitrary network access to any user-specified site, plus screenshot/state writes to disk and reads from session/auth vault config. Installation via npm and the 'skills get' subcommands suggest reading/writing local config and cache directories. Path and host predicates are broad because the skill's verbs (navigate, screenshot, scrape) target arbitrary user-chosen URLs and local artifact paths.",
+    "filter_stats": {
+      "paths_read_total": 1583,
+      "paths_read_after_filter": 326,
+      "paths_written_total": 575,
+      "paths_written_after_filter": 261,
+      "hosts_total": 12,
+      "hosts_after_filter": 11
+    }
+  },
+  {
+    "skill_id": "azure-validate",
+    "claude_exit": 0,
+    "duration_seconds": 85,
+    "fs_metrics": {
+      "paths_read": {
+        "n_predicted": 11,
+        "n_observed": 141,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          ".",
+          "/System/Library/OpenSSL/certs",
+          "/bin",
+          "/home/claude/.claude/remote/.api_key",
+          "/home/claude/.claude/remote/.oauth_token",
+          "/home/sirray",
+          "/home/sirray/.bash_login",
+          "/home/sirray/.bash_profile",
+          "/home/sirray/.bashrc",
+          "/home/sirray/.claude",
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude/CLAUDE.md",
+          "/home/sirray/.claude/debug",
+          "/home/sirray/.claude/ide",
+          "/home/sirray/.claude/mcp-needs-auth-cache.json",
+          "/home/sirray/.claude/plugins",
+          "/home/sirray/.claude/plugins/cache",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/agents",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/commands"
+        ],
+        "unmatched_predicates": [
+          "./*.bicep",
+          "./azure.yaml",
+          "./infra/**/*",
+          "./infra/*.bicep",
+          "./infra/*.tf",
+          "./main.bicep",
+          "./main.tf",
+          ".azure/deployment-plan.md",
+          "references/global-rules.md",
+          "references/recipes/README.md",
+          "references/role-verification.md"
+        ]
+      },
+      "paths_written": {
+        "n_predicted": 1,
+        "n_observed": 14,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude.json.tmp.1663.8224179d7df0",
+          "/home/sirray/.claude.json.tmp.1663.e35c955c59b4",
+          "/home/sirray/.claude/plugins/installed_plugins.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778257354099-hc77lr.sh",
+          "/tmp/claude-1000/-tmp-work-azure-validate/113d7df8-f068-4d20-84cc-9c394f1ac115/tasks/b010w5572.output",
+          "/tmp/claude-1000/-tmp-work-azure-validate/113d7df8-f068-4d20-84cc-9c394f1ac115/tasks/b19k9549y.output",
+          "/tmp/claude-1000/-tmp-work-azure-validate/113d7df8-f068-4d20-84cc-9c394f1ac115/tasks/b1x5u6kbi.output",
+          "/tmp/claude-1000/-tmp-work-azure-validate/113d7df8-f068-4d20-84cc-9c394f1ac115/tasks/bcgbx5vms.output",
+          "/tmp/claude-1000/-tmp-work-azure-validate/113d7df8-f068-4d20-84cc-9c394f1ac115/tasks/bd25j1rkz.output",
+          "/tmp/claude-1000/-tmp-work-azure-validate/113d7df8-f068-4d20-84cc-9c394f1ac115/tasks/bubtxo61s.output",
+          "/tmp/work-azure-validate/.azure/deployment-plan.md",
+          "/tmp/work-azure-validate/.azure/deployment-plan.md.tmp.1663.0382bb0281be",
+          "/tmp/work-azure-validate/.azure/deployment-plan.md.tmp.1663.2cf8db83bdbc"
+        ],
+        "unmatched_predicates": [
+          ".azure/deployment-plan.md"
+        ]
+      },
+      "paths_deleted": {
+        "n_predicted": 0,
+        "n_observed": 17,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json.tmp.1663.8224179d7df0",
+          "/home/sirray/.claude.json.tmp.1663.e35c955c59b4",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/installed_plugins_v2.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778257354099-hc77lr.sh",
+          "/tmp/claude-1000/-tmp-work-azure-validate/113d7df8-f068-4d20-84cc-9c394f1ac115/tasks/b010w5572.output",
+          "/tmp/claude-1000/-tmp-work-azure-validate/113d7df8-f068-4d20-84cc-9c394f1ac115/tasks/b19k9549y.output",
+          "/tmp/claude-1000/-tmp-work-azure-validate/113d7df8-f068-4d20-84cc-9c394f1ac115/tasks/b1x5u6kbi.output",
+          "/tmp/claude-1000/-tmp-work-azure-validate/113d7df8-f068-4d20-84cc-9c394f1ac115/tasks/bcgbx5vms.output",
+          "/tmp/claude-1000/-tmp-work-azure-validate/113d7df8-f068-4d20-84cc-9c394f1ac115/tasks/bd25j1rkz.output",
+          "/tmp/claude-1000/-tmp-work-azure-validate/113d7df8-f068-4d20-84cc-9c394f1ac115/tasks/bubtxo61s.output",
+          "/tmp/work-azure-validate/.azure/deployment-plan.md.tmp.1663.0382bb0281be",
+          "/tmp/work-azure-validate/.azure/deployment-plan.md.tmp.1663.2cf8db83bdbc"
+        ],
+        "unmatched_predicates": []
+      }
+    },
+    "net_metrics": {
+      "hosts": {
+        "n_predicted": 4,
+        "n_observed": 1,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "http-intake.logs.us5.datadoghq.com"
+        ],
+        "unmatched_predicates": [
+          "graph.microsoft.com",
+          "login.microsoftonline.com",
+          "management.azure.com",
+          "mcr.microsoft.com"
+        ]
+      }
+    },
+    "subprocess_predicted": [
+      "azd",
+      "bicep",
+      "az",
+      "terraform",
+      "node",
+      "npm",
+      "dotnet",
+      "python"
+    ],
+    "rationale_predicted": "The skill orchestrates pre-deployment validation by reading and updating .azure/deployment-plan.md and reviewing infrastructure-as-code (Bicep/Terraform) plus azure.yaml. It explicitly invokes commands like 'azd provision --preview', 'bicep build', and 'terraform validate', which spawn azd/bicep/terraform/az subprocesses; build verification adds language-specific build tools (node/npm/dotnet/python). These azd/az/terraform CLI calls authenticate and query Azure ARM/Graph endpoints, hence the management.azure.com, login.microsoftonline.com, and graph.microsoft.com hosts; mcr.microsoft.com may be hit when pulling Bicep types/container images.",
+    "filter_stats": {
+      "paths_read_total": 728,
+      "paths_read_after_filter": 141,
+      "paths_written_total": 25,
+      "paths_written_after_filter": 14,
+      "hosts_total": 2,
+      "hosts_after_filter": 1
+    }
+  },
+  {
+    "skill_id": "caveman",
+    "claude_exit": 0,
+    "duration_seconds": 20,
+    "fs_metrics": {
+      "paths_read": {
+        "n_predicted": 0,
+        "n_observed": 113,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/System/Library/OpenSSL/certs",
+          "/home/claude/.claude/remote/.api_key",
+          "/home/claude/.claude/remote/.oauth_token",
+          "/home/sirray/.claude",
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude/CLAUDE.md",
+          "/home/sirray/.claude/debug",
+          "/home/sirray/.claude/ide",
+          "/home/sirray/.claude/mcp-needs-auth-cache.json",
+          "/home/sirray/.claude/plugins",
+          "/home/sirray/.claude/plugins/cache",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/agents",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/skills",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github/unknown"
+        ],
+        "unmatched_predicates": []
+      },
+      "paths_written": {
+        "n_predicted": 0,
+        "n_observed": 8,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude.json.tmp.601.0e1669ee631f",
+          "/home/sirray/.claude.json.tmp.601.3f51e7c85b22",
+          "/home/sirray/.claude.json.tmp.601.a3a01f32274c",
+          "/home/sirray/.claude.json.tmp.601.d5f4563663d8",
+          "/home/sirray/.claude.json.tmp.601.ea14fbee23ba",
+          "/home/sirray/.claude.json.tmp.601.f960b5875c45",
+          "/home/sirray/.claude/plugins/installed_plugins.json"
+        ],
+        "unmatched_predicates": []
+      },
+      "paths_deleted": {
+        "n_predicted": 0,
+        "n_observed": 12,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json.tmp.601.0e1669ee631f",
+          "/home/sirray/.claude.json.tmp.601.3f51e7c85b22",
+          "/home/sirray/.claude.json.tmp.601.a3a01f32274c",
+          "/home/sirray/.claude.json.tmp.601.d5f4563663d8",
+          "/home/sirray/.claude.json.tmp.601.ea14fbee23ba",
+          "/home/sirray/.claude.json.tmp.601.f960b5875c45",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/installed_plugins_v2.json"
+        ],
+        "unmatched_predicates": []
+      }
+    },
+    "net_metrics": {
+      "hosts": {
+        "n_predicted": 0,
+        "n_observed": 1,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "http-intake.logs.us5.datadoghq.com"
+        ],
+        "unmatched_predicates": []
+      }
+    },
+    "subprocess_predicted": [],
+    "rationale_predicted": "Caveman is a pure communication-style skill that only modifies how the agent phrases its responses. It contains no instructions to read/write files, make network requests, or invoke subprocesses. The skill's entire scope is prose compression rules and intensity levels, with no IO surface area.",
+    "filter_stats": {
+      "paths_read_total": 626,
+      "paths_read_after_filter": 113,
+      "paths_written_total": 16,
+      "paths_written_after_filter": 8,
+      "hosts_total": 2,
+      "hosts_after_filter": 1
+    }
+  },
+  {
+    "skill_id": "cookie-sync",
+    "claude_exit": 0,
+    "duration_seconds": 772,
+    "fs_metrics": {
+      "paths_read": {
+        "n_predicted": 5,
+        "n_observed": 157,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/System/Library/OpenSSL/certs",
+          "/bin",
+          "/home/claude/.claude/remote/.api_key",
+          "/home/claude/.claude/remote/.oauth_token",
+          "/home/sirray",
+          "/home/sirray/.bash_login",
+          "/home/sirray/.bash_profile",
+          "/home/sirray/.bashrc",
+          "/home/sirray/.claude",
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude/CLAUDE.md",
+          "/home/sirray/.claude/daemon",
+          "/home/sirray/.claude/daemon/dispatch",
+          "/home/sirray/.claude/daemon/dispatch/rejected",
+          "/home/sirray/.claude/daemon/roster.json",
+          "/home/sirray/.claude/debug",
+          "/home/sirray/.claude/dump-prompts",
+          "/home/sirray/.claude/file-history",
+          "/home/sirray/.claude/ide",
+          "/home/sirray/.claude/image-cache",
+          "/home/sirray/.claude/jobs",
+          "/home/sirray/.claude/jobs/pins.json",
+          "/home/sirray/.claude/jobs/settled",
+          "/home/sirray/.claude/mcp-needs-auth-cache.json",
+          "/home/sirray/.claude/paste-cache",
+          "/home/sirray/.claude/plans",
+          "/home/sirray/.claude/plugins",
+          "/home/sirray/.claude/plugins/cache",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review"
+        ],
+        "unmatched_predicates": [
+          "./.claude/skills/cookie-sync/node_modules/*",
+          "./.claude/skills/cookie-sync/package.json",
+          "./.claude/skills/cookie-sync/scripts/*",
+          "/tmp/chrome-debug/*",
+          "~/.config/google-chrome/*"
+        ]
+      },
+      "paths_written": {
+        "n_predicted": 3,
+        "n_observed": 16,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude.json.tmp.1116.72ef1a6b55c7",
+          "/home/sirray/.claude/.last-cleanup",
+          "/home/sirray/.claude/plugins/installed_plugins.json",
+          "/home/sirray/.claude/plugins/known_marketplaces.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778257070314-vktqew.sh",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/b0flavbdm.output",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/b1tf5y2dd.output",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/b54525a8d.output",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/b59ch2f4f.output",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/b6hovz8w7.output",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/b7nbmf4ml.output",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/becxpsk5f.output",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/bnv6kg0pd.output",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/bucyyq034.output",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/bvhmzqhmp.output"
+        ],
+        "unmatched_predicates": [
+          "./.claude/skills/cookie-sync/node_modules/*",
+          "./.claude/skills/cookie-sync/package-lock.json",
+          "/tmp/chrome-debug/*"
+        ]
+      },
+      "paths_deleted": {
+        "n_predicted": 0,
+        "n_observed": 17,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json.tmp.1116.72ef1a6b55c7",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/installed_plugins_v2.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778257070314-vktqew.sh",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/b0flavbdm.output",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/b1tf5y2dd.output",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/b54525a8d.output",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/b59ch2f4f.output",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/b6hovz8w7.output",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/b7nbmf4ml.output",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/bnv6kg0pd.output",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/bucyyq034.output",
+          "/tmp/claude-1000/-tmp-work-cookie-sync/7de09f6b-7680-40b6-bf3d-0b1e3d21eaf4/tasks/bvhmzqhmp.output"
+        ],
+        "unmatched_predicates": []
+      }
+    },
+    "net_metrics": {
+      "hosts": {
+        "n_predicted": 4,
+        "n_observed": 3,
+        "n_covered": 1,
+        "n_useful_predicates": 1,
+        "precision": 0.25,
+        "recall": 0.3333333333333333,
+        "f1": 0.28571428571428575,
+        "jaccard": 0.16666666666666666,
+        "false_negatives": [
+          "downloads.claude.ai",
+          "http-intake.logs.us5.datadoghq.com"
+        ],
+        "unmatched_predicates": [
+          "*.browserbase.com",
+          "127.0.0.1",
+          "api.browserbase.com"
+        ]
+      }
+    },
+    "subprocess_predicted": [
+      "node",
+      "npm",
+      "browse",
+      "chrome"
+    ],
+    "rationale_predicted": "The skill installs npm dependencies (npm install reads/writes node_modules and package-lock.json, fetching from registry.npmjs.org) and runs a Node.js script that connects to Chrome's DevTools Protocol over a local WebSocket (127.0.0.1:9222) to read cookies. It then uploads those cookies to Browserbase via their API, requiring network access to browserbase.com endpoints. The follow-up workflow invokes the `browse` CLI subprocess for authenticated sessions, and Chrome itself may be launched with debugging flags using a /tmp/chrome-debug user data dir.",
+    "filter_stats": {
+      "paths_read_total": 1817,
+      "paths_read_after_filter": 157,
+      "paths_written_total": 36,
+      "paths_written_after_filter": 16,
+      "hosts_total": 4,
+      "hosts_after_filter": 3
+    }
+  },
+  {
+    "skill_id": "find-skills",
+    "claude_exit": 0,
+    "duration_seconds": 32,
+    "fs_metrics": {
+      "paths_read": {
+        "n_predicted": 3,
+        "n_observed": 128,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/System/Library/OpenSSL/certs",
+          "/home/claude/.claude/remote/.api_key",
+          "/home/claude/.claude/remote/.oauth_token",
+          "/home/sirray/.bash_login",
+          "/home/sirray/.bash_profile",
+          "/home/sirray/.bashrc",
+          "/home/sirray/.claude",
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude/CLAUDE.md",
+          "/home/sirray/.claude/debug",
+          "/home/sirray/.claude/ide",
+          "/home/sirray/.claude/mcp-needs-auth-cache.json",
+          "/home/sirray/.claude/plugins",
+          "/home/sirray/.claude/plugins/cache",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/agents",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.claude-plugin"
+        ],
+        "unmatched_predicates": [
+          "./.skills/*",
+          "./package.json",
+          "~/.skills/*"
+        ]
+      },
+      "paths_written": {
+        "n_predicted": 3,
+        "n_observed": 5,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude.json.tmp.2333.9624eee16504",
+          "/home/sirray/.claude/plugins/installed_plugins.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778257873242-tnbr3n.sh",
+          "/tmp/claude-1000/-tmp-work-find-skills/d28d011e-b38c-41c9-87ff-3e9533fa871f/tasks/b07f9bs1l.output"
+        ],
+        "unmatched_predicates": [
+          "./.skills/*",
+          "./node_modules/*",
+          "~/.skills/*"
+        ]
+      },
+      "paths_deleted": {
+        "n_predicted": 0,
+        "n_observed": 9,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json.tmp.2333.9624eee16504",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/installed_plugins_v2.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778257873242-tnbr3n.sh",
+          "/tmp/claude-1000/-tmp-work-find-skills/d28d011e-b38c-41c9-87ff-3e9533fa871f/tasks/b07f9bs1l.output"
+        ],
+        "unmatched_predicates": []
+      }
+    },
+    "net_metrics": {
+      "hosts": {
+        "n_predicted": 5,
+        "n_observed": 4,
+        "n_covered": 2,
+        "n_useful_predicates": 2,
+        "precision": 0.4,
+        "recall": 0.5,
+        "f1": 0.4444444444444445,
+        "jaccard": 0.2857142857142857,
+        "false_negatives": [
+          "add-skill.vercel.sh",
+          "http-intake.logs.us5.datadoghq.com"
+        ],
+        "unmatched_predicates": [
+          "codeload.github.com",
+          "github.com",
+          "raw.githubusercontent.com"
+        ]
+      }
+    },
+    "subprocess_predicted": [
+      "npx",
+      "node"
+    ],
+    "rationale_predicted": "The skill's primary verbs are searching for and installing skills via `npx skills find/add`, which spawns npx/node subprocesses. Installing skills writes to a local or global skills directory and pulls package metadata from npm and skill source files from GitHub, while the leaderboard reference at skills.sh implies network calls to that host. No deletions are implied since the skill only adds and updates skills.",
+    "filter_stats": {
+      "paths_read_total": 3297,
+      "paths_read_after_filter": 128,
+      "paths_written_total": 16,
+      "paths_written_after_filter": 5,
+      "hosts_total": 5,
+      "hosts_after_filter": 4
+    }
+  },
+  {
+    "skill_id": "firebase-hosting-basics",
+    "claude_exit": 0,
+    "duration_seconds": 326,
+    "fs_metrics": {
+      "paths_read": {
+        "n_predicted": 6,
+        "n_observed": 157,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          ".",
+          "/System/Library/OpenSSL/certs",
+          "/bin",
+          "/home/claude/.claude/remote/.api_key",
+          "/home/claude/.claude/remote/.oauth_token",
+          "/home/sirray",
+          "/home/sirray/.bash_login",
+          "/home/sirray/.bash_profile",
+          "/home/sirray/.bashrc",
+          "/home/sirray/.claude",
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude/CLAUDE.md",
+          "/home/sirray/.claude/debug",
+          "/home/sirray/.claude/ide",
+          "/home/sirray/.claude/mcp-needs-auth-cache.json",
+          "/home/sirray/.claude/plugins",
+          "/home/sirray/.claude/plugins/cache",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/agents",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/commands"
+        ],
+        "unmatched_predicates": [
+          "./build/*",
+          "./dist/*",
+          "./firebase.json",
+          "./public/*",
+          "./references/*.md",
+          ".firebaserc"
+        ]
+      },
+      "paths_written": {
+        "n_predicted": 4,
+        "n_observed": 33,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude.json.tmp.2701.0863b4ca0cd1",
+          "/home/sirray/.claude/plugins/installed_plugins.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778258002746-y0scl7.sh",
+          "/home/sirray/.claude/telemetry/1p_failed_events.f6afa8ee-8854-49a6-b043-15e8cd967d98.30de2ad8-0c04-48cc-bcb6-d30260faecc8.json",
+          "/home/sirray/.config/configstore/firebase-tools.json",
+          "/home/sirray/.config/configstore/firebase-tools.json.2038999582",
+          "/home/sirray/.config/configstore/firebase-tools.json.2273000969",
+          "/home/sirray/.config/configstore/firebase-tools.json.265619620",
+          "/home/sirray/.config/configstore/firebase-tools.json.2959169494",
+          "/home/sirray/.config/configstore/firebase-tools.json.324894581",
+          "/home/sirray/.config/configstore/update-notifier-firebase-tools.json",
+          "/home/sirray/.config/configstore/update-notifier-firebase-tools.json.1269231009",
+          "/home/sirray/.config/configstore/update-notifier-firebase-tools.json.1647931641",
+          "/home/sirray/.config/configstore/update-notifier-firebase-tools.json.2512698553",
+          "/home/sirray/.config/configstore/update-notifier-firebase-tools.json.430782577",
+          "/tmp/claude-1000/-tmp-work-firebase-hosting-basics/f6afa8ee-8854-49a6-b043-15e8cd967d98/tasks/b4kfyo1nm.output",
+          "/tmp/claude-1000/-tmp-work-firebase-hosting-basics/f6afa8ee-8854-49a6-b043-15e8cd967d98/tasks/bb4o9f4nz.output",
+          "/tmp/claude-1000/-tmp-work-firebase-hosting-basics/f6afa8ee-8854-49a6-b043-15e8cd967d98/tasks/bb7uh8vrk.output",
+          "/tmp/claude-1000/-tmp-work-firebase-hosting-basics/f6afa8ee-8854-49a6-b043-15e8cd967d98/tasks/bmxw9xpq7.output",
+          "/tmp/claude-1000/-tmp-work-firebase-hosting-basics/f6afa8ee-8854-49a6-b043-15e8cd967d98/tasks/buyloj7qp.output",
+          "/tmp/claude-1000/-tmp-work-firebase-hosting-basics/f6afa8ee-8854-49a6-b043-15e8cd967d98/tasks/bv9wq8h3d.output",
+          "/tmp/claude-1000/-tmp-work-firebase-hosting-basics/f6afa8ee-8854-49a6-b043-15e8cd967d98/tasks/bxi12aneq.output",
+          "/tmp/work-firebase-hosting-basics/fb-test/.firebaserc",
+          "/tmp/work-firebase-hosting-basics/fb-test/.firebaserc.tmp.2701.da4a9daf1974",
+          "/tmp/work-firebase-hosting-basics/fb-test/emulator.log",
+          "/tmp/work-firebase-hosting-basics/fb-test/firebase-debug.log",
+          "/tmp/work-firebase-hosting-basics/fb-test/firebase.json",
+          "/tmp/work-firebase-hosting-basics/fb-test/firebase.json.tmp.2701.cb892d80d91e",
+          "/tmp/work-firebase-hosting-basics/fb-test/public/index.html"
+        ],
+        "unmatched_predicates": [
+          "./.firebase/*",
+          "./firebase-debug.log",
+          "./firebase.json",
+          ".firebaserc"
+        ]
+      },
+      "paths_deleted": {
+        "n_predicted": 0,
+        "n_observed": 29,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "%s\\",
+          "/home/sirray/.claude.json.tmp.2701.0863b4ca0cd1",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/installed_plugins_v2.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778258002746-y0scl7.sh",
+          "/home/sirray/.claude/telemetry/1p_failed_events.f6afa8ee-8854-49a6-b043-15e8cd967d98.30de2ad8-0c04-48cc-bcb6-d30260faecc8.json",
+          "/home/sirray/.config/configstore/firebase-tools.json.2038999582",
+          "/home/sirray/.config/configstore/firebase-tools.json.2273000969",
+          "/home/sirray/.config/configstore/firebase-tools.json.265619620",
+          "/home/sirray/.config/configstore/firebase-tools.json.2959169494",
+          "/home/sirray/.config/configstore/firebase-tools.json.324894581",
+          "/home/sirray/.config/configstore/update-notifier-firebase-tools.json.1269231009",
+          "/home/sirray/.config/configstore/update-notifier-firebase-tools.json.1647931641",
+          "/home/sirray/.config/configstore/update-notifier-firebase-tools.json.2512698553",
+          "/home/sirray/.config/configstore/update-notifier-firebase-tools.json.430782577",
+          "/tmp/claude-1000/-tmp-work-firebase-hosting-basics/f6afa8ee-8854-49a6-b043-15e8cd967d98/tasks/b4kfyo1nm.output",
+          "/tmp/claude-1000/-tmp-work-firebase-hosting-basics/f6afa8ee-8854-49a6-b043-15e8cd967d98/tasks/bb4o9f4nz.output",
+          "/tmp/claude-1000/-tmp-work-firebase-hosting-basics/f6afa8ee-8854-49a6-b043-15e8cd967d98/tasks/bb7uh8vrk.output",
+          "/tmp/claude-1000/-tmp-work-firebase-hosting-basics/f6afa8ee-8854-49a6-b043-15e8cd967d98/tasks/buyloj7qp.output",
+          "/tmp/claude-1000/-tmp-work-firebase-hosting-basics/f6afa8ee-8854-49a6-b043-15e8cd967d98/tasks/bv9wq8h3d.output",
+          "/tmp/claude-1000/-tmp-work-firebase-hosting-basics/f6afa8ee-8854-49a6-b043-15e8cd967d98/tasks/bxi12aneq.output",
+          "/tmp/work-firebase-hosting-basics/fb-test/.firebaserc.tmp.2701.da4a9daf1974",
+          "/tmp/work-firebase-hosting-basics/fb-test/firebase-debug.log",
+          "/tmp/work-firebase-hosting-basics/fb-test/firebase.json.tmp.2701.cb892d80d91e",
+          "/tmp/work-firebase-hosting-basics/fb-test/public/index.html.tmp.2701.ba53eb6759ff"
+        ],
+        "unmatched_predicates": []
+      }
+    },
+    "net_metrics": {
+      "hosts": {
+        "n_predicted": 7,
+        "n_observed": 5,
+        "n_covered": 2,
+        "n_useful_predicates": 2,
+        "precision": 0.2857142857142857,
+        "recall": 0.4,
+        "f1": 0.3333333333333333,
+        "jaccard": 0.2,
+        "false_negatives": [
+          "github.com",
+          "http-intake.logs.us5.datadoghq.com",
+          "release-assets.githubusercontent.com"
+        ],
+        "unmatched_predicates": [
+          "*.firebaseapp.com",
+          "*.googleapis.com",
+          "*.web.app",
+          "firebase.tools",
+          "localhost"
+        ]
+      }
+    },
+    "subprocess_predicted": [
+      "npx",
+      "node",
+      "firebase",
+      "firebase-tools"
+    ],
+    "rationale_predicted": "The skill centers on Firebase Hosting Classic, which requires reading/writing firebase.json and .firebaserc config and a public build directory, then invoking the firebase CLI via npx to deploy or run local emulators. Network calls go to npm registry to fetch firebase-tools and to Google/Firebase APIs for auth and deploy. The emulator binds localhost:5000 for serving. No deletions are implied by the documented verbs (configure, deploy, emulate).",
+    "filter_stats": {
+      "paths_read_total": 10751,
+      "paths_read_after_filter": 157,
+      "paths_written_total": 21048,
+      "paths_written_after_filter": 33,
+      "hosts_total": 6,
+      "hosts_after_filter": 5
+    }
+  },
+  {
+    "skill_id": "firebase-security-rules-auditor",
+    "claude_exit": 0,
+    "duration_seconds": 45,
+    "fs_metrics": {
+      "paths_read": {
+        "n_predicted": 4,
+        "n_observed": 114,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/System/Library/OpenSSL/certs",
+          "/home/claude/.claude/remote/.api_key",
+          "/home/claude/.claude/remote/.oauth_token",
+          "/home/sirray/.claude",
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude/CLAUDE.md",
+          "/home/sirray/.claude/debug",
+          "/home/sirray/.claude/ide",
+          "/home/sirray/.claude/mcp-needs-auth-cache.json",
+          "/home/sirray/.claude/plugins",
+          "/home/sirray/.claude/plugins/cache",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/agents",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/skills",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github/unknown"
+        ],
+        "unmatched_predicates": [
+          "**/*.rules",
+          "./firebase.json",
+          "./firestore.indexes.json",
+          "./firestore.rules"
+        ]
+      },
+      "paths_written": {
+        "n_predicted": 0,
+        "n_observed": 3,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude.json.tmp.1924.9db91992e859",
+          "/home/sirray/.claude/plugins/installed_plugins.json"
+        ],
+        "unmatched_predicates": []
+      },
+      "paths_deleted": {
+        "n_predicted": 0,
+        "n_observed": 7,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json.tmp.1924.9db91992e859",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/installed_plugins_v2.json"
+        ],
+        "unmatched_predicates": []
+      }
+    },
+    "net_metrics": {
+      "hosts": {
+        "n_predicted": 0,
+        "n_observed": 1,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "http-intake.logs.us5.datadoghq.com"
+        ],
+        "unmatched_predicates": []
+      }
+    },
+    "subprocess_predicted": [],
+    "rationale_predicted": "This skill is an auditor that reads Firestore security rules files (typically firestore.rules) and produces a JSON assessment as its return value. It performs no writes, deletions, network calls, or subprocess invocations \u2014 it is purely an analysis/scoring prompt. The only IO is reading the rules file(s) and likely the firebase.json config to locate them.",
+    "filter_stats": {
+      "paths_read_total": 627,
+      "paths_read_after_filter": 114,
+      "paths_written_total": 9,
+      "paths_written_after_filter": 3,
+      "hosts_total": 2,
+      "hosts_after_filter": 1
+    }
+  },
+  {
+    "skill_id": "firecrawl-scrape",
+    "claude_exit": 0,
+    "duration_seconds": 23,
+    "fs_metrics": {
+      "paths_read": {
+        "n_predicted": 1,
+        "n_observed": 121,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/System/Library/OpenSSL/certs",
+          "/home/claude/.claude/remote/.api_key",
+          "/home/claude/.claude/remote/.oauth_token",
+          "/home/sirray/.bash_login",
+          "/home/sirray/.bash_profile",
+          "/home/sirray/.bashrc",
+          "/home/sirray/.claude",
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude/CLAUDE.md",
+          "/home/sirray/.claude/debug",
+          "/home/sirray/.claude/ide",
+          "/home/sirray/.claude/mcp-needs-auth-cache.json",
+          "/home/sirray/.claude/plugins",
+          "/home/sirray/.claude/plugins/cache",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/agents",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.claude-plugin"
+        ],
+        "unmatched_predicates": [
+          "./.firecrawl/*"
+        ]
+      },
+      "paths_written": {
+        "n_predicted": 1,
+        "n_observed": 5,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude.json.tmp.2530.8ea3aeee8e4c",
+          "/home/sirray/.claude/plugins/installed_plugins.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778257922885-qk7nwp.sh",
+          "/tmp/claude-1000/-tmp-work-firecrawl-scrape/b46bbf16-b16d-490e-b034-0e8fa97a9b61/tasks/b4j7nm361.output"
+        ],
+        "unmatched_predicates": [
+          "./.firecrawl/*"
+        ]
+      },
+      "paths_deleted": {
+        "n_predicted": 0,
+        "n_observed": 9,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json.tmp.2530.8ea3aeee8e4c",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/installed_plugins_v2.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778257922885-qk7nwp.sh",
+          "/tmp/claude-1000/-tmp-work-firecrawl-scrape/b46bbf16-b16d-490e-b034-0e8fa97a9b61/tasks/b4j7nm361.output"
+        ],
+        "unmatched_predicates": []
+      }
+    },
+    "net_metrics": {
+      "hosts": {
+        "n_predicted": 2,
+        "n_observed": 1,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "http-intake.logs.us5.datadoghq.com"
+        ],
+        "unmatched_predicates": [
+          "*",
+          "api.firecrawl.dev"
+        ]
+      }
+    },
+    "subprocess_predicted": [
+      "firecrawl",
+      "npx",
+      "grep",
+      "head"
+    ],
+    "rationale_predicted": "The skill invokes the firecrawl CLI (or npx firecrawl) to scrape arbitrary user-supplied URLs, so it spawns the firecrawl binary and connects to api.firecrawl.dev plus any third-party host the user wants scraped (effectively unrestricted). Output is written to ./.firecrawl/ files per the documented naming convention, and the tips suggest reading those files back with grep/head. No deletions are described.",
+    "filter_stats": {
+      "paths_read_total": 887,
+      "paths_read_after_filter": 121,
+      "paths_written_total": 12,
+      "paths_written_after_filter": 5,
+      "hosts_total": 2,
+      "hosts_after_filter": 1
+    }
+  },
+  {
+    "skill_id": "frontend-design",
+    "claude_exit": 0,
+    "duration_seconds": 248,
+    "fs_metrics": {
+      "paths_read": {
+        "n_predicted": 10,
+        "n_observed": 123,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/System/Library/OpenSSL/certs",
+          "/bin",
+          "/home/claude/.claude/remote/.api_key",
+          "/home/claude/.claude/remote/.oauth_token",
+          "/home/sirray",
+          "/home/sirray/.claude",
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude/CLAUDE.md",
+          "/home/sirray/.claude/debug",
+          "/home/sirray/.claude/ide",
+          "/home/sirray/.claude/mcp-needs-auth-cache.json",
+          "/home/sirray/.claude/plugins",
+          "/home/sirray/.claude/plugins/cache",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/agents",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/skills"
+        ],
+        "unmatched_predicates": [
+          "./*",
+          "./*.css",
+          "./*.html",
+          "./*.jsx",
+          "./*.tsx",
+          "./node_modules/*",
+          "./package.json",
+          "./public/*",
+          "./src/*",
+          "./tsconfig.json"
+        ]
+      },
+      "paths_written": {
+        "n_predicted": 9,
+        "n_observed": 7,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude.json.tmp.2157.f40a542a40a9",
+          "/home/sirray/.claude/plugins/installed_plugins.json",
+          "/home/sirray/.claude/plugins/known_marketplaces.json",
+          "/home/sirray/.claude/telemetry/1p_failed_events.80ac47fd-c837-499a-a9cb-292001ca0ad7.bd30256b-4b20-479c-ad87-05938dd41612.json",
+          "/tmp/work-frontend-design/index.html",
+          "/tmp/work-frontend-design/index.html.tmp.2157.d88ba0c032ce"
+        ],
+        "unmatched_predicates": [
+          "./*.css",
+          "./*.html",
+          "./*.js",
+          "./*.jsx",
+          "./*.tsx",
+          "./components/*",
+          "./public/*",
+          "./src/*",
+          "./styles/*"
+        ]
+      },
+      "paths_deleted": {
+        "n_predicted": 0,
+        "n_observed": 9,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json.tmp.2157.f40a542a40a9",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/installed_plugins_v2.json",
+          "/home/sirray/.claude/telemetry/1p_failed_events.80ac47fd-c837-499a-a9cb-292001ca0ad7.bd30256b-4b20-479c-ad87-05938dd41612.json",
+          "/tmp/work-frontend-design/index.html.tmp.2157.d88ba0c032ce"
+        ],
+        "unmatched_predicates": []
+      }
+    },
+    "net_metrics": {
+      "hosts": {
+        "n_predicted": 5,
+        "n_observed": 2,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "downloads.claude.ai",
+          "http-intake.logs.us5.datadoghq.com"
+        ],
+        "unmatched_predicates": [
+          "cdn.jsdelivr.net",
+          "fonts.googleapis.com",
+          "fonts.gstatic.com",
+          "registry.npmjs.org",
+          "unpkg.com"
+        ]
+      }
+    },
+    "subprocess_predicted": [
+      "node",
+      "npm",
+      "npx",
+      "yarn",
+      "pnpm"
+    ],
+    "rationale_predicted": "This skill builds frontend code (HTML/CSS/JS, React, Vue), so the agent will read existing project files and write new component/page files in typical frontend locations. It will likely fetch fonts (the skill emphasizes distinctive typography, implying Google Fonts or similar) and may install packages (Motion library is explicitly mentioned for React) via npm/npx. No deletions are implied by the design-focused verbs. Subprocess invocations cover Node-based tooling commonly used to scaffold and run frontend projects.",
+    "filter_stats": {
+      "paths_read_total": 639,
+      "paths_read_after_filter": 123,
+      "paths_written_total": 13,
+      "paths_written_after_filter": 7,
+      "hosts_total": 3,
+      "hosts_after_filter": 2
+    }
+  },
+  {
+    "skill_id": "grill-me",
+    "claude_exit": 0,
+    "duration_seconds": 45,
+    "fs_metrics": {
+      "paths_read": {
+        "n_predicted": 2,
+        "n_observed": 113,
+        "n_covered": 113,
+        "n_useful_predicates": 1,
+        "precision": 0.9912280701754386,
+        "recall": 1.0,
+        "f1": 0.9955947136563876,
+        "jaccard": 0.9912280701754386,
+        "false_negatives": [],
+        "unmatched_predicates": [
+          "./*"
+        ]
+      },
+      "paths_written": {
+        "n_predicted": 0,
+        "n_observed": 3,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude.json.tmp.729.de8caaa8539f",
+          "/home/sirray/.claude/plugins/installed_plugins.json"
+        ],
+        "unmatched_predicates": []
+      },
+      "paths_deleted": {
+        "n_predicted": 0,
+        "n_observed": 7,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json.tmp.729.de8caaa8539f",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/installed_plugins_v2.json"
+        ],
+        "unmatched_predicates": []
+      }
+    },
+    "net_metrics": {
+      "hosts": {
+        "n_predicted": 0,
+        "n_observed": 1,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "http-intake.logs.us5.datadoghq.com"
+        ],
+        "unmatched_predicates": []
+      }
+    },
+    "subprocess_predicted": [],
+    "rationale_predicted": "This is primarily a conversational/interviewing skill with no declared external integrations. The only IO implied is codebase exploration ('If a question can be answered by exploring the codebase, explore the codebase instead'), which means filesystem reads of project files via Read/Grep/Glob. No writes, deletions, network calls, or subprocesses are implied by the prose.",
+    "filter_stats": {
+      "paths_read_total": 626,
+      "paths_read_after_filter": 113,
+      "paths_written_total": 9,
+      "paths_written_after_filter": 3,
+      "hosts_total": 2,
+      "hosts_after_filter": 1
+    }
+  },
+  {
+    "skill_id": "improve-codebase-architecture",
+    "claude_exit": 0,
+    "duration_seconds": 62,
+    "fs_metrics": {
+      "paths_read": {
+        "n_predicted": 7,
+        "n_observed": 134,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/System/Library/OpenSSL/certs",
+          "/bin",
+          "/home/claude/.claude/remote/.api_key",
+          "/home/claude/.claude/remote/.oauth_token",
+          "/home/sirray",
+          "/home/sirray/.bash_login",
+          "/home/sirray/.bash_profile",
+          "/home/sirray/.bashrc",
+          "/home/sirray/.claude",
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude/CLAUDE.md",
+          "/home/sirray/.claude/debug",
+          "/home/sirray/.claude/ide",
+          "/home/sirray/.claude/mcp-needs-auth-cache.json",
+          "/home/sirray/.claude/plugins",
+          "/home/sirray/.claude/plugins/cache",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/agents",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design"
+        ],
+        "unmatched_predicates": [
+          "../grill-with-docs/ADR-FORMAT.md",
+          "../grill-with-docs/CONTEXT-FORMAT.md",
+          "./**/*",
+          "./CONTEXT.md",
+          "./INTERFACE-DESIGN.md",
+          "./LANGUAGE.md",
+          "./docs/adr/*"
+        ]
+      },
+      "paths_written": {
+        "n_predicted": 2,
+        "n_observed": 5,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude.json.tmp.3624.028076c1816a",
+          "/home/sirray/.claude/plugins/installed_plugins.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778258492253-x3vpej.sh",
+          "/tmp/claude-1000/-tmp-work-improve-codebase-architecture/fa8099d1-af42-46e2-9df6-e9a85c94db5c/tasks/bmdcxv2ki.output"
+        ],
+        "unmatched_predicates": [
+          "./CONTEXT.md",
+          "./docs/adr/*"
+        ]
+      },
+      "paths_deleted": {
+        "n_predicted": 0,
+        "n_observed": 9,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json.tmp.3624.028076c1816a",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/installed_plugins_v2.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778258492253-x3vpej.sh",
+          "/tmp/claude-1000/-tmp-work-improve-codebase-architecture/fa8099d1-af42-46e2-9df6-e9a85c94db5c/tasks/bmdcxv2ki.output"
+        ],
+        "unmatched_predicates": []
+      }
+    },
+    "net_metrics": {
+      "hosts": {
+        "n_predicted": 0,
+        "n_observed": 1,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "http-intake.logs.us5.datadoghq.com"
+        ],
+        "unmatched_predicates": []
+      }
+    },
+    "subprocess_predicted": [],
+    "rationale_predicted": "The skill walks the codebase to find architectural friction, so it reads broadly across project files plus the domain glossary (CONTEXT.md), ADRs in docs/adr/, and the bundled LANGUAGE.md/INTERFACE-DESIGN.md references. During the grilling loop it lazily creates or updates CONTEXT.md and may write new ADRs under docs/adr/. It does no network I/O and spawns no external binaries \u2014 exploration is delegated to the Explore subagent (in-process), and all side effects are local file edits.",
+    "filter_stats": {
+      "paths_read_total": 715,
+      "paths_read_after_filter": 134,
+      "paths_written_total": 12,
+      "paths_written_after_filter": 5,
+      "hosts_total": 2,
+      "hosts_after_filter": 1
+    }
+  },
+  {
+    "skill_id": "react-best-practices",
+    "claude_exit": 0,
+    "duration_seconds": 33,
+    "fs_metrics": {
+      "paths_read": {
+        "n_predicted": 10,
+        "n_observed": 124,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/System/Library/OpenSSL/certs",
+          "/bin",
+          "/home/claude/.claude/remote/.api_key",
+          "/home/claude/.claude/remote/.oauth_token",
+          "/home/sirray",
+          "/home/sirray/.claude",
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude/CLAUDE.md",
+          "/home/sirray/.claude/debug",
+          "/home/sirray/.claude/ide",
+          "/home/sirray/.claude/mcp-needs-auth-cache.json",
+          "/home/sirray/.claude/plugins",
+          "/home/sirray/.claude/plugins/cache",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/agents",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/skills"
+        ],
+        "unmatched_predicates": [
+          "./AGENTS.md",
+          "./SKILL.md",
+          "./app/**/*.{js,jsx,ts,tsx}",
+          "./components/**/*.{js,jsx,ts,tsx}",
+          "./next.config.{js,ts,mjs}",
+          "./package.json",
+          "./pages/**/*.{js,jsx,ts,tsx}",
+          "./rules/*.md",
+          "./src/**/*.{js,jsx,ts,tsx}",
+          "./tsconfig.json"
+        ]
+      },
+      "paths_written": {
+        "n_predicted": 4,
+        "n_observed": 5,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude.json.tmp.2047.3abb05a6d0ca",
+          "/home/sirray/.claude/plugins/installed_plugins.json",
+          "/tmp/work-react-best-practices/Refactored.tsx",
+          "/tmp/work-react-best-practices/Refactored.tsx.tmp.2047.b33e091b368e"
+        ],
+        "unmatched_predicates": [
+          "./app/**/*.{js,jsx,ts,tsx}",
+          "./components/**/*.{js,jsx,ts,tsx}",
+          "./pages/**/*.{js,jsx,ts,tsx}",
+          "./src/**/*.{js,jsx,ts,tsx}"
+        ]
+      },
+      "paths_deleted": {
+        "n_predicted": 0,
+        "n_observed": 8,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json.tmp.2047.3abb05a6d0ca",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/installed_plugins_v2.json",
+          "/tmp/work-react-best-practices/Refactored.tsx.tmp.2047.b33e091b368e"
+        ],
+        "unmatched_predicates": []
+      }
+    },
+    "net_metrics": {
+      "hosts": {
+        "n_predicted": 0,
+        "n_observed": 1,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "http-intake.logs.us5.datadoghq.com"
+        ],
+        "unmatched_predicates": []
+      }
+    },
+    "subprocess_predicted": [],
+    "rationale_predicted": "This skill is primarily a prose reference guide containing 70 React/Next.js performance rules organized by priority. When applied to a representative refactoring or code-review task, the agent will read the skill's own rule files (rules/*.md, AGENTS.md) plus the user's React/Next.js source files, then write modifications back to those source files. The skill itself declares no network endpoints, no CLI tools, and no deletion patterns\u2014it's pure guidance applied to existing code, so subprocess/network/deletion footprints are empty.",
+    "filter_stats": {
+      "paths_read_total": 638,
+      "paths_read_after_filter": 124,
+      "paths_written_total": 11,
+      "paths_written_after_filter": 5,
+      "hosts_total": 2,
+      "hosts_after_filter": 1
+    }
+  },
+  {
+    "skill_id": "skill-creator",
+    "claude_exit": 0,
+    "duration_seconds": 57,
+    "fs_metrics": {
+      "paths_read": {
+        "n_predicted": 8,
+        "n_observed": 129,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/System/Library/OpenSSL/certs",
+          "/bin",
+          "/home/claude/.claude/remote/.api_key",
+          "/home/claude/.claude/remote/.oauth_token",
+          "/home/sirray",
+          "/home/sirray/.bash_login",
+          "/home/sirray/.bash_profile",
+          "/home/sirray/.bashrc",
+          "/home/sirray/.claude",
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude/CLAUDE.md",
+          "/home/sirray/.claude/debug",
+          "/home/sirray/.claude/ide",
+          "/home/sirray/.claude/mcp-needs-auth-cache.json",
+          "/home/sirray/.claude/plugins",
+          "/home/sirray/.claude/plugins/cache",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/agents",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design"
+        ],
+        "unmatched_predicates": [
+          "./SKILL.md",
+          "./agents/*.md",
+          "./assets/eval_review.html",
+          "./evals/evals.json",
+          "./references/*.md",
+          "<workspace>/feedback.json",
+          "<workspace>/iteration-*/eval-*/**",
+          "~/Downloads/eval_set*.json"
+        ]
+      },
+      "paths_written": {
+        "n_predicted": 14,
+        "n_observed": 7,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude.json.tmp.3455.680930e48368",
+          "/home/sirray/.claude/plugins/installed_plugins.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778258407953-j8lj6c.sh",
+          "/tmp/claude-1000/-tmp-work-skill-creator/ebc344dd-343e-4822-903d-0866dfaa55d2/tasks/bvd24hgjh.output",
+          "/tmp/work-skill-creator/csv-tidy/SKILL.md",
+          "/tmp/work-skill-creator/csv-tidy/SKILL.md.tmp.3455.1b1b9e0a20dc"
+        ],
+        "unmatched_predicates": [
+          "./*.skill",
+          "./SKILL.md",
+          "./evals/evals.json",
+          "/tmp/eval_review_*.html",
+          "/tmp/skill-name/**",
+          "<workspace>/iteration-*/benchmark.json",
+          "<workspace>/iteration-*/benchmark.md",
+          "<workspace>/iteration-*/eval-*/eval_metadata.json",
+          "<workspace>/iteration-*/eval-*/grading.json",
+          "<workspace>/iteration-*/eval-*/old_skill/outputs/**",
+          "<workspace>/iteration-*/eval-*/timing.json",
+          "<workspace>/iteration-*/eval-*/with_skill/outputs/**",
+          "<workspace>/iteration-*/eval-*/without_skill/outputs/**",
+          "<workspace>/skill-snapshot/**"
+        ]
+      },
+      "paths_deleted": {
+        "n_predicted": 0,
+        "n_observed": 10,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json.tmp.3455.680930e48368",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/installed_plugins_v2.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778258407953-j8lj6c.sh",
+          "/tmp/claude-1000/-tmp-work-skill-creator/ebc344dd-343e-4822-903d-0866dfaa55d2/tasks/bvd24hgjh.output",
+          "/tmp/work-skill-creator/csv-tidy/SKILL.md.tmp.3455.1b1b9e0a20dc"
+        ],
+        "unmatched_predicates": []
+      }
+    },
+    "net_metrics": {
+      "hosts": {
+        "n_predicted": 1,
+        "n_observed": 1,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "http-intake.logs.us5.datadoghq.com"
+        ],
+        "unmatched_predicates": [
+          "api.anthropic.com"
+        ]
+      }
+    },
+    "subprocess_predicted": [
+      "python",
+      "cp",
+      "nohup",
+      "kill",
+      "open",
+      "claude"
+    ],
+    "rationale_predicted": "This skill orchestrates a full skill-creation lifecycle: drafting SKILL.md, snapshotting skills with cp, running eval subagents, aggregating benchmarks via python scripts, launching an HTML viewer with nohup python, and packaging into .skill files. It reads/writes the skill directory, evals JSON, and a workspace tree organized by iteration and eval ID. Network egress is implied by the description-optimization loop which invokes `claude -p` (hitting api.anthropic.com) to evaluate trigger queries. Subprocess footprint includes python (aggregation, viewer, packaging, optimization loop), cp (snapshotting), kill (viewer teardown), open (HTML preview), and claude CLI.",
+    "filter_stats": {
+      "paths_read_total": 695,
+      "paths_read_after_filter": 129,
+      "paths_written_total": 14,
+      "paths_written_after_filter": 7,
+      "hosts_total": 2,
+      "hosts_after_filter": 1
+    }
+  },
+  {
+    "skill_id": "web-search",
+    "claude_exit": 0,
+    "duration_seconds": 71,
+    "fs_metrics": {
+      "paths_read": {
+        "n_predicted": 1,
+        "n_observed": 144,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/System/Library/OpenSSL/certs",
+          "/bin",
+          "/home/claude/.claude/remote/.api_key",
+          "/home/claude/.claude/remote/.oauth_token",
+          "/home/sirray",
+          "/home/sirray/.bash_login",
+          "/home/sirray/.bash_profile",
+          "/home/sirray/.bashrc",
+          "/home/sirray/.claude",
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude/CLAUDE.md",
+          "/home/sirray/.claude/debug",
+          "/home/sirray/.claude/ide",
+          "/home/sirray/.claude/mcp-needs-auth-cache.json",
+          "/home/sirray/.claude/plugins",
+          "/home/sirray/.claude/plugins/cache",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/agents",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design"
+        ],
+        "unmatched_predicates": [
+          "./*.json"
+        ]
+      },
+      "paths_written": {
+        "n_predicted": 3,
+        "n_observed": 11,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude.json.tmp.848.62eb092b5819",
+          "/home/sirray/.claude/plugins/installed_plugins.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778256370617-1e238i.sh",
+          "/home/sirray/.local/bin/belt",
+          "/tmp/belt-Cdc24l/inferencesh-cli-v1.10.0-linux-amd64.tar.gz",
+          "/tmp/claude-1000/-tmp-work-web-search/879912b7-9e4f-4049-9233-3048e95bf02d/tasks/bft8lx94a.output",
+          "/tmp/claude-1000/-tmp-work-web-search/879912b7-9e4f-4049-9233-3048e95bf02d/tasks/bi5kmolnq.output",
+          "/tmp/claude-1000/-tmp-work-web-search/879912b7-9e4f-4049-9233-3048e95bf02d/tasks/blnsnhjeo.output",
+          "/tmp/claude-1000/-tmp-work-web-search/879912b7-9e4f-4049-9233-3048e95bf02d/tasks/bzluhxe7a.output",
+          "inferencesh-cli-v1.10.0-linux-amd64"
+        ],
+        "unmatched_predicates": [
+          "./*.json",
+          "./content.json",
+          "./search_results.json"
+        ]
+      },
+      "paths_deleted": {
+        "n_predicted": 0,
+        "n_observed": 16,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json.tmp.848.62eb092b5819",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/installed_plugins_v2.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778256370617-1e238i.sh",
+          "/home/sirray/.local/bin/inferencesh",
+          "/home/sirray/.local/bin/infsh",
+          "/tmp/belt-Cdc24l/inferencesh-cli-v1.10.0-linux-amd64",
+          "/tmp/belt-Cdc24l/inferencesh-cli-v1.10.0-linux-amd64.tar.gz",
+          "/tmp/claude-1000/-tmp-work-web-search/879912b7-9e4f-4049-9233-3048e95bf02d/tasks/bft8lx94a.output",
+          "/tmp/claude-1000/-tmp-work-web-search/879912b7-9e4f-4049-9233-3048e95bf02d/tasks/bi5kmolnq.output",
+          "/tmp/claude-1000/-tmp-work-web-search/879912b7-9e4f-4049-9233-3048e95bf02d/tasks/blnsnhjeo.output",
+          "/tmp/claude-1000/-tmp-work-web-search/879912b7-9e4f-4049-9233-3048e95bf02d/tasks/bzluhxe7a.output"
+        ],
+        "unmatched_predicates": []
+      }
+    },
+    "net_metrics": {
+      "hosts": {
+        "n_predicted": 5,
+        "n_observed": 4,
+        "n_covered": 1,
+        "n_useful_predicates": 1,
+        "precision": 0.2,
+        "recall": 0.25,
+        "f1": 0.22222222222222224,
+        "jaccard": 0.125,
+        "false_negatives": [
+          "http-intake.logs.us5.datadoghq.com",
+          "raw.githubusercontent.com",
+          "registry.npmjs.org"
+        ],
+        "unmatched_predicates": [
+          "api.exa.ai",
+          "api.tavily.com",
+          "cloud.inference.sh",
+          "openrouter.ai"
+        ]
+      }
+    },
+    "subprocess_predicted": [
+      "belt",
+      "npx"
+    ],
+    "rationale_predicted": "The skill drives the inference.sh `belt` CLI to call Tavily and Exa search/extract apps, so the agent will spawn `belt` subprocesses (and possibly `npx` for the related-skills install commands). Workflows redirect output to local JSON files like search_results.json and content.json, implying writes (and subsequent reads) of relative .json files. Network egress goes to inference.sh's cloud endpoints, which proxy to Tavily and Exa providers, plus openrouter.ai for the LLM steps shown in the workflow examples.",
+    "filter_stats": {
+      "paths_read_total": 3292,
+      "paths_read_after_filter": 144,
+      "paths_written_total": 38,
+      "paths_written_after_filter": 11,
+      "hosts_total": 5,
+      "hosts_after_filter": 4
+    }
+  },
+  {
+    "skill_id": "wrangler",
+    "claude_exit": 0,
+    "duration_seconds": 42,
+    "fs_metrics": {
+      "paths_read": {
+        "n_predicted": 14,
+        "n_observed": 151,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          ".",
+          "/",
+          "/System/Library/OpenSSL/certs",
+          "/bin",
+          "/home",
+          "/home/claude/.claude/remote/.api_key",
+          "/home/claude/.claude/remote/.oauth_token",
+          "/home/sirray",
+          "/home/sirray/.bash_login",
+          "/home/sirray/.bash_profile",
+          "/home/sirray/.bashrc",
+          "/home/sirray/.claude",
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude/CLAUDE.md",
+          "/home/sirray/.claude/debug",
+          "/home/sirray/.claude/ide",
+          "/home/sirray/.claude/mcp-needs-auth-cache.json",
+          "/home/sirray/.claude/plugins",
+          "/home/sirray/.claude/plugins/cache",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/commands",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.claude-plugin",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.claude-plugin"
+        ],
+        "unmatched_predicates": [
+          "./.dev.vars",
+          "./.wrangler/state/*",
+          "./dist/*",
+          "./migrations/*",
+          "./node_modules/wrangler/config-schema.json",
+          "./package.json",
+          "./schema.sql",
+          "./secrets.json",
+          "./src/*",
+          "./vectors.ndjson",
+          "./vitest.config.ts",
+          "./worker-configuration.d.ts",
+          "./wrangler.jsonc",
+          "./wrangler.toml"
+        ]
+      },
+      "paths_written": {
+        "n_predicted": 12,
+        "n_observed": 16,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json",
+          "/home/sirray/.claude.json.tmp.3177.45293329eeef",
+          "/home/sirray/.claude/plugins/installed_plugins.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778258331257-36ibrq.sh",
+          "/home/sirray/.config/.wrangler/logs/wrangler-2026-05-08_16-39-11_507.log",
+          "/home/sirray/.config/.wrangler/metrics.json",
+          "/tmp/claude-1000/-tmp-work-wrangler/4d9587b3-526c-4278-95b9-ed6088d45170/tasks/b2kxxa0lt.output",
+          "/tmp/claude-1000/-tmp-work-wrangler/4d9587b3-526c-4278-95b9-ed6088d45170/tasks/bcctotce7.output",
+          "/tmp/claude-1000/-tmp-work-wrangler/4d9587b3-526c-4278-95b9-ed6088d45170/tasks/bprhrmfz3.output",
+          "/tmp/update-check/wrangler-latest.json",
+          "/tmp/work-wrangler/worker/.wrangler/tmp/deploy-nYI7mv/index.js",
+          "/tmp/work-wrangler/worker/.wrangler/tmp/deploy-nYI7mv/index.js.map",
+          "/tmp/work-wrangler/worker/src/index.ts",
+          "/tmp/work-wrangler/worker/src/index.ts.tmp.3177.d96295ceefa8",
+          "/tmp/work-wrangler/worker/wrangler.jsonc",
+          "/tmp/work-wrangler/worker/wrangler.jsonc.tmp.3177.e2eb5cc79e06"
+        ],
+        "unmatched_predicates": [
+          "./.dev.vars",
+          "./.wrangler/state/*",
+          "./backup.sql",
+          "./migrations/*",
+          "./node_modules/*",
+          "./package-lock.json",
+          "./package.json",
+          "./schema.sql",
+          "./src/*",
+          "./src/env.d.ts",
+          "./worker-configuration.d.ts",
+          "./wrangler.jsonc"
+        ]
+      },
+      "paths_deleted": {
+        "n_predicted": 1,
+        "n_observed": 15,
+        "n_covered": 0,
+        "n_useful_predicates": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": null,
+        "jaccard": 0.0,
+        "false_negatives": [
+          "/home/sirray/.claude.json.tmp.3177.45293329eeef",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/code-review/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/context7/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/feature-dev/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/cache/claude-plugins-official/github/unknown/.orphaned_at",
+          "/home/sirray/.claude/plugins/installed_plugins_v2.json",
+          "/home/sirray/.claude/shell-snapshots/snapshot-bash-1778258331257-36ibrq.sh",
+          "/tmp/claude-1000/-tmp-work-wrangler/4d9587b3-526c-4278-95b9-ed6088d45170/tasks/b2kxxa0lt.output",
+          "/tmp/claude-1000/-tmp-work-wrangler/4d9587b3-526c-4278-95b9-ed6088d45170/tasks/bcctotce7.output",
+          "/tmp/claude-1000/-tmp-work-wrangler/4d9587b3-526c-4278-95b9-ed6088d45170/tasks/bprhrmfz3.output",
+          "/tmp/work-wrangler/worker/.wrangler/tmp/deploy-nYI7mv/index.js",
+          "/tmp/work-wrangler/worker/.wrangler/tmp/deploy-nYI7mv/index.js.map",
+          "/tmp/work-wrangler/worker/src/index.ts.tmp.3177.d96295ceefa8",
+          "/tmp/work-wrangler/worker/wrangler.jsonc.tmp.3177.e2eb5cc79e06"
+        ],
+        "unmatched_predicates": [
+          "./.wrangler/state/*"
+        ]
+      }
+    },
+    "net_metrics": {
+      "hosts": {
+        "n_predicted": 6,
+        "n_observed": 3,
+        "n_covered": 2,
+        "n_useful_predicates": 2,
+        "precision": 0.3333333333333333,
+        "recall": 0.6666666666666666,
+        "f1": 0.4444444444444444,
+        "jaccard": 0.2857142857142857,
+        "false_negatives": [
+          "http-intake.logs.us5.datadoghq.com"
+        ],
+        "unmatched_predicates": [
+          "*.workers.dev",
+          "api.cloudflare.com",
+          "developers.cloudflare.com",
+          "workers.cloudflare.com"
+        ]
+      }
+    },
+    "subprocess_predicted": [
+      "wrangler",
+      "npm",
+      "npx",
+      "node",
+      "curl",
+      "docker"
+    ],
+    "rationale_predicted": "The wrangler skill is a CLI wrapper that primarily spawns the wrangler binary (via npm/npx) for Cloudflare Workers operations. It reads/writes wrangler.jsonc config, generates TypeScript types, manages migrations, and uses local state in .wrangler/state. It connects to Cloudflare APIs for deployment, KV/R2/D1/Vectorize operations, and fetches docs from developers.cloudflare.com. Container operations imply docker subprocess, and npm install is needed to bootstrap wrangler itself.",
+    "filter_stats": {
+      "paths_read_total": 1646,
+      "paths_read_after_filter": 151,
+      "paths_written_total": 27,
+      "paths_written_after_filter": 16,
+      "hosts_total": 4,
+      "hosts_after_filter": 3
+    }
+  }
+]

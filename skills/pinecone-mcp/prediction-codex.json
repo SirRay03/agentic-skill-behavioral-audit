@@ -1,0 +1,12 @@
+{
+  "paths_read": [],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [
+    "api.pinecone.io",
+    "*.pinecone.io",
+    "docs.pinecone.io"
+  ],
+  "subprocesses": [],
+  "rationale": "The skill is a prose reference for existing Pinecone MCP tools and does not instruct the agent to read, write, or delete local files. Exercising the primary verbs would call the MCP server to list, create, upsert, search, or rerank against Pinecone, implying network access to Pinecone control and data-plane hosts. No subprocess invocation is described; setup is only linked, not part of the skill workflow."
+}

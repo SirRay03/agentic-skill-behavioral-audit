@@ -1,0 +1,305 @@
+---
+import Layout from "@layouts/Layout.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import Tag from "@components/Tag.astro";
+import { getCollection } from "astro:content";
+import { u } from "@/lib/url";
+
+const all = (await getCollection("skills")).map((e) => e.data);
+
+// Sort: production first (by hosts F1 desc, nulls last), then augmented, mutation, adversarial
+const classOrder: Record<string, number> = {
+  production: 0,
+  augmented: 1,
+  adversarial: 2,
+  mutation: 3,
+};
+
+function f1Sortable(v: number | null): number {
+  return v === null ? -1 : v;
+}
+
+const sorted = all.sort((a, b) => {
+  const ca = classOrder[a.class] ?? 9;
+  const cb = classOrder[b.class] ?? 9;
+  if (ca !== cb) return ca - cb;
+  return f1Sortable(b.f1.hosts) - f1Sortable(a.f1.hosts);
+});
+
+function fmt(v: number | null, status: string): string {
+  if (status === "miss") return "miss";
+  if (v === null) return "—";
+  return v.toFixed(3);
+}
+
+function cellClass(v: number | null, status: string): string {
+  if (status === "miss") return "text-red-700 font-semibold";
+  if (v === null) return "text-ink-400";
+  if (v >= 0.7) return "text-emerald-700";
+  if (v >= 0.4) return "text-amber-700";
+  return "text-red-700";
+}
+---
+
+<Layout title="Skills · Agentic Skill Auditor" wide>
+  <SectionHeader
+    eyebrow="Per-skill drill-down"
+    title="35 audited skills"
+    subtitle="25 production + 3 augmented + 6 mutations + 1 adversarial. Sort by clicking column headers; filter by class. Click any skill to see the full per-skill record (SKILL.md, three predictions, trace, policy bundle if available)."
+  />
+
+  <!-- Filter chips -->
+  <div class="mb-4 flex flex-wrap gap-2 items-center text-sm">
+    <span class="text-ink-500 mr-1">Class:</span>
+    <button
+      data-filter="all"
+      class="filter-btn px-2 py-1 border border-ink-300 rounded text-xs uppercase tracking-wider font-mono hover:border-ink-900 active-filter"
+      data-default="true"
+    >
+      all (35)
+    </button>
+    <button
+      data-filter="production"
+      class="filter-btn px-2 py-1 border border-ink-300 rounded text-xs uppercase tracking-wider font-mono hover:border-ink-900"
+    >
+      production (25)
+    </button>
+    <button
+      data-filter="augmented"
+      class="filter-btn px-2 py-1 border border-ink-300 rounded text-xs uppercase tracking-wider font-mono hover:border-ink-900"
+    >
+      augmented (3)
+    </button>
+    <button
+      data-filter="mutation"
+      class="filter-btn px-2 py-1 border border-ink-300 rounded text-xs uppercase tracking-wider font-mono hover:border-ink-900"
+    >
+      mutation (6)
+    </button>
+    <button
+      data-filter="adversarial"
+      class="filter-btn px-2 py-1 border border-ink-300 rounded text-xs uppercase tracking-wider font-mono hover:border-ink-900"
+    >
+      adversarial (1)
+    </button>
+    <span class="ml-3 text-ink-500">Cluster:</span>
+    <button
+      data-cluster="all"
+      class="cluster-btn px-2 py-1 border border-ink-300 rounded text-xs uppercase tracking-wider font-mono hover:border-ink-900 active-cluster"
+      data-default="true"
+    >
+      all
+    </button>
+    <button
+      data-cluster="high-f1"
+      class="cluster-btn px-2 py-1 border border-ink-300 rounded text-xs uppercase tracking-wider font-mono hover:border-ink-900"
+    >
+      high-f1
+    </button>
+    <button
+      data-cluster="low-f1"
+      class="cluster-btn px-2 py-1 border border-ink-300 rounded text-xs uppercase tracking-wider font-mono hover:border-ink-900"
+    >
+      low-f1
+    </button>
+    <button
+      data-cluster="no-network"
+      class="cluster-btn px-2 py-1 border border-ink-300 rounded text-xs uppercase tracking-wider font-mono hover:border-ink-900"
+    >
+      no-network
+    </button>
+  </div>
+
+  <div class="overflow-x-auto border border-ink-200 rounded-md bg-white">
+    <table class="w-full text-sm tabular" id="skills-table">
+      <thead class="bg-ink-100/60 text-[11px] uppercase tracking-wider text-ink-600">
+        <tr>
+          <th class="text-left px-3 py-2 sortable cursor-pointer" data-sort="id">Skill</th>
+          <th class="text-left px-3 py-2 sortable cursor-pointer" data-sort="owner">Owner</th>
+          <th class="text-left px-3 py-2 sortable cursor-pointer" data-sort="category">Category</th>
+          <th class="text-left px-3 py-2 sortable cursor-pointer" data-sort="cluster">Cluster</th>
+          <th class="text-right px-3 py-2 sortable cursor-pointer" data-sort="f1_hosts">F1 hosts</th>
+          <th class="text-right px-3 py-2 sortable cursor-pointer" data-sort="f1_paths_read">F1 read</th>
+          <th class="text-right px-3 py-2 sortable cursor-pointer" data-sort="f1_paths_written">F1 write</th>
+          <th class="text-center px-3 py-2">Variants</th>
+          <th class="text-center px-3 py-2">Policy</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-ink-100">
+        {
+          sorted.map((s) => {
+            const f1h = s.f1.hosts;
+            const f1r = s.f1.paths_read;
+            const f1w = s.f1.paths_written;
+            const status = (s as any).f1_status ?? { paths_read: "ok", paths_written: "ok", hosts: "ok" };
+            // Sort key: miss treated as worst (-2), match/no-data neutral (-1), ok = value
+            const sortKey = (v: number | null, st: string): number => {
+              if (st === "miss") return -2;
+              if (v === null) return -1;
+              return v;
+            };
+            return (
+              <tr
+                class="hover:bg-accent-50/40 transition-colors skill-row"
+                data-class={s.class}
+                data-cluster={s.cluster}
+                data-id={s.id}
+                data-owner={s.owner ?? ""}
+                data-category={s.category}
+                data-f1_hosts={sortKey(f1h, status.hosts)}
+                data-f1_paths_read={sortKey(f1r, status.paths_read)}
+                data-f1_paths_written={sortKey(f1w, status.paths_written)}
+              >
+                <td class="px-3 py-2">
+                  <a
+                    href={u(`/skills/${s.id}`)}
+                    class="font-medium text-ink-900 no-underline hover:text-accent-700"
+                  >
+                    {s.id}
+                  </a>
+                </td>
+                <td class="px-3 py-2 text-ink-600">{s.owner ?? "—"}</td>
+                <td class="px-3 py-2 text-ink-600">{s.category}</td>
+                <td class="px-3 py-2">
+                  <Tag variant={s.cluster as any} size="xs" />
+                </td>
+                <td class="px-3 py-2 text-right font-mono" title={status.hosts === "miss" ? "predictor missed entirely" : ""}>
+                  <span class={cellClass(f1h, status.hosts)}>{fmt(f1h, status.hosts)}</span>
+                </td>
+                <td class="px-3 py-2 text-right font-mono" title={status.paths_read === "miss" ? "predictor missed entirely" : ""}>
+                  <span class={cellClass(f1r, status.paths_read)}>{fmt(f1r, status.paths_read)}</span>
+                </td>
+                <td class="px-3 py-2 text-right font-mono" title={status.paths_written === "miss" ? "predictor missed entirely" : ""}>
+                  <span class={cellClass(f1w, status.paths_written)}>{fmt(f1w, status.paths_written)}</span>
+                </td>
+                <td class="px-3 py-2 text-center text-xs text-ink-500">
+                  <span class="font-mono">
+                    {[
+                      s.has_trace.codex && "codex",
+                      s.has_trace.realcreds && "real",
+                      s.has_trace.multitask && "L",
+                      s.has_trace.stability && "K",
+                      s.has_trace.effort && "N",
+                    ]
+                      .filter(Boolean)
+                      .join(" · ") || "—"}
+                  </span>
+                </td>
+                <td class="px-3 py-2 text-center">
+                  {s.has_policy ? (
+                    <span class="inline-block w-2 h-2 rounded-full bg-accent-500" title="Has skill-policy.json bundle"></span>
+                  ) : (
+                    <span class="text-ink-300">—</span>
+                  )}
+                </td>
+              </tr>
+            );
+          })
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <p class="mt-4 text-xs text-ink-500 max-w-3xl leading-relaxed">
+    F1 cells: green ≥0.7, amber ≥0.4, red &lt;0.4. <strong class="text-red-700">miss</strong>
+    means the predictor named patterns that matched nothing observed (precision = recall = 0,
+    F1 mathematically undefined but functionally a complete miss). <code>—</code> means a
+    true empty-vs-empty match — no observed activity on that axis and no prediction either.
+    F1 uses <strong>predicate-style</strong> coverage, so a single predicate like
+    <code>./*.py</code> can cover hundreds of observed paths.
+    <br /><br />
+    Variants column: <code>codex</code> = cross-agent trace under Codex CLI ·
+    <code>real</code> = real-credentials variant · <code>L</code> = multi-task fuzzing
+    (alternate prompts) · <code>K</code> = repeat-invocation stability · <code>N</code>
+    = runtime-effort sensitivity. Policy column lights when a registry-deployable
+    <code>skill-policy.json</code> bundle exists (5 of 25 skills generated as Phase 2.I prototype).
+  </p>
+</Layout>
+
+<script is:inline>
+  (() => {
+    const table = document.getElementById("skills-table");
+    if (!table) return;
+    const tbody = table.querySelector("tbody");
+    const rows = Array.from(tbody.querySelectorAll("tr.skill-row"));
+
+    let sortKey = "f1_hosts";
+    let sortDir = -1; // descending
+
+    function applySort() {
+      const sorted = [...rows].sort((a, b) => {
+        const aRaw = a.dataset[sortKey];
+        const bRaw = b.dataset[sortKey];
+        const aNum = parseFloat(aRaw);
+        const bNum = parseFloat(bRaw);
+        if (!isNaN(aNum) && !isNaN(bNum)) {
+          return sortDir * (aNum - bNum);
+        }
+        return sortDir * (aRaw || "").localeCompare(bRaw || "");
+      });
+      sorted.forEach((r) => tbody.appendChild(r));
+    }
+
+    table.querySelectorAll("th.sortable").forEach((th) => {
+      th.addEventListener("click", () => {
+        const key = th.dataset.sort;
+        if (sortKey === key) sortDir = -sortDir;
+        else {
+          sortKey = key;
+          sortDir = key.startsWith("f1") ? -1 : 1;
+        }
+        // visual indicator
+        table.querySelectorAll("th.sortable").forEach((t) => {
+          t.dataset.active = "";
+        });
+        th.dataset.active = sortDir === 1 ? "asc" : "desc";
+        applySort();
+      });
+    });
+
+    let activeFilter = "all";
+    let activeCluster = "all";
+
+    function applyFilters() {
+      rows.forEach((r) => {
+        const matchClass = activeFilter === "all" || r.dataset.class === activeFilter;
+        const matchCluster = activeCluster === "all" || r.dataset.cluster === activeCluster;
+        r.style.display = matchClass && matchCluster ? "" : "none";
+      });
+    }
+
+    document.querySelectorAll(".filter-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active-filter"));
+        btn.classList.add("active-filter");
+        activeFilter = btn.dataset.filter;
+        applyFilters();
+      });
+    });
+    document.querySelectorAll(".cluster-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".cluster-btn").forEach((b) => b.classList.remove("active-cluster"));
+        btn.classList.add("active-cluster");
+        activeCluster = btn.dataset.cluster;
+        applyFilters();
+      });
+    });
+  })();
+</script>
+
+<style>
+  .active-filter,
+  .active-cluster {
+    background: var(--color-ink-900);
+    color: white;
+    border-color: var(--color-ink-900);
+  }
+  th.sortable[data-active="asc"]::after {
+    content: " ↑";
+    opacity: 0.7;
+  }
+  th.sortable[data-active="desc"]::after {
+    content: " ↓";
+    opacity: 0.7;
+  }
+</style>

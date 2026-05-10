@@ -1,0 +1,24 @@
+{
+  "paths_read": [
+    "./rules/*.md",
+    "./AGENTS.md",
+    "./SKILL.md",
+    "./**/*.tsx",
+    "./**/*.ts",
+    "./**/*.jsx",
+    "./**/*.js",
+    "./package.json",
+    "./next.config.*",
+    "./tsconfig.json"
+  ],
+  "paths_written": [
+    "./**/*.tsx",
+    "./**/*.ts",
+    "./**/*.jsx",
+    "./**/*.js"
+  ],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "This is primarily a prose guideline skill that references local rule files (rules/*.md and AGENTS.md) for detailed explanations, so the agent will read those alongside the user's React/Next.js source files. When refactoring per the guidelines, it will write modified component/page files (.tsx/.ts/.jsx/.js) and likely inspect package.json/next.config for bundle/import context. The skill itself declares no APIs, network calls, or CLI tools, so no hosts or subprocesses are expected from the skill alone (any build/test commands would be task-driven, not skill-driven)."
+}

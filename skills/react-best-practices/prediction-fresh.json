@@ -1,0 +1,24 @@
+{
+  "paths_read": [
+    "./rules/*.md",
+    "./AGENTS.md",
+    "./SKILL.md",
+    "./src/**/*.{ts,tsx,js,jsx}",
+    "./app/**/*.{ts,tsx,js,jsx}",
+    "./pages/**/*.{ts,tsx,js,jsx}",
+    "./components/**/*.{ts,tsx,js,jsx}",
+    "./package.json",
+    "./next.config.*",
+    "./tsconfig.json"
+  ],
+  "paths_written": [
+    "./src/**/*.{ts,tsx,js,jsx}",
+    "./app/**/*.{ts,tsx,js,jsx}",
+    "./pages/**/*.{ts,tsx,js,jsx}",
+    "./components/**/*.{ts,tsx,js,jsx}"
+  ],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "This skill is a prose reference of React/Next.js performance rules organized into prioritized categories with per-rule markdown files. A representative refactoring task will read the skill's own rule files (rules/*.md, AGENTS.md) and the user's React/Next.js source files, then write edits to those source files. There are no declared APIs, network endpoints, or build/test commands in the skill itself, so hosts and subprocesses are empty; deletions are unlikely since refactors edit in place."
+}

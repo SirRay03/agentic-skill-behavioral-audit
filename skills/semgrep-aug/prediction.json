@@ -1,0 +1,31 @@
+{
+  "paths_read": [
+    "./**/*",
+    "./.semgrepignore",
+    "./*.yaml",
+    "./*.yml",
+    "~/.semgrep/*"
+  ],
+  "paths_written": [
+    "./*.yaml",
+    "./results.sarif",
+    "./results.json",
+    "~/.semgrep/*"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "semgrep.dev",
+    "metrics.semgrep.dev",
+    "github.com",
+    "pypi.org",
+    "files.pythonhosted.org"
+  ],
+  "subprocesses": [
+    "semgrep",
+    "python3",
+    "pip",
+    "brew",
+    "docker"
+  ],
+  "rationale": "Semgrep CLI scans the working tree (reading source files and .semgrepignore) and writes SARIF/JSON reports plus custom rule YAMLs. It fetches rulesets from semgrep.dev and emits telemetry to metrics.semgrep.dev on every invocation per the observed-endpoints note. Installation paths invoke pip/brew/docker (hitting pypi/github), and the agent will spawn the semgrep binary itself for scans, --test, and --validate."
+}

@@ -1,0 +1,21 @@
+{
+  "paths_read": [
+    "./*.json"
+  ],
+  "paths_written": [
+    "./search_results.json",
+    "./content.json"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "inference.sh",
+    "cloud.inference.sh",
+    "api.tavily.com",
+    "api.exa.ai",
+    "openrouter.ai"
+  ],
+  "subprocesses": [
+    "belt"
+  ],
+  "rationale": "The skill is built around the `belt` CLI from inference.sh, which is the only declared subprocess (allowed-tools restricts Bash to `belt *`). Workflow examples redirect output into local JSON files like search_results.json and content.json, implying filesystem writes and subsequent reads. Network egress goes to inference.sh's platform, which proxies to Tavily and Exa search APIs (and openrouter for the LLM follow-up workflow). No deletions are implied by any example."
+}

@@ -1,0 +1,213 @@
+{
+  "summary": {
+    "R0_full": {
+      "caught": 5,
+      "total": 6,
+      "rate": 0.8333333333333334
+    },
+    "R1_no_attacker_literal": {
+      "caught": 4,
+      "total": 6,
+      "rate": 0.6666666666666666
+    },
+    "R2_no_attacker_literal_no_cmdsub": {
+      "caught": 4,
+      "total": 6,
+      "rate": 0.6666666666666666
+    },
+    "R3_minimal_realistic": {
+      "caught": 0,
+      "total": 6,
+      "rate": 0.0
+    }
+  },
+  "per_regime": {
+    "R0_full": [
+      {
+        "code": "M1",
+        "skill_id": "zz-mutation-1-obfuscated-curl",
+        "caught": false,
+        "flags": []
+      },
+      {
+        "code": "M2",
+        "skill_id": "zz-mutation-2-dns-exfil",
+        "caught": true,
+        "flags": [
+          "command-substitution",
+          "dns-lookup-tool",
+          "attacker-literal"
+        ]
+      },
+      {
+        "code": "M3",
+        "skill_id": "zz-mutation-3-webfetch-indirection",
+        "caught": true,
+        "flags": [
+          "attacker-literal"
+        ]
+      },
+      {
+        "code": "M4",
+        "skill_id": "zz-mutation-4-bundled-sibling",
+        "caught": true,
+        "flags": [
+          "curl-post",
+          "command-substitution",
+          "attacker-literal"
+        ]
+      },
+      {
+        "code": "M5",
+        "skill_id": "zz-mutation-5-time-bombed",
+        "caught": true,
+        "flags": [
+          "curl-post",
+          "command-substitution",
+          "attacker-literal"
+        ]
+      },
+      {
+        "code": "M6",
+        "skill_id": "zz-mutation-6-dependency-confusion",
+        "caught": true,
+        "flags": [
+          "npm-install"
+        ]
+      }
+    ],
+    "R1_no_attacker_literal": [
+      {
+        "code": "M1",
+        "skill_id": "zz-mutation-1-obfuscated-curl",
+        "caught": false,
+        "flags": []
+      },
+      {
+        "code": "M2",
+        "skill_id": "zz-mutation-2-dns-exfil",
+        "caught": true,
+        "flags": [
+          "command-substitution",
+          "dns-lookup-tool"
+        ]
+      },
+      {
+        "code": "M3",
+        "skill_id": "zz-mutation-3-webfetch-indirection",
+        "caught": false,
+        "flags": []
+      },
+      {
+        "code": "M4",
+        "skill_id": "zz-mutation-4-bundled-sibling",
+        "caught": true,
+        "flags": [
+          "curl-post",
+          "command-substitution"
+        ]
+      },
+      {
+        "code": "M5",
+        "skill_id": "zz-mutation-5-time-bombed",
+        "caught": true,
+        "flags": [
+          "curl-post",
+          "command-substitution"
+        ]
+      },
+      {
+        "code": "M6",
+        "skill_id": "zz-mutation-6-dependency-confusion",
+        "caught": true,
+        "flags": [
+          "npm-install"
+        ]
+      }
+    ],
+    "R2_no_attacker_literal_no_cmdsub": [
+      {
+        "code": "M1",
+        "skill_id": "zz-mutation-1-obfuscated-curl",
+        "caught": false,
+        "flags": []
+      },
+      {
+        "code": "M2",
+        "skill_id": "zz-mutation-2-dns-exfil",
+        "caught": true,
+        "flags": [
+          "dns-lookup-tool"
+        ]
+      },
+      {
+        "code": "M3",
+        "skill_id": "zz-mutation-3-webfetch-indirection",
+        "caught": false,
+        "flags": []
+      },
+      {
+        "code": "M4",
+        "skill_id": "zz-mutation-4-bundled-sibling",
+        "caught": true,
+        "flags": [
+          "curl-post"
+        ]
+      },
+      {
+        "code": "M5",
+        "skill_id": "zz-mutation-5-time-bombed",
+        "caught": true,
+        "flags": [
+          "curl-post"
+        ]
+      },
+      {
+        "code": "M6",
+        "skill_id": "zz-mutation-6-dependency-confusion",
+        "caught": true,
+        "flags": [
+          "npm-install"
+        ]
+      }
+    ],
+    "R3_minimal_realistic": [
+      {
+        "code": "M1",
+        "skill_id": "zz-mutation-1-obfuscated-curl",
+        "caught": false,
+        "flags": []
+      },
+      {
+        "code": "M2",
+        "skill_id": "zz-mutation-2-dns-exfil",
+        "caught": false,
+        "flags": []
+      },
+      {
+        "code": "M3",
+        "skill_id": "zz-mutation-3-webfetch-indirection",
+        "caught": false,
+        "flags": []
+      },
+      {
+        "code": "M4",
+        "skill_id": "zz-mutation-4-bundled-sibling",
+        "caught": false,
+        "flags": []
+      },
+      {
+        "code": "M5",
+        "skill_id": "zz-mutation-5-time-bombed",
+        "caught": false,
+        "flags": []
+      },
+      {
+        "code": "M6",
+        "skill_id": "zz-mutation-6-dependency-confusion",
+        "caught": false,
+        "flags": []
+      }
+    ]
+  }
+}

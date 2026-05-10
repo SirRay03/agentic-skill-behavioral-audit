@@ -1,0 +1,50 @@
+{
+  "paths_read": [
+    "./wrangler.jsonc",
+    "./wrangler.toml",
+    "./package.json",
+    "./node_modules/wrangler/config-schema.json",
+    "./src/**",
+    "./migrations/*.sql",
+    "./.dev.vars",
+    "./.wrangler/state/**",
+    "./vitest.config.ts",
+    "./schema.sql",
+    "./vectors.ndjson",
+    "./secrets.json",
+    "./dist/**"
+  ],
+  "paths_written": [
+    "./wrangler.jsonc",
+    "./worker-configuration.d.ts",
+    "./src/env.d.ts",
+    "./.wrangler/state/**",
+    "./.dev.vars",
+    "./migrations/*.sql",
+    "./node_modules/**",
+    "./package.json",
+    "./package-lock.json",
+    "./backup.sql"
+  ],
+  "paths_deleted": [
+    "./.wrangler/state/**"
+  ],
+  "hosts": [
+    "developers.cloudflare.com",
+    "registry.npmjs.org",
+    "api.cloudflare.com",
+    "workers.cloudflare.com",
+    "*.workers.dev",
+    "dash.cloudflare.com",
+    "registry-1.docker.io"
+  ],
+  "subprocesses": [
+    "wrangler",
+    "npx",
+    "npm",
+    "node",
+    "curl",
+    "docker"
+  ],
+  "rationale": "The skill drives the Wrangler CLI for Cloudflare Workers, so it spawns wrangler (and npx/npm to install or invoke it) and reads/writes wrangler.jsonc, generated TypeScript bindings, .dev.vars, migrations, and the local .wrangler/state directory. It explicitly fetches Cloudflare docs and uses npm to install wrangler, implying network access to developers.cloudflare.com, registry.npmjs.org, and Cloudflare's deploy/auth APIs. Container subcommands invoke docker-style image builds/pushes against Cloudflare's registry (and potentially DockerHub/ECR), and observability/tail commands stream from Cloudflare endpoints. Deletes are largely confined to local dev state, while remote deletions (KV, R2, D1, etc.) happen via the wrangler API rather than filesystem removal."
+}

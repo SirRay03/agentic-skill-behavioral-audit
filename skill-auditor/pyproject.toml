@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skill-auditor"
+version = "0.1.0"
+description = "Behavioural audit toolkit for agentic skills — derives sandbox policy from SKILL.md text via LLM extraction, and verifies against runtime traces."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Rayhan Putra", email = "rayhansiregar03@gmail.com"},
+]
+keywords = ["agentic-skills", "sandbox", "supply-chain-security", "claude-code", "policy-derivation"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = []
+
+[project.optional-dependencies]
+stats = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+]
+viz = [
+    "matplotlib>=3.8",
+]
+all = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "matplotlib>=3.8",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/SirRay03/agentic-skill-behavioral-audit"
+"Bug Tracker" = "https://github.com/SirRay03/agentic-skill-behavioral-audit/issues"
+"Repository" = "https://github.com/SirRay03/agentic-skill-behavioral-audit"
+
+[project.scripts]
+skill-auditor = "skill_auditor.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["skill_auditor*"]

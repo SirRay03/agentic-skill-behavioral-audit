@@ -1,0 +1,36 @@
+name: deploy
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+  issues:
+    types: [opened]
+
+jobs:
+  fork-pr-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - run: npm install && npm run build
+      - run: npm test
+
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Issue title: ${{ github.event.issue.title }}"
+          echo "Issue body: ${{ github.event.issue.body }}"
+
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      API_KEY: ${{ secrets.API_KEY }}
+      DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          echo "Deploying with API_KEY=$API_KEY"
+          curl -X POST "https://example.com/deploy?token=$DEPLOY_TOKEN" \
+            -H "X-API-Key: $API_KEY"

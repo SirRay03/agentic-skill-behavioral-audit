@@ -1,0 +1,31 @@
+{
+  "paths_read": [
+    "./*",
+    "~/.config/agent-browser/*",
+    "~/.cache/agent-browser/*",
+    "~/.agent-browser/*"
+  ],
+  "paths_written": [
+    "./*",
+    "~/.config/agent-browser/*",
+    "~/.cache/agent-browser/*",
+    "./screenshots/*",
+    "/tmp/*"
+  ],
+  "paths_deleted": [
+    "/tmp/*",
+    "~/.cache/agent-browser/*"
+  ],
+  "hosts": [
+    "*"
+  ],
+  "subprocesses": [
+    "agent-browser",
+    "npx",
+    "npm",
+    "node",
+    "chrome",
+    "chromium"
+  ],
+  "rationale": "The skill is a CLI wrapper around Chrome/Chromium via CDP for browser automation, so it will spawn the agent-browser binary (or via npx) and launch a browser subprocess. Browser automation implies arbitrary network access to any user-specified site, plus screenshot/state writes to disk and reads from session/auth vault config. Installation via npm and the 'skills get' subcommands suggest reading/writing local config and cache directories. Path and host predicates are broad because the skill's verbs (navigate, screenshot, scrape) target arbitrary user-chosen URLs and local artifact paths."
+}

@@ -1,0 +1,23 @@
+{
+  "paths_read": [
+    "./SKILL.md",
+    "./rules/*.md",
+    "./AGENTS.md",
+    "./package.json",
+    "./next.config.*",
+    "./app/**/*",
+    "./pages/**/*",
+    "./components/**/*",
+    "./src/**/*"
+  ],
+  "paths_written": [
+    "./app/**/*",
+    "./pages/**/*",
+    "./components/**/*",
+    "./src/**/*"
+  ],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "The skill is primarily a prose guideline for writing, reviewing, and refactoring React/Next.js code, so its representative use implies reading the project\u2019s React/Next source files and possibly writing modified components, pages, or app source. It explicitly tells the agent to read detailed rule files under rules/ and the compiled AGENTS.md guide. It declares no external APIs, network services, install steps, or command-line tools, so hosts and subprocesses are empty."
+}

@@ -1,0 +1,19 @@
+{
+  "paths_read": [
+    "./CONTEXT.md",
+    "./docs/adr/*",
+    "./LANGUAGE.md",
+    "./INTERFACE-DESIGN.md",
+    "../grill-with-docs/CONTEXT-FORMAT.md",
+    "../grill-with-docs/ADR-FORMAT.md",
+    "./**/*"
+  ],
+  "paths_written": [
+    "./CONTEXT.md",
+    "./docs/adr/*"
+  ],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "The skill walks the codebase to find architectural friction, so it reads broadly across project files plus the domain glossary (CONTEXT.md), ADRs in docs/adr/, and the bundled LANGUAGE.md/INTERFACE-DESIGN.md references. During the grilling loop it lazily creates or updates CONTEXT.md and may write new ADRs under docs/adr/. It does no network I/O and spawns no external binaries \u2014 exploration is delegated to the Explore subagent (in-process), and all side effects are local file edits."
+}

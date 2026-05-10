@@ -1,0 +1,11 @@
+{
+  "paths_read": [
+    "./*",
+    "**/*"
+  ],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "This is primarily a conversational/interviewing skill with no declared external integrations. The only IO implied is codebase exploration ('If a question can be answered by exploring the codebase, explore the codebase instead'), which means filesystem reads of project files via Read/Grep/Glob. No writes, deletions, network calls, or subprocesses are implied by the prose."
+}

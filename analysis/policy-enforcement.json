@@ -1,0 +1,78 @@
+[
+  {
+    "skill_id": "wrangler",
+    "trace_source": "trace-realcreds.json",
+    "allowlist": [
+      "developers.cloudflare.com",
+      "api.cloudflare.com",
+      "*.cloudflare.com",
+      "registry.npmjs.org",
+      "workers.cloudflare.com",
+      "*.workers.dev"
+    ],
+    "observed_skill_hosts": [
+      "sparrow.cloudflare.com"
+    ],
+    "per_host_classification": {
+      "sparrow.cloudflare.com": "ALLOWED-TELEMETRY"
+    },
+    "n_allowed_legit": 0,
+    "n_allowed_telemetry": 1,
+    "n_blocked_legit": 0,
+    "n_blocked_undeclared": 0,
+    "enforcement_outcome": "WOULD COMPLETE",
+    "agent_actual_outcome": "completed",
+    "agent_result_excerpt": "Dry-run succeeded. The worker bundle validates cleanly:\n\n- `worker/wrangler.jsonc` \u2014 minimal config (name, main, compatibility_date 2026-01-01)\n- `worker/src/index.ts` \u2014 basic fetch handler returning \"Hello, World!\"\n- Bundle size: 0.18 KiB, no bindings"
+  },
+  {
+    "skill_id": "firebase-hosting-basics",
+    "trace_source": "trace-realcreds.json",
+    "allowlist": [
+      "firebase.tools",
+      "registry.npmjs.org",
+      "*.firebaseio.com",
+      "*.googleapis.com",
+      "*.firebaseapp.com",
+      "*.web.app",
+      "localhost"
+    ],
+    "observed_skill_hosts": [
+      "firebase.googleapis.com",
+      "registry.npmjs.org",
+      "www.googleapis.com"
+    ],
+    "per_host_classification": {
+      "firebase.googleapis.com": "ALLOWED-LEGIT",
+      "registry.npmjs.org": "ALLOWED-LEGIT",
+      "www.googleapis.com": "ALLOWED-LEGIT"
+    },
+    "n_allowed_legit": 3,
+    "n_allowed_telemetry": 0,
+    "n_blocked_legit": 0,
+    "n_blocked_undeclared": 0,
+    "enforcement_outcome": "WOULD COMPLETE",
+    "agent_actual_outcome": "completed",
+    "agent_result_excerpt": "Emulator started successfully. Summary:\n\n**Project layout** at `./fb-test/`:\n- `public/index.html` \u2014 \"Hello World\" page\n- `firebase.json` \u2014 hosting config (public dir = `public`)\n- `.firebaserc` \u2014 default project `demo-test`\n\n**Emulator startup output** (cleaned of spinner/ANSI):\n\n```\ni  emulators: Starting emulators: hosting\ni  emulators: Detected demo project ID \"demo-test\", emulated services will use a demo configuration...\ni  hosting[demo-test]: Serving hosting files from: public\n\u2714  hosting["
+  },
+  {
+    "skill_id": "firecrawl-scrape",
+    "trace_source": "trace-realcreds.json",
+    "allowlist": [
+      "api.firecrawl.dev",
+      "*"
+    ],
+    "observed_skill_hosts": [
+      "api.firecrawl.dev"
+    ],
+    "per_host_classification": {
+      "api.firecrawl.dev": "ALLOWED-LEGIT"
+    },
+    "n_allowed_legit": 1,
+    "n_allowed_telemetry": 0,
+    "n_blocked_legit": 0,
+    "n_blocked_undeclared": 0,
+    "enforcement_outcome": "WOULD COMPLETE",
+    "agent_actual_outcome": "completed",
+    "agent_result_excerpt": "Saved to `./.firecrawl/page.md` (5 lines, main content only)."
+  }
+]

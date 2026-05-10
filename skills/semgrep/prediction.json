@@ -1,0 +1,31 @@
+{
+  "paths_read": [
+    "./**/*",
+    "./.semgrepignore",
+    "./*.yaml",
+    "./*.yml",
+    "./references/*.md"
+  ],
+  "paths_written": [
+    "./results.sarif",
+    "./results.json",
+    "./*.yaml",
+    "./<rule-id>/*"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "semgrep.dev",
+    "registry.semgrep.dev",
+    "github.com",
+    "raw.githubusercontent.com",
+    "*.semgrep.dev"
+  ],
+  "subprocesses": [
+    "semgrep",
+    "python3",
+    "pip",
+    "brew",
+    "docker"
+  ],
+  "rationale": "The skill primarily runs the semgrep CLI to scan code (reading source files across the project) and emits findings to stdout or output files like results.sarif/results.json. Rule creation involves writing YAML rule files and test files in a <rule-id>/ directory structure. Semgrep fetches rulesets like p/security-audit and p/owasp-top-ten from semgrep.dev's registry over the network, and installation may invoke pip, brew, or docker. Local references under references/ are also read."
+}

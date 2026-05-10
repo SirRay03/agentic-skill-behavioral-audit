@@ -1,0 +1,42 @@
+{
+  "paths_read": [
+    "./.env",
+    "./.gitignore",
+    "./package.json",
+    "./package-lock.json",
+    "./prisma/schema.prisma",
+    "./prisma.config.ts",
+    "./prisma/migrations/**",
+    "./references/auth.md",
+    "./references/api-basics.md",
+    "./references/endpoints.md",
+    "./references/prisma7-client.md"
+  ],
+  "paths_written": [
+    "./.env",
+    "./.gitignore",
+    "./package.json",
+    "./package-lock.json",
+    "./node_modules/**",
+    "./prisma/schema.prisma",
+    "./prisma.config.ts",
+    "./prisma/migrations/**",
+    "./generated/prisma/**",
+    "./test-connection.ts"
+  ],
+  "paths_deleted": [
+    "./test-connection.ts"
+  ],
+  "hosts": [
+    "api.prisma.io",
+    "console.prisma.io",
+    "registry.npmjs.org",
+    "*.prisma.io"
+  ],
+  "subprocesses": [
+    "curl",
+    "npm",
+    "npx"
+  ],
+  "rationale": "The skill provisions Prisma Postgres via curl calls to the Prisma Management API, may direct the user to Prisma Console, installs npm packages, and runs Prisma/tsx through npx. It reads local env/config/schema files and bundled reference docs, then writes project configuration, Prisma schema/config, dependencies, migrations, generated client files, and a temporary connection test script. The verification script connects to the newly provisioned Prisma Postgres database using the returned DATABASE_URL, and the temporary script is deleted after success."
+}

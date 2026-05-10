@@ -1,0 +1,318 @@
+[
+  {
+    "skill_id": "firecrawl-scrape",
+    "trace_used": "trace-realcreds.json",
+    "observed_hosts": [
+      "api.anthropic.com",
+      "api.firecrawl.dev",
+      "http-intake.logs.us5.datadoghq.com",
+      "mcp-proxy.anthropic.com"
+    ],
+    "per_host": [
+      {
+        "host": "api.anthropic.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": true,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": true,
+        "G3_iptables_simulated": true,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "api.firecrawl.dev",
+        "on_skill_allowlist": true,
+        "on_base_policy_allowlist": false,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": true,
+        "G3_iptables_simulated": true,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "http-intake.logs.us5.datadoghq.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": true,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": true,
+        "G3_iptables_simulated": true,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "mcp-proxy.anthropic.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": true,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": true,
+        "G3_iptables_simulated": true,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      }
+    ],
+    "aggregate": {
+      "G1_admit_rate": 0.0,
+      "G2_admit_rate": 1.0,
+      "G3_admit_rate": 1.0
+    }
+  },
+  {
+    "skill_id": "wrangler",
+    "trace_used": "trace-realcreds.json",
+    "observed_hosts": [
+      "api.anthropic.com",
+      "http-intake.logs.us5.datadoghq.com",
+      "sparrow.cloudflare.com"
+    ],
+    "per_host": [
+      {
+        "host": "api.anthropic.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": true,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": true,
+        "G3_iptables_simulated": true,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "http-intake.logs.us5.datadoghq.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": true,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": true,
+        "G3_iptables_simulated": true,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "sparrow.cloudflare.com",
+        "on_skill_allowlist": true,
+        "on_base_policy_allowlist": false,
+        "is_known_telemetry": true,
+        "G1_unshare_net": false,
+        "G2_python_proxy": true,
+        "G3_iptables_simulated": true,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      }
+    ],
+    "aggregate": {
+      "G1_admit_rate": 0.0,
+      "G2_admit_rate": 1.0,
+      "G3_admit_rate": 1.0
+    }
+  },
+  {
+    "skill_id": "firebase-hosting-basics",
+    "trace_used": "trace-realcreds.json",
+    "observed_hosts": [
+      "api.anthropic.com",
+      "firebase.googleapis.com",
+      "http-intake.logs.us5.datadoghq.com",
+      "registry.npmjs.org",
+      "www.googleapis.com"
+    ],
+    "per_host": [
+      {
+        "host": "api.anthropic.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": true,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": true,
+        "G3_iptables_simulated": true,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "firebase.googleapis.com",
+        "on_skill_allowlist": true,
+        "on_base_policy_allowlist": false,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": true,
+        "G3_iptables_simulated": true,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "http-intake.logs.us5.datadoghq.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": true,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": true,
+        "G3_iptables_simulated": true,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "registry.npmjs.org",
+        "on_skill_allowlist": true,
+        "on_base_policy_allowlist": true,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": true,
+        "G3_iptables_simulated": true,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "www.googleapis.com",
+        "on_skill_allowlist": true,
+        "on_base_policy_allowlist": false,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": true,
+        "G3_iptables_simulated": true,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      }
+    ],
+    "aggregate": {
+      "G1_admit_rate": 0.0,
+      "G2_admit_rate": 1.0,
+      "G3_admit_rate": 1.0
+    }
+  },
+  {
+    "skill_id": "agent-browser",
+    "trace_used": "trace.json",
+    "observed_hosts": [
+      "accounts.google.com",
+      "android.clients.google.com",
+      "api.anthropic.com",
+      "clients2.google.com",
+      "content-autofill.googleapis.com",
+      "http-intake.logs.us5.datadoghq.com",
+      "mtalk.google.com",
+      "news.ycombinator.com",
+      "ogads-pa.clients6.google.com",
+      "play.google.com",
+      "www.google.com",
+      "www.gstatic.com"
+    ],
+    "per_host": [
+      {
+        "host": "accounts.google.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": false,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": false,
+        "G3_iptables_simulated": false,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "android.clients.google.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": false,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": false,
+        "G3_iptables_simulated": false,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "api.anthropic.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": true,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": true,
+        "G3_iptables_simulated": true,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "clients2.google.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": false,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": false,
+        "G3_iptables_simulated": false,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "content-autofill.googleapis.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": false,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": false,
+        "G3_iptables_simulated": false,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "http-intake.logs.us5.datadoghq.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": true,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": true,
+        "G3_iptables_simulated": true,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "mtalk.google.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": false,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": false,
+        "G3_iptables_simulated": false,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "news.ycombinator.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": false,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": false,
+        "G3_iptables_simulated": false,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "ogads-pa.clients6.google.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": false,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": false,
+        "G3_iptables_simulated": false,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "play.google.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": false,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": false,
+        "G3_iptables_simulated": false,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "www.google.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": false,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": false,
+        "G3_iptables_simulated": false,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      },
+      {
+        "host": "www.gstatic.com",
+        "on_skill_allowlist": false,
+        "on_base_policy_allowlist": false,
+        "is_known_telemetry": false,
+        "G1_unshare_net": false,
+        "G2_python_proxy": false,
+        "G3_iptables_simulated": false,
+        "G4_seccomp_only": "out-of-scope-for-hosts-axis"
+      }
+    ],
+    "aggregate": {
+      "G1_admit_rate": 0.0,
+      "G2_admit_rate": 0.16666666666666666,
+      "G3_admit_rate": 0.16666666666666666
+    }
+  }
+]

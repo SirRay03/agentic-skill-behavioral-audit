@@ -1,0 +1,18 @@
+{
+  "paths_read": [
+    "./.firecrawl/*"
+  ],
+  "paths_written": [
+    "./.firecrawl/*"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "api.firecrawl.dev",
+    "*"
+  ],
+  "subprocesses": [
+    "firecrawl",
+    "npx"
+  ],
+  "rationale": "The skill invokes the firecrawl CLI (or npx firecrawl) to scrape arbitrary user-provided URLs, so the subprocess fans out to any host on the web while the CLI itself talks to api.firecrawl.dev. Output is written to ./.firecrawl/ files (per the naming convention and -o flags), and the tips suggest reading those files back with grep/head. No deletions are described."
+}

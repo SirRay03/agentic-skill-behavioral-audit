@@ -1,0 +1,24 @@
+{
+  "paths_read": [
+    "./package.json",
+    "~/.claude/skills/*",
+    "./.claude/skills/*"
+  ],
+  "paths_written": [
+    "~/.claude/skills/*",
+    "./node_modules/*"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "skills.sh",
+    "registry.npmjs.org",
+    "github.com",
+    "raw.githubusercontent.com",
+    "codeload.github.com"
+  ],
+  "subprocesses": [
+    "npx",
+    "node"
+  ],
+  "rationale": "The skill's primary verb is invoking `npx skills find/add` to search and install skills, which spawns npx/node and downloads the skills CLI from npm and skill packages from GitHub. Installation writes skill files to a global skills directory (~/.claude/skills) and populates node_modules during npx execution. The skill also references the skills.sh leaderboard for browsing, implying potential web fetches to that host. No deletions are implied by the documented commands."
+}

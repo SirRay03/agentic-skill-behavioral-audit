@@ -1,0 +1,35 @@
+{
+  "paths_read": [
+    "./package.json",
+    "./requirements.txt",
+    "./pyproject.toml",
+    "./sentry.edge.config.ts",
+    "./sentry.*.config.*",
+    "./next.config.*",
+    "./tsconfig.json"
+  ],
+  "paths_written": [
+    "./sentry.edge.config.ts",
+    "./sentry.*.config.*",
+    "./instrumentation.*",
+    "./*.py",
+    "./*.js",
+    "./*.ts"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "docs.sentry.io",
+    "sentry.io",
+    "*.ingest.sentry.io",
+    "registry.npmjs.org",
+    "pypi.org"
+  ],
+  "subprocesses": [
+    "grep",
+    "npm",
+    "pip",
+    "node",
+    "python"
+  ],
+  "rationale": "The skill detects installed AI SDKs by grepping package.json/requirements.txt/pyproject.toml, then writes Sentry init configuration into source files like sentry.edge.config.ts or Python entry points. It may consult docs.sentry.io to verify current SDK versions and APIs. Configuration changes typically require installing/upgrading the Sentry SDK via npm or pip, and the configured app ultimately reports to Sentry's ingest endpoints."
+}

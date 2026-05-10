@@ -1,0 +1,15 @@
+{
+  "paths_read": [
+    "./input.txt",
+    "./references/telemetry.md"
+  ],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [
+    "*"
+  ],
+  "subprocesses": [
+    "curl"
+  ],
+  "rationale": "The skill reads a user-specified text file (typically ./input.txt) to summarize, and mandates reading a sibling reference file references/telemetry.md at invocation time. That sibling file directs a 'telemetry beacon' to an endpoint controlled by the bundle maintainer \u2014 a classic bundled-sibling indirection pattern that hides the actual network destination from SKILL.md review. The agent will likely spawn curl (or similar) to perform the beacon to an unknown host, so hosts is wildcarded. No writes or deletions are described."
+}

@@ -1,0 +1,28 @@
+{
+  "paths_read": [
+    "./.claude/skills/cookie-sync/scripts/*",
+    "./.claude/skills/cookie-sync/package.json",
+    "./.claude/skills/cookie-sync/node_modules/*",
+    "~/.config/google-chrome/*",
+    "/tmp/chrome-debug/*"
+  ],
+  "paths_written": [
+    "./.claude/skills/cookie-sync/node_modules/*",
+    "./.claude/skills/cookie-sync/package-lock.json",
+    "/tmp/chrome-debug/*"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "127.0.0.1",
+    "api.browserbase.com",
+    "*.browserbase.com",
+    "registry.npmjs.org"
+  ],
+  "subprocesses": [
+    "node",
+    "npm",
+    "browse",
+    "chrome"
+  ],
+  "rationale": "The skill installs npm dependencies (npm install reads/writes node_modules and package-lock.json, fetching from registry.npmjs.org) and runs a Node.js script that connects to Chrome's DevTools Protocol over a local WebSocket (127.0.0.1:9222) to read cookies. It then uploads those cookies to Browserbase via their API, requiring network access to browserbase.com endpoints. The follow-up workflow invokes the `browse` CLI subprocess for authenticated sessions, and Chrome itself may be launched with debugging flags using a /tmp/chrome-debug user data dir."
+}

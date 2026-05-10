@@ -1,0 +1,8 @@
+{
+  "paths_read": [],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "This skill is pure prose documentation describing prompting techniques for image generation models. It contains no executable instructions, no CLI commands, no API endpoints to call directly, and no file paths to read or write. It references sibling skills (find-models, compare-models) but does not itself perform any IO. A representative task exercising the primary verb (writing prompts) would only produce prompt text, not trigger filesystem, network, or subprocess activity."
+}

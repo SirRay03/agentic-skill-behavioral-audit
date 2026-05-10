@@ -1,0 +1,134 @@
+---
+import "../styles/global.css";
+import { u } from "@/lib/url";
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Override the default page max-width (e.g. wide tables). */
+  wide?: boolean;
+}
+
+const {
+  title,
+  description = "A dynamic behavioural auditor for agentic skills — Rayhan Putra · KTH MSc Cybersecurity (Autumn 2026)",
+  wide = false,
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const rawPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const pathname = base && rawPath.startsWith(base) ? rawPath.slice(base.length) || "/" : rawPath;
+
+const navItems = [
+  { href: "/", label: "Overview" },
+  { href: "/findings", label: "Findings" },
+  { href: "/skills", label: "Skills" },
+  { href: "/mutation-suite", label: "Mutations" },
+  { href: "/policy", label: "Policy" },
+  { href: "/methodology", label: "Methodology" },
+  { href: "/figures", label: "Figures" },
+  { href: "/about", label: "About" },
+];
+
+function isActive(href: string): boolean {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(href + "/");
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Rayhan Putra" />
+    <meta name="theme-color" content="#fafafa" />
+    <link
+      rel="preconnect"
+      href="https://rsms.me/"
+    />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <title>{title}</title>
+  </head>
+  <body class="text-ink-900 bg-ink-50">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:bg-ink-900 focus:text-white focus:px-3 focus:py-2 focus:rounded"
+    >
+      Skip to content
+    </a>
+    <header
+      class="border-b border-ink-200 bg-ink-50/85 backdrop-blur sticky top-0 z-30"
+    >
+      <div class="max-w-6xl mx-auto px-6 py-4 flex flex-wrap items-baseline gap-x-6 gap-y-2">
+        <a href={u("/")} class="group no-underline shrink-0">
+          <div
+            class="text-[11px] uppercase tracking-[0.18em] text-ink-500 leading-tight"
+          >
+            Behavioural audit · 2026-05-11
+          </div>
+          <div
+            class="font-semibold text-ink-900 group-hover:text-accent-600 leading-tight"
+          >
+            Agentic Skill Auditor
+          </div>
+        </a>
+        <nav
+          aria-label="Primary"
+          class="ml-auto flex flex-wrap gap-x-5 gap-y-1 text-sm"
+        >
+          {
+            navItems.map((item) => (
+              <a
+                href={u(item.href)}
+                class={`no-underline transition-colors ${
+                  isActive(item.href)
+                    ? "text-accent-600 font-medium"
+                    : "text-ink-600 hover:text-ink-900"
+                }`}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </header>
+
+    <main
+      id="main"
+      class={`mx-auto px-6 py-10 ${wide ? "max-w-6xl" : "max-w-4xl"}`}
+    >
+      <slot />
+    </main>
+
+    <footer class="border-t border-ink-200 mt-20 py-10 bg-ink-100/50">
+      <div
+        class="max-w-6xl mx-auto px-6 text-sm text-ink-600 grid sm:grid-cols-3 gap-6"
+      >
+        <div>
+          <div class="font-semibold text-ink-900">Rayhan Putra</div>
+          <div>KTH MSc Cybersecurity (Autumn 2026)</div>
+          <div>ITB STI 2021</div>
+        </div>
+        <div>
+          <div class="font-semibold text-ink-900">This audit</div>
+          <div>Submitted to Professor Monperrus, KTH ASSERT</div>
+          <div>2026-05-11 · Stockholm</div>
+        </div>
+        <div>
+          <div class="font-semibold text-ink-900">Sources</div>
+          <div>
+            <a href={u("/about#repo")}>Repository</a> ·
+            <a href={u("/about#report")}>Full report (PDF)</a>
+          </div>
+          <div class="text-xs text-ink-500 mt-2">
+            n=25 production skills + 1 adversarial + 6 mutations + 3 augmented variants
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

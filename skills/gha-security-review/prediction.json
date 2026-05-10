@@ -1,0 +1,26 @@
+{
+  "paths_read": [
+    ".github/workflows/*.yml",
+    ".github/workflows/*.yaml",
+    "action.yml",
+    "action.yaml",
+    ".github/actions/*/action.yml",
+    "CLAUDE.md",
+    "AGENTS.md",
+    "Makefile",
+    ".github/**/*.sh",
+    ".cursorrules",
+    "./skills/gha-security-review/references/*.md"
+  ],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [
+    "grep",
+    "find",
+    "cat",
+    "ls",
+    "git"
+  ],
+  "rationale": "This skill is a static security review of GitHub Actions workflows performed entirely via local file reading and grep-based pattern matching. It explicitly lists files to review (.github/workflows/*.yml, action.yml, local composite actions, CLAUDE.md/AGENTS.md/Makefile/shell scripts) and references (references/*.md) that the agent loads selectively. The allowed-tools are Read, Grep, Glob, Bash, Task \u2014 no network or write operations are implied; Bash is likely used only for read-only inspection commands like grep/find/git. No outputs are written to disk and no external hosts are contacted."
+}

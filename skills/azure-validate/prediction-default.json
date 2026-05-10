@@ -1,0 +1,29 @@
+{
+  "paths_read": [
+    ".azure/deployment-plan.md",
+    "./azure.yaml",
+    "./infra/*.bicep",
+    "./infra/*.tf",
+    "./infra/**/*",
+    "references/recipes/*",
+    "references/role-verification.md",
+    "references/global-rules.md"
+  ],
+  "paths_written": [
+    ".azure/deployment-plan.md"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "management.azure.com",
+    "login.microsoftonline.com",
+    "graph.microsoft.com",
+    "registry.terraform.io"
+  ],
+  "subprocesses": [
+    "azd",
+    "bicep",
+    "az",
+    "terraform"
+  ],
+  "rationale": "This skill orchestrates Azure pre-deployment validation by reading the existing deployment plan and infrastructure-as-code files (Bicep/Terraform/azure.yaml) and writing validation results back to the plan. The steps explicitly invoke validation commands like `azd provision --preview`, `bicep build`, and `terraform validate`, which spawn those CLIs and reach Azure ARM/Graph endpoints for what-if analysis and RBAC checks. Terraform validate may also contact the Terraform registry for provider metadata. No deletions are implied; the skill only updates the plan file and records proof."
+}

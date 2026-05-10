@@ -1,0 +1,35 @@
+{
+  "paths_read": [
+    "./package.json",
+    "./requirements.txt",
+    "./pyproject.toml",
+    "./sentry*.config.*",
+    "./src/**/*",
+    "./app/**/*",
+    "./pages/**/*",
+    "./requirements*.txt"
+  ],
+  "paths_written": [
+    "./sentry*.config.*",
+    "./src/**/*",
+    "./app/**/*",
+    "./pages/**/*",
+    "./requirements*.txt",
+    "./package.json",
+    "./pyproject.toml"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "docs.sentry.io",
+    "*.sentry.io",
+    "api.openai.com",
+    "api.anthropic.com",
+    "generativelanguage.googleapis.com",
+    "*.googleapis.com",
+    "huggingface.co"
+  ],
+  "subprocesses": [
+    "grep"
+  ],
+  "rationale": "The skill explicitly instructs the agent to detect installed AI SDKs by grepping package.json, requirements.txt, and pyproject.toml, then modify Sentry initialization and AI SDK call sites such as Next.js, Edge, Vercel AI, LangChain, or Python setup files. It says to verify current API details against docs.sentry.io and to make an LLM call plus check Sentry traces, implying outbound connections to Sentry and the configured AI provider APIs. No deletion behavior is described, and the only explicitly declared subprocess is grep."
+}

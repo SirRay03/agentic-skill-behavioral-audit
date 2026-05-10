@@ -1,0 +1,14 @@
+{
+  "paths_read": [
+    "./firestore.rules",
+    "./*.rules",
+    "./firebase.json",
+    "./firestore.indexes.json",
+    "./**/*.rules"
+  ],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "This skill is an auditor that reads Firestore security rules files (typically firestore.rules or referenced via firebase.json) and produces a JSON assessment as its output. It performs static analysis only \u2014 there's no indication of writing modifications, executing the Firebase CLI, or making network calls. The agent's footprint is limited to reading rule files in the working directory and emitting an in-conversation JSON report."
+}

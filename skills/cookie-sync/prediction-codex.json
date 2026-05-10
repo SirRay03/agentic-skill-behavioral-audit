@@ -1,0 +1,35 @@
+{
+  "paths_read": [
+    ".claude/skills/cookie-sync/SKILL.md",
+    ".claude/skills/cookie-sync/package.json",
+    ".claude/skills/cookie-sync/package-lock.json",
+    ".claude/skills/cookie-sync/scripts/cookie-sync.mjs",
+    ".claude/skills/cookie-sync/node_modules/*"
+  ],
+  "paths_written": [
+    ".claude/skills/cookie-sync/package-lock.json",
+    ".claude/skills/cookie-sync/node_modules/*"
+  ],
+  "paths_deleted": [
+    ".claude/skills/cookie-sync/node_modules/*"
+  ],
+  "hosts": [
+    "127.0.0.1",
+    "api.browserbase.com",
+    "*.browserbase.com",
+    "google.com",
+    "*.google.com",
+    "github.com",
+    "*.github.com",
+    "x.com",
+    "*.x.com",
+    "twitter.com",
+    "*.twitter.com"
+  ],
+  "subprocesses": [
+    "npm",
+    "node",
+    "browse"
+  ],
+  "rationale": "The primary workflow installs and runs a Node-based cookie sync script from the skill directory, so it reads the skill package/script files and may create or prune node_modules and package-lock data. Cookie extraction is via Chrome DevTools Protocol on the local remote-debugging endpoint rather than direct browser-profile file reads. The script must call Browserbase to create or update persistent contexts, and the documented browsing workflow may connect to authenticated target sites such as Google, GitHub, X/Twitter through the browse CLI."
+}

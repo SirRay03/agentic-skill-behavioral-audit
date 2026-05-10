@@ -1,0 +1,16 @@
+id,owner,repo,path,category,role
+frontend-design,anthropics,skills,skills/frontend-design,knowledge,control
+skill-creator,anthropics,skills,skills/skill-creator,fs-write-meta,predictable
+react-best-practices,vercel-labs,agent-skills,skills/react-best-practices,knowledge,control
+web-search,inference-skills,skills,tools/llm/web-search,network,simple
+firecrawl-scrape,firecrawl,cli,skills/firecrawl-scrape,network-broad,scraper
+agent-browser,vercel-labs,agent-browser,skills/agent-browser,broad,treatment
+firebase-hosting-basics,firebase,agent-skills,skills/firebase-hosting-basics,deploy,treatment
+wrangler,cloudflare,skills,skills/wrangler,deploy,treatment
+azure-validate,microsoft,azure-skills,skills/azure-validate,deploy,snyk-anomaly
+find-skills,vercel-labs,skills,skills/find-skills,meta,predictable
+grill-me,mattpocock,skills,skills/productivity/grill-me,knowledge,control-no-io
+improve-codebase-architecture,mattpocock,skills,skills/engineering/improve-codebase-architecture,fs-edit,treatment
+firebase-security-rules-auditor,firebase,agent-skills,skills/firebase-security-rules-auditor,audit,treatment
+cookie-sync,browserbase,skills,skills/cookie-sync,browser-secrets,treatment
+caveman,juliusbrussee,caveman,caveman,knowledge,control-no-io

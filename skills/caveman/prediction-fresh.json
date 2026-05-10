@@ -1,0 +1,8 @@
+{
+  "paths_read": [],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "This is a pure communication-style skill that modifies how the agent phrases responses (terse 'caveman' speech with intensity levels). It contains no instructions to read/write files, make network calls, or invoke subprocesses. All examples are illustrative prose about response style, not IO operations."
+}

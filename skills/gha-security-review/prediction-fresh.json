@@ -1,0 +1,27 @@
+{
+  "paths_read": [
+    ".github/workflows/*.yml",
+    ".github/workflows/*.yaml",
+    "action.yml",
+    "action.yaml",
+    ".github/actions/*/action.yml",
+    ".github/actions/*/action.yaml",
+    "CLAUDE.md",
+    "AGENTS.md",
+    "Makefile",
+    ".github/**/*.sh",
+    ".cursorrules",
+    "./references/*.md"
+  ],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [
+    "grep",
+    "find",
+    "cat",
+    "ls",
+    "git"
+  ],
+  "rationale": "This is a read-only audit skill that inspects GitHub Actions workflow files and related repo configs to identify exploitation patterns. It declares allowed-tools Read, Grep, Glob, Bash, Task \u2014 so it will read workflows, action definitions, and config files (CLAUDE.md, Makefile, scripts) plus its own bundled reference docs. The skill produces only a markdown report (no file writes, no deletions), and has no need for network access since it operates locally on the repo. Bash usage would be limited to local repo inspection commands like grep/find/git for tracing attack paths."
+}

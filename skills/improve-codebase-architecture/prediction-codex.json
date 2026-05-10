@@ -1,0 +1,19 @@
+{
+  "paths_read": [
+    "./CONTEXT.md",
+    "./docs/adr/*",
+    "./**/*",
+    "LANGUAGE.md",
+    "INTERFACE-DESIGN.md",
+    "../grill-with-docs/CONTEXT-FORMAT.md",
+    "../grill-with-docs/ADR-FORMAT.md"
+  ],
+  "paths_written": [
+    "./CONTEXT.md",
+    "./docs/adr/*.md"
+  ],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "The skill primarily reads project context, ADRs, architecture vocabulary, and source files while exploring architectural friction. It may write CONTEXT.md when domain terms are added or sharpened, and may create ADR files under docs/adr when the user wants to record a rejected candidate. No network endpoints or command-line subprocesses are declared by the skill text; the referenced Agent tool is a delegated exploration capability rather than a spawned binary."
+}

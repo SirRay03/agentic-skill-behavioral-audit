@@ -1,0 +1,659 @@
+{
+  "summary": {
+    "n_skills_compared": 29,
+    "n_skills_errored": 1,
+    "f1_paths_read": {
+      "mean": 0.3680306289784522,
+      "median": 0.1164963503649635
+    },
+    "f1_paths_written": {
+      "mean": 0.37510080164453125,
+      "median": 0.22649572649572652
+    },
+    "f1_hosts": {
+      "mean": 0.47465312465312465,
+      "median": 0.5
+    }
+  },
+  "stats": {
+    "f1_paths_read": {
+      "n": 20,
+      "mean": 0.3680306289784522,
+      "ci_lo": 0.18494442473363915,
+      "ci_hi": 0.5480234988649694
+    },
+    "f1_paths_written": {
+      "n": 12,
+      "mean": 0.37510080164453125,
+      "ci_lo": 0.23503643317230277,
+      "ci_hi": 0.5427214159504778
+    },
+    "f1_hosts": {
+      "n": 9,
+      "mean": 0.47465312465312465,
+      "ci_lo": 0.39897366522366523,
+      "ci_hi": 0.541553724053724
+    },
+    "jaccard_paths_read_jacc_orig_fresh": {
+      "n": 22,
+      "mean": 0.580251546698915,
+      "ci_lo": 0.4511511679110363,
+      "ci_hi": 0.7029204403053086
+    },
+    "jaccard_paths_read_jacc_orig_codex": {
+      "n": 23,
+      "mean": 0.2104340636629639,
+      "ci_lo": 0.1197446841308734,
+      "ci_hi": 0.3016059780302107
+    },
+    "jaccard_paths_read_jacc_fresh_codex": {
+      "n": 23,
+      "mean": 0.25460352509248724,
+      "ci_lo": 0.14904650265903466,
+      "ci_hi": 0.3587541482957673
+    },
+    "jaccard_paths_written_jacc_orig_fresh": {
+      "n": 19,
+      "mean": 0.5740454076367388,
+      "ci_lo": 0.41413386407194475,
+      "ci_hi": 0.7215201606958572
+    },
+    "jaccard_paths_written_jacc_orig_codex": {
+      "n": 19,
+      "mean": 0.1707688281217693,
+      "ci_lo": 0.09349024577933249,
+      "ci_hi": 0.2614712040911731
+    },
+    "jaccard_paths_written_jacc_fresh_codex": {
+      "n": 19,
+      "mean": 0.1889740376582482,
+      "ci_lo": 0.10619316721290403,
+      "ci_hi": 0.27946127337574705
+    },
+    "jaccard_hosts_jacc_orig_fresh": {
+      "n": 19,
+      "mean": 0.7229708887603624,
+      "ci_lo": 0.5500267495662232,
+      "ci_hi": 0.868060776942356
+    },
+    "jaccard_hosts_jacc_orig_codex": {
+      "n": 19,
+      "mean": 0.4310294968189705,
+      "ci_lo": 0.3041023231154811,
+      "ci_hi": 0.5475281954887218
+    },
+    "jaccard_hosts_jacc_fresh_codex": {
+      "n": 19,
+      "mean": 0.41025728657307603,
+      "ci_lo": 0.2946043430253956,
+      "ci_hi": 0.5222525062656641
+    },
+    "jaccard_subprocesses_jacc_orig_fresh": {
+      "n": 18,
+      "mean": 0.8008597883597884,
+      "ci_lo": 0.704935515873016,
+      "ci_hi": 0.8875413359788359
+    },
+    "jaccard_subprocesses_jacc_orig_codex": {
+      "n": 19,
+      "mean": 0.5722781604360552,
+      "ci_lo": 0.42752264183185223,
+      "ci_hi": 0.7189416942706416
+    },
+    "jaccard_subprocesses_jacc_fresh_codex": {
+      "n": 19,
+      "mean": 0.5307078886026254,
+      "ci_lo": 0.4013521347073979,
+      "ci_hi": 0.6666728008833273
+    },
+    "mcnemar": {
+      "n_a_both_caught": 6,
+      "n_b_static_only": 1,
+      "n_c_llm_only": 12,
+      "n_d_neither": 15,
+      "p_value_two_sided": 0.00341796875
+    },
+    "wilcoxon": {
+      "n_pairs": 11,
+      "static_mean": 0.2727272727272727,
+      "llm_mean": 0.6818181818181818,
+      "diff_mean": 0.4090909090909091,
+      "p_value_two_sided": 0.046875
+    },
+    "cluster_high": {
+      "k": 6,
+      "n": 20,
+      "phat": 0.3,
+      "ci_lo": 0.1454772448676043,
+      "ci_hi": 0.5189728183535235
+    },
+    "cluster_low": {
+      "k": 10,
+      "n": 20,
+      "phat": 0.5,
+      "ci_lo": 0.2992980081982123,
+      "ci_hi": 0.7007019918017877
+    }
+  },
+  "policy_eval": {
+    "summary": {
+      "n_skills_scored": 8,
+      "n_skills_total": 25,
+      "total_observed": 26,
+      "total_allowed_legit": 10,
+      "total_blocked_telemetry_or_undeclared": 13,
+      "total_blocked_unclassified": 3,
+      "legit_allow_rate": 0.7692307692307693,
+      "telemetry_catch_rate_against_total_observed": 0.5
+    },
+    "per_skill": [
+      {
+        "skill_id": "agent-browser",
+        "allowlist": [
+          "*"
+        ],
+        "observed_skill_attributable": [
+          "accounts.google.com",
+          "android.clients.google.com",
+          "clients2.google.com",
+          "content-autofill.googleapis.com",
+          "mtalk.google.com",
+          "news.ycombinator.com",
+          "ogads-pa.clients6.google.com",
+          "play.google.com",
+          "www.google.com",
+          "www.gstatic.com"
+        ],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [
+          "accounts.google.com",
+          "android.clients.google.com",
+          "clients2.google.com",
+          "content-autofill.googleapis.com",
+          "mtalk.google.com",
+          "ogads-pa.clients6.google.com",
+          "play.google.com",
+          "www.google.com",
+          "www.gstatic.com"
+        ],
+        "blocked_unclassified": [
+          "news.ycombinator.com"
+        ],
+        "n_observed": 10,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 9,
+        "n_blocked_unclassified": 1
+      },
+      {
+        "skill_id": "auth0-quickstart",
+        "allowlist": [
+          "auth0.com",
+          "*.auth0.com",
+          "github.com",
+          "auth0.github.io",
+          "community.auth0.com"
+        ],
+        "observed_skill_attributable": [
+          "registry.npmjs.org"
+        ],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [
+          "registry.npmjs.org"
+        ],
+        "n_observed": 1,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 1
+      },
+      {
+        "skill_id": "azure-validate",
+        "allowlist": [
+          "management.azure.com",
+          "login.microsoftonline.com",
+          "graph.microsoft.com",
+          "mcr.microsoft.com"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "caveman",
+        "allowlist": [],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "cloudformation",
+        "allowlist": [
+          "*.amazonaws.com",
+          "cloudformation.*.amazonaws.com",
+          "docs.aws.amazon.com"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "cookie-sync",
+        "allowlist": [
+          "127.0.0.1",
+          "api.browserbase.com",
+          "*.browserbase.com",
+          "registry.npmjs.org"
+        ],
+        "observed_skill_attributable": [
+          "registry.npmjs.org"
+        ],
+        "allowed_legit": [
+          "registry.npmjs.org"
+        ],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 1,
+        "n_allowed": 1,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "find-skills",
+        "allowlist": [
+          "skills.sh",
+          "registry.npmjs.org",
+          "github.com",
+          "raw.githubusercontent.com",
+          "codeload.github.com"
+        ],
+        "observed_skill_attributable": [
+          "add-skill.vercel.sh",
+          "registry.npmjs.org",
+          "skills.sh"
+        ],
+        "allowed_legit": [
+          "registry.npmjs.org",
+          "skills.sh"
+        ],
+        "blocked_telemetry_or_undeclared": [
+          "add-skill.vercel.sh"
+        ],
+        "blocked_unclassified": [],
+        "n_observed": 3,
+        "n_allowed": 2,
+        "n_blocked_telemetry": 1,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "firebase-hosting-basics",
+        "allowlist": [
+          "firebase.tools",
+          "registry.npmjs.org",
+          "*.firebaseio.com",
+          "*.googleapis.com",
+          "*.firebaseapp.com",
+          "*.web.app",
+          "localhost"
+        ],
+        "observed_skill_attributable": [
+          "firebase-public.firebaseio.com",
+          "github.com",
+          "registry.npmjs.org",
+          "release-assets.githubusercontent.com"
+        ],
+        "allowed_legit": [
+          "firebase-public.firebaseio.com",
+          "registry.npmjs.org"
+        ],
+        "blocked_telemetry_or_undeclared": [
+          "github.com",
+          "release-assets.githubusercontent.com"
+        ],
+        "blocked_unclassified": [],
+        "n_observed": 4,
+        "n_allowed": 2,
+        "n_blocked_telemetry": 2,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "firebase-security-rules-auditor",
+        "allowlist": [],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "firecrawl-scrape",
+        "allowlist": [
+          "api.firecrawl.dev",
+          "*"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "frontend-design",
+        "allowlist": [
+          "fonts.googleapis.com",
+          "fonts.gstatic.com",
+          "registry.npmjs.org",
+          "cdn.jsdelivr.net",
+          "unpkg.com"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "gha-security-review",
+        "allowlist": [],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "grill-me",
+        "allowlist": [],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "improve-codebase-architecture",
+        "allowlist": [],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "pinecone-mcp",
+        "allowlist": [
+          "*.pinecone.io",
+          "api.pinecone.io"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "prisma-postgres-setup",
+        "allowlist": [
+          "api.prisma.io",
+          "console.prisma.io",
+          "registry.npmjs.org"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "prompt-images",
+        "allowlist": [],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "react-best-practices",
+        "allowlist": [],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "semgrep",
+        "allowlist": [
+          "semgrep.dev",
+          "registry.semgrep.dev",
+          "github.com",
+          "raw.githubusercontent.com",
+          "*.semgrep.dev"
+        ],
+        "observed_skill_attributable": [
+          "metrics.semgrep.dev",
+          "semgrep.dev"
+        ],
+        "allowed_legit": [
+          "metrics.semgrep.dev",
+          "semgrep.dev"
+        ],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 2,
+        "n_allowed": 2,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "sentry-setup-ai-monitoring",
+        "allowlist": [
+          "docs.sentry.io",
+          "sentry.io",
+          "registry.npmjs.org",
+          "pypi.org"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "skill-creator",
+        "allowlist": [
+          "api.anthropic.com"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "vercel-sandbox",
+        "allowlist": [
+          "api.vercel.com",
+          "registry.npmjs.org",
+          "vercel.com",
+          "*.vercel.app",
+          "example.com"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "web-search",
+        "allowlist": [
+          "inference.sh",
+          "cloud.inference.sh",
+          "api.tavily.com",
+          "api.exa.ai",
+          "openrouter.ai"
+        ],
+        "observed_skill_attributable": [
+          "dist.inference.sh",
+          "raw.githubusercontent.com",
+          "registry.npmjs.org"
+        ],
+        "allowed_legit": [
+          "dist.inference.sh"
+        ],
+        "blocked_telemetry_or_undeclared": [
+          "raw.githubusercontent.com"
+        ],
+        "blocked_unclassified": [
+          "registry.npmjs.org"
+        ],
+        "n_observed": 3,
+        "n_allowed": 1,
+        "n_blocked_telemetry": 1,
+        "n_blocked_unclassified": 1
+      },
+      {
+        "skill_id": "wrangler",
+        "allowlist": [
+          "developers.cloudflare.com",
+          "api.cloudflare.com",
+          "*.cloudflare.com",
+          "registry.npmjs.org",
+          "workers.cloudflare.com",
+          "*.workers.dev"
+        ],
+        "observed_skill_attributable": [
+          "registry.npmjs.org",
+          "sparrow.cloudflare.com"
+        ],
+        "allowed_legit": [
+          "registry.npmjs.org",
+          "sparrow.cloudflare.com"
+        ],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 2,
+        "n_allowed": 2,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      },
+      {
+        "skill_id": "xcode-project-setup",
+        "allowlist": [
+          "github.com",
+          "api.github.com",
+          "raw.githubusercontent.com",
+          "codeload.github.com",
+          "swift.org",
+          "download.swift.org"
+        ],
+        "observed_skill_attributable": [],
+        "allowed_legit": [],
+        "blocked_telemetry_or_undeclared": [],
+        "blocked_unclassified": [],
+        "n_observed": 0,
+        "n_allowed": 0,
+        "n_blocked_telemetry": 0,
+        "n_blocked_unclassified": 0
+      }
+    ]
+  },
+  "static_per_skill_count": 29,
+  "headline": [
+    {
+      "label": "Hosts F1 (mean)",
+      "value": "0.475",
+      "ci": "[0.399, 0.542]",
+      "note": "n=9 skills with defined hosts F1"
+    },
+    {
+      "label": "LLM vs static recall",
+      "value": "2.50×",
+      "ci": "Wilcoxon p=0.047",
+      "note": "McNemar p=0.003"
+    },
+    {
+      "label": "Mutation containment",
+      "value": "6/6",
+      "ci": "L1 83% · L2 67% · L3 100% · L4 100%",
+      "note": "L1 → 0/6 under realistic minimal regex"
+    },
+    {
+      "label": "Policy enforcement: legit-allow",
+      "value": "77%",
+      "ci": "n=8 skills with non-empty network surface",
+      "note": "telemetry-catch 50%"
+    },
+    {
+      "label": "Cross-LLM Jaccard (hosts)",
+      "value": "0.41",
+      "ci": "Claude vs Codex on n=25",
+      "note": "context-only Jaccard 0.72"
+    },
+    {
+      "label": "Bimodal split",
+      "value": "Mann-Whitney p=0.030",
+      "ci": "paths_read F1, U=6",
+      "note": "CLI-wrapper vs pure-text"
+    }
+  ],
+  "n_production": 25,
+  "n_mutations": 6,
+  "n_augmented": 3,
+  "n_adversarial": 1
+}

@@ -1,0 +1,541 @@
+{
+  "summary": {
+    "f1_paths_read": {
+      "orig": {
+        "n": 16,
+        "mean": 0.38925605095826193,
+        "values": [
+          0.9966442953020134,
+          0.028846153846153848,
+          0.05015673981191223,
+          0.06015037593984962,
+          0.019607843137254905,
+          0.030303030303030304,
+          0.9587628865979382,
+          1.0,
+          0.9722222222222222,
+          0.2975206611570248,
+          0.996825396825397,
+          0.07228915662650602,
+          0.2601626016260163,
+          0.2804878048780488,
+          0.16,
+          0.04411764705882353
+        ]
+      },
+      "fresh": {
+        "n": 16,
+        "mean": 0.41091828556759186,
+        "values": [
+          0.9949748743718593,
+          0.028708133971291867,
+          0.05015673981191223,
+          0.11678832116788321,
+          0.5957446808510638,
+          0.03007518796992481,
+          0.9538461538461539,
+          1.0,
+          0.9722222222222222,
+          0.2975206611570248,
+          0.9978813559322034,
+          0.0606060606060606,
+          0.25806451612903225,
+          0.013986013986013986,
+          0.16,
+          0.04411764705882353
+        ]
+      },
+      "codex": {
+        "n": 13,
+        "mean": 0.4513596456199439,
+        "values": [
+          0.9983193277310924,
+          0.028301886792452834,
+          0.05015673981191223,
+          0.019230769230769232,
+          0.2763157894736842,
+          0.9637305699481865,
+          1.0,
+          0.9722222222222222,
+          0.3,
+          0.9947312961011592,
+          0.17977528089887643,
+          0.04109589041095891,
+          0.043795620437956206
+        ]
+      }
+    },
+    "f1_paths_written": {
+      "orig": {
+        "n": 9,
+        "mean": 0.39346773552604164,
+        "values": [
+          0.9942196531791908,
+          0.2,
+          0.17391304347826086,
+          0.16666666666666666,
+          0.6923076923076923,
+          0.11111111111111112,
+          0.75,
+          0.23076923076923078,
+          0.22222222222222224
+        ]
+      },
+      "fresh": {
+        "n": 9,
+        "mean": 0.3548482069139346,
+        "values": [
+          0.9456740442655934,
+          0.2857142857142857,
+          0.2222222222222222,
+          0.23999999999999996,
+          0.18181818181818182,
+          0.64,
+          0.13333333333333333,
+          0.4615384615384615,
+          0.08333333333333334
+        ]
+      },
+      "codex": {
+        "n": 7,
+        "mean": 0.2655835760877778,
+        "values": [
+          0.022727272727272724,
+          0.1818181818181818,
+          0.39999999999999997,
+          0.18181818181818182,
+          0.6428571428571429,
+          0.3529411764705882,
+          0.07692307692307693
+        ]
+      }
+    },
+    "f1_hosts": {
+      "orig": {
+        "n": 6,
+        "mean": 0.43084415584415586,
+        "values": [
+          0.4,
+          0.5,
+          0.36363636363636365,
+          0.5714285714285715,
+          0.25,
+          0.5
+        ]
+      },
+      "fresh": {
+        "n": 6,
+        "mean": 0.47702020202020207,
+        "values": [
+          0.4,
+          0.5,
+          0.5454545454545454,
+          0.6666666666666666,
+          0.25,
+          0.5
+        ]
+      },
+      "codex": {
+        "n": 5,
+        "mean": 0.423982683982684,
+        "values": [
+          0.5,
+          0.18181818181818182,
+          0.6666666666666666,
+          0.2,
+          0.5714285714285715
+        ]
+      }
+    }
+  },
+  "results": {
+    "orig": {
+      "per_skill": {
+        "agent-browser": {
+          "f1_paths_read": 0.9966442953020134,
+          "f1_paths_written": 0.9942196531791908,
+          "f1_hosts": null
+        },
+        "auth0-quickstart": {
+          "f1_paths_read": 0.028846153846153848,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "azure-validate": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "caveman": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "cloudformation": {
+          "f1_paths_read": 0.05015673981191223,
+          "f1_paths_written": 0.2,
+          "f1_hosts": null
+        },
+        "cookie-sync": {
+          "f1_paths_read": 0.06015037593984962,
+          "f1_paths_written": null,
+          "f1_hosts": 0.4
+        },
+        "find-skills": {
+          "f1_paths_read": 0.019607843137254905,
+          "f1_paths_written": null,
+          "f1_hosts": 0.5
+        },
+        "firebase-hosting-basics": {
+          "f1_paths_read": 0.030303030303030304,
+          "f1_paths_written": 0.17391304347826086,
+          "f1_hosts": 0.36363636363636365
+        },
+        "firebase-security-rules-auditor": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "firecrawl-scrape": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "frontend-design": {
+          "f1_paths_read": 0.9587628865979382,
+          "f1_paths_written": 0.16666666666666666,
+          "f1_hosts": null
+        },
+        "gha-security-review": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "grill-me": {
+          "f1_paths_read": 1.0,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "improve-codebase-architecture": {
+          "f1_paths_read": 0.9722222222222222,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "pinecone-mcp": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "prisma-postgres-setup": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "prompt-images": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "react-best-practices": {
+          "f1_paths_read": 0.2975206611570248,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "semgrep": {
+          "f1_paths_read": 0.996825396825397,
+          "f1_paths_written": null,
+          "f1_hosts": 0.5714285714285715
+        },
+        "sentry-setup-ai-monitoring": {
+          "f1_paths_read": 0.07228915662650602,
+          "f1_paths_written": 0.6923076923076923,
+          "f1_hosts": null
+        },
+        "skill-creator": {
+          "f1_paths_read": 0.2601626016260163,
+          "f1_paths_written": 0.11111111111111112,
+          "f1_hosts": null
+        },
+        "vercel-sandbox": {
+          "f1_paths_read": 0.2804878048780488,
+          "f1_paths_written": 0.75,
+          "f1_hosts": null
+        },
+        "web-search": {
+          "f1_paths_read": 0.16,
+          "f1_paths_written": null,
+          "f1_hosts": 0.25
+        },
+        "wrangler": {
+          "f1_paths_read": 0.04411764705882353,
+          "f1_paths_written": 0.23076923076923078,
+          "f1_hosts": 0.5
+        },
+        "xcode-project-setup": {
+          "f1_paths_read": null,
+          "f1_paths_written": 0.22222222222222224,
+          "f1_hosts": null
+        }
+      }
+    },
+    "fresh": {
+      "per_skill": {
+        "agent-browser": {
+          "f1_paths_read": 0.9949748743718593,
+          "f1_paths_written": 0.9456740442655934,
+          "f1_hosts": null
+        },
+        "auth0-quickstart": {
+          "f1_paths_read": 0.028708133971291867,
+          "f1_paths_written": 0.2857142857142857,
+          "f1_hosts": null
+        },
+        "azure-validate": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "caveman": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "cloudformation": {
+          "f1_paths_read": 0.05015673981191223,
+          "f1_paths_written": 0.2222222222222222,
+          "f1_hosts": null
+        },
+        "cookie-sync": {
+          "f1_paths_read": 0.11678832116788321,
+          "f1_paths_written": null,
+          "f1_hosts": 0.4
+        },
+        "find-skills": {
+          "f1_paths_read": 0.5957446808510638,
+          "f1_paths_written": null,
+          "f1_hosts": 0.5
+        },
+        "firebase-hosting-basics": {
+          "f1_paths_read": 0.03007518796992481,
+          "f1_paths_written": 0.23999999999999996,
+          "f1_hosts": 0.5454545454545454
+        },
+        "firebase-security-rules-auditor": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "firecrawl-scrape": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "frontend-design": {
+          "f1_paths_read": 0.9538461538461539,
+          "f1_paths_written": 0.18181818181818182,
+          "f1_hosts": null
+        },
+        "gha-security-review": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "grill-me": {
+          "f1_paths_read": 1.0,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "improve-codebase-architecture": {
+          "f1_paths_read": 0.9722222222222222,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "pinecone-mcp": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "prisma-postgres-setup": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "prompt-images": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "react-best-practices": {
+          "f1_paths_read": 0.2975206611570248,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "semgrep": {
+          "f1_paths_read": 0.9978813559322034,
+          "f1_paths_written": null,
+          "f1_hosts": 0.6666666666666666
+        },
+        "sentry-setup-ai-monitoring": {
+          "f1_paths_read": 0.0606060606060606,
+          "f1_paths_written": 0.64,
+          "f1_hosts": null
+        },
+        "skill-creator": {
+          "f1_paths_read": 0.25806451612903225,
+          "f1_paths_written": 0.13333333333333333,
+          "f1_hosts": null
+        },
+        "vercel-sandbox": {
+          "f1_paths_read": 0.013986013986013986,
+          "f1_paths_written": 0.4615384615384615,
+          "f1_hosts": null
+        },
+        "web-search": {
+          "f1_paths_read": 0.16,
+          "f1_paths_written": null,
+          "f1_hosts": 0.25
+        },
+        "wrangler": {
+          "f1_paths_read": 0.04411764705882353,
+          "f1_paths_written": 0.08333333333333334,
+          "f1_hosts": 0.5
+        },
+        "xcode-project-setup": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        }
+      }
+    },
+    "codex": {
+      "per_skill": {
+        "agent-browser": {
+          "f1_paths_read": 0.9983193277310924,
+          "f1_paths_written": 0.022727272727272724,
+          "f1_hosts": null
+        },
+        "auth0-quickstart": {
+          "f1_paths_read": 0.028301886792452834,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "azure-validate": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "caveman": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "cloudformation": {
+          "f1_paths_read": 0.05015673981191223,
+          "f1_paths_written": 0.1818181818181818,
+          "f1_hosts": null
+        },
+        "cookie-sync": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "find-skills": {
+          "f1_paths_read": 0.019230769230769232,
+          "f1_paths_written": null,
+          "f1_hosts": 0.5
+        },
+        "firebase-hosting-basics": {
+          "f1_paths_read": 0.2763157894736842,
+          "f1_paths_written": 0.39999999999999997,
+          "f1_hosts": 0.18181818181818182
+        },
+        "firebase-security-rules-auditor": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "firecrawl-scrape": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "frontend-design": {
+          "f1_paths_read": 0.9637305699481865,
+          "f1_paths_written": 0.18181818181818182,
+          "f1_hosts": null
+        },
+        "gha-security-review": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "grill-me": {
+          "f1_paths_read": 1.0,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "improve-codebase-architecture": {
+          "f1_paths_read": 0.9722222222222222,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "pinecone-mcp": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "prisma-postgres-setup": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "prompt-images": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "react-best-practices": {
+          "f1_paths_read": 0.3,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "semgrep": {
+          "f1_paths_read": 0.9947312961011592,
+          "f1_paths_written": null,
+          "f1_hosts": 0.6666666666666666
+        },
+        "sentry-setup-ai-monitoring": {
+          "f1_paths_read": 0.17977528089887643,
+          "f1_paths_written": 0.6428571428571429,
+          "f1_hosts": null
+        },
+        "skill-creator": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        },
+        "vercel-sandbox": {
+          "f1_paths_read": 0.04109589041095891,
+          "f1_paths_written": 0.3529411764705882,
+          "f1_hosts": null
+        },
+        "web-search": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": 0.2
+        },
+        "wrangler": {
+          "f1_paths_read": 0.043795620437956206,
+          "f1_paths_written": 0.07692307692307693,
+          "f1_hosts": 0.5714285714285715
+        },
+        "xcode-project-setup": {
+          "f1_paths_read": null,
+          "f1_paths_written": null,
+          "f1_hosts": null
+        }
+      }
+    }
+  },
+  "n_skills": 25
+}

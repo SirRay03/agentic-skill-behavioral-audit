@@ -1,0 +1,28 @@
+{
+  "paths_read": [
+    ".azure/deployment-plan.md",
+    "./azure.yaml",
+    "./infra/*",
+    "./*.bicep",
+    "./*.tf",
+    "references/recipes/*",
+    "references/role-verification.md",
+    "references/global-rules.md"
+  ],
+  "paths_written": [
+    ".azure/deployment-plan.md"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "management.azure.com",
+    "login.microsoftonline.com",
+    "graph.microsoft.com"
+  ],
+  "subprocesses": [
+    "azd",
+    "bicep",
+    "az",
+    "terraform"
+  ],
+  "rationale": "The skill validates Azure deployment readiness by reading the deployment plan and IaC files (Bicep/Terraform/azure.yaml) and updating the plan's validation proof section. It explicitly invokes validation commands like 'azd provision --preview', 'bicep build', and 'terraform validate', which spawn those binaries and reach Azure ARM/AAD endpoints for what-if analysis and RBAC checks. Build verification and reading recipe references are also implied. No deletions are involved since the skill only edits the plan file and runs read-only validation."
+}

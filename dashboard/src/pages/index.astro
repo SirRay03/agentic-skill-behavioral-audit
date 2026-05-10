@@ -1,0 +1,313 @@
+---
+import Layout from "@layouts/Layout.astro";
+import StatCard from "@components/StatCard.astro";
+import FindingCard from "@components/FindingCard.astro";
+import Tag from "@components/Tag.astro";
+import { getCollection } from "astro:content";
+import { u } from "@/lib/url";
+import aggregates from "../data/generated/aggregates.json";
+import excerpts from "../data/generated/report-excerpts.json";
+
+const findings = await getCollection("findings");
+const findingsById = Object.fromEntries(findings.map((f) => [f.data.id, f.data]));
+
+// Five strongest findings, in narrative order from EXECUTIVE_SUMMARY.md
+const strongestFive = ["C", "A", "J", "O", "M"]
+  .map((id) => findingsById[id])
+  .filter(Boolean);
+
+const headline = aggregates.headline;
+---
+
+<Layout
+  title="Agentic Skill Auditor — Rayhan Putra"
+  description="A behavioural audit of 25 publicly-published agentic skills. CLI-wrapping skills under-declare network surface; defense-in-depth holds; sandbox policy can be derived from skill markdown alone, with three asterisks."
+  wide
+>
+  <!-- Hero -->
+  <section class="max-w-3xl">
+    <div class="text-[11px] uppercase tracking-[0.18em] text-accent-600 font-medium mb-3">
+      Behavioural audit · KTH ASSERT exercise · Submitted 2026-05-11
+    </div>
+    <h1 class="text-4xl sm:text-5xl font-semibold tracking-tight text-ink-950 leading-[1.05]">
+      A Dynamic Behavioural Auditor<br />
+      for Agentic Skills
+    </h1>
+    <p class="mt-5 text-lg text-ink-700 leading-relaxed">
+      <strong class="text-ink-900">25 publicly-published agentic skills</strong>,
+      captured at the syscall + DNS layer under Claude Code, then compared
+      against an LLM's prediction made from the SKILL.md text alone. Cross-agent
+      control under Codex CLI; predictor variance across orig-Claude, fresh-Claude,
+      and Codex; a six-mutation adversarial suite; a constructive policy direction.
+    </p>
+    <div class="mt-6 flex flex-wrap items-center gap-x-2 gap-y-2 text-sm text-ink-600">
+      <span class="font-semibold text-ink-900">Rayhan Putra</span>
+      <span class="text-ink-400">·</span>
+      <span>KTH MSc Cybersecurity (Autumn 2026)</span>
+      <span class="text-ink-400">·</span>
+      <span>For Professor Monperrus, KTH ASSERT</span>
+    </div>
+  </section>
+
+  <!-- Headline numbers -->
+  <section class="mt-16">
+    <div class="flex items-baseline justify-between mb-5">
+      <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium">
+        Headline numbers
+      </h2>
+      <a href={u("/methodology")} class="text-xs text-ink-500 hover:text-accent-600">
+        methodology &rarr;
+      </a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {
+        headline.map((h: any, i: number) => (
+          <StatCard
+            label={h.label}
+            value={h.value}
+            ci={h.ci}
+            note={h.note}
+            emphasis={i < 3}
+          />
+        ))
+      }
+    </div>
+    <p class="mt-4 text-xs text-ink-500">
+      All aggregates use the locked predictor (Claude Opus 4.7, <code class="text-ink-700">--effort xhigh</code>)
+      and the canonical compare.py output (n=25 production skills + 1 adversarial demo + 6 mutations + 3 augmented variants).
+    </p>
+  </section>
+
+  <!-- One-paragraph abstract -->
+  <section class="mt-16 max-w-3xl">
+    <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4">
+      In one paragraph
+    </h2>
+    <div class="prose">
+      <p set:html={excerpts.one_paragraph || excerpts.abstract || ""} />
+    </div>
+  </section>
+
+  <!-- Bimodal F1 figure -->
+  <section class="mt-16">
+    <div class="flex items-baseline justify-between mb-5">
+      <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium">
+        The bimodal F1 distribution
+      </h2>
+      <a href={u("/figures")} class="text-xs text-ink-500 hover:text-accent-600">
+        all figures &rarr;
+      </a>
+    </div>
+    <figure class="border border-ink-200 rounded-md bg-white p-6">
+      <img
+        src={u("/figures/fig-01-f1-distribution.svg")}
+        alt="F1 distribution per skill across paths_read, paths_written, hosts. Bimodal: CLI-wrappers cluster low, pure-text skills cluster high."
+        class="w-full max-h-[480px] object-contain"
+      />
+      <figcaption class="mt-4 text-sm text-ink-600 leading-relaxed">
+        F1 per skill across the three IO axes. The bimodal split on
+        <code>paths_read</code> reaches formal significance (Mann-Whitney U=6,
+        p=0.030, n=12 CLI-wrappers vs n=4 pure-text). The split is a property of
+        skill <em>class</em> — not maker, category, or SKILL.md length.
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- Five strongest findings -->
+  <section class="mt-16">
+    <div class="flex items-baseline justify-between mb-5">
+      <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium">
+        Five strongest findings
+      </h2>
+      <a href={u("/findings")} class="text-xs text-ink-500 hover:text-accent-600">
+        all 15 findings (A–O) &rarr;
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {strongestFive.map((f) => <FindingCard finding={f as any} />)}
+    </div>
+  </section>
+
+  <!-- Constructive answer -->
+  <section class="mt-16 border border-accent-300 bg-accent-50/30 rounded-md p-8 max-w-3xl">
+    <div class="text-[11px] uppercase tracking-[0.18em] text-accent-700 font-medium">
+      Constructive answer to Professor Monperrus's research question
+    </div>
+    <h3 class="mt-2 text-2xl font-semibold text-ink-950 leading-snug">
+      Yes, sandbox policy can be derived from skill markdown alone — with three asterisks.
+    </h3>
+    <p class="mt-3 text-ink-700 leading-relaxed">
+      A SKILL.md-derived egress allowlist using the LLM extraction as policy
+      artifact admits <strong>77% of legitimate observed traffic</strong> and
+      flags <strong>50% of total traffic as undeclared</strong> on the eight
+      skills with non-empty observed network surface. Three composition
+      requirements close the gap:
+    </p>
+    <ol class="mt-4 space-y-2 text-ink-700">
+      <li class="flex gap-3">
+        <span class="font-mono text-accent-700 font-bold tabular shrink-0">i.</span>
+        <span><strong class="text-ink-900">Wildcard deflation</strong> (Finding M) — expand <code class="font-mono text-sm bg-ink-100 px-1.5 rounded">*.cloudflare.com</code> into explicit subdomain enumerations, or pair with a global telemetry-suffix deny-overlay.</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-accent-700 font-bold tabular shrink-0">ii.</span>
+        <span><strong class="text-ink-900">Maintainer-reputation gate</strong> (Finding O) — structured-extraction policy generators inherit maintainer-supplied malice. Pair with a separate trust check before deployment.</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-accent-700 font-bold tabular shrink-0">iii.</span>
+        <span><strong class="text-ink-900">Per-agent baseline subtraction</strong> (Finding H reframed) — syscall-trace cross-agent comparisons are dominated by per-agent bootstrap costs. Subtract baselines first.</span>
+      </li>
+    </ol>
+    <div class="mt-6 flex gap-3">
+      <a
+        href={u("/policy")}
+        class="inline-flex items-center gap-2 px-4 py-2 bg-accent-600 text-white rounded font-medium text-sm no-underline hover:bg-accent-700 transition-colors"
+      >
+        Read the constructive direction →
+      </a>
+      <a
+        href={u("/mutation-suite")}
+        class="inline-flex items-center gap-2 px-4 py-2 border border-ink-300 text-ink-800 rounded font-medium text-sm no-underline hover:border-ink-900 transition-colors"
+      >
+        Mutation suite (6×4)
+      </a>
+    </div>
+  </section>
+
+  <!-- Three structural patterns / three defense layers -->
+  <section class="mt-16">
+    <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-5">
+      Three structural patterns · three defense layers
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <article class="border border-ink-200 rounded-md p-5 bg-white">
+        <Tag variant="vendor-cli-underdeclaration" />
+        <h3 class="mt-3 font-semibold text-ink-900 leading-snug">
+          Pattern 1 — Vendor-CLI under-declaration
+        </h3>
+        <p class="mt-2 text-sm text-ink-700 leading-relaxed">
+          The skill maintainer documents the verb; the wrapped CLI emits the
+          beacon. <code class="font-mono text-xs">sparrow.cloudflare.com</code>,
+          <code class="font-mono text-xs">metrics.semgrep.dev</code>,
+          <code class="font-mono text-xs">firebase-public.firebaseio.com</code>.
+        </p>
+        <div class="mt-3 text-xs text-ink-600">
+          <strong>Defense:</strong> global telemetry-suffix deny-overlay &times;
+          SKILL.md-derived allowlist with wildcard deflation.
+        </div>
+        <div class="mt-3 flex flex-wrap gap-1">
+          <Tag variant="L2-llm" size="xs" />
+          <Tag variant="policy-design" size="xs" />
+        </div>
+      </article>
+
+      <article class="border border-ink-200 rounded-md p-5 bg-white">
+        <Tag variant="agent-runtime-opacity" />
+        <h3 class="mt-3 font-semibold text-ink-900 leading-snug">
+          Pattern 2 — Agent-runtime opacity
+        </h3>
+        <p class="mt-2 text-sm text-ink-700 leading-relaxed">
+          Per-agent bootstrap dwarfs per-task work (256× → 1:1 after subtraction).
+          Refusal verbosity differs across aligned agents — Claude warns; Codex
+          silently complies.
+        </p>
+        <div class="mt-3 text-xs text-ink-600">
+          <strong>Defense:</strong> per-agent baseline subtraction + normalised
+          refusal-rationale extraction.
+        </div>
+        <div class="mt-3 flex flex-wrap gap-1">
+          <Tag variant="methodology" size="xs" />
+          <Tag variant="L3-runtime-claude" size="xs" />
+          <Tag variant="L4-runtime-codex" size="xs" />
+        </div>
+      </article>
+
+      <article class="border border-ink-200 rounded-md p-5 bg-white">
+        <Tag variant="adversarial-maintainer" />
+        <h3 class="mt-3 font-semibold text-ink-900 leading-snug">
+          Pattern 3 — Adversarial maintainer
+        </h3>
+        <p class="mt-2 text-sm text-ink-700 leading-relaxed">
+          When the skill maintainer is the attacker, structured-extraction
+          policy generators inherit the malice. 6 mutations × 4 layers; defense
+          in depth holds, but L1 → 0/6 under realistic regex.
+        </p>
+        <div class="mt-3 text-xs text-ink-600">
+          <strong>Defense:</strong> at least three of four layers must hold —
+          static regex, LLM predictor, runtime alignment, deny-overlay.
+        </div>
+        <div class="mt-3 flex flex-wrap gap-1">
+          <Tag variant="L1-static" size="xs" />
+          <Tag variant="L2-llm" size="xs" />
+          <Tag variant="L3-runtime-claude" size="xs" />
+          <Tag variant="L4-runtime-codex" size="xs" />
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CTA grid -->
+  <section class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-4">
+    <a
+      href={u("/skills")}
+      class="block border border-ink-200 rounded-md p-6 bg-white no-underline hover:border-accent-500/60 hover:shadow-sm transition group"
+    >
+      <div class="text-[11px] uppercase tracking-[0.16em] text-ink-500">Browse</div>
+      <div class="mt-1 text-2xl font-semibold text-ink-900 group-hover:text-accent-700">
+        25 skills
+      </div>
+      <div class="mt-2 text-sm text-ink-600">
+        Per-skill drill-down: SKILL.md · 3 predictions · trace · policy bundle
+      </div>
+    </a>
+    <a
+      href={u("/findings")}
+      class="block border border-ink-200 rounded-md p-6 bg-white no-underline hover:border-accent-500/60 hover:shadow-sm transition group"
+    >
+      <div class="text-[11px] uppercase tracking-[0.16em] text-ink-500">Catalog</div>
+      <div class="mt-1 text-2xl font-semibold text-ink-900 group-hover:text-accent-700">
+        15 findings (A–O)
+      </div>
+      <div class="mt-2 text-sm text-ink-600">
+        Tagged by defense layer, structural pattern, and severity
+      </div>
+    </a>
+    <a
+      href={u("/mutation-suite")}
+      class="block border border-ink-200 rounded-md p-6 bg-white no-underline hover:border-accent-500/60 hover:shadow-sm transition group"
+    >
+      <div class="text-[11px] uppercase tracking-[0.16em] text-ink-500">Adversarial</div>
+      <div class="mt-1 text-2xl font-semibold text-ink-900 group-hover:text-accent-700">
+        Mutation suite
+      </div>
+      <div class="mt-2 text-sm text-ink-600">
+        6 attack patterns × 4 defense layers — defense-in-depth empirically validated
+      </div>
+    </a>
+  </section>
+
+  <!-- Methodology + scope footer -->
+  <section class="mt-16 border-t border-ink-200 pt-10 text-sm text-ink-600 grid sm:grid-cols-2 gap-8 max-w-4xl">
+    <div>
+      <div class="font-semibold text-ink-900 mb-2">Sample</div>
+      <ul class="space-y-1 list-none p-0">
+        <li>n=25 production skills (n=15 originally, expanded mid-project)</li>
+        <li>+1 synthetic adversarial demo</li>
+        <li>+6 attack-pattern mutations</li>
+        <li>+3 augmented SKILL.md variants</li>
+        <li>3 prediction sources per skill (orig-Claude, fresh-Claude, Codex)</li>
+        <li>7 cross-agent dynamic traces under Codex CLI</li>
+        <li>3 real-credentials variants</li>
+      </ul>
+    </div>
+    <div>
+      <div class="font-semibold text-ink-900 mb-2">Out of scope (declared)</div>
+      <ul class="space-y-1 list-none p-0">
+        <li>TLS interception (host F1 only, not URL-path F1)</li>
+        <li>Live policy enforcement (recipe documented, not deployed)</li>
+        <li>Cross-agent dynamic on the full 25 (currently n=7)</li>
+        <li>Asynchronous post-task callbacks</li>
+        <li>Real credentials for 7 cred-gated tranche-1 skills</li>
+      </ul>
+    </div>
+  </section>
+</Layout>

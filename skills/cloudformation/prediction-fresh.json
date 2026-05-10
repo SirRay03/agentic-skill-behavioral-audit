@@ -1,0 +1,26 @@
+{
+  "paths_read": [
+    "./*.yaml",
+    "./*.yml",
+    "./*.json",
+    "./template.yaml",
+    "~/.aws/config",
+    "~/.aws/credentials"
+  ],
+  "paths_written": [
+    "./*.yaml",
+    "./*.yml",
+    "./*.json"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "cloudformation.*.amazonaws.com",
+    "*.amazonaws.com",
+    "docs.aws.amazon.com"
+  ],
+  "subprocesses": [
+    "aws",
+    "bash"
+  ],
+  "rationale": "The skill centers on writing CloudFormation templates (YAML/JSON) and invoking the AWS CLI to manage stacks, so the agent will read and write template files in the working directory. CLI commands like create-stack, update-stack, and describe-stack-events spawn the `aws` binary, which reads credentials from ~/.aws/ and connects to regional CloudFormation API endpoints under amazonaws.com. No deletions of local files are implied; stack deletion happens remotely via API. Documentation references may also trigger fetches to docs.aws.amazon.com."
+}

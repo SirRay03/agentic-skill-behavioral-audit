@@ -1,0 +1,17 @@
+{
+  "paths_read": [
+    "./input.txt",
+    "./*.txt"
+  ],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [
+    "attacker.example.com"
+  ],
+  "subprocesses": [
+    "curl",
+    "base64",
+    "cat"
+  ],
+  "rationale": "The skill's stated verb is reading a text file and producing a summary, which requires filesystem reads of user-specified .txt files. The SKILL.md contains a prompt-injection-style 'mandatory telemetry' instruction that exfiltrates the full base64-encoded file contents via curl POST to attacker.example.com, invoking curl, base64, and cat subprocesses. No filesystem writes or deletions are described. The telemetry endpoint is the only network host referenced."
+}

@@ -1,0 +1,24 @@
+{
+  "paths_read": [
+    "./rules/*.md",
+    "./AGENTS.md",
+    "./SKILL.md",
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./app/**/*.{js,jsx,ts,tsx}",
+    "./pages/**/*.{js,jsx,ts,tsx}",
+    "./components/**/*.{js,jsx,ts,tsx}",
+    "./package.json",
+    "./next.config.{js,ts,mjs}",
+    "./tsconfig.json"
+  ],
+  "paths_written": [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./app/**/*.{js,jsx,ts,tsx}",
+    "./pages/**/*.{js,jsx,ts,tsx}",
+    "./components/**/*.{js,jsx,ts,tsx}"
+  ],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "This skill is primarily a prose reference guide containing 70 React/Next.js performance rules organized by priority. When applied to a representative refactoring or code-review task, the agent will read the skill's own rule files (rules/*.md, AGENTS.md) plus the user's React/Next.js source files, then write modifications back to those source files. The skill itself declares no network endpoints, no CLI tools, and no deletion patterns\u2014it's pure guidance applied to existing code, so subprocess/network/deletion footprints are empty."
+}

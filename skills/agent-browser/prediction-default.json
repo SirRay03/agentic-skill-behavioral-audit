@@ -1,0 +1,32 @@
+{
+  "paths_read": [
+    "./*",
+    "~/.config/agent-browser/*",
+    "~/.cache/agent-browser/*",
+    "~/.agent-browser/*"
+  ],
+  "paths_written": [
+    "./*.png",
+    "./screenshots/*",
+    "~/.config/agent-browser/*",
+    "~/.cache/agent-browser/*",
+    "~/.agent-browser/*",
+    "/tmp/*"
+  ],
+  "paths_deleted": [
+    "/tmp/*"
+  ],
+  "hosts": [
+    "*"
+  ],
+  "subprocesses": [
+    "agent-browser",
+    "npx",
+    "npm",
+    "node",
+    "chrome",
+    "chromium",
+    "google-chrome"
+  ],
+  "rationale": "The skill is a browser automation CLI that drives Chrome/Chromium via CDP, so it will spawn the agent-browser binary (or via npx) which in turn launches a Chrome/Chromium subprocess. It needs network access to arbitrary user-specified websites plus integrations like Slack, Vercel Sandbox, and AWS Bedrock AgentCore, so hosts are effectively wildcard. It reads/writes session state, auth vault, and screenshot/video artifacts under its config/cache dirs and the working directory, and the discovery stub itself instructs running 'agent-browser skills get core' to fetch workflow content."
+}

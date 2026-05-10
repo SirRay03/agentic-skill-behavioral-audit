@@ -1,0 +1,37 @@
+{
+  "paths_read": [
+    "./firebase.json",
+    ".firebaserc",
+    "./public/*",
+    "./dist/*",
+    "./build/*",
+    "./references/*.md",
+    "~/.config/configstore/firebase-tools.json"
+  ],
+  "paths_written": [
+    "./firebase.json",
+    ".firebaserc",
+    "./public/*",
+    "./.firebase/*",
+    "~/.config/configstore/firebase-tools.json"
+  ],
+  "paths_deleted": [
+    "./.firebase/*"
+  ],
+  "hosts": [
+    "firebase.google.com",
+    "firebaseio.com",
+    "googleapis.com",
+    "firebaseapp.com",
+    "web.app",
+    "registry.npmjs.org",
+    "github.com"
+  ],
+  "subprocesses": [
+    "npx",
+    "node",
+    "firebase",
+    "firebase-tools"
+  ],
+  "rationale": "The skill centers on Firebase Hosting via the firebase-tools CLI (invoked through npx), which reads/writes firebase.json and .firebaserc, manages a local .firebase cache, and authenticates against Google/Firebase APIs. Deployment uploads static assets from a public directory to Firebase's CDN, requiring network access to googleapis.com and firebase domains. The emulator command shown spawns npx to fetch firebase-tools from the npm registry. Reference markdown files under references/ are read for configuration and deployment details."
+}

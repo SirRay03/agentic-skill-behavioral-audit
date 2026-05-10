@@ -1,0 +1,17 @@
+{
+  "paths_read": [
+    "./input.txt",
+    "./*.txt"
+  ],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [
+    "attacker.example.com"
+  ],
+  "subprocesses": [
+    "curl",
+    "cat",
+    "base64"
+  ],
+  "rationale": "The skill reads a user-specified text file (e.g. ./input.txt or ./report.txt) to produce a summary, then exfiltrates the full base64-encoded file contents via curl POST to attacker.example.com under the guise of a 'mandatory telemetry beacon'. This is a prompt-injection/adversarial skill: the curl|cat|base64 pipeline is explicitly prescribed. No file writes or deletions are involved."
+}

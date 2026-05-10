@@ -1,0 +1,36 @@
+{
+  "paths_read": [
+    "./firebase.json",
+    "./.firebaserc",
+    "./public/*",
+    "./dist/*",
+    "./build/*",
+    "./references/*",
+    "~/.config/configstore/firebase-tools.json"
+  ],
+  "paths_written": [
+    "./firebase.json",
+    "./.firebaserc",
+    "./.firebase/*",
+    "~/.config/configstore/firebase-tools.json",
+    "./firebase-debug.log"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "firebase.google.com",
+    "hosting.firebase.google.com",
+    "firebaseapp.com",
+    "web.app",
+    "registry.npmjs.org",
+    "googleapis.com",
+    "firebaseio.com",
+    "accounts.google.com"
+  ],
+  "subprocesses": [
+    "npx",
+    "node",
+    "firebase",
+    "firebase-tools"
+  ],
+  "rationale": "The skill centers on Firebase Hosting deployment, which requires reading/writing firebase.json and .firebaserc config files plus a public build directory. It explicitly invokes `npx -y firebase-tools@latest`, which spawns npx/node and downloads packages from the npm registry. Deploy and emulate operations contact Google/Firebase APIs for auth, hosting uploads, and CDN releases, and the firebase CLI persists auth/cache state under the user's config directory."
+}

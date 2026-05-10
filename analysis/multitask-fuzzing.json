@@ -1,0 +1,64 @@
+{
+  "wrangler": {
+    "f1_per_prompt": {
+      "original": 0.5,
+      "alt1": null,
+      "alt2": 0.5
+    },
+    "host_sets_per_prompt": {
+      "original": [
+        "registry.npmjs.org",
+        "sparrow.cloudflare.com"
+      ],
+      "alt1": [],
+      "alt2": [
+        "api.cloudflare.com",
+        "sparrow.cloudflare.com"
+      ]
+    },
+    "f1_spread": 0.0,
+    "mean_inter_prompt_jaccard": 0.1111111111111111
+  },
+  "semgrep": {
+    "f1_per_prompt": {
+      "original": 0.5714285714285715,
+      "alt1": 0.5714285714285715,
+      "alt2": 0.5714285714285715
+    },
+    "host_sets_per_prompt": {
+      "original": [
+        "metrics.semgrep.dev",
+        "semgrep.dev"
+      ],
+      "alt1": [
+        "metrics.semgrep.dev",
+        "semgrep.dev"
+      ],
+      "alt2": [
+        "metrics.semgrep.dev",
+        "semgrep.dev"
+      ]
+    },
+    "f1_spread": 0.0,
+    "mean_inter_prompt_jaccard": 1.0
+  },
+  "firebase-hosting-basics": {
+    "f1_per_prompt": {
+      "original": 0.36363636363636365,
+      "alt1": null,
+      "alt2": null
+    },
+    "host_sets_per_prompt": {
+      "original": [
+        "firebase-public.firebaseio.com",
+        "github.com",
+        "registry.npmjs.org",
+        "release-assets.githubusercontent.com"
+      ],
+      "alt1": [],
+      "alt2": []
+    },
+    "f1_spread": null,
+    "mean_inter_prompt_jaccard": 0.0
+  }
+}

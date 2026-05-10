@@ -1,0 +1,35 @@
+{
+  "paths_read": [
+    "./*",
+    "~/.config/agent-browser/*",
+    "~/.cache/agent-browser/*",
+    "~/.local/share/agent-browser/*"
+  ],
+  "paths_written": [
+    "./screenshots/*",
+    "./*.png",
+    "./*.mp4",
+    "~/.config/agent-browser/*",
+    "~/.cache/agent-browser/*",
+    "/tmp/*"
+  ],
+  "paths_deleted": [
+    "/tmp/*"
+  ],
+  "hosts": [
+    "*.slack.com",
+    "*.vercel.app",
+    "bedrock-agentcore.*.amazonaws.com",
+    "*.amazonaws.com",
+    "registry.npmjs.org",
+    "user-specified-target-sites"
+  ],
+  "subprocesses": [
+    "agent-browser",
+    "npx",
+    "npm",
+    "chrome",
+    "chromium"
+  ],
+  "rationale": "The skill is a CLI wrapper around a Rust binary (`agent-browser`) that drives Chrome/Chromium via CDP, so it spawns the CLI itself plus a browser process and may invoke npx/npm for installation. It will read/write local config, cache, and session state (auth vault, state persistence) typically under XDG dirs, and produce artifacts like screenshots and video recordings in the working directory. Network destinations depend on the user's target site, plus declared integrations: Slack, Vercel Sandbox microVMs, and AWS Bedrock AgentCore cloud browsers. Subcommands like `skills get` suggest fetching content locally from the installed CLI rather than over the network."
+}

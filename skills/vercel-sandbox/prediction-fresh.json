@@ -1,0 +1,41 @@
+{
+  "paths_read": [
+    "./package.json",
+    "./vercel.json",
+    "./.env*",
+    "process.env.VERCEL_TOKEN",
+    "process.env.VERCEL_TEAM_ID",
+    "process.env.VERCEL_PROJECT_ID",
+    "process.env.AGENT_BROWSER_SNAPSHOT_ID"
+  ],
+  "paths_written": [
+    "./package.json",
+    "./pnpm-lock.yaml",
+    "./node_modules/*",
+    "./app/api/**",
+    "./examples/environments/**"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "api.vercel.com",
+    "vercel.com",
+    "registry.npmjs.org",
+    "registry.npmjs.com",
+    "*.vercel.run",
+    "*.vercel.app"
+  ],
+  "subprocesses": [
+    "pnpm",
+    "npm",
+    "npx",
+    "node",
+    "tsx",
+    "sh",
+    "agent-browser",
+    "base64",
+    "dnf",
+    "sudo",
+    "ldconfig"
+  ],
+  "rationale": "The skill scaffolds a Vercel Sandbox integration: it adds @vercel/sandbox via pnpm (touching package.json/lockfile/node_modules), reads Vercel credentials from env vars, and may write framework-specific server route files (e.g. app/api/cron/route.ts) plus a vercel.json crons block. At runtime the agent's local process invokes the Vercel Sandbox SDK against api.vercel.com to provision microVMs; the in-VM commands (dnf, npm, npx agent-browser, base64) execute remotely but are still spawned via the SDK's runCommand. Network reach therefore includes Vercel's API/runtime hosts and npm registries for installing @vercel/sandbox locally."
+}

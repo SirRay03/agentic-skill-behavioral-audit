@@ -1,0 +1,36 @@
+{
+  "paths_read": [
+    "./*.xcodeproj/project.pbxproj",
+    "./*.xcworkspace/*",
+    "./**/*.swift",
+    "./**/GoogleService-Info.plist",
+    "<SKILL_PATH>/scripts/xcode_spm_setup/*",
+    "./Package.swift",
+    "./Package.resolved"
+  ],
+  "paths_written": [
+    "./*.xcodeproj/project.pbxproj",
+    "./*.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved",
+    "./**/*.swift",
+    "./**/GoogleService-Info.plist",
+    "~/Library/Developer/Xcode/DerivedData/*",
+    "~/Library/Caches/org.swift.swiftpm/*",
+    "/tmp/*"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "github.com",
+    "api.github.com",
+    "raw.githubusercontent.com",
+    "codeload.github.com",
+    "swift.org",
+    "download.swift.org"
+  ],
+  "subprocesses": [
+    "swift",
+    "xcode-select",
+    "git",
+    "xcodebuild"
+  ],
+  "rationale": "The skill drives a bundled Swift package via `swift run`, which compiles and executes a Swift tool that reads and rewrites the `.pbxproj` file and links plist resources, so the Xcode project files are both read and written. SPM resolution fetches packages (Alamofire, Firebase iOS SDK) over the network, primarily from github.com via git, and Swift toolchain caches land under `~/Library/Caches` and DerivedData. The skill explicitly mandates running `swift --version` (and suggests `xcode-select --install`), and SPM internally invokes `git`, hence the subprocess set. No deletions are described; the script is idempotent and additive only."
+}

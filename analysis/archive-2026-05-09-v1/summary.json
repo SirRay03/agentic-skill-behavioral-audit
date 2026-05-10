@@ -1,0 +1,16 @@
+{
+  "n_skills_compared": 15,
+  "n_skills_errored": 0,
+  "f1_paths_read": {
+    "mean": 0.5496705556754561,
+    "median": 0.5496705556754561
+  },
+  "f1_paths_written": {
+    "mean": 0.9418837675350702,
+    "median": 0.9418837675350702
+  },
+  "f1_hosts": {
+    "mean": 0.346031746031746,
+    "median": 0.3333333333333333
+  }
+}

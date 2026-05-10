@@ -1,0 +1,36 @@
+{
+  "paths_read": [
+    ".azure/deployment-plan.md",
+    "./azure.yaml",
+    "./infra/*.bicep",
+    "./infra/*.tf",
+    "./infra/**/*",
+    "references/recipes/README.md",
+    "references/role-verification.md",
+    "references/global-rules.md",
+    "./*.bicep",
+    "./main.bicep",
+    "./main.tf"
+  ],
+  "paths_written": [
+    ".azure/deployment-plan.md"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "management.azure.com",
+    "login.microsoftonline.com",
+    "graph.microsoft.com",
+    "mcr.microsoft.com"
+  ],
+  "subprocesses": [
+    "azd",
+    "bicep",
+    "az",
+    "terraform",
+    "node",
+    "npm",
+    "dotnet",
+    "python"
+  ],
+  "rationale": "The skill orchestrates pre-deployment validation by reading and updating .azure/deployment-plan.md and reviewing infrastructure-as-code (Bicep/Terraform) plus azure.yaml. It explicitly invokes commands like 'azd provision --preview', 'bicep build', and 'terraform validate', which spawn azd/bicep/terraform/az subprocesses; build verification adds language-specific build tools (node/npm/dotnet/python). These azd/az/terraform CLI calls authenticate and query Azure ARM/Graph endpoints, hence the management.azure.com, login.microsoftonline.com, and graph.microsoft.com hosts; mcr.microsoft.com may be hit when pulling Bicep types/container images."
+}

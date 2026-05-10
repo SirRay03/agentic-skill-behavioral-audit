@@ -1,0 +1,8 @@
+{
+  "paths_read": [],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "Caveman is a pure communication-style skill that only modifies how the agent phrases its responses. It contains no instructions to read/write files, make network requests, or invoke subprocesses. The skill's entire scope is prose compression rules and intensity levels, with no IO surface area."
+}

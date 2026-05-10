@@ -1,0 +1,58 @@
+{
+  "paths_read": [
+    ".azure/deployment-plan.md",
+    "azure.yaml",
+    "./infra/**/*.bicep",
+    "./infra/**/*.tf",
+    "./**/*.bicep",
+    "./**/*.tf",
+    "./package.json",
+    "./package-lock.json",
+    "./yarn.lock",
+    "./pnpm-lock.yaml",
+    "./requirements.txt",
+    "./pyproject.toml",
+    "./*.csproj",
+    "./*.sln",
+    "./pom.xml",
+    "./build.gradle*",
+    "references/global-rules.md",
+    "references/recipes/README.md",
+    "references/role-verification.md"
+  ],
+  "paths_written": [
+    ".azure/deployment-plan.md",
+    "project files needed to fix validation or build failures",
+    "generated build artifacts under ./dist/**, ./build/**, ./target/**, ./bin/**, ./obj/**, ./node_modules/**, ./.terraform/**"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "management.azure.com",
+    "login.microsoftonline.com",
+    "*.azure.com",
+    "*.azurecr.io",
+    "registry.terraform.io",
+    "releases.hashicorp.com",
+    "registry.npmjs.org",
+    "pypi.org",
+    "files.pythonhosted.org",
+    "repo.maven.apache.org",
+    "api.nuget.org"
+  ],
+  "subprocesses": [
+    "azd",
+    "az",
+    "bicep",
+    "terraform",
+    "npm",
+    "yarn",
+    "pnpm",
+    "node",
+    "dotnet",
+    "mvn",
+    "gradle",
+    "python",
+    "pip"
+  ],
+  "rationale": "The skill explicitly requires reading and updating .azure/deployment-plan.md, loading recipe/reference guidance, validating Azure config and IaC, and recording proof before changing status to Validated. Its primary verb runs validation commands such as azd provision --preview, bicep build, terraform validate, plus project build commands, so Azure control-plane/auth endpoints and package/provider registries are implied. It may write plan updates, generated build/cache artifacts, and source/config fixes for validation failures, but no deletion is specified."
+}

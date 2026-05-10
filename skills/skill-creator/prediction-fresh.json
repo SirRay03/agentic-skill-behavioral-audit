@@ -1,0 +1,40 @@
+{
+  "paths_read": [
+    "./SKILL.md",
+    "./evals/evals.json",
+    "./agents/*.md",
+    "./references/*.md",
+    "./assets/eval_review.html",
+    "<workspace>/iteration-*/**",
+    "<workspace>/feedback.json",
+    "~/Downloads/eval_set*.json",
+    "<skill-path>/**"
+  ],
+  "paths_written": [
+    "./SKILL.md",
+    "./evals/evals.json",
+    "./scripts/*",
+    "<workspace>/iteration-*/eval-*/eval_metadata.json",
+    "<workspace>/iteration-*/eval-*/*/timing.json",
+    "<workspace>/iteration-*/eval-*/*/grading.json",
+    "<workspace>/iteration-*/benchmark.json",
+    "<workspace>/iteration-*/benchmark.md",
+    "<workspace>/skill-snapshot/**",
+    "/tmp/eval_review_*.html",
+    "/tmp/skill-name/**"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "api.anthropic.com"
+  ],
+  "subprocesses": [
+    "python",
+    "claude",
+    "nohup",
+    "kill",
+    "cp",
+    "open",
+    "bash"
+  ],
+  "rationale": "This skill orchestrates a full skill-development loop: it reads/writes SKILL.md, evals JSON, and iteration workspaces; spawns Python scripts (aggregate_benchmark, generate_review, run_loop, package_skill) and the `claude` CLI for triggering evals; copies skill snapshots; and opens HTML review files. Network egress is implied via `claude -p` subprocess calls hitting Anthropic's API for description-optimization eval runs. No explicit deletions are described, though `kill` is used to stop the viewer process."
+}

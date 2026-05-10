@@ -1,0 +1,8 @@
+{
+  "paths_read": [],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "Skill only changes response style and persistence behavior. It contains no instructions to read, write, delete files, access network hosts, or spawn subprocesses. Representative primary verb is terse communication, so runtime footprint is pure prose."
+}

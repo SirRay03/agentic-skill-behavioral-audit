@@ -1,0 +1,10 @@
+{
+  "paths_read": [
+    "./**/*"
+  ],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "This skill is primarily a conversational/interview pattern \u2014 it instructs the agent to ask questions one at a time to stress-test a plan. The only IO hint is 'explore the codebase instead' when a question is answerable that way, implying filesystem reads of project files (likely via Read/Grep/Glob). No writes, deletions, network calls, or subprocess invocations are implied."
+}

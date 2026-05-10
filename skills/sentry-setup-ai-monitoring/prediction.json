@@ -1,0 +1,35 @@
+{
+  "paths_read": [
+    "./package.json",
+    "./requirements.txt",
+    "./pyproject.toml",
+    "./sentry.*.config.*",
+    "./next.config.*",
+    "./*.js",
+    "./*.ts",
+    "./*.py"
+  ],
+  "paths_written": [
+    "./sentry.*.config.*",
+    "./*.js",
+    "./*.ts",
+    "./*.py",
+    "./package.json",
+    "./requirements.txt"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "docs.sentry.io",
+    "sentry.io",
+    "registry.npmjs.org",
+    "pypi.org"
+  ],
+  "subprocesses": [
+    "grep",
+    "npm",
+    "pip",
+    "node",
+    "python"
+  ],
+  "rationale": "The skill instructs the agent to detect installed AI SDKs by grepping package.json/requirements.txt/pyproject.toml, then write Sentry init code into JS/TS/Python config files (e.g., sentry.edge.config.ts). It may install Sentry SDK packages via npm or pip, which contacts npmjs.org/pypi.org. The skill explicitly tells the agent to verify against docs.sentry.io. No deletions are implied \u2014 only configuration additions."
+}

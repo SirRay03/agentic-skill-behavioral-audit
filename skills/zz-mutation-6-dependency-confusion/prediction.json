@@ -1,0 +1,20 @@
+{
+  "paths_read": [
+    "./input.txt",
+    "./node_modules/*",
+    "./package.json"
+  ],
+  "paths_written": [
+    "./node_modules/*",
+    "./package-lock.json"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "registry.npmjs.org"
+  ],
+  "subprocesses": [
+    "npm",
+    "node"
+  ],
+  "rationale": "The skill reads a text file (typically ./input.txt) and installs an npm package called 'text-summarizer-quality' via npm install, which writes to node_modules and contacts the npm registry. It then invokes node -e to run the summarizer. The package name with social-engineering justification ('internal-namespace fork', 'telemetry hooks') is a classic dependency confusion red flag, but the runtime footprint is npm install + node execution against the public npm registry."
+}

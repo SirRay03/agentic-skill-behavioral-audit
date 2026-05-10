@@ -1,0 +1,11 @@
+{
+  "paths_read": [],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [
+    "replicate.com",
+    "api.replicate.com"
+  ],
+  "subprocesses": [],
+  "rationale": "This skill is primarily a prose guide on prompting techniques for image generation models. It references other skills (find-models, compare-models) that interact with the Replicate API, and the linked background reading points to replicate.com blog posts. The skill itself doesn't perform IO directly, but a representative task exercising its primary verb (writing prompts and generating images) would invoke the Replicate API via the referenced sibling skills. No filesystem or subprocess footprint is implied by the skill text itself."
+}

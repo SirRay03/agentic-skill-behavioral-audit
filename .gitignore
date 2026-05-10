@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Node / Astro
+node_modules/
+dist/
+.astro/
+# package-lock.json is committed (required by `npm ci` in the GH Actions deploy)
+
+# Raw instrumentation outputs (regenerable from harness; large binary content)
+skills/*/raw/
+skills/*/raw-codex/
+skills/*/raw-realcreds/
+skills/*/raw-k-rep*/
+skills/*/raw-n-*/
+skills/*/raw-l-*/
+
+# Local credentials (NEVER commit)
+.monperrus-creds
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build / temp
+*.log
+*.pcap
+.tmp/
+tmp/
+build/

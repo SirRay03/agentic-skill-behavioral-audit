@@ -1,0 +1,16 @@
+{
+  "paths_read": [
+    "../find-models/SKILL.md",
+    "../compare-models/SKILL.md",
+    "local reference/input images provided for editing or style transfer"
+  ],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [
+    "api.replicate.com",
+    "replicate.com",
+    "*.replicate.delivery"
+  ],
+  "subprocesses": [],
+  "rationale": "The skill is mostly prose about prompt-writing, but it explicitly instructs the agent to use adjacent find-models and compare-models skills and to query the Replicate API before choosing models. Image editing/style-reference workflows imply reading user-provided local image assets, but the skill does not itself prescribe writing files or deleting files. Network access is centered on Replicate API/model/blog endpoints, with Replicate delivery URLs implied for generated image outputs."
+}

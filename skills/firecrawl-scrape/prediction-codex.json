@@ -1,0 +1,24 @@
+{
+  "paths_read": [
+    ".firecrawl/*.md",
+    ".firecrawl/*.json",
+    "<output path passed with -o>"
+  ],
+  "paths_written": [
+    ".firecrawl/*",
+    "<output path passed with -o>"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "api.firecrawl.dev",
+    "<user-provided URL host>",
+    "<third-party hosts referenced by the scraped page>"
+  ],
+  "subprocesses": [
+    "firecrawl",
+    "npx",
+    "grep",
+    "head"
+  ],
+  "rationale": "The skill's primary action is to invoke the Firecrawl CLI, either directly as `firecrawl` or via `npx firecrawl`, against one or more user-provided URLs. The examples and tips write scraped markdown or JSON to `.firecrawl/` or another `-o` path, then read that saved output directly or with tools like `grep` and `head`. Network activity includes Firecrawl's API service plus the target page host and any page resources needed for JS-rendered scraping. No deletion behavior is described."
+}

@@ -1,0 +1,11 @@
+{
+  "paths_read": [],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [
+    "*.pinecone.io",
+    "api.pinecone.io"
+  ],
+  "subprocesses": [],
+  "rationale": "This skill is a pure reference document for the Pinecone MCP server tools. The agent invokes these tools through the MCP protocol (already-running server), not by spawning subprocesses or touching local files. Network traffic ultimately reaches Pinecone's API endpoints (api.pinecone.io and related *.pinecone.io hosts) via the MCP server. No filesystem reads/writes/deletes are implied by the documented verbs."
+}

@@ -1,0 +1,12 @@
+{
+  "paths_read": [
+    "./firestore.rules",
+    "./firebase.json",
+    "./*.rules"
+  ],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "This skill is an auditor that evaluates Firestore security rules text against a checklist and returns a JSON assessment. It only needs to read the rules file (typically firestore.rules) and possibly firebase.json for context. It performs no writes, no deletions, no network calls, and spawns no subprocesses\u2014the output is an inline JSON assessment returned to the user."
+}

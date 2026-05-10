@@ -1,0 +1,349 @@
+[
+  {
+    "id": "A",
+    "slug": "agentic-not-architectural-blind-spots",
+    "title": "Blind spots are agentic, not architectural",
+    "one_line": "Both Claude Code and Codex CLI skip SKILL.md’s retrieval directives — pre-training already contains the answer.",
+    "section": "5.2",
+    "layer": [
+      "methodology"
+    ],
+    "pattern": "agent-runtime-opacity",
+    "severity": "info",
+    "key_numbers": [
+      {
+        "label": "Cross-agent confirmation",
+        "value": "Codex also did not hit developers.cloudflare.com"
+      }
+    ],
+    "related_skills": [
+      "wrangler"
+    ],
+    "body_md": "Initial framing: agent-tool-mediated IO (WebSearch, WebFetch, subagent dispatch) is invisible to syscall instrumentation. Cross-agent control under Codex CLI eliminated this as the explanation — Codex shells out to raw curl/wget, yet still elected pre-training over retrieval on the wrangler task. **SKILL.md retrieval mandates are aspirational, not predictive of runtime IO.**"
+  },
+  {
+    "id": "B",
+    "slug": "live-loading-skills",
+    "title": "Live-loading skills break the prediction contract",
+    "one_line": "SKILL.md-only prediction is structurally insufficient for skills that load behaviour at runtime.",
+    "section": "5.2",
+    "layer": [
+      "methodology",
+      "L2-llm"
+    ],
+    "pattern": "agent-runtime-opacity",
+    "severity": "info",
+    "key_numbers": [],
+    "related_skills": [
+      "agent-browser",
+      "find-skills"
+    ],
+    "body_md": "Skills like agent-browser or find-skills load tool capabilities or sub-skills at runtime — the SKILL.md text is a partial specification. Static prediction systematically under-covers this class. Live loading is a structural blind spot that requires either runtime instrumentation (this audit) or manifest-based registration (a forward path)."
+  },
+  {
+    "id": "C",
+    "slug": "cli-wrapping-network-underdeclaration",
+    "title": "CLI-wrapping skills under-declare network footprint",
+    "one_line": "Every CLI-wrapping skill in the sample emits at least one undeclared host.",
+    "section": "5.1",
+    "layer": [
+      "L2-llm",
+      "policy-design"
+    ],
+    "pattern": "vendor-cli-underdeclaration",
+    "severity": "high",
+    "key_numbers": [
+      {
+        "label": "Hosts F1 mean",
+        "value": "0.475 [0.399, 0.542]"
+      },
+      {
+        "label": "Bimodal split (CLI-wrapper vs pure-text)",
+        "value": "Mann-Whitney p=0.030"
+      }
+    ],
+    "related_skills": [
+      "wrangler",
+      "firebase-hosting-basics",
+      "find-skills",
+      "firecrawl-scrape",
+      "web-search",
+      "azure-validate",
+      "cloudformation",
+      "auth0-quickstart"
+    ],
+    "body_md": "The headline empirical claim. SKILL.md text systematically under-enumerates network hosts for skills that wrap a vendor CLI. Confirmed across at least 8 skills in the n=25 sample. The LLM predictor reading SKILL.md alone systematically under-predicts; the trace shows the hosts; the gap *is* the data."
+  },
+  {
+    "id": "D",
+    "slug": "setup-prerequisites-inflate-trace",
+    "title": "Setup prerequisites inflate trace if not pre-installed",
+    "one_line": "Methodological — pre-install per-skill CLIs to keep trace focused on task IO.",
+    "section": "methodology",
+    "layer": [
+      "methodology"
+    ],
+    "pattern": "methodology",
+    "severity": "info",
+    "key_numbers": [],
+    "related_skills": [],
+    "body_md": "Skills that bootstrap their CLI tooling on first invocation contaminate the trace with package-install IO. harness/setup-skills.sh pre-installs all CLIs (wrangler, firebase-tools, semgrep, prisma, vercel, replicate-py, awscli) so the trace reflects task work, not bootstrap."
+  },
+  {
+    "id": "E",
+    "slug": "undocumented-bundled-siblings",
+    "title": "Undocumented bundled siblings",
+    "one_line": "improve-codebase-architecture/DEEPENING.md is referenced from SKILL.md but ships separately.",
+    "section": "mentioned",
+    "layer": [
+      "L2-llm"
+    ],
+    "pattern": "vendor-cli-underdeclaration",
+    "severity": "low",
+    "key_numbers": [],
+    "related_skills": [
+      "improve-codebase-architecture"
+    ],
+    "body_md": "Bundled-sibling files (referenced markdown that ships in the skill bundle but is not the canonical SKILL.md) are a predictor blind spot. The predictor reads SKILL.md alone per methodology §6, so any malice or undeclared IO living in siblings escapes static review. Closes only by ingesting bundled siblings as part of the prediction context (Mutation M4 closure path)."
+  },
+  {
+    "id": "F",
+    "slug": "xhigh-effort-helps-on-long-skills",
+    "title": "xhigh predictor catches more than default",
+    "one_line": "On long, referential SKILL.mds, --effort xhigh extracts more declared IO than --effort default.",
+    "section": "methodology",
+    "layer": [
+      "methodology",
+      "L2-llm"
+    ],
+    "pattern": "methodology",
+    "severity": "info",
+    "key_numbers": [],
+    "related_skills": [],
+    "body_md": "Comparing default-effort vs xhigh-effort prediction on the same SKILL.md text shows xhigh extracts a larger candidate set, particularly on referential SKILL.mds with many @-link or relative-path references. Methodology lock chose xhigh as the canonical predictor effort."
+  },
+  {
+    "id": "G",
+    "slug": "unconditional-vendor-telemetry",
+    "title": "Unconditional vendor telemetry beacons",
+    "one_line": "wrangler→sparrow.cloudflare.com, semgrep→metrics.semgrep.dev, firebase→firebase-public.firebaseio.com.",
+    "section": "5.1",
+    "layer": [
+      "L2-llm",
+      "policy-design"
+    ],
+    "pattern": "vendor-cli-underdeclaration",
+    "severity": "high",
+    "key_numbers": [
+      {
+        "label": "Telemetry hosts identified",
+        "value": "≥4 across n=25 (sharper formulation of Finding C)"
+      }
+    ],
+    "related_skills": [
+      "wrangler",
+      "semgrep",
+      "firebase-hosting-basics",
+      "find-skills"
+    ],
+    "body_md": "The most consistent failure mode within Finding C is unconditional vendor telemetry. wrangler invocations (any subcommand, including --dry-run) emit a beacon to sparrow.cloudflare.com not named anywhere in SKILL.md. semgrep scan invocations emit metrics.semgrep.dev. firebase-tools contacts firebase-public.firebaseio.com on startup. find-skills contacts the installer service add-skill.vercel.sh. These are vendor-side unconditional probes — the cross-agent test (Codex) confirms they are not Claude-Code-specific. **Direct policy implication**: any SKILL.md-derived sandbox policy will mis-classify these beacons unless either (a) a global telemetry-suffix deny-overlay is added, or (b) the LLM extraction is post-processed to expand wildcards into explicit subdomain enumerations."
+  },
+  {
+    "id": "H",
+    "slug": "cross-agent-footprint-inflation",
+    "title": "Cross-agent syscall-trace inflation is bootstrap-cost",
+    "one_line": "Codex 256× more writes than Claude on wrangler — but ~99% is plugin-marketplace metadata, not task work.",
+    "section": "5.3",
+    "layer": [
+      "methodology"
+    ],
+    "pattern": "agent-runtime-opacity",
+    "severity": "medium",
+    "key_numbers": [
+      {
+        "label": "Apparent ratio",
+        "value": "256× (Codex 2556 / Claude 10)"
+      },
+      {
+        "label": "Task-attributable ratio after baseline subtraction",
+        "value": "1:1 (9 vs 10)"
+      }
+    ],
+    "related_skills": [
+      "wrangler"
+    ],
+    "body_md": "A clean per-(skill, agent) policy-derivation comparison requires per-agent baseline subtraction. Without it, naive trace-based agent comparisons measure agent identity, not task behaviour. Of Codex's 2556 writes, 2541 were plugin-marketplace metadata (117 vendors × N files) tempfs-extracted at startup; 104 were ~/.codex/ agent-state. After filtering, task-attributable writes drop to 9. Useful methodology lesson for any work in this direction."
+  },
+  {
+    "id": "I",
+    "slug": "static-prediction-surfaces-malice",
+    "title": "Structured static prediction surfaces malicious intent honestly",
+    "one_line": "The predictor lists attacker.example.com in its hosts field rather than refusing to engage.",
+    "section": "5.4",
+    "layer": [
+      "L2-llm"
+    ],
+    "pattern": "adversarial-maintainer",
+    "severity": "high",
+    "key_numbers": [],
+    "related_skills": [
+      "zz-adversarial-summarize-text"
+    ],
+    "body_md": "On the synthetic adversarial demo (zz-adversarial-summarize-text/), the xhigh-effort predictor extracted the malicious intent honestly — it listed attacker.example.com in the hosts field and labelled the rationale 'prompt-injection/adversarial skill'. Good news for hardening tooling: a structured-extraction prediction layer is a usable static-analysis red flag *because* it doesn't downplay malicious instructions."
+  },
+  {
+    "id": "J",
+    "slug": "defense-in-depth-empirically-validated",
+    "title": "Defense-in-depth empirically validated",
+    "one_line": "All 6 mutations × 4 layers: every attack contained by at least one layer.",
+    "section": "5.4",
+    "layer": [
+      "L1-static",
+      "L2-llm",
+      "L3-runtime-claude",
+      "L4-runtime-codex"
+    ],
+    "pattern": "adversarial-maintainer",
+    "severity": "high",
+    "key_numbers": [
+      {
+        "label": "Per-layer detection",
+        "value": "L1 83% / L2 67% / L3 100% / L4 100%"
+      },
+      {
+        "label": "Coverage",
+        "value": "6/6 attacks contained"
+      },
+      {
+        "label": "L1 under realistic minimal regex",
+        "value": "drops to 0/6"
+      }
+    ],
+    "related_skills": [
+      "zz-mutation-1-obfuscated-curl",
+      "zz-mutation-2-dns-exfil",
+      "zz-mutation-3-webfetch-indirection",
+      "zz-mutation-4-bundled-sibling",
+      "zz-mutation-5-time-bombed",
+      "zz-mutation-6-dependency-confusion"
+    ],
+    "body_md": "The 6×4 mutation suite empirically validates Professor Monperrus's topic-26 framing: static analysis is necessary-but-insufficient. L1 misses M3 (prose-only WebFetch indirection). L2 misses M4 (bundled-sibling reference) and M6 (dependency-confusion via deceptive package naming). L3 + L4 catch everything. The ablation drops L1 to 0/6 under a realistic three-rule regime (sudo, rm -rf /, pipe-to-shell), confirming brittleness."
+  },
+  {
+    "id": "K",
+    "slug": "refusal-verbosity-differs",
+    "title": "Refusal verbosity differs across aligned agents",
+    "one_line": "Claude Code warns the user; Codex silently refuses without operator-visible signal.",
+    "section": "5.4",
+    "layer": [
+      "L3-runtime-claude",
+      "L4-runtime-codex"
+    ],
+    "pattern": "agent-runtime-opacity",
+    "severity": "medium",
+    "key_numbers": [],
+    "related_skills": [
+      "zz-adversarial-summarize-text"
+    ],
+    "body_md": "Claude Code's user-facing warning is operationally valuable — the user installing a compromised skill receives an immediate alert. Codex's silent compliance is technically correct but provides no signal. Tooling that derives policy from agent traces should also surface the model's own refusal-rationales as a signal channel, since the verbose channel is a free byproduct under one agent and absent under another."
+  },
+  {
+    "id": "L",
+    "slug": "augmented-skillmd-closes-gap",
+    "title": "Augmented SKILL.md closes the gap on thin priors",
+    "one_line": "+25pp hosts F1 on firebase-hosting-basics from a single 'Observed Runtime Endpoints' section.",
+    "section": "5.6",
+    "layer": [
+      "L2-llm",
+      "policy-design"
+    ],
+    "pattern": "vendor-cli-underdeclaration",
+    "severity": "info",
+    "key_numbers": [
+      {
+        "label": "firebase-hosting-basics hosts F1",
+        "value": "0.364 → 0.615 (+25pp)"
+      },
+      {
+        "label": "wrangler / semgrep lift",
+        "value": "minimal (priors already capped out)"
+      }
+    ],
+    "related_skills": [
+      "firebase-hosting-basics-aug",
+      "wrangler-aug",
+      "semgrep-aug"
+    ],
+    "body_md": "Three augmented SKILL.md variants tested: thin priors (firebase-hosting-basics, 46-line conceptual prose) saw the largest single F1 lift in the experiment. wrangler and semgrep showed minimal lift because their original predictors had already inferred most of the missing hosts from CLI-vendor convention or wildcard predicates. **Most actionable single recommendation**: add an 'Observed Runtime Endpoints' section to thin SKILL.mds. Cheap to author, immediately closes the bottom of the F1 distribution."
+  },
+  {
+    "id": "M",
+    "slug": "wildcards-sabotage-policy-discrimination",
+    "title": "Wildcard predictions sabotage policy discrimination",
+    "one_line": "*.cloudflare.com accidentally admits sparrow.cloudflare.com — wildcards must be deflated.",
+    "section": "6",
+    "layer": [
+      "L2-llm",
+      "policy-design"
+    ],
+    "pattern": "vendor-cli-underdeclaration",
+    "severity": "high",
+    "key_numbers": [],
+    "related_skills": [
+      "wrangler"
+    ],
+    "body_md": "The predictor's *.cloudflare.com is technically a correct summary of declared CLI hosts, but in deployment it admits the telemetry sub-domain sparrow.cloudflare.com. Post-process the prediction to either (a) expand wildcards into explicit subdomain enumerations, or (b) pair every wildcard predicate with a global telemetry-suffix deny-overlay. **This is the first of three composition requirements** that turn the LLM-extracted allowlist into a deployable capability artefact."
+  },
+  {
+    "id": "N",
+    "slug": "predictor-variance-llm-dominant",
+    "title": "Predictor variance: LLM choice dominates context choice",
+    "one_line": "Cross-LLM Jaccard 0.41 on hosts; cross-context Jaccard 0.72.",
+    "section": "5.5",
+    "layer": [
+      "methodology",
+      "L2-llm"
+    ],
+    "pattern": "methodology",
+    "severity": "medium",
+    "key_numbers": [
+      {
+        "label": "orig × fresh-Claude hosts Jaccard",
+        "value": "0.723"
+      },
+      {
+        "label": "orig × Codex hosts Jaccard",
+        "value": "0.431"
+      },
+      {
+        "label": "fresh × Codex hosts Jaccard",
+        "value": "0.410"
+      }
+    ],
+    "related_skills": [],
+    "body_md": "Two methodological conclusions. First, context contamination is real but moderate (clean-Claude vs context-Claude Jaccard 0.58–0.80). Second, cross-LLM variance dominates context variance at every axis. **Implication**: the headline F1 numbers are Claude Opus 4.7-specific. The bimodal pattern itself is robust across predictors; absolute magnitudes are not. Any production deployment must fix predictor identity + effort up front."
+  },
+  {
+    "id": "O",
+    "slug": "structured-extraction-inherits-malice",
+    "title": "Structured-extraction policy generators inherit maintainer-supplied malice",
+    "one_line": "All 3 predictor sources emit attacker.example.com verbatim in the structured hosts field.",
+    "section": "5.7",
+    "layer": [
+      "L2-llm",
+      "policy-design"
+    ],
+    "pattern": "adversarial-maintainer",
+    "severity": "high",
+    "key_numbers": [
+      {
+        "label": "Predictor sources",
+        "value": "3/3 (orig, fresh, codex)"
+      }
+    ],
+    "related_skills": [
+      "zz-adversarial-summarize-text"
+    ],
+    "body_md": "Late-add finding (Phase 1.A). Structured-extraction policy generators are *safety-blind by construction*; they faithfully encode whatever the SKILL.md names, including attacker hosts. Pair the SKILL.md-derived allowlist with a separate trust check before deployment — this is the **maintainer-reputation gate**, the second of three composition requirements. Defense-in-depth is necessary, not optional."
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "paths_read": [
+    "./.claude/skills/cookie-sync/scripts/*",
+    "./.claude/skills/cookie-sync/package.json",
+    "./.claude/skills/cookie-sync/node_modules/*",
+    "~/.config/google-chrome/*",
+    "/tmp/chrome-debug/*",
+    "$BROWSERBASE_API_KEY",
+    "$CDP_URL"
+  ],
+  "paths_written": [
+    "./.claude/skills/cookie-sync/node_modules/*",
+    "./.claude/skills/cookie-sync/package-lock.json"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "api.browserbase.com",
+    "*.browserbase.com",
+    "127.0.0.1",
+    "registry.npmjs.org"
+  ],
+  "subprocesses": [
+    "node",
+    "npm",
+    "browse"
+  ],
+  "rationale": "The skill runs a Node.js script that connects to a local Chrome instance via CDP (127.0.0.1:9222) to read cookies, then uploads them to Browserbase's API using BROWSERBASE_API_KEY. Initial setup requires `npm install` which writes to node_modules and contacts the npm registry. The downstream workflow invokes the `browse` CLI to open authenticated sessions using the returned context ID."
+}

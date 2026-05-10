@@ -1,0 +1,45 @@
+{
+  "paths_read": [
+    "./package.json",
+    "./angular.json",
+    "./vue.config.js",
+    "./next.config*",
+    "./app.json",
+    "./Package.swift",
+    "./build.gradle",
+    "./requirements.txt",
+    "./Pipfile",
+    "./pyproject.toml",
+    "./references/cli.md",
+    "./references/environments.md",
+    "./references/concepts.md",
+    "~/.config/auth0/*",
+    "~/.auth0/*"
+  ],
+  "paths_written": [
+    "~/.config/auth0/*",
+    "~/.auth0/*",
+    "/opt/homebrew/*",
+    "/usr/local/Homebrew/*",
+    "~/.cache/Homebrew/*"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "auth0.com",
+    "*.auth0.com",
+    "auth0.github.io",
+    "community.auth0.com",
+    "github.com",
+    "*.githubusercontent.com"
+  ],
+  "subprocesses": [
+    "cat",
+    "grep",
+    "ls",
+    "brew",
+    "scoop",
+    "choco",
+    "auth0"
+  ],
+  "rationale": "The skill explicitly detects the local framework by reading package and config files, then invokes the Auth0 CLI to log in, create an application, and inspect app credentials. Auth0 CLI login and app creation imply network calls to Auth0-hosted domains and local credential/config writes, while optional installation via Homebrew can read/write package manager paths and contact GitHub/Homebrew-backed hosts. The quickstart itself does not prescribe deleting files or directly editing app source; it delegates framework-specific code changes to other skills."
+}

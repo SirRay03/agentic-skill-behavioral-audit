@@ -1,0 +1,24 @@
+{
+  "paths_read": [
+    "./search_results.json",
+    "./content.json"
+  ],
+  "paths_written": [
+    "./search_results.json",
+    "./content.json"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "inference.sh",
+    "cloud.inference.sh",
+    "api.tavily.com",
+    "api.exa.ai",
+    "openrouter.ai",
+    "raw.githubusercontent.com"
+  ],
+  "subprocesses": [
+    "belt",
+    "npx"
+  ],
+  "rationale": "The skill operates entirely through the `belt` CLI from inference.sh, which proxies calls to Tavily and Exa search/extract APIs. Workflows redirect command output to local JSON files (search_results.json, content.json) which would be read back by subsequent commands. The `npx skills add` command is shown for installing related skills, and the inference.sh service backends imply network calls to inference.sh infrastructure plus the underlying Tavily/Exa/OpenRouter APIs."
+}

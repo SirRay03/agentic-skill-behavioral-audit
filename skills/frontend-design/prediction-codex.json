@@ -1,0 +1,37 @@
+{
+  "paths_read": [
+    "./**/*",
+    "./package.json",
+    "./src/**/*",
+    "./public/**/*",
+    "./index.html",
+    "./vite.config.*",
+    "./next.config.*",
+    "./tailwind.config.*",
+    "./tsconfig.json"
+  ],
+  "paths_written": [
+    "./src/**/*",
+    "./public/**/*",
+    "./index.html",
+    "./package.json",
+    "./package-lock.json",
+    "./pnpm-lock.yaml",
+    "./yarn.lock",
+    "./tailwind.config.*"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "registry.npmjs.org"
+  ],
+  "subprocesses": [
+    "node",
+    "npm",
+    "npx",
+    "pnpm",
+    "yarn"
+  ],
+  "rationale": "The skill's primary verb is to create or restyle frontend interfaces, so a representative coding agent would inspect existing project structure and source/config files, then write or modify HTML, CSS, JS/TS, React/Vue component, public asset, and possibly package/config files. It may invoke the local frontend toolchain to install or use available libraries, run format/build/dev commands, and validate the UI. The text encourages distinctive typography and mentions React Motion when available, which implies possible font/CDN access and npm registry access if dependencies are installed."
+}

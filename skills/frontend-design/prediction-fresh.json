@@ -1,0 +1,39 @@
+{
+  "paths_read": [
+    "./*",
+    "./src/**/*",
+    "./public/**/*",
+    "./package.json",
+    "./*.html",
+    "./*.css",
+    "./*.js",
+    "./*.jsx",
+    "./*.tsx",
+    "./tailwind.config.*",
+    "./vite.config.*"
+  ],
+  "paths_written": [
+    "./*.html",
+    "./*.css",
+    "./*.js",
+    "./*.jsx",
+    "./*.tsx",
+    "./src/**/*",
+    "./public/**/*",
+    "./components/**/*"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "cdn.jsdelivr.net",
+    "unpkg.com",
+    "cdnjs.cloudflare.com"
+  ],
+  "subprocesses": [
+    "node",
+    "npm",
+    "npx"
+  ],
+  "rationale": "This skill builds frontend UIs (HTML/CSS/JS, React, Vue), so the agent will read existing project files and write component/page source files in typical web project locations. It references distinctive fonts and the Motion library, which implies linking to font CDNs (Google Fonts) and JS CDNs for assets. Node/npm/npx may be invoked to scaffold, install dependencies, or run dev servers for React/Vue projects, though pure HTML artifacts may need none. No deletions are implied by the skill's verbs."
+}

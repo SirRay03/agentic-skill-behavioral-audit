@@ -1,0 +1,37 @@
+{
+  "paths_read": [
+    "./SKILL.md",
+    "./references/configuration.md",
+    "./references/deploying.md",
+    "./firebase.json",
+    "./.firebaserc",
+    "./package.json",
+    "./package-lock.json",
+    "./yarn.lock",
+    "./pnpm-lock.yaml",
+    "./public/**",
+    "./dist/**",
+    "./build/**"
+  ],
+  "paths_written": [
+    "./firebase.json",
+    "./.firebaserc",
+    "./public/**",
+    "./dist/**",
+    "./build/**"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "registry.npmjs.org",
+    "firebase.googleapis.com",
+    "firebasehosting.googleapis.com",
+    "*.googleapis.com",
+    "accounts.google.com",
+    "*.firebaseapp.com",
+    "*.web.app"
+  ],
+  "subprocesses": [
+    "npx"
+  ],
+  "rationale": "The skill\u2019s primary verbs are configuring, emulating, and deploying Firebase Hosting, so an agent will likely inspect Firebase config, package/build metadata, and static output directories, and may write firebase.json or .firebaserc when initializing or adjusting Hosting settings. The explicit command uses npx to run firebase-tools, which implies npm registry access plus Firebase/Google API calls during emulator setup or deployment. Deploy and preview workflows also imply Firebase Hosting domains such as firebaseapp.com and web.app."
+}

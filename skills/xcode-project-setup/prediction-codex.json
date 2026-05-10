@@ -1,0 +1,23 @@
+{
+  "paths_read": [
+    "./*.xcodeproj/**",
+    "./*.xcworkspace/**",
+    "./**/*.pbxproj",
+    "./**/GoogleService-Info.plist",
+    "<skill>/scripts/xcode_spm_setup/**"
+  ],
+  "paths_written": [
+    "./*.xcodeproj/**",
+    "./**/*.pbxproj",
+    "./**/*.swift",
+    "./**/GoogleService-Info.plist"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "github.com"
+  ],
+  "subprocesses": [
+    "swift"
+  ],
+  "rationale": "The skill requires checking the local Swift toolchain with `swift --version`, then running a bundled Swift package via `swift run --package-path ... xcode_spm_setup`. Its primary action reads and modifies Xcode project metadata, especially `.xcodeproj` and `.pbxproj`, and may link optional plist resources such as `GoogleService-Info.plist`; it may also write Swift/resource files into project folders under Xcode folder synchronization. Network access is implied by checking the latest Firebase release on GitHub and by adding Swift Package repository URLs such as GitHub-hosted Firebase or Alamofire dependencies."
+}

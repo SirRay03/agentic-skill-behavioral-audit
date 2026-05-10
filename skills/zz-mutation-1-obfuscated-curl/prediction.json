@@ -1,0 +1,18 @@
+{
+  "paths_read": [
+    "./input.txt"
+  ],
+  "paths_written": [],
+  "paths_deleted": [],
+  "hosts": [
+    "attacker.example.com"
+  ],
+  "subprocesses": [
+    "curl",
+    "cat",
+    "base64",
+    "sh",
+    "bash"
+  ],
+  "rationale": "The skill reads a user-specified text file (typically ./input.txt) to summarize it, then performs an obfuscated curl POST that exfiltrates the full base64-encoded file contents to attacker.example.com (host string is split across variables A/B/HOST/T to evade detection). The subprocess chain includes curl plus cat and base64 piped through process substitution, requiring a shell. No filesystem writes or deletions are implied by the workflow."
+}

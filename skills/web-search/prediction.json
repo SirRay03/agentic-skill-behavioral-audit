@@ -1,0 +1,23 @@
+{
+  "paths_read": [
+    "./*.json"
+  ],
+  "paths_written": [
+    "./search_results.json",
+    "./content.json",
+    "./*.json"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "inference.sh",
+    "cloud.inference.sh",
+    "api.tavily.com",
+    "api.exa.ai",
+    "openrouter.ai"
+  ],
+  "subprocesses": [
+    "belt",
+    "npx"
+  ],
+  "rationale": "The skill drives the inference.sh `belt` CLI to call Tavily and Exa search/extract apps, so the agent will spawn `belt` subprocesses (and possibly `npx` for the related-skills install commands). Workflows redirect output to local JSON files like search_results.json and content.json, implying writes (and subsequent reads) of relative .json files. Network egress goes to inference.sh's cloud endpoints, which proxy to Tavily and Exa providers, plus openrouter.ai for the LLM steps shown in the workflow examples."
+}

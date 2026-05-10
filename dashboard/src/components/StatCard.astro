@@ -1,0 +1,36 @@
+---
+interface Props {
+  label: string;
+  value: string;
+  ci?: string;
+  note?: string;
+  emphasis?: boolean;
+}
+
+const { label, value, ci, note, emphasis = false } = Astro.props;
+---
+
+<div
+  class:list={[
+    "border rounded-md p-5 bg-white transition-shadow hover:shadow-sm",
+    emphasis ? "border-accent-500/40 bg-accent-50/40" : "border-ink-200",
+  ]}
+>
+  <div class="text-[11px] uppercase tracking-[0.16em] text-ink-500 font-medium">
+    {label}
+  </div>
+  <div
+    class:list={[
+      "tabular font-semibold leading-none mt-2",
+      emphasis ? "text-accent-700 text-3xl" : "text-ink-900 text-3xl",
+    ]}
+  >
+    {value}
+  </div>
+  {
+    ci && (
+      <div class="tabular text-xs text-ink-600 mt-1.5 font-mono">{ci}</div>
+    )
+  }
+  {note && <div class="text-xs text-ink-500 mt-1">{note}</div>}
+</div>

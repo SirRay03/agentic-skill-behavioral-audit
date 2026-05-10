@@ -1,0 +1,39 @@
+{
+  "paths_read": [
+    "./.env",
+    "./package.json",
+    "./.gitignore",
+    "./prisma/schema.prisma",
+    "./prisma.config.ts",
+    "./references/*.md",
+    "./generated/prisma/*"
+  ],
+  "paths_written": [
+    "./.env",
+    "./.gitignore",
+    "./prisma/schema.prisma",
+    "./prisma.config.ts",
+    "./prisma/migrations/*",
+    "./test-connection.ts",
+    "./package.json",
+    "./node_modules/*",
+    "./generated/prisma/*"
+  ],
+  "paths_deleted": [
+    "./test-connection.ts"
+  ],
+  "hosts": [
+    "api.prisma.io",
+    "console.prisma.io",
+    "registry.npmjs.org"
+  ],
+  "subprocesses": [
+    "curl",
+    "npm",
+    "npx",
+    "node",
+    "tsx",
+    "prisma"
+  ],
+  "rationale": "The skill provisions a Prisma Postgres database via the Management API (curl to api.prisma.io) and wires it into a local Node.js project. It reads/writes config files (.env, .gitignore, prisma/schema.prisma, prisma.config.ts, package.json), installs npm dependencies (hitting registry.npmjs.org via npm), and runs Prisma CLI commands (npx prisma init/migrate/generate/studio). It also creates and deletes a test-connection.ts verification script run via tsx, and references console.prisma.io for the dashboard URL."
+}

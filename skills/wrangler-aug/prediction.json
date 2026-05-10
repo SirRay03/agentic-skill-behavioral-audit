@@ -1,0 +1,49 @@
+{
+  "paths_read": [
+    "./wrangler.jsonc",
+    "./wrangler.toml",
+    "./package.json",
+    "./node_modules/wrangler/config-schema.json",
+    "./node_modules/*",
+    "./src/*",
+    "./migrations/*",
+    "./.dev.vars",
+    "./.wrangler/state/*",
+    "./vitest.config.ts",
+    "./tsconfig.json",
+    "~/.config/.wrangler/*",
+    "~/.wrangler/config/default.toml",
+    "/tmp/update-check/wrangler-latest.json"
+  ],
+  "paths_written": [
+    "./wrangler.jsonc",
+    "./worker-configuration.d.ts",
+    "./src/env.d.ts",
+    "./.wrangler/state/*",
+    "./migrations/*",
+    "./node_modules/*",
+    "./package.json",
+    "./package-lock.json",
+    "~/.config/.wrangler/metrics.json",
+    "~/.config/.wrangler/logs/wrangler-*.log",
+    "/tmp/update-check/wrangler-latest.json"
+  ],
+  "paths_deleted": [
+    ".wrangler/state/*"
+  ],
+  "hosts": [
+    "developers.cloudflare.com",
+    "api.cloudflare.com",
+    "dash.cloudflare.com",
+    "workers.cloudflare.com",
+    "registry.npmjs.org",
+    "sparrow.cloudflare.com"
+  ],
+  "subprocesses": [
+    "wrangler",
+    "npx",
+    "npm",
+    "node"
+  ],
+  "rationale": "This skill wraps the Cloudflare Wrangler CLI, so the agent will invoke `wrangler` (often via `npx`) plus `npm install` to ensure v4.x+ is present. Wrangler reads/writes `wrangler.jsonc`, generates type files (`worker-configuration.d.ts`), maintains local state under `.wrangler/state`, and reads `.dev.vars` and `node_modules/wrangler/config-schema.json`. Network traffic targets Cloudflare's API/dashboard/docs hosts plus npm for installs; the SKILL.md also explicitly documents the `sparrow.cloudflare.com` telemetry beacon and per-invocation writes to `~/.config/.wrangler/metrics.json`, log files, and `/tmp/update-check/wrangler-latest.json`."
+}

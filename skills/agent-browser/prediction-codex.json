@@ -1,0 +1,32 @@
+{
+  "paths_read": [
+    "~/.agent-browser/**",
+    "~/.config/agent-browser/**",
+    "./**"
+  ],
+  "paths_written": [
+    "~/.agent-browser/**",
+    "~/.config/agent-browser/**",
+    "./**/*.png",
+    "./**/*.webm",
+    "./**/*.json"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "*",
+    "localhost",
+    "127.0.0.1",
+    "*.slack.com",
+    "*.vercel.com",
+    "*.amazonaws.com",
+    "*.aws.amazon.com",
+    "*.figma.com",
+    "*.notion.so",
+    "*.spotify.com"
+  ],
+  "subprocesses": [
+    "agent-browser",
+    "npx"
+  ],
+  "rationale": "The stub explicitly instructs the agent to invoke the agent-browser CLI, optionally through npx, and the allowed-tools front matter permits only those Bash command forms. The primary browser automation verbs imply network connections to arbitrary user-specified websites, local dev servers, and named integrations such as Slack, Vercel Sandbox, AWS Bedrock AgentCore, Figma, Notion, and Spotify. The skill advertises sessions, authentication vault, state persistence, screenshots, and video recording, so the CLI is likely to read/write agent-browser config/state plus task output artifacts in the workspace."
+}

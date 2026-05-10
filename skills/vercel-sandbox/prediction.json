@@ -1,0 +1,42 @@
+{
+  "paths_read": [
+    "./package.json",
+    "./vercel.json",
+    "./examples/environments/*",
+    "./app/api/cron/*",
+    "./node_modules/*",
+    ".env*",
+    "/tmp/*"
+  ],
+  "paths_written": [
+    "./package.json",
+    "./vercel.json",
+    "./node_modules/*",
+    "./pnpm-lock.yaml",
+    "/tmp/*"
+  ],
+  "paths_deleted": [
+    "/tmp/*"
+  ],
+  "hosts": [
+    "api.vercel.com",
+    "registry.npmjs.org",
+    "vercel.com",
+    "*.vercel.app",
+    "example.com"
+  ],
+  "subprocesses": [
+    "pnpm",
+    "npm",
+    "npx",
+    "node",
+    "tsx",
+    "agent-browser",
+    "sh",
+    "sudo",
+    "dnf",
+    "ldconfig",
+    "base64"
+  ],
+  "rationale": "This skill instructs the agent to install @vercel/sandbox via pnpm and write TypeScript code that creates Vercel Sandbox microVMs, so it will read/write package.json, node_modules, and likely vercel.json for cron config. It needs Vercel API credentials (VERCEL_TOKEN/TEAM/PROJECT) read from env, and reaches api.vercel.com to provision sandboxes plus npm registry for installs. Inside the host process the agent shells out to pnpm/npm/npx/node/tsx (and references sh, sudo, dnf, ldconfig, base64, agent-browser as commands run inside the sandbox VM, which still appear as subprocess invocations from the SDK perspective). Browser automation targets arbitrary URLs (example.com is the documented target)."
+}

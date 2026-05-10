@@ -1,0 +1,139 @@
+{
+  "skill_policy_schema_version": "0.1-prototype",
+  "generated_for_skill_id": "wrangler",
+  "generation_method": "Claude Opus 4.7 xhigh-effort SKILL.md-only prediction (predict.py) + wildcard deflation (Finding M post-process)",
+  "capability_declarations": {
+    "network_egress": {
+      "explicit_allow": [
+        {
+          "host": "developers.cloudflare.com",
+          "source": "literal",
+          "type": "exact"
+        },
+        {
+          "host": "api.cloudflare.com",
+          "source": "literal",
+          "type": "exact"
+        },
+        {
+          "host": "sparrow.cloudflare.com",
+          "predicate": "*.cloudflare.com",
+          "source": "wildcard-deflated",
+          "type": "exact"
+        },
+        {
+          "host": "registry.npmjs.org",
+          "source": "literal",
+          "type": "exact"
+        },
+        {
+          "host": "workers.cloudflare.com",
+          "source": "literal",
+          "type": "exact"
+        }
+      ],
+      "wildcard_residuals": [
+        {
+          "host_pattern": "*.cloudflare.com",
+          "subdomain_bounded_to": [
+            "sparrow.cloudflare.com"
+          ],
+          "type": "wildcard-bounded"
+        },
+        {
+          "host_pattern": "*.workers.dev",
+          "subdomain_bounded_to": null,
+          "type": "wildcard-unconstrained",
+          "note": "no observed subdomain matches; runtime should reject by default"
+        }
+      ],
+      "telemetry_deny_overlay": [
+        "sparrow.cloudflare.com",
+        "metrics.semgrep.dev",
+        "ogads-pa.clients6.google.com",
+        "metrics.*.dev",
+        "analytics.*",
+        "telemetry.*",
+        "*-telemetry.*.com"
+      ],
+      "policy_decision_rule": "deny-overlay wins over allowlist wildcards; explicit_allow entries are admitted unconditionally; wildcard_residuals are subject to runtime configuration (default: reject if subdomain_bounded_to is null, else admit only the listed subdomains)."
+    },
+    "filesystem_read": {
+      "predicates": [
+        "./wrangler.jsonc",
+        "./wrangler.toml",
+        "./package.json",
+        "./node_modules/wrangler/config-schema.json",
+        "./src/*",
+        "./migrations/*",
+        "./.dev.vars",
+        "./.wrangler/state/*",
+        "./vitest.config.ts",
+        "./schema.sql",
+        "./vectors.ndjson",
+        "./secrets.json",
+        "./dist/*",
+        "./worker-configuration.d.ts"
+      ],
+      "scope": "workdir-relative + ~/.config/<vendor>/* per Finding D"
+    },
+    "filesystem_write": {
+      "predicates": [
+        "./wrangler.jsonc",
+        "./package.json",
+        "./package-lock.json",
+        "./node_modules/*",
+        "./src/*",
+        "./migrations/*",
+        "./.dev.vars",
+        "./.wrangler/state/*",
+        "./worker-configuration.d.ts",
+        "./src/env.d.ts",
+        "./backup.sql",
+        "./schema.sql"
+      ],
+      "scope": "workdir-relative; reject everything outside"
+    },
+    "subprocess_spawn": {
+      "binaries": [
+        "wrangler",
+        "npm",
+        "npx",
+        "node",
+        "curl",
+        "docker"
+      ],
+      "scope": "execve allowlist; reject other binaries"
+    },
+    "agent_tool_invocation": {
+      "note": "Read from SKILL.md frontmatter `allowed-tools` if declared; otherwise the agent-runtime base policy applies.",
+      "example_existing_skills_with_declared_allowed_tools": [
+        "gha-security-review"
+      ]
+    }
+  },
+  "maintainer_trust_hint": {
+    "maintainer_signal_from_skill_id": null,
+    "trust_tier": "long-tail",
+    "note": "In a deployed registry, maintainer identity should come from a separate signed assertion \u2014 Sigstore for OSS skills, an attestation chain for enterprise skills."
+  },
+  "augmentation_suggestion": {
+    "available": true,
+    "addendum_preview": "## Observed Runtime Network Endpoints\n\nIn addition to the hosts named in the Retrieval Sources table at the top of this SKILL.md, every wrangler invocation contacts the following hosts and writes the following files that are NOT documented elsewhere in the skill:\n\n- `sparrow.cloudflare.com` \u2014 wrangler emits a telemetry beacon to this host on every invocation (including `wrangler deploy --dry-run`). The beacon fires unconditionally regardless of credentials and cannot be disabled by skill configuration. Authors of skills wrapping `wrangler` should expect this host to appear in any sandbox trace",
+    "addendum_length_chars": 1286,
+    "note": "Append this to SKILL.md to lift hosts F1 (Finding L). Empirical lift on this skill is in analysis/per-skill.json's *-aug entry."
+  },
+  "headline_metrics_for_this_skill": {
+    "predicted_hosts_count": 6,
+    "observed_skill_attributable_hosts": [
+      "registry.npmjs.org",
+      "sparrow.cloudflare.com"
+    ]
+  },
+  "compliance_with_topic_26_subgoals": {
+    "capability_based_permission_model": "yes (this bundle is the policy artefact)",
+    "sandboxing_granularity_supported": "per-skill (this bundle); per-tool-call by composing with SKILL.md `allowed-tools`",
+    "static_plus_semantic_detection": "yes (LLM-extracted prediction is the static + semantic step; runtime alignment is the L3 enforcement layer)"
+  },
+  "non_authoritative_disclaimer": "This bundle is generated automatically and is not a substitute for the maintainer-published SKILL.md. It is intended to be installed alongside the SKILL.md, not in place of it. The policy decision rule above is the runtime contract; deployers should implement the deny-overlay precedence rule explicitly."
+}

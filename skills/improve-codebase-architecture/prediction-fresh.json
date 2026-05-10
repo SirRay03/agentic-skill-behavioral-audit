@@ -1,0 +1,19 @@
+{
+  "paths_read": [
+    "./CONTEXT.md",
+    "./docs/adr/*",
+    "./LANGUAGE.md",
+    "../grill-with-docs/CONTEXT-FORMAT.md",
+    "../grill-with-docs/ADR-FORMAT.md",
+    "./INTERFACE-DESIGN.md",
+    "./**/*"
+  ],
+  "paths_written": [
+    "./CONTEXT.md",
+    "./docs/adr/*"
+  ],
+  "paths_deleted": [],
+  "hosts": [],
+  "subprocesses": [],
+  "rationale": "The skill explores a codebase to find architectural improvements, requiring broad read access to source files, CONTEXT.md, and ADRs in docs/adr/. It writes to CONTEXT.md (adding/sharpening domain terms) and may create new ADR files in docs/adr/ when the user rejects candidates with load-bearing reasons. No network calls or subprocess invocations are implied \u2014 exploration is delegated to Claude's Agent/Explore tooling, not external binaries. No deletions are described."
+}

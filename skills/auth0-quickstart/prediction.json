@@ -1,0 +1,35 @@
+{
+  "paths_read": [
+    "./package.json",
+    "./requirements.txt",
+    "./Pipfile",
+    "./pyproject.toml",
+    "./angular.json",
+    "./vue.config.js",
+    "./next.config*",
+    "./app.json",
+    "./Package.swift",
+    "./build.gradle",
+    "./references/*.md"
+  ],
+  "paths_written": [
+    ".env*"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "auth0.com",
+    "*.auth0.com",
+    "github.com",
+    "auth0.github.io",
+    "community.auth0.com"
+  ],
+  "subprocesses": [
+    "bash",
+    "cat",
+    "ls",
+    "grep",
+    "brew",
+    "auth0"
+  ],
+  "rationale": "The skill detects the project's framework by reading package manifests (package.json, requirements.txt, angular.json, etc.) via cat/ls/grep, then installs the Auth0 CLI via brew and runs `auth0 login`/`auth0 apps create` which authenticate against Auth0 hosted endpoints. Credentials returned by the CLI are typically written to a local environment file. The reference docs (references/cli.md, references/environments.md, references/concepts.md) are read from the skill bundle, and external Auth0 docs/community sites are linked for Tier 2 frameworks."
+}

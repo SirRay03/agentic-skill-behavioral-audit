@@ -1,0 +1,28 @@
+{
+  "paths_read": [
+    "./.claude/skills/cookie-sync/*",
+    "./.claude/skills/cookie-sync/scripts/*",
+    "./.claude/skills/cookie-sync/package.json",
+    "./.claude/skills/cookie-sync/node_modules/*",
+    "$BROWSERBASE_API_KEY",
+    "$CDP_URL"
+  ],
+  "paths_written": [
+    "./.claude/skills/cookie-sync/node_modules/*",
+    "./.claude/skills/cookie-sync/package-lock.json",
+    "/tmp/chrome-debug/*"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "api.browserbase.com",
+    "*.browserbase.com",
+    "127.0.0.1",
+    "registry.npmjs.org"
+  ],
+  "subprocesses": [
+    "node",
+    "npm",
+    "browse"
+  ],
+  "rationale": "The skill installs Node dependencies (npm/registry.npmjs.org writing node_modules) and runs a Node script that connects to local Chrome via CDP at 127.0.0.1:9222 to read cookies, then uploads them to Browserbase's API to create/update a persistent context. It reads the BROWSERBASE_API_KEY env var and CDP_URL, and may reference a /tmp/chrome-debug user-data-dir if Chrome was launched manually. After syncing, the documented follow-up invokes the `browse` CLI, so that subprocess is also in the footprint."
+}

@@ -1,0 +1,38 @@
+{
+  "paths_read": [
+    "./package.json",
+    "./requirements.txt",
+    "./Pipfile",
+    "./pyproject.toml",
+    "./angular.json",
+    "./vue.config.js",
+    "./next.config*",
+    "./app.json",
+    "./Package.swift",
+    "./build.gradle",
+    "./references/*.md",
+    "~/.config/auth0/*"
+  ],
+  "paths_written": [
+    "~/.config/auth0/*",
+    "./.env*"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "auth0.com",
+    "*.auth0.com",
+    "auth0.github.io",
+    "community.auth0.com",
+    "github.com"
+  ],
+  "subprocesses": [
+    "auth0",
+    "brew",
+    "scoop",
+    "choco",
+    "cat",
+    "grep",
+    "ls"
+  ],
+  "rationale": "The skill's primary verb is framework detection followed by Auth0 setup, so it reads project manifests (package.json, requirements.txt, angular.json, etc.) via cat/grep/ls subprocesses. It then invokes the auth0 CLI to login (which writes credentials to ~/.config/auth0) and create applications, hitting Auth0's API endpoints. Installation paths invoke brew/scoop/choco package managers, and the skill links to documentation on auth0.com and github.com. Environment variable setup implies writing to .env files in the project."
+}

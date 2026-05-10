@@ -1,0 +1,148 @@
+---
+import Layout from "@layouts/Layout.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import excerpts from "../data/generated/report-excerpts.json";
+import { renderMd } from "@/lib/markdown";
+import { u } from "@/lib/url";
+
+const threatModelHtml = renderMd(excerpts.threat_model || "");
+---
+
+<Layout title="Methodology · Agentic Skill Auditor">
+  <SectionHeader
+    eyebrow="harness · sample · prediction · comparison"
+    title="Methodology"
+    subtitle="The audit follows P0 (sample) → P3 (predict) → P4 (run) → compare. Each step is reproducible from harness/setup-skills.sh + harness/predict.py + harness/run-skill.sh + analysis/compare.py."
+  />
+
+  <!-- Predictor lock -->
+  <section class="mb-12">
+    <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4">
+      Predictor lock
+    </h2>
+    <div class="border border-ink-200 rounded-md bg-white p-5">
+      <table class="w-full text-sm">
+        <tbody class="divide-y divide-ink-100">
+          <tr><td class="py-2 text-ink-500 w-1/3">Canonical predictor</td><td class="py-2 font-mono">Claude Opus 4.7</td></tr>
+          <tr><td class="py-2 text-ink-500">Effort (P3 prediction)</td><td class="py-2 font-mono">--effort xhigh</td></tr>
+          <tr><td class="py-2 text-ink-500">Effort (P4 runtime)</td><td class="py-2 font-mono">--effort high</td></tr>
+          <tr><td class="py-2 text-ink-500">Sandbox</td><td class="py-2 font-mono">WSL2 Kali Linux Rolling 2024.4</td></tr>
+          <tr><td class="py-2 text-ink-500">Trace</td><td class="py-2 font-mono">strace -f + tcpdump (capability-granted, no root)</td></tr>
+          <tr><td class="py-2 text-ink-500">Comparison</td><td class="py-2">predicate-style F1 with agent-infra filter (paths_read, paths_written, hosts axes)</td></tr>
+          <tr><td class="py-2 text-ink-500">Per-axis aggregation</td><td class="py-2">bootstrap 1000-resample 95% CI; per-host McNemar's; per-skill Wilcoxon</td></tr>
+        </tbody>
+      </table>
+      <p class="mt-4 pt-4 border-t border-ink-100 text-xs text-ink-600 leading-relaxed">
+        The asymmetric P3-xhigh / P4-high lock is documented in <code>methodology.md §6</code> and the
+        <code>decision-log.md</code>. From-scratch redo would lock both at xhigh.
+      </p>
+    </div>
+  </section>
+
+  <!-- Sample -->
+  <section class="mb-12">
+    <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4">
+      Sample stratification
+    </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+      <div class="border border-ink-200 rounded-md p-5 bg-white">
+        <div class="font-semibold text-ink-900 mb-3">Production · n=25</div>
+        <p class="text-sm text-ink-700 leading-relaxed">
+          15 in tranche 1 (per <code>manifest.csv</code>); 10 added in tranche 2 mid-project.
+          Sources: <code>skills.sh</code>, <code>github.com/anthropics/skills</code>,
+          vendor-published agent-skills repos (firebase, cloudflare, vercel-labs, mattpocock,
+          inferencesh, browserbase, juliusbrussee, microsoft).
+        </p>
+      </div>
+      <div class="border border-ink-200 rounded-md p-5 bg-white">
+        <div class="font-semibold text-ink-900 mb-3">Adversarial cells</div>
+        <ul class="text-sm text-ink-700 space-y-1 list-disc list-inside">
+          <li><code>zz-adversarial-summarize-text</code> — synthetic compromised SKILL.md (Phase 1.A)</li>
+          <li>6× attack-pattern mutations (Phase 1.C, <a href={u("/mutation-suite")}>/mutation-suite</a>)</li>
+          <li>3× augmented SKILL.md variants (Phase 1.B, Finding L)</li>
+        </ul>
+      </div>
+      <div class="border border-ink-200 rounded-md p-5 bg-white">
+        <div class="font-semibold text-ink-900 mb-3">Per-skill prediction sources</div>
+        <ul class="text-sm text-ink-700 space-y-1 list-disc list-inside">
+          <li><code>prediction.json</code> — orig-Claude xhigh (with project context); canonical</li>
+          <li><code>prediction-fresh.json</code> — fresh-Claude xhigh (clean home); for predictor variance</li>
+          <li><code>prediction-codex.json</code> — Codex CLI default; for cross-LLM Jaccard</li>
+        </ul>
+      </div>
+      <div class="border border-ink-200 rounded-md p-5 bg-white">
+        <div class="font-semibold text-ink-900 mb-3">Per-skill trace variants</div>
+        <ul class="text-sm text-ink-700 space-y-1 list-disc list-inside">
+          <li><code>trace.json</code> — orig-Claude high (canonical)</li>
+          <li><code>trace-codex.json</code> — Codex cross-agent (n=7)</li>
+          <li><code>trace-realcreds.json</code> — real credentials (n=3: firebase, wrangler, firecrawl)</li>
+          <li><code>{"trace-k-rep{1,2}.json"}</code> — repeat-invocation stability (n=3 × 2)</li>
+          <li><code>{"trace-n-{medium,xhigh}.json"}</code> — runtime-effort sensitivity (n=3 × 2)</li>
+          <li><code>{"trace-l-{alt1,alt2}.json"}</code> — multi-task fuzzing (n=3 × 2)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Threat model -->
+  {threatModelHtml && (
+    <section class="mb-12">
+      <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4">
+        Threat model
+      </h2>
+      <div class="border border-ink-200 rounded-md bg-white p-6 prose" set:html={threatModelHtml} />
+    </section>
+  )}
+
+  <!-- Declared blind spots -->
+  <section class="mb-12">
+    <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4">
+      Declared blind spots
+    </h2>
+    <div class="border border-ink-200 rounded-md bg-white p-6">
+      <ul class="space-y-3">
+        {[
+          ["TLS interception", "We measure host F1, not URL-path or payload F1. mitmproxy + cert injection is the documented future-work direction."],
+          ["Agent-tool-mediated IO", "Claude Code's WebSearch / WebFetch / subagent dispatch route through the Anthropic harness; not visible to local strace. Cross-agent control under Codex (which shells out to raw curl/wget) eliminated this as the explanation for retrieval-skip behaviour — Finding A reshaped."],
+          ["Async post-task callbacks", "Telemetry beacons fired after the agent returns are not captured by the bounded-duration trace."],
+          ["Real credentials gap", "7 cred-gated tranche-1 skills ran with stub credentials; firebase/wrangler/firecrawl have a real-creds variant. Stub-creds traces are a strict lower bound on observed network surface."],
+          ["Live policy enforcement", "Section 6 simulates enforcement post-hoc; iptables-in-netns deployment recipe documented but not run, deferred from this submission."],
+          ["Single agent for headline F1", "Cross-agent dynamic on n=7. Cross-LLM PREDICTION run on the full n=25 (Section 5.5)."],
+        ].map(([title, body]) => (
+          <li class="flex gap-3">
+            <span class="text-accent-500 mt-1.5 shrink-0">●</span>
+            <div>
+              <div class="font-semibold text-ink-900">{title}</div>
+              <p class="text-sm text-ink-700 mt-0.5 leading-relaxed">{body}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Statistical rigor -->
+  <section class="mb-12">
+    <h2 class="text-sm uppercase tracking-[0.16em] text-ink-500 font-medium mb-4">
+      Statistical rigor
+    </h2>
+    <div class="border border-ink-200 rounded-md bg-white p-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+      <div>
+        <div class="font-semibold text-ink-900 mb-1">Aggregate F1 confidence intervals</div>
+        <p class="text-ink-700 leading-relaxed">Bootstrap 1000-resample 95% CI on every reported aggregate F1. See <code>analysis/stats.json</code>.</p>
+      </div>
+      <div>
+        <div class="font-semibold text-ink-900 mb-1">Per-host paired classification</div>
+        <p class="text-ink-700 leading-relaxed">McNemar's exact-binomial test on n=34 host-skill pairs across 11 skills with non-empty observed hosts. <strong>p = 0.003</strong> against the null of equal disagreement.</p>
+      </div>
+      <div>
+        <div class="font-semibold text-ink-900 mb-1">Per-skill paired recall</div>
+        <p class="text-ink-700 leading-relaxed">Wilcoxon signed-rank on per-skill paired (LLM, regex) recalls. <strong>p = 0.047</strong> against equal means.</p>
+      </div>
+      <div>
+        <div class="font-semibold text-ink-900 mb-1">Bimodal-cluster split</div>
+        <p class="text-ink-700 leading-relaxed">Mann-Whitney U test, paths_read F1, n=12 CLI-wrappers vs n=4 pure-text. <strong>U=6, p=0.030</strong>.</p>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,40 @@
+{
+  "paths_read": [
+    "./.env",
+    "./package.json",
+    "./.gitignore",
+    "./prisma/schema.prisma",
+    "./prisma.config.ts",
+    "./references/*.md",
+    "$PRISMA_SERVICE_TOKEN"
+  ],
+  "paths_written": [
+    "./.env",
+    "./.gitignore",
+    "./prisma/schema.prisma",
+    "./prisma.config.ts",
+    "./prisma/migrations/*",
+    "./test-connection.ts",
+    "./node_modules/*",
+    "./generated/prisma/*",
+    "./package.json",
+    "./package-lock.json"
+  ],
+  "paths_deleted": [
+    "./test-connection.ts"
+  ],
+  "hosts": [
+    "api.prisma.io",
+    "console.prisma.io",
+    "registry.npmjs.org"
+  ],
+  "subprocesses": [
+    "curl",
+    "npm",
+    "npx",
+    "node",
+    "tsx",
+    "prisma"
+  ],
+  "rationale": "The skill provisions a Prisma Postgres database via curl calls to api.prisma.io, then configures a local Node.js project. It reads/writes .env, .gitignore, prisma/schema.prisma, prisma.config.ts and package.json, installs npm packages (hitting registry.npmjs.org), and runs npx prisma migrate/generate which writes prisma/migrations and generated client files. Step 7 explicitly creates and then deletes test-connection.ts after running it via npx tsx, and references/*.md files are read for guidance."
+}

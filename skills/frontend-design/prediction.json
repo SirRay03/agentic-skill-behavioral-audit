@@ -1,0 +1,41 @@
+{
+  "paths_read": [
+    "./*",
+    "./src/*",
+    "./public/*",
+    "./package.json",
+    "./tsconfig.json",
+    "./*.html",
+    "./*.css",
+    "./*.jsx",
+    "./*.tsx",
+    "./node_modules/*"
+  ],
+  "paths_written": [
+    "./*.html",
+    "./*.css",
+    "./*.js",
+    "./*.jsx",
+    "./*.tsx",
+    "./src/*",
+    "./components/*",
+    "./public/*",
+    "./styles/*"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "registry.npmjs.org",
+    "cdn.jsdelivr.net",
+    "unpkg.com"
+  ],
+  "subprocesses": [
+    "node",
+    "npm",
+    "npx",
+    "yarn",
+    "pnpm"
+  ],
+  "rationale": "This skill builds frontend code (HTML/CSS/JS, React, Vue), so the agent will read existing project files and write new component/page files in typical frontend locations. It will likely fetch fonts (the skill emphasizes distinctive typography, implying Google Fonts or similar) and may install packages (Motion library is explicitly mentioned for React) via npm/npx. No deletions are implied by the design-focused verbs. Subprocess invocations cover Node-based tooling commonly used to scaffold and run frontend projects."
+}

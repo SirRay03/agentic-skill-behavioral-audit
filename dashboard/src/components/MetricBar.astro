@@ -1,0 +1,102 @@
+---
+type Status = "ok" | "match" | "miss" | "no-data";
+
+interface Props {
+  label: string;
+  /** F1 in [0, 1] or null if undefined for this skill/axis */
+  value: number | null;
+  /** Status disambiguates the F1=null cases */
+  status?: Status;
+  /** Optional comparator value, drawn as a tick on the bar */
+  reference?: number;
+}
+
+const { label, value, status = "ok", reference } = Astro.props;
+
+const refPct =
+  reference === undefined
+    ? null
+    : Math.max(0, Math.min(1, reference)) * 100;
+
+let bandClass = "bg-ink-300";
+let bandWidth = 0;
+let displayValue = "—";
+let valueClass = "text-ink-900";
+let stripe = false;
+
+if (status === "ok" && value !== null) {
+  bandWidth = Math.max(0, Math.min(1, value)) * 100;
+  if (value >= 0.7) bandClass = "bg-emerald-500";
+  else if (value >= 0.4) bandClass = "bg-amber-500";
+  else bandClass = "bg-red-500";
+  displayValue = value.toFixed(3);
+  valueClass = "text-ink-900";
+} else if (status === "miss") {
+  // Predictor predicted things but covered nothing observed — full red bar.
+  bandWidth = 100;
+  bandClass = "bg-red-500";
+  displayValue = "miss";
+  valueClass = "text-red-700";
+  stripe = true;
+} else if (status === "match") {
+  // True empty-vs-empty — gray placeholder, dash label.
+  bandWidth = 0;
+  bandClass = "bg-ink-200";
+  displayValue = "—";
+  valueClass = "text-ink-400";
+} else {
+  // no-data — axis metrics absent
+  bandWidth = 0;
+  bandClass = "bg-ink-200";
+  displayValue = "—";
+  valueClass = "text-ink-400";
+}
+
+const tooltip =
+  status === "miss"
+    ? "predictor missed entirely (precision = recall = 0)"
+    : status === "match"
+      ? "true empty-vs-empty (no observed activity, no prediction) — a match"
+      : status === "no-data"
+        ? "axis metric not available for this skill"
+        : `F1 = ${displayValue}`;
+---
+
+<div class="flex items-center gap-3 text-sm" title={tooltip}>
+  <div class="w-32 shrink-0 text-ink-700 font-mono text-xs">{label}</div>
+  <div class="flex-1 relative h-2 bg-ink-100 rounded-full overflow-hidden">
+    <div
+      class:list={[
+        "h-full rounded-full transition-all",
+        bandClass,
+        stripe && "metric-stripe",
+      ]}
+      style={`width: ${bandWidth}%`}
+    >
+    </div>
+    {
+      refPct !== null && status === "ok" && (
+        <div
+          class="absolute top-[-2px] bottom-[-2px] w-px bg-ink-700"
+          style={`left: ${refPct}%`}
+          title={`reference ${reference?.toFixed(3)}`}
+        />
+      )
+    }
+  </div>
+  <div class:list={["w-16 text-right tabular font-mono text-xs", valueClass]}>
+    {displayValue}
+  </div>
+</div>
+
+<style>
+  .metric-stripe {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(255, 255, 255, 0.25) 4px,
+      rgba(255, 255, 255, 0.25) 8px
+    );
+  }
+</style>

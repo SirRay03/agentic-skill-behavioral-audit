@@ -1,0 +1,31 @@
+{
+  "paths_read": [
+    "./**",
+    "./.semgrepignore",
+    "references/workflow.md",
+    "references/quick-reference.md",
+    "<custom-rule-dir>/*.yaml",
+    "<custom-rule-dir>/*.<ext>"
+  ],
+  "paths_written": [
+    "results.sarif",
+    "results.json",
+    "<rule-id>/<rule-id>.yaml",
+    "<rule-id>/<rule-id>.<ext>",
+    ".github/workflows/*.yml"
+  ],
+  "paths_deleted": [],
+  "hosts": [
+    "semgrep.dev",
+    "github.com",
+    "raw.githubusercontent.com"
+  ],
+  "subprocesses": [
+    "semgrep",
+    "python3",
+    "pip",
+    "brew",
+    "docker"
+  ],
+  "rationale": "The skill's primary verb is running Semgrep scans, which reads repository source files, Semgrep ignore/config inputs, and custom rule/test files. Creating custom rules writes YAML rules and annotated test files, and documented output modes write SARIF or JSON scan results; CI integration may write a GitHub Actions workflow. CLI fallback invokes semgrep directly, with installation alternatives via python3/pip, brew, or docker, and remote rulesets/docs/platform findings imply network access to semgrep.dev plus GitHub-hosted rule schema or rule repositories."
+}
