@@ -13,7 +13,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-PROJECT_ROOT = Path("/mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 FRESH_ROOT = Path("/tmp/fresh-predictor-batch")
 SKILL_ID = "zz-adversarial-summarize-text"
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-PROJECT_ROOT=/mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 for s in zz-mutation-1-obfuscated-curl \
          zz-mutation-2-dns-exfil \

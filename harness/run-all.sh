@@ -8,7 +8,7 @@
 #   run-all.sh --continue-on-error  # don't stop on individual failures
 set -uo pipefail
 
-PROJECT_ROOT="${PROJECT_ROOT:-/mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise}"
+PROJECT_ROOT="${PROJECT_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 HARNESS="$PROJECT_ROOT/harness"
 LOG="$HARNESS/run-all.log"
 
@@ -53,7 +53,7 @@ PASS=0
 FAIL=0
 SKIP=0
 for skill in "${SKILLS[@]}"; do
-  TRACE="${PROJECT_ROOT:-/mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise}/skills/$skill/trace.json"
+  TRACE="${PROJECT_ROOT:-$PROJECT_ROOT}/skills/$skill/trace.json"
   if [ -f "$TRACE" ] && [ -z "$ONLY" ]; then
     echo "[run-all] SKIP $skill (trace.json exists — delete it to re-run)" | tee -a "$LOG"
     SKIP=$((SKIP + 1))

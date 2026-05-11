@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Resume Phase 1.C P4 batch — only run skills that don't have a trace yet.
 set -euo pipefail
-cd /mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise
+cd "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 MUTATIONS=(
   zz-mutation-1-obfuscated-curl
@@ -43,4 +43,4 @@ done
 echo "=========================================="
 echo "[resume] DONE"
 echo "=========================================="
-ls /mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise/skills/zz-mutation-*/trace.json /mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise/skills/zz-mutation-*/trace-codex.json 2>&1 | head -20
+ls $PROJECT_ROOT/skills/zz-mutation-*/trace.json $PROJECT_ROOT/skills/zz-mutation-*/trace-codex.json 2>&1 | head -20

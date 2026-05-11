@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """P3 — LLM prediction step.
 
-For each of 15 skills, feed SKILL.md text to claude (in WSL2 kali) and ask for a
+For each of 25 skills, feed SKILL.md text to claude (in WSL2 kali) and ask for a
 structured JSON prediction of the skill's runtime capability footprint. Save to
 skills/<id>/prediction.json.
 
@@ -9,7 +9,7 @@ Per methodology §6: input is SKILL.md text alone (no bundled siblings, no READM
 no install command). Output schema fixed.
 
 Usage:
-    predict.py                  # predict all 15
+    predict.py                  # predict all 25
     predict.py --only web-search  # predict one
     predict.py --force          # re-predict even if prediction.json exists
 """
@@ -20,7 +20,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-PROJECT_ROOT = Path("/mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 ALL_SKILLS = [
     # Tranche 1 (n=15, locked 2026-05-07)
     "frontend-design", "skill-creator", "react-best-practices", "web-search",

@@ -40,7 +40,7 @@ Three deployment paths the report's Section 8 + 6.1 motivate:
 
 - `audit` requires `strace`, `tcpdump`, and a Claude Code or Codex CLI on `PATH` — Linux/WSL only.
 - `predict` and `policy` work cross-platform.
-- Predictor identity matters (cross-LLM Jaccard 0.41 on hosts; see `report.md` §5.5).
+- Predictor identity matters (cross-LLM Jaccard 0.41–0.43 on hosts between Claude Opus 4.7 and OpenAI Codex; see `report.md` §5.5).
 - The harness simplifications carry over: single-representative-invocation, no TLS interception, no MCP-mediated traffic capture.
 
 ## Provenance

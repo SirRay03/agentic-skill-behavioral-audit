@@ -4,7 +4,7 @@
 # Used by Enrichment 3 (augmented SKILL.md inverse experiment).
 set -euo pipefail
 
-PROJECT_ROOT="${PROJECT_ROOT:-/mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise}"
+PROJECT_ROOT="${PROJECT_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 
 for s in wrangler firebase-hosting-basics semgrep; do
   src="$PROJECT_ROOT/skills/$s"

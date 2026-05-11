@@ -2,7 +2,7 @@
 # Phase 1.E — Cross-agent dynamic on 5 more skills via Codex CLI.
 set -euo pipefail
 
-cd /mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise
+cd "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 for s in agent-browser firebase-hosting-basics semgrep cookie-sync find-skills; do
   echo "=========================================="

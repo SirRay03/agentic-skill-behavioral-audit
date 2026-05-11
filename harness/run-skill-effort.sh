@@ -4,7 +4,7 @@
 set -euo pipefail
 
 SKILL_ID="${1:?usage: run-skill-effort.sh <skill-id>}"
-PROJECT_ROOT="${PROJECT_ROOT:-/mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise}"
+PROJECT_ROOT="${PROJECT_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 HARNESS="$PROJECT_ROOT/harness"
 EFFORT="${EFFORT_OVERRIDE:-high}"
 

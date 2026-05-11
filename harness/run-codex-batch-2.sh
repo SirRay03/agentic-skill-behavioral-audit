@@ -3,7 +3,7 @@
 # (agent-browser already done in batch-1)
 set -euo pipefail
 
-cd /mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise
+cd "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 for s in semgrep find-skills cookie-sync firebase-hosting-basics; do
   echo "=========================================="
@@ -21,4 +21,4 @@ done
 echo "=========================================="
 echo "[run-codex-batch-2] DONE"
 echo "=========================================="
-ls /mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise/skills/{agent-browser,firebase-hosting-basics,semgrep,cookie-sync,find-skills}/trace-codex.json 2>&1
+ls $PROJECT_ROOT/skills/{agent-browser,firebase-hosting-basics,semgrep,cookie-sync,find-skills}/trace-codex.json 2>&1

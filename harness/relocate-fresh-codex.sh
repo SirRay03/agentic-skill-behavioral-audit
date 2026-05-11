@@ -3,7 +3,7 @@
 # repo at skills/<id>/prediction-{fresh,codex}.json so Section 4 + 5.5 of the
 # report cite reproducible files rather than ephemeral /tmp paths.
 set -euo pipefail
-cd /mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise
+cd "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 FRESH_ROOT=/tmp/fresh-predictor-batch
 

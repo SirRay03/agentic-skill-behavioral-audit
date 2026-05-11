@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""P5 — Compare predicted vs observed capability footprints across all 15 skills.
+"""P5 — Compare predicted vs observed capability footprints across all 25 skills.
 
 For each skill: load `skills/<id>/prediction.json` (P3 output) and `skills/<id>/trace.json`
 (P4 output). Filter out agent-infrastructure noise from observed traces. Compute

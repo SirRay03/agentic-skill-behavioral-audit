@@ -366,7 +366,8 @@ FINDINGS: list[dict[str, Any]] = [
         "pattern": "vendor-cli-underdeclaration",
         "severity": "high",
         "key_numbers": [
-            {"label": "Hosts F1 mean", "value": "0.475 [0.399, 0.542]"},
+            {"label": "Hosts F1 mean (25 prod. skills, n=6)", "value": "0.431"},
+            {"label": "Hosts F1 mean (n=9 incl. 3 Finding L aug variants)", "value": "0.475 [0.399, 0.542]"},
             {"label": "Bimodal split (CLI-wrapper vs pure-text)",
              "value": "Mann-Whitney p=0.030"},
         ],
@@ -691,14 +692,14 @@ def build_aggregates() -> dict[str, Any]:
         "policy_eval": policy_eval,
         "static_per_skill_count": len(static_per_skill) if isinstance(static_per_skill, list) else len(static_per_skill or {}),
         "headline": [
-            {"label": "Hosts F1 (mean)",
-             "value": "0.475",
-             "ci": "[0.399, 0.542]",
-             "note": "n=9 skills with defined hosts F1"},
+            {"label": "Hosts F1 (mean, 25 prod. skills)",
+             "value": "0.431",
+             "ci": "n=6 with defined F1",
+             "note": "Aug-inclusive value (n=9 incl. 3 Finding L variants): 0.475 [0.399, 0.542]"},
             {"label": "LLM vs static recall",
              "value": "2.50×",
-             "ci": "Wilcoxon p=0.047",
-             "note": "McNemar p=0.003"},
+             "ci": "Wilcoxon p=0.047, McNemar p=0.003 (n=11 incl. aug)",
+             "note": "Production-only McNemar p≈0.125 (not sig. at α=0.05); recall gap directionally consistent"},
             {"label": "Mutation containment",
              "value": "6/6",
              "ci": "L1 83% · L2 67% · L3 100% · L4 100%",
@@ -824,8 +825,9 @@ FIGURE_CAPTIONS = {
         "under-prediction (the headline gap)."
     ),
     "fig-04-ci-forest": (
-        "Bootstrap 95% CI forest plot per IO axis. Hosts F1 = 0.475 "
-        "[0.399, 0.542]. Single-predictor variance is captured; "
+        "Bootstrap 95% CI forest plot per IO axis. Hosts F1 = 0.431 "
+        "(25 production skills, n=6) / 0.475 [0.399, 0.542] (n=9 incl. aug). "
+        "Single-predictor variance is captured; "
         "cross-predictor variance is reported separately in Section 5.5."
     ),
     "fig-05-failure-modes": (

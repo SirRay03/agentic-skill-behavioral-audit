@@ -1,4 +1,4 @@
-"""Policy-bundle generator. Mirrors kth-skill-audit-exercise/analysis/policy-bundle-generator.py
+"""Policy-bundle generator. Mirrors agentic-skill-behavioral-audit/analysis/policy-bundle-generator.py
 but exposes the build function as an importable callable."""
 from __future__ import annotations
 import json

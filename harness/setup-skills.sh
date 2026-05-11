@@ -9,7 +9,7 @@
 # Usage:  bash harness/setup-skills.sh
 set -euo pipefail
 
-PROJECT_ROOT="${PROJECT_ROOT:-/mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise}"
+PROJECT_ROOT="${PROJECT_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 SKILLS_DIR="$HOME/.claude/skills"
 CLONE_DIR="$HOME/.cache/monperrus-skill-sources"
 NPM_PREFIX="$HOME/.npm-global"

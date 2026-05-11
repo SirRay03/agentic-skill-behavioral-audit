@@ -1,6 +1,6 @@
 """skill-auditor — behavioural audit toolkit for agentic skills.
 
-Three subcommands wrap the audit pipeline from the parent kth-skill-audit-exercise:
+Three subcommands wrap the audit pipeline from the parent agentic-skill-behavioral-audit:
 
   skill-auditor predict <SKILL.md>   — emit prediction.json (LLM-extracted IO surface)
   skill-auditor audit <SKILL.md> [--task <prompt>]

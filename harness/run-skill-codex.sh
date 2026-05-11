@@ -4,11 +4,11 @@
 # instrumentation, and writes to skills/<id>/trace-codex.json.
 #
 # Usage:  run-skill-codex.sh <skill-id>
-# Run from inside WSL2 kali (paths assume /mnt/c/...).
+# Run from inside a Linux environment with strace + tcpdump (project root inferred from script location).
 set -euo pipefail
 
 SKILL_ID="${1:?usage: run-skill-codex.sh <skill-id>}"
-PROJECT_ROOT="${PROJECT_ROOT:-/mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise}"
+PROJECT_ROOT="${PROJECT_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 HARNESS="$PROJECT_ROOT/harness"
 
 # Same PATH as run-skill.sh + codex via npm global

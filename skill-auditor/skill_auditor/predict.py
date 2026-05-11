@@ -1,4 +1,4 @@
-"""LLM-prediction wrapper. Mirrors kth-skill-audit-exercise/harness/predict.py's
+"""LLM-prediction wrapper. Mirrors agentic-skill-behavioral-audit/harness/predict.py's
 prompt template + JSON-extraction logic but exposes them as importable
 functions for the CLI."""
 from __future__ import annotations

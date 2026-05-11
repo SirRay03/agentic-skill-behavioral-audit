@@ -47,7 +47,7 @@ def cmd_audit(args: argparse.Namespace) -> int:
     """skill-auditor audit <SKILL.md> [--task <prompt>]
 
     Runs the predict step + a representative invocation under strace+tcpdump
-    instrumentation. Requires the parent kth-skill-audit-exercise harness scripts to
+    instrumentation. Requires the parent agentic-skill-behavioral-audit harness scripts to
     be on PATH or accessible relative to this package.
     """
     skill_md_path = Path(args.skill_md)
@@ -62,13 +62,13 @@ def cmd_audit(args: argparse.Namespace) -> int:
         return rc
 
     # Step 2: run the agent under instrumentation. The full instrumentation
-    # pipeline lives in kth-skill-audit-exercise/harness/run-skill.sh and depends on
+    # pipeline lives in agentic-skill-behavioral-audit/harness/run-skill.sh and depends on
     # strace + tcpdump. We delegate to that script if it's available.
     print("[skill-auditor] step 2/2 — running representative invocation under strace+tcpdump...")
     harness_root_env = subprocess.run(["which", "run-skill.sh"], capture_output=True, text=True)
     if harness_root_env.returncode != 0 or not harness_root_env.stdout.strip():
         print("error: run-skill.sh not found on PATH.", file=sys.stderr)
-        print("Either install the parent kth-skill-audit-exercise harness, OR pass --harness-dir <path>.", file=sys.stderr)
+        print("Either install the parent agentic-skill-behavioral-audit harness, OR pass --harness-dir <path>.", file=sys.stderr)
         return 3
 
     harness_path = harness_root_env.stdout.strip()

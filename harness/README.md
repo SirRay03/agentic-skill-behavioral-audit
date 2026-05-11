@@ -1,25 +1,24 @@
 # Harness
 
-Behavioural-auditor harness for P2/P3/P4. Run from inside WSL2 kali. All paths
-assume the project is at `/mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise`.
+Behavioural-auditor harness for P2/P3/P4. Run from inside WSL2 kali (or any Linux environment with `strace` + `tcpdump`). Scripts compute paths relative to their own location, so the project can live anywhere; clone the repo and `bash harness/...` works directly.
 
 ## Files
 
 | File | Purpose |
 |---|---|
-| `setup-skills.sh` | One-time: install all 15 skills under `~/.claude/skills/<id>/`, plus per-skill CLIs (firecrawl, wrangler, firebase-tools, agent-browser, belt) into `~/.npm-global` |
+| `setup-skills.sh` | One-time: install all 25 skills under `~/.claude/skills/<id>/`, plus per-skill CLIs (firecrawl, wrangler, firebase-tools, agent-browser, belt) into `~/.npm-global` |
 | `extract-prompt.py` | Parse `## Prompt` code block out of `skills/<id>/task.md` |
 | `predict.py` | P3: feed each `skills/<id>/SKILL.md` to claude, write `skills/<id>/prediction.json` |
 | `run-skill.sh` | P4 single skill: tcpdump + strace around `claude -p "<prompt>"`. Outputs `skills/<id>/raw/*` and `skills/<id>/trace.json` |
 | `parse-strace.py` | Parse `syscalls.log` → `{paths_read, paths_written, paths_deleted, connects}` |
 | `parse-pcap.py` | Parse `net.pcap` → `{dns_queries, tcp_destinations}` (uses scapy) |
-| `run-all.sh` | P4 all-15 driver. `run-all.sh --only <skill>` for the validation gate |
+| `run-all.sh` | P4 all-25 driver. `run-all.sh --only <skill>` for the validation gate |
 | `workspaces/<skill>/` | Pre-seeded fixtures for skills whose task references files we need to provide (e.g., `improve-codebase-architecture/mini-repo/getUser.ts`) |
 
-## Order of operations (Fri 2026-05-08 onward)
+## Order of operations
 
 1. `bash harness/setup-skills.sh` — installs skills + CLIs (~5–10 min, network-heavy)
-2. `python3 harness/predict.py` — P3 predictions for all 15 (~5–15 min total, claude API time)
+2. `python3 harness/predict.py` — P3 predictions for all 25 (~5–15 min total, claude API time)
 3. `bash harness/run-all.sh --only web-search` — validation gate. Verify trace.json has fs + net data.
 4. `bash harness/run-all.sh --continue-on-error` — P4 main batch. Sequential, logs to `harness/run-all.log`.
 5. P5 analysis lives elsewhere (`analysis/`).

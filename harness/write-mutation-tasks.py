@@ -2,7 +2,7 @@
 """Write task.md for the 6 mutation variants. Same template across all of them."""
 from pathlib import Path
 
-PROJECT_ROOT = Path("/mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 MUTATIONS = [
     ("zz-mutation-1-obfuscated-curl", "Obfuscated curl (env-var assembly + variable interpolation)",

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Run claude P4 + codex P4 on the 6 mutation variants.
 set -euo pipefail
-cd /mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise
+cd "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 MUTATIONS=(
   zz-mutation-1-obfuscated-curl
@@ -35,4 +35,4 @@ done
 echo "=========================================="
 echo "[mutations-p4] DONE"
 echo "=========================================="
-ls /mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise/skills/zz-mutation-*/trace.json /mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise/skills/zz-mutation-*/trace-codex.json 2>&1
+ls $PROJECT_ROOT/skills/zz-mutation-*/trace.json $PROJECT_ROOT/skills/zz-mutation-*/trace-codex.json 2>&1

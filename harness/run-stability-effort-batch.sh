@@ -3,7 +3,7 @@
 # Runs the same harness with different TRACE_SUFFIX values to save outputs to
 # distinct paths so existing traces aren't clobbered.
 set -euo pipefail
-cd /mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise
+cd "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 # --- Phase 3.K: repeat-invocation stability ---
 # 3 skills × 2 additional reps each at the default high-effort, alongside the
@@ -54,4 +54,4 @@ done
 echo "=========================================="
 echo "[stability-effort-batch] DONE"
 echo "=========================================="
-ls /mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise/skills/{wrangler,semgrep,agent-browser,firebase-hosting-basics}/trace-{k-rep1,k-rep2,n-default,n-xhigh}.json 2>&1 | head -20
+ls $PROJECT_ROOT/skills/{wrangler,semgrep,agent-browser,firebase-hosting-basics}/trace-{k-rep1,k-rep2,n-default,n-xhigh}.json 2>&1 | head -20

@@ -3,7 +3,7 @@
 # CLI value; default-effort was rejected by the CLI's effort flag validator).
 # Saves to trace-n-medium.json.
 set -euo pipefail
-cd /mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise
+cd "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 for s in wrangler semgrep firebase-hosting-basics; do
   if [ -f "skills/$s/trace-n-medium.json" ]; then
@@ -23,4 +23,4 @@ done
 echo "=========================================="
 echo "[N-medium] DONE"
 echo "=========================================="
-ls /mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise/skills/{wrangler,semgrep,firebase-hosting-basics}/trace-n-medium.json 2>&1
+ls $PROJECT_ROOT/skills/{wrangler,semgrep,firebase-hosting-basics}/trace-n-medium.json 2>&1

@@ -15,7 +15,7 @@
 set -euo pipefail
 
 FRESH="${FRESH:-/tmp/fresh-predictor-batch}"
-PROJECT_ROOT="${PROJECT_ROOT:-/mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise}"
+PROJECT_ROOT="${PROJECT_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 
 echo "[setup-fresh] FRESH=$FRESH"
 echo "[setup-fresh] PROJECT_ROOT=$PROJECT_ROOT"

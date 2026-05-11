@@ -4,7 +4,7 @@
 # alternate task.md prompts (drawn from each maker's documentation).
 # Saves to trace-l-alt1.json, trace-l-alt2.json.
 set -euo pipefail
-cd /mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise
+cd "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 SKILLS=(wrangler semgrep firebase-hosting-basics)
 ALTS=(alt1 alt2)
@@ -36,4 +36,4 @@ done
 echo "=========================================="
 echo "[L-multitask] DONE"
 echo "=========================================="
-ls /mnt/c/Users/RaySi/Documents/LatentSpace/kth-skill-audit-exercise/skills/{wrangler,semgrep,firebase-hosting-basics}/trace-l-*.json 2>&1 | head -10
+ls $PROJECT_ROOT/skills/{wrangler,semgrep,firebase-hosting-basics}/trace-l-*.json 2>&1 | head -10
