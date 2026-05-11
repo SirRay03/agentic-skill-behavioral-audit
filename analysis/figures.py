@@ -80,15 +80,18 @@ def fig_f1_distribution() -> None:
 # Figure 2: Predictor-variance heatmap
 # ============================================================
 def fig_predictor_variance() -> None:
-    pv = json.loads((PROJECT_ROOT / "analysis" / "predictor-variance.json").read_text())
-    summary = pv["summary"]
+    # Read from stats.json (bootstrap means, adversarial-excluded) so this
+    # figure matches the canonical numbers cited in report.md §5.5 and the
+    # abstract. The raw predictor-variance.json includes the adversarial demo
+    # and differs by ~0.01-0.03 per cell.
+    stats = json.loads((PROJECT_ROOT / "analysis" / "stats.json").read_text())
     axes_order = ["paths_read", "paths_written", "hosts", "subprocesses"]
-    cmps = [("orig_vs_fresh", "orig vs fresh"),
-            ("orig_vs_codex", "orig vs codex"),
-            ("fresh_vs_codex", "fresh vs codex")]
+    cmps = [("orig_fresh", "orig vs fresh"),
+            ("orig_codex", "orig vs codex"),
+            ("fresh_codex", "fresh vs codex")]
 
     matrix = np.array([
-        [summary[axis][cmp_key][0] or 0 for cmp_key, _ in cmps]
+        [stats[f"jaccard_{axis}_jacc_{cmp_key}"]["mean"] for cmp_key, _ in cmps]
         for axis in axes_order
     ])
 

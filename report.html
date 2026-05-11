@@ -442,45 +442,10 @@ figcaption { font-size: 0.88em; color: #444; margin-top: 0.5em; padding: 0 0.5em
 <li><strong>fresh-Claude</strong>: same model (Opus 4.7), same effort (xhigh), same prompt — but <code>HOME</code> pointed at a clean directory containing only the oauth credentials. No <code>~/.claude/projects/</code> memory, no installed plugins, no other skills loaded.</li>
 <li><strong>Codex (GPT family via OpenAI's <code>codex exec</code>)</strong>: clean home, equivalent prompt template, structured-JSON output requirement.</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>Axis</th>
-<th>orig Claude vs fresh-Claude</th>
-<th>orig Claude vs Codex</th>
-<th>fresh-Claude vs Codex</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>paths_read</td>
-<td><strong>0.580</strong></td>
-<td>0.210</td>
-<td>0.255</td>
-</tr>
-<tr>
-<td>paths_written</td>
-<td><strong>0.574</strong></td>
-<td>0.171</td>
-<td>0.189</td>
-</tr>
-<tr>
-<td>hosts</td>
-<td><strong>0.723</strong></td>
-<td>0.431</td>
-<td>0.410</td>
-</tr>
-<tr>
-<td>subprocesses</td>
-<td><strong>0.801</strong></td>
-<td>0.572</td>
-<td>0.531</td>
-</tr>
-</tbody>
-</table>
+<p>The 4 × 3 pairwise Jaccard values are visualised in Figure 2 (the heatmap below has each cell's value rendered in it, so the figure stands in for the table).</p>
 <figure>
 <img src="figures/fig-02-predictor-variance.png" alt="Heatmap of pairwise Jaccard similarity across three predictor sources (orig-Claude, fresh-Claude, Codex) on four IO axes (paths_read, paths_written, hosts, subprocesses).">
-<figcaption><strong>Figure 2.</strong> Pairwise Jaccard similarity across three predictor sources on n=25 production skills. Within-LLM context-contamination (orig-Claude vs fresh-Claude, leftmost column) sits at 0.58–0.80; cross-LLM variance (Claude vs Codex, middle and right columns) drops to 0.17–0.57. The LLM-of-prediction is therefore a load-bearing methodological parameter — choice of predictor moves the absolute F1 numbers more than choice of project context does. The hosts axis is the most stable cross-LLM (0.41), the paths axes the least (0.17–0.21).</figcaption>
+<figcaption><strong>Figure 2.</strong> Pairwise Jaccard similarity across three predictor sources on n=25 production skills (bootstrap means from <code>analysis/stats.json</code>; the adversarial demo is excluded from the bootstrap subsample). Within-LLM context-contamination (orig-Claude vs fresh-Claude, leftmost column) sits at 0.58–0.80; cross-LLM variance (Claude vs Codex, middle and right columns) drops to 0.17–0.57. The LLM-of-prediction is therefore a load-bearing methodological parameter — choice of predictor moves the absolute F1 numbers more than choice of project context does. The hosts axis is the most stable cross-LLM (0.41), the paths axes the least (0.17–0.21).</figcaption>
 </figure>
 
 <p><strong>Two methodological conclusions follow.</strong> First, <strong>context contamination is real but moderate</strong>: clean-Claude vs context-Claude Jaccard sits between 0.58 and 0.80. About 20-40% of predicted items differ depending on whether the predictor sees auto-memory and other installed skills, with the hosts axis the most stable (named-entity extraction is robust) and the paths axes the most variable (path predicates lean on inferred conventions that context can color). The orig-fresh Jaccard is per-skill bimodal in itself: 9 of 25 skills produce identical hosts (Jaccard 1.0), 5 produce major divergence (Jaccard &lt;0.5). Second, <strong>cross-LLM variance dominates context variance</strong> at every axis: clean-Claude vs Codex Jaccard sits between 0.17 and 0.57, lower than the context-only effect at every axis. The hosts axis is again most stable cross-LLM (0.41), but the paths axes are highly variable (0.17, 0.21). LLM-of-prediction is a load-bearing methodological parameter, not a replaceable interchangeable detail.</p>
