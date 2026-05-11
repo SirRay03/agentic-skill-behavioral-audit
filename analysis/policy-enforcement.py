@@ -252,7 +252,7 @@ def main():
         "sudo unshare -n bash <<'BWRAP'",
         "ip link set lo up",
         "iptables-restore < /tmp/skill-policy.rules",
-        "su -c 'bash harness/run-skill.sh wrangler' sirray",
+        "su -c 'bash harness/run-skill.sh wrangler' user",
         "BWRAP",
         "```",
         "",

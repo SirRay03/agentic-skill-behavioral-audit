@@ -93,7 +93,7 @@ def predicate_matches(observed: str, predicate: str) -> bool:
     ** matches across path seps). Predicates beginning with "./" are interpreted as
     workdir-relative and additionally match anywhere a corresponding suffix appears
     in observed paths (so "./rules/*.md" matches both "/tmp/work-x/rules/foo.md" and
-    "/home/sirray/.claude/skills/x/rules/foo.md")."""
+    "/home/user/.claude/skills/x/rules/foo.md")."""
     if predicate == observed:
         return True
     # Convert predicate to regex

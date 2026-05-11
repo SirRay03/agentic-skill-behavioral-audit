@@ -289,7 +289,9 @@ def extract_skill(skill_dir: Path,
             ),
         },
         "has_policy": policy is not None,
-        "skill_md_path": str(skill_dir / "SKILL.md") if skill_md else None,
+        # Repo-relative path so the deployed dashboard JSON doesn't leak the
+        # absolute build-time filesystem path.
+        "skill_md_path": str((skill_dir / "SKILL.md").relative_to(REPO_ROOT).as_posix()) if skill_md else None,
         "skill_md_excerpt": (skill_md[:600] + "…") if skill_md and len(skill_md) > 600 else (skill_md or ""),
         "task_md": task_md or "",
         "prediction": pred_orig if isinstance(pred_orig, dict) else None,
