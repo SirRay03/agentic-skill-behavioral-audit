@@ -71,7 +71,7 @@ The first compare.py output reported hosts F1 = 0.431 across n=25. Investigation
 
 Tightening the agent-infra filter (`analysis/compare.py` v4) bumped hosts F1 from **0.431 to 0.475**. Older v1, v3 outputs archived at `analysis/archive-2026-05-09-v*` for chronology.
 
-**The 0.431 number is therefore historical**: it appears in two specific places in the final report (the orig-Claude predictor-vs-truth F1 at n=6 in §5.5, and the orig-Claude vs Codex hosts Jaccard at 0.431 in §5.5) — both legitimately describing different metrics that happen to share that value. It is **not** the canonical hosts F1, which is 0.475 [0.399, 0.542].
+**Note (revised 2026-05-11 post-review)**: this entry initially treated 0.431 as a purely historical (pre-v4-filter) value. That framing was imprecise. The v4 filter bumped the **aug-inclusive** sample (25 production + 3 Finding L aug variants, n=9) from 0.431 to 0.475. The **production-only** sample under the v4 filter is also 0.431 (n=6 — see `analysis/predictor-vs-truth.md`); the two 0.431 values coincide numerically but refer to different filtered samples. After the post-review pass, the report now leads with the production-only **0.431** as headline and labels 0.475 explicitly as the aug-inclusive value. Both numbers are correct; previous wording suggested 0.431 was no longer current, which is not true.
 
 ## 2026-05-09 — Scope expansion (Phase 6)
 

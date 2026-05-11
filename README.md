@@ -11,11 +11,11 @@ This is the entry-point exercise for Professor Monperrus's open thesis topic *"A
 | | |
 |---|---|
 | **Sample** | 25 production skills + 1 synthetic adversarial demo + 6 attack-pattern mutations + 3 augmented-SKILL.md variants |
-| **Headline empirical claim** | CLI-wrapping skills systematically under-declare their network surface — mean hosts F1 = **0.475** [0.399, 0.542], n=9 |
+| **Headline empirical claim** | CLI-wrapping skills systematically under-declare their network surface — mean hosts F1 = **0.431** across 25 production skills (n=6 with defined F1); aug-inclusive value 0.475 [0.399, 0.542] at n=9 (incl. 3 Finding L aug variants) |
 | **Bimodal split** | High-cluster (pure-text / single-output) F1 ≥ 0.95; low-cluster (CLI-wrappers) F1 < 0.10. Mann-Whitney p=0.030. |
-| **LLM vs static regex** | 2.5× recall asymmetry (McNemar p=0.003, Wilcoxon p=0.047) — LLM predictor is meaningfully better than regex of comparable complexity. |
-| **Cross-LLM stability** | Hosts Jaccard between Claude Opus 4.7 and OpenAI Codex predictors: **0.41**. LLM-of-prediction is a load-bearing methodological parameter. |
-| **Adversarial defense-in-depth** | 6/6 attack mutations contained by composition of static regex + LLM predictor + Claude runtime + Codex runtime. L1 brittleness drops to 0% under realistic minimal regex (per `analysis/mutation-suite-ablation.md`). |
+| **LLM vs static regex** | 2.5× recall asymmetry (0.682 vs 0.273); McNemar p=0.003, Wilcoxon p=0.047 on n=11 incl. aug variants. Production-only n=8 gives McNemar's p≈0.125 (not significant at α=0.05); the recall gap is directionally consistent in both samples. |
+| **Cross-LLM stability** | Hosts Jaccard between Claude Opus 4.7 and OpenAI Codex predictors: **0.41–0.43** (fresh-Claude↔Codex 0.41, orig-Claude↔Codex 0.43). LLM-of-prediction is a load-bearing methodological parameter. |
+| **Adversarial defense-in-depth** | 6/6 attack mutations contained by composition (L1 5/6=83%, L2 4/6=67%, L3+L4 6/6=100% each). L1 brittleness drops to 0% under realistic minimal regex (per `analysis/mutation-suite-ablation.md`). |
 | **Constructive direction** | SKILL.md → egress allowlist admits **77% of legitimate observed traffic** and flags **50% as undeclared** on the 8-skill subset with non-empty network surface. |
 
 ---

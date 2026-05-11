@@ -4,11 +4,13 @@
 
 Resampled 1000 times with seed 20260509. CI excludes empty-vs-empty pairs (F1 undefined).
 
+**Note on sample composition**: this table aggregates the 25 production skills together with the synthetic adversarial demo and the 3 Finding L augmented-SKILL.md variants. The hosts-axis n=9 = 6 production skills with defined F1 + 3 aug variants (the adversarial demo has no observed hosts and contributes no row). The production-only value for hosts F1 is **0.431** (n=6), available in `analysis/predictor-vs-truth.md`. Aug-inclusive: 0.475 below.
+
 | Axis | n with defined F1 | mean | 95% CI |
 |---|---|---|---|
 | paths_read | 20 | 0.368 | [0.185, 0.548] |
 | paths_written | 12 | 0.375 | [0.235, 0.543] |
-| hosts | 9 | 0.475 | [0.399, 0.542] |
+| hosts | 9 (incl. 3 aug) | 0.475 | [0.399, 0.542] |
 
 ## 2. Bootstrap 95% CIs on predictor-variance Jaccard (n=25, fresh-batch)
 
@@ -29,18 +31,20 @@ Resampled 1000 times with seed 20260509. CI excludes empty-vs-empty pairs (F1 un
 
 ## 3. Paired tests: static-regex recall vs LLM xhigh recall
 
-### McNemar's test (host-level pairing across all observed hosts)
+**Sample disclosure**: the host-skill pairs below are drawn from 11 skills with non-empty observed hosts, **including the 3 Finding L augmented-SKILL.md variants** (firebase-hosting-basics-aug, wrangler-aug, semgrep-aug). These aug variants contribute 6 of the 12 LLM-only pairs (4 from firebase-aug, 2 from wrangler-aug). Restricting to the 25 production skills only (n=8 skills with non-empty observed hosts, ~26 host-skill pairs) reduces the LLM-only count to 6, giving McNemar's two-sided exact-binomial p ≈ 0.125 (not significant at α=0.05). The 2.5× recall advantage (0.682 vs 0.273) holds directionally in both samples; formal significance at α=0.05 requires the aug variants.
+
+### McNemar's test (host-level pairing across all observed hosts; aug-inclusive)
 
 - Both predictors caught the host (a): 6
 - Only static caught (b): 1
 - Only LLM caught (c): 12
 - Neither caught (d): 15
 - Two-sided exact-binomial p-value: **0.003418**
-- Verdict: reject H0 (static and LLM disagree on which hosts they catch). LLM caught 12 hosts static missed; static caught 1 hosts LLM missed.
+- Verdict: reject H0 (static and LLM disagree on which hosts they catch). LLM caught 12 hosts static missed; static caught 1 host LLM missed.
 
-### Wilcoxon signed-rank on per-skill recall pairs
+### Wilcoxon signed-rank on per-skill recall pairs (aug-inclusive)
 
-- n pairs: 11
+- n pairs: 11 (8 production + 3 aug)
 - static recall mean: 0.273
 - LLM recall mean:    0.682
 - Mean difference (LLM - static): +0.409

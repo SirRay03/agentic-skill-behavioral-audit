@@ -7,7 +7,14 @@ Skills with all three prediction sources: 26 / 26
 Higher Jaccard = more agreement on which items are predicted. Empty-vs-empty pairs
 are excluded from the mean (jaccard undefined).
 
-| axis | orig vs fresh | orig vs codex | fresh vs codex | n |
+**Note on n discrepancy vs `analysis/stats.md`**: this file computes Jaccard over all
+26 rows (25 production skills + 1 adversarial demo), giving n=24 / n=19–20 depending
+on axis. `stats.md` computes bootstrapped CIs excluding the adversarial demo (n-1 on
+non-empty-pair count), yielding values that differ by ~0.02–0.03. `stats.md` is the
+canonical source for report headline numbers; these raw values are for exploratory
+reference only.
+
+| axis | orig vs fresh | orig vs codex | fresh vs codex | n (this file) |
 |---|---|---|---|---|
 | paths_read | 0.599 | 0.202 | 0.244 | 24 |
 | paths_written | 0.574 | 0.171 | 0.189 | 19 |

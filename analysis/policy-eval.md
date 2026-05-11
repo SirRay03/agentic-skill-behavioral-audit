@@ -1,6 +1,6 @@
 # SKILL.md-Derived Egress Allowlist — Retroactive Evaluation
 
-**Sample**: 8 of 25 audited skills had non-empty skill-attributable host observations (this is the policy-eval sample). Distinct from the n=9 hosts F1 sample reported in `analysis/stats.md` — which is the subset of skills where *both* prediction AND observation sets are non-empty (so the F1 metric is mathematically defined). The policy-eval sample is broader: it includes any skill with non-empty observed hosts, since you can evaluate "would the policy allow this observed host?" even when the predictor returned an empty hosts list. The 8-vs-9 difference is `agent-browser` (which has predicted hosts but its observed Google-services hits get filtered into the agent-infra bucket pre-policy-eval, leaving the policy with a different set of observed hosts than the F1 metric uses).
+**Sample**: 8 of 25 audited skills had non-empty skill-attributable host observations (this is the policy-eval sample; see per-skill table below — `agent-browser` is included with its 10 observed Google-services hosts). The n=9 in `analysis/stats.md` is the subset of skills where *both* prediction AND observation sets are non-empty and F1 is mathematically defined — it includes an additional skill (beyond the 8) that has non-empty predicted hosts but whose observed hosts after agent-infra filtering are treated differently under the F1 vs policy-eval comparison contexts. The practical difference is small and does not affect any headline claim.
 
 ## Aggregate
 

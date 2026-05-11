@@ -21,7 +21,7 @@ The audit found a **bimodal F1 distribution**: pure-text and single-output skill
 
 ## 1. Add an "Observed Runtime Endpoints" section to SKILL.md
 
-The largest single F1 lift in our augmentation experiment (Phase 1.C of the audit; Finding L) came from adding one new section listing the hosts/paths the wrapped CLI actually contacts. Hosts F1 on `firebase-hosting-basics` jumped from 0.36 to 0.62 with a single paragraph.
+The largest single F1 lift in our augmentation experiment (Finding L, Section 5.6 of the report) came from adding one new section listing the hosts/paths the wrapped CLI actually contacts. Hosts F1 on `firebase-hosting-basics` jumped from 0.36 to 0.62 with a single paragraph.
 
 Template:
 
@@ -149,7 +149,7 @@ A SKILL.md that satisfies all six items lifts the predictor's hosts F1 from belo
 
 | Skill | Original hosts F1 | Augmented hosts F1 | SKILL.md change |
 |---|---|---|---|
-| firebase-hosting-basics | 0.364 | **0.615** | +0.251pp from a single appended section (~120 words) |
+| firebase-hosting-basics | 0.364 | **0.615** | +0.251 F1 (+25.1 pp) from a single appended section (~120 words) |
 | wrangler | 0.500 | 0.500 | wildcard already covered telemetry, no F1 lift but writes F1 +0.10 |
 | semgrep | 0.571 | 0.571 | predictor already inferred from CLI conventions |
 
@@ -162,7 +162,7 @@ A SKILL.md that satisfies all six items lifts the predictor's hosts F1 from belo
 ### Empirical anchor (this work)
 
 This guidance was derived empirically from the audit shipped in this repository (2026-05-09):
-- Headline F1 numbers: `report.md` Section 4 (mean hosts F1 = 0.475 [0.399, 0.542])
+- Headline F1 numbers: `report.md` Section 4 (mean hosts F1 = **0.431** across 25 production skills; aug-inclusive 0.475 [0.399, 0.542] at n=9)
 - Augmentation experiment: `report.md` Section 5.6 (Finding L)
 - Wildcard sabotage: `report.md` Section 6 (Finding M)
 - Failure-mode taxonomy: `analysis/failure-mode-taxonomy.md`

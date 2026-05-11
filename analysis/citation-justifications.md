@@ -208,6 +208,8 @@ Cited works are grouped by Section 2.1's five literatures.
 
 **Seven citations are central** (bold) — they ground our most novel claims and were all WebSearch-verified. Two of them (Liu et al., Socket) are explicitly named by Professor Monperrus in the topic-26 description and are now load-bearing for the framing in Section 1, Section 2.1, and the Abstract. Eight are foundational/positioning (prior knowledge, well-known) — they ground the surrounding tradition rather than specific empirical claims. One is dropped from the report due to inability to verify.
 
+**Unverified peripheral citations (2026-05-11 note)**: the four "wider 2026 wave" entries cited in `report.md` §2.1 as context — Snyk ToxicSkills, Orca Skill Issues, Mitiga AI-agent supply-chain risk, Red Hat agent-skills guidance — are blog posts from credible security vendors that were NOT individually WebSearch-verified for their specific statistics. The `report.md` §2.1 text has been updated to remove the specific Snyk statistics (formerly "1,467 malicious payloads; 36% prompt injection") and flag them as unverified. The general existence of these posts is plausible; the specific numbers should be independently confirmed before any future publication.
+
 ---
 
 ## ~~Action item~~ — RESOLVED 2026-05-10

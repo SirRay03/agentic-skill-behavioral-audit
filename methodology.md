@@ -28,7 +28,7 @@ The full list lives in `manifest.csv`. Each row's task prompt and expected obser
 | P2 — Harness build | done | `harness/` scripts + workspace fixture; validation gate passed on `frontend-design`; orphan-Chrome `pkill` cleanup added for browser-spawning skills |
 | P3 — LLM prediction (Claude Opus 4.7 xhigh) | done (n=25) | `skills/<id>/prediction.json`; archived `prediction-default.json` for the early default-effort baseline |
 | P4 — Instrumented invocations (Claude Code, `--effort high`) | done (n=25) | `skills/<id>/trace.json` |
-| P5 — Compare and write | done | `analysis/compare.py` (v4 agent-infra filter); canonical aggregate F1 in `analysis/summary.md` and `analysis/stats.md` (paths_read 0.368, paths_written 0.375, **hosts 0.475 [0.399, 0.542]**) |
+| P5 — Compare and write | done | `analysis/compare.py` (v4 agent-infra filter); aggregate F1 in `analysis/summary.md` and `analysis/stats.md` (paths_read 0.368, paths_written 0.375, **hosts 0.431** production-only / 0.475 [0.399, 0.542] aug-inclusive — see `analysis/predictor-vs-truth.md` for the production-only n=6 and `analysis/stats.md` for the n=9 aug-inclusive sample) |
 | P6 — Scope expansion | done | Cross-agent control under Codex on n=7; adversarial demo + 6-mutation suite; augmented-SKILL.md inverse experiment (3 skills); real-creds variants (3 skills); static regex baseline; predictor-variance batch (fresh-Claude + Codex predictions on full n=25); SKILL.md → policy generator + retroactive evaluation; brittleness ablation; sandboxing-granularity comparison; pip-installable `skill-auditor` CLI; registry-deployable `skill-policy.json` bundle prototype (5 generated examples) |
 
 ## 4. Harness
