@@ -54,7 +54,11 @@
     "severity": "high",
     "key_numbers": [
       {
-        "label": "Hosts F1 mean",
+        "label": "Hosts F1 mean (25 prod. skills, n=6)",
+        "value": "0.431"
+      },
+      {
+        "label": "Hosts F1 mean (n=9 incl. 3 Finding L aug variants)",
         "value": "0.475 [0.399, 0.542]"
       },
       {

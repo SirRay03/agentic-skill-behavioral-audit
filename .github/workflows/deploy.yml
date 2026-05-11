@@ -3,8 +3,20 @@ name: Deploy dashboard to GitHub Pages
 on:
   push:
     branches: [main]
+    # Trigger on changes to dashboard sources, but also on any change to the
+    # audit-source files the dashboard reads at build time (report.md,
+    # analysis/*, skills/*) so the deployed dashboard never drifts behind the
+    # source of truth.
     paths:
       - 'dashboard/**'
+      - 'report.md'
+      - 'analysis/**'
+      - 'skills/**'
+      - 'figures/**'
+      - 'EXECUTIVE_SUMMARY.md'
+      - 'SKILL_AUTHORING_GUIDE.md'
+      - 'methodology.md'
+      - 'DECISIONS.md'
       - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
@@ -36,6 +48,18 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Setup Python (for data regeneration)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Regenerate dashboard data from audit source
+        # Re-runs scripts/build-data.py against the current source (../report.md,
+        # ../analysis/, ../skills/, etc.) so the deployed dashboard always
+        # matches HEAD even if the committed src/data/generated/*.json fall
+        # behind. Cheap (~2-3 s) and prevents stale-data drift.
+        run: npm run data
 
       - name: Build with Astro (base = /agentic-skill-behavioral-audit)
         env:

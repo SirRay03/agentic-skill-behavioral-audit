@@ -23,7 +23,7 @@
   {
     "slug": "fig-04-ci-forest",
     "title": "Figure 04 Ci Forest",
-    "caption": "Bootstrap 95% CI forest plot per IO axis. Hosts F1 = 0.475 [0.399, 0.542]. Single-predictor variance is captured; cross-predictor variance is reported separately in Section 5.5.",
+    "caption": "Bootstrap 95% CI forest plot per IO axis. Hosts F1 = 0.431 (25 production skills, n=6) / 0.475 [0.399, 0.542] (n=9 incl. aug). Single-predictor variance is captured; cross-predictor variance is reported separately in Section 5.5.",
     "svg": "/figures/fig-04-ci-forest.svg",
     "png": "/figures/fig-04-ci-forest.png"
   },

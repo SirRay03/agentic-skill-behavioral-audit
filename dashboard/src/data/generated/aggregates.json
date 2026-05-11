@@ -616,16 +616,16 @@
   "static_per_skill_count": 29,
   "headline": [
     {
-      "label": "Hosts F1 (mean)",
-      "value": "0.475",
-      "ci": "[0.399, 0.542]",
-      "note": "n=9 skills with defined hosts F1"
+      "label": "Hosts F1 (mean, 25 prod. skills)",
+      "value": "0.431",
+      "ci": "n=6 with defined F1",
+      "note": "Aug-inclusive value (n=9 incl. 3 Finding L variants): 0.475 [0.399, 0.542]"
     },
     {
       "label": "LLM vs static recall",
       "value": "2.50×",
-      "ci": "Wilcoxon p=0.047",
-      "note": "McNemar p=0.003"
+      "ci": "Wilcoxon p=0.047, McNemar p=0.003 (n=11 incl. aug)",
+      "note": "Production-only McNemar p≈0.125 (not sig. at α=0.05); recall gap directionally consistent"
     },
     {
       "label": "Mutation containment",
