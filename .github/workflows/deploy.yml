@@ -13,6 +13,7 @@ on:
       - 'analysis/**'
       - 'skills/**'
       - 'figures/**'
+      - 'presentation/**'
       - 'EXECUTIVE_SUMMARY.md'
       - 'SKILL_AUTHORING_GUIDE.md'
       - 'methodology.md'
@@ -66,6 +67,17 @@ jobs:
           BASE: /agentic-skill-behavioral-audit
           SITE: https://sirray03.github.io
         run: npm run build
+
+      - name: Bundle presentation deck into /talk
+        # Mounts the lightning-talk deck at /agentic-skill-behavioral-audit/talk/.
+        # slides.html → index.html so the trailing-slash URL resolves.
+        # figures/ ships verbatim (deck references figures/fig-NN.svg relatively).
+        # No build step — Reveal.js loads from CDN; the deck is self-contained.
+        working-directory: ${{ github.workspace }}
+        run: |
+          mkdir -p dashboard/dist/talk
+          cp presentation/slides.html dashboard/dist/talk/index.html
+          cp -r presentation/figures dashboard/dist/talk/figures
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

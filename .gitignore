@@ -47,3 +47,8 @@ desktop.ini
 .tmp/
 tmp/
 build/
+
+# Private presentation archive — intimate prep notes (speaker anchors,
+# stage-recovery lines, Q&A drilling, Indonesian study aids) kept locally
+# for future-talk reference but not for public release.
+presentation/_private/

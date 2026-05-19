@@ -25,10 +25,11 @@ This is the entry-point exercise for Professor Monperrus's open thesis topic *"A
 Read in this order (≈30 min total):
 
 1. **[`EXECUTIVE_SUMMARY.md`](EXECUTIVE_SUMMARY.md)** — one-page TL;DR with task framing, headline numbers, five strongest findings, constructive answer to the research question.
-2. **[`report.html`](report.html)** *(or [`report.md`](report.md) for source)* — final report, ≈14 PDF pages, 9 sections + abstract, 6 embedded figures. Section 5 catalogues findings A–O; §6 + §6.1 develop the SKILL.md → policy direction; §8 maps onto Professor Monperrus's three subgoals (capability-based permissions, sandboxing-granularity, static + semantic detection); §8.1 documents challenges and corrections.
-3. **[`SKILL_AUTHORING_GUIDE.md`](SKILL_AUTHORING_GUIDE.md)** — community-facing six-practice checklist for skill maintainers, derived empirically from the audit. Three-page artefact for the agentic-skills ecosystem rather than the academic reviewer.
-4. **[`methodology.md`](methodology.md)** — synthesised methodology spine (sample design, harness, prediction step, comparison metrics, blind spots, simplifications).
-5. **[`DECISIONS.md`](DECISIONS.md)** — chronological log of the design decisions that landed where they did, including the major pivots (Docker → WSL2, n=15 → n=25, the 256× write-ratio mechanism investigation, the L1 100%→83% correction).
+2. **[`report.pdf`](report.pdf)** (or **[`report.html`](report.html)** / **[`report.md`](report.md)** for source) — final report, ≈14 PDF pages, 9 sections + abstract, 6 embedded figures. Section 5 catalogues findings A–O; §6 + §6.1 develop the SKILL.md → policy direction; §8 maps onto Professor Monperrus's three subgoals (capability-based permissions, sandboxing-granularity, static + semantic detection); §8.1 documents challenges and corrections.
+3. **[`presentation/`](presentation/)** — the KTH ASSERT lightning-talk deck (2026-05-18). Live at [sirray03.github.io/agentic-skill-behavioral-audit/talk/](https://sirray03.github.io/agentic-skill-behavioral-audit/talk/) or open [`presentation/slides.html`](presentation/slides.html) locally. Reveal.js, 11 main + 6 backup slides, self-contained.
+4. **[`SKILL_AUTHORING_GUIDE.md`](SKILL_AUTHORING_GUIDE.md)** — community-facing six-practice checklist for skill maintainers, derived empirically from the audit. Three-page artefact for the agentic-skills ecosystem rather than the academic reviewer.
+5. **[`methodology.md`](methodology.md)** — synthesised methodology spine (sample design, harness, prediction step, comparison metrics, blind spots, simplifications).
+6. **[`DECISIONS.md`](DECISIONS.md)** — chronological log of the design decisions that landed where they did, including the major pivots (Docker → WSL2, n=15 → n=25, the 256× write-ratio mechanism investigation, the L1 100%→83% correction).
 
 ---
 
@@ -99,12 +100,18 @@ agentic-skill-behavioral-audit/
 │   ├── README.md
 │   └── skill_auditor/                 # predict / audit / policy subcommands
 │
-└── dashboard/                         # Astro static site (companion interactive view)
-    ├── README.md                      # dashboard build + deploy notes
-    ├── astro.config.mjs / package.json
-    ├── public/                        # static assets
-    ├── scripts/                       # pre-build data extraction
-    └── src/                           # Astro components, content collections, layouts
+├── dashboard/                         # Astro static site (companion interactive view)
+│   ├── README.md                      # dashboard build + deploy notes
+│   ├── astro.config.mjs / package.json
+│   ├── public/                        # static assets
+│   ├── scripts/                       # pre-build data extraction
+│   └── src/                           # Astro components, content collections, layouts
+│
+└── presentation/                      # KTH ASSERT lightning-talk deck (2026-05-18)
+    ├── README.md                      # deck contents + structure + reproduction notes
+    ├── slides.html                    # self-contained Reveal.js deck — 11 main + 6 backup
+    ├── figures/                       # the six audit figures + per-slide screenshots
+    └── scripts/                       # Playwright dashboard-screenshot capture + overflow checker
 ```
 
 ---

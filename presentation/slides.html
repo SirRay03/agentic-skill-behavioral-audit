@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280, initial-scale=1">
+<title>A Dynamic Behavioural Auditor for Agentic Skills — Rayhan Putra</title>
+
+<!-- Reveal.js 5.2.1 from CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reset.css">
+
+<!-- Fonts — Inter + Source Serif 4 + JetBrains Mono (mirrors the dashboard).
+     If offline, system fallbacks in the CSS stacks below keep the deck readable. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+
+<style>
+  /* ========================================================
+     Design tokens — mirrored from dashboard/src/styles/global.css
+     ======================================================== */
+  :root {
+    /* Neutral ramp (warm-cool gray) */
+    --ink-50:  #fafafa;
+    --ink-100: #f4f4f5;
+    --ink-200: #e4e4e7;
+    --ink-300: #d4d4d8;
+    --ink-400: #a1a1aa;
+    --ink-500: #71717a;
+    --ink-600: #52525b;
+    --ink-700: #3f3f46;
+    --ink-800: #27272a;
+    --ink-900: #18181b;
+    --ink-950: #09090b;
+
+    /* Burnt-orange accent — "syscall-trace terminal" */
+    --accent-50:  #fff7ed;
+    --accent-100: #ffedd5;
+    --accent-300: #fdba74;
+    --accent-500: #f97316;
+    --accent-600: #ea580c;
+    --accent-700: #c2410c;
+
+    /* Semantic severity */
+    --sev-high: #b91c1c;
+    --sev-low:  #65a30d;
+    --sev-info: #0369a1;
+
+    /* Surface tokens */
+    --bg:      var(--ink-50);
+    --surface: #ffffff;
+    --rule:    var(--ink-200);
+    --rule-2:  var(--ink-300);
+
+    --font-sans:  "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    --font-serif: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
+    --font-mono:  "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
+  /* ========================================================
+     Base — light theme on cream surface
+     ======================================================== */
+  html, body, .reveal, .reveal .backgrounds .slide-background-content {
+    background: var(--bg);
+  }
+
+  .reveal {
+    font-family: var(--font-sans);
+    font-size: 30px;
+    font-weight: 400;
+    color: var(--ink-900);
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  .reveal .slides { text-align: left; }
+
+  .reveal h1, .reveal h2, .reveal h3 {
+    font-family: var(--font-serif);
+    color: var(--ink-950);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    margin: 0;
+  }
+  .reveal h1 { font-size: 2.0em; }
+  .reveal h2 { font-size: 1.55em; }
+  .reveal h3 { font-size: 1.1em;  }
+
+  .reveal p { line-height: 1.55; color: var(--ink-800); margin: 0; }
+
+  .reveal code, .reveal pre, .reveal .mono {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    font-weight: 500;
+    color: var(--accent-700);
+    background: var(--accent-50);
+    padding: 0.05em 0.4em;
+    border-radius: 3px;
+    border: 1px solid var(--accent-100);
+  }
+  .reveal .mono-plain {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: inherit;
+  }
+
+  /* ========================================================
+     Uniform slide skeleton
+     Every slide: 60px side padding · eyebrow + h2 anchor at top ·
+     .body centered vertically in remaining space · footer pinned bottom.
+     ======================================================== */
+  .reveal .slides > section,
+  .reveal .slides > section > section {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .slide-inner {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 48px 60px 80px; /* bottom reserves room for footer */
+    min-height: 0;
+  }
+
+  /* Top-anchored body with uniform gap from title.
+     Top-anchor prevents tall content from overflowing up into h2.
+     Centered horizontally; bottom whitespace varies by content density. */
+  .body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 0;
+    margin-top: 40px;
+  }
+
+  /* Eyebrow — accent-orange, uppercase, tracked (matches dashboard hero) */
+  .eyebrow {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent-600);
+    font-weight: 500;
+    font-family: var(--font-sans);
+    margin-bottom: 14px;
+  }
+
+  /* Footer citation — pinned to slide bottom */
+  .footer {
+    position: absolute;
+    left: 60px;
+    right: 60px;
+    bottom: 22px;
+    font-size: 14px;
+    color: var(--ink-500);
+    font-family: var(--font-mono);
+    letter-spacing: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--rule);
+    padding-top: 10px;
+  }
+  .footer .right { color: var(--ink-400); }
+
+  /* ========================================================
+     List style — em-dash markers in accent
+     ======================================================== */
+  .reveal ul { list-style: none; padding-left: 0; margin: 0; }
+  .reveal ul li {
+    padding-left: 1.3em;
+    position: relative;
+    margin-bottom: 0.5em;
+    color: var(--ink-800);
+    line-height: 1.35;
+  }
+  .reveal ul li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--accent-500);
+    font-weight: 500;
+  }
+
+  /* ========================================================
+     Layout primitives
+     ======================================================== */
+  .split   { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; }
+  .split-66 { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: center; }
+  .split-stretch { align-items: stretch; }
+  .stack-v { display: flex; flex-direction: column; gap: 24px; }
+
+  /* ========================================================
+     Cards — white surface, ink-200 border, subtle shadow
+     ======================================================== */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 22px 26px;
+  }
+
+  /* Figure card — same shape, tighter padding so SVG fills */
+  .fig {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 14px;
+  }
+  .fig img { width: 100%; max-height: 460px; object-fit: contain; display: block; }
+  .fig-caption {
+    font-size: 14px;
+    color: var(--ink-500);
+    margin-top: 8px;
+    line-height: 1.45;
+    font-family: var(--font-sans);
+  }
+
+  /* Constructive-answer panel — accent-50 tint, accent-300 border */
+  .panel-accent {
+    background: var(--accent-50);
+    border: 1px solid var(--accent-300);
+    border-radius: 6px;
+    padding: 18px 22px;
+  }
+  .panel-accent .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent-700);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .panel-accent .asterisks li {
+    font-size: 0.78em;
+    margin-bottom: 8px;
+    padding-left: 2.2em;
+  }
+  .panel-accent .asterisks li::before {
+    font-size: 14px;
+  }
+
+  /* ========================================================
+     Big number callouts
+     ======================================================== */
+  .number {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 4em;
+    line-height: 0.95;
+    color: var(--ink-950);
+    letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+  .number-md { font-size: 2.8em; }
+  .number-sm { font-size: 2em; }
+  .number-caption {
+    font-size: 12px;
+    color: var(--ink-500);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-top: 8px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+  }
+
+  /* ========================================================
+     Pipeline (S3) — six boxes with mono P# tags
+     ======================================================== */
+  .pipeline {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+  }
+  .pipeline .step {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 16px 12px;
+    text-align: center;
+  }
+  .pipeline .step .tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent-600);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .pipeline .step .name {
+    font-size: 17px;
+    color: var(--ink-900);
+    font-weight: 500;
+  }
+  .pipeline-after {
+    margin-top: 24px;
+    font-size: 17px;
+    color: var(--ink-700);
+    padding-left: 14px;
+    border-left: 3px solid var(--accent-500);
+    line-height: 1.5;
+  }
+
+  /* Journey / methodological-arc slide (S3.5) */
+  .journey {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .journey .act {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    border-left: 3px solid var(--accent-500);
+    padding: 14px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .journey .act-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent-600);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .journey .act-q {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-700);
+    line-height: 1.35;
+  }
+  .journey .act-method {
+    font-size: 14px;
+    color: var(--ink-800);
+    line-height: 1.45;
+  }
+  .journey .act-finding {
+    margin-top: auto;
+    font-size: 15px;
+    color: var(--ink-900);
+    font-weight: 500;
+    line-height: 1.45;
+    padding-top: 10px;
+    border-top: 1px dashed var(--rule);
+  }
+
+  /* ========================================================
+     Layer stack (S10) — 5 cards with L# accent + subgoal label
+     ======================================================== */
+  .stack { display: flex; flex-direction: column; gap: 8px; }
+  .stack .layer {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 12px 18px;
+    display: grid;
+    grid-template-columns: 44px 1fr 230px;
+    gap: 16px;
+    align-items: center;
+    font-size: 18px;
+  }
+  .stack .layer .tag {
+    font-family: var(--font-mono);
+    color: var(--accent-600);
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .stack .layer .label { color: var(--ink-900); }
+  .stack .layer .subgoal {
+    text-align: right;
+    color: var(--ink-500);
+    font-size: 13px;
+    font-family: var(--font-mono);
+  }
+
+  /* ========================================================
+     Asterisk list (S8)
+     ======================================================== */
+  .asterisks { list-style: none; padding-left: 0; margin: 0; counter-reset: ast; }
+  .asterisks li {
+    padding-left: 2.4em;
+    position: relative;
+    margin-bottom: 14px;
+    color: var(--ink-800);
+    line-height: 1.5;
+  }
+  .asterisks li::before {
+    counter-increment: ast;
+    content: "*" counter(ast);
+    position: absolute;
+    left: 0;
+    top: 0.05em;
+    color: var(--accent-600);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 17px;
+  }
+
+  /* ========================================================
+     Compact data table (backup)
+     ======================================================== */
+  table.matrix {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 18px;
+    background: var(--surface);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  table.matrix th, table.matrix td {
+    border: 1px solid var(--rule);
+    padding: 8px 12px;
+    text-align: center;
+  }
+  table.matrix th {
+    background: var(--ink-100);
+    color: var(--ink-700);
+    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: 14px;
+  }
+  table.matrix td.lbl { text-align: left; color: var(--ink-900); font-weight: 500; }
+  table.matrix .ok { color: var(--sev-low); font-weight: 600; }
+  table.matrix .no { color: var(--sev-high); font-weight: 600; }
+  table.matrix tr.total { background: var(--ink-100); font-weight: 600; }
+
+  /* ========================================================
+     Title slide (S1)
+     ======================================================== */
+  .title-meta {
+    margin-top: 28px;
+    font-size: 16px;
+    color: var(--ink-500);
+    font-family: var(--font-sans);
+  }
+  .title-meta .name {
+    color: var(--ink-900);
+    font-weight: 600;
+  }
+  .lede {
+    font-family: var(--font-serif);
+    font-size: 1.15em;
+    color: var(--ink-700);
+    margin-top: 18px;
+    max-width: 28em;
+    line-height: 1.4;
+    font-weight: 400;
+  }
+
+  /* ========================================================
+     Demo URL chip (S10)
+     ======================================================== */
+  .demo-url {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 22px;
+    color: var(--accent-700);
+    background: var(--accent-50);
+    border: 1px solid var(--accent-300);
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+
+  /* ========================================================
+     Backup banner
+     ======================================================== */
+  section[data-state="backup"] .slide-inner::before {
+    content: "backup";
+    position: absolute;
+    top: 22px;
+    right: 60px;
+    font-size: 11px;
+    color: var(--ink-400);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-family: var(--font-mono);
+  }
+
+  /* ========================================================
+     Reveal controls — accent-flavored
+     ======================================================== */
+  .reveal .controls { color: var(--ink-400); }
+  .reveal .controls .navigate-left,
+  .reveal .controls .navigate-right,
+  .reveal .controls .navigate-up,
+  .reveal .controls .navigate-down { color: var(--ink-300); }
+  .reveal .controls button:hover { color: var(--accent-600); }
+  .reveal .progress {
+    background: var(--ink-200);
+    color: var(--accent-500);
+    height: 3px;
+  }
+
+  /* ========================================================
+     Compact text helpers
+     ======================================================== */
+  .text-mute { color: var(--ink-500); }
+  .text-faint { color: var(--ink-400); }
+  .text-emph { color: var(--ink-950); font-weight: 600; }
+  .text-accent { color: var(--accent-700); }
+  .text-small { font-size: 16px; }
+  .text-xs { font-size: 14px; }
+  .col-label {
+    font-size: 12px;
+    color: var(--accent-600);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-family: var(--font-sans);
+  }
+</style>
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- ===================== S1 — TITLE ===================== -->
+<section>
+  <div class="slide-inner">
+    <div class="eyebrow">KTH ASSERT · Entry-point exercise · 2026-05-18</div>
+    <h1>A Dynamic Behavioural<br>Auditor for Agentic Skills</h1>
+    <div class="body">
+      <p class="lede">
+        CLI-wrapping skills systematically under-declare their network surface.
+        n=25 deep instrumentation. Defense-in-depth holds. Sandbox policy can be
+        derived from skill markdown alone — with three asterisks.
+      </p>
+      <div class="title-meta">
+        <span class="name">Rayhan Putra</span> · KTH MSc Cybersecurity (Autumn 2026)
+        · for Professor Monperrus &amp; the ASSERT group
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>report.md §abstract</span><span class="right">S1 · 10</span></div>
+</section>
+
+
+<!-- ===================== S2 — FRAMING ===================== -->
+<section>
+  <div class="slide-inner">
+    <div class="eyebrow">The question</div>
+    <h2>Why depth on n=25, not breadth</h2>
+    <div class="body">
+      <div class="split">
+        <div>
+          <ul>
+            <li><span class="text-emph">Liu et al. 2026</span> — n=42,447 skills, 26.1% vulnerable</li>
+            <li><span class="text-emph">Socket skills.sh scanner</span> — n=60,000+, 94.5% / 98.7%</li>
+            <li><span class="text-emph">This work</span> — n=25 syscall + DNS deep</li>
+            <li>Structural decomposition, not competing N</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="col-label">Complementary, not competing</div>
+          <p class="text-small text-mute">
+            Liu &amp; Socket measure prevalence of vulnerability patterns at registry scale.
+            This work explains <span class="text-emph">why</span> the gap exists,
+            <span class="text-emph">which</span> hosts fall into it, and
+            <span class="text-emph">which</span> defense layers close which classes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>report.md §1, §2.1 — related work</span><span class="right">S2 · 10</span></div>
+</section>
+
+
+<!-- ===================== S3 — PIPELINE ===================== -->
+<section>
+  <div class="slide-inner">
+    <div class="eyebrow">Pipeline</div>
+    <h2>P0 → P5, plus enrichments</h2>
+    <div class="body">
+      <div class="pipeline">
+        <div class="step"><div class="tag">P0</div><div class="name">Sample n=25</div></div>
+        <div class="step"><div class="tag">P1</div><div class="name">WSL2 sandbox</div></div>
+        <div class="step"><div class="tag">P2</div><div class="name">strace + tcpdump</div></div>
+        <div class="step"><div class="tag">P3</div><div class="name">LLM predict ×3</div></div>
+        <div class="step"><div class="tag">P4</div><div class="name">Agent invoke</div></div>
+        <div class="step"><div class="tag">P5</div><div class="name">F1 compare</div></div>
+      </div>
+      <div class="pipeline-after">
+        <span class="text-emph">Enrichments</span> — 6 attack-pattern mutations · 7 cross-agent traces under Codex CLI ·
+        3 augmented-SKILL.md variants · 3 real-creds variants · static-regex baseline ·
+        SKILL.md → egress allowlist generator
+      </div>
+      <p class="text-small text-mute" style="margin-top: 24px; max-width: 36em;">
+        3 predictor sources per skill — <code>orig-Claude xhigh</code>,
+        <code>fresh-Claude xhigh</code>, <code>Codex default</code>.
+        Predicate-style set F1 with agent-infrastructure filter.
+      </p>
+    </div>
+  </div>
+  <div class="footer"><span>report.md §3 · methodology.md</span><span class="right">S3 · 10</span></div>
+</section>
+
+
+<!-- ===================== S3.5 — JOURNEY ===================== -->
+<section>
+  <div class="slide-inner">
+    <div class="eyebrow">Methodological arc · how the work evolved</div>
+    <h2>Four acts. Each one answers an honest question.</h2>
+    <div class="body">
+      <div class="journey">
+        <div class="act">
+          <div class="act-label">Act 1 · Measure</div>
+          <div class="act-q">"How big is the declared-vs-observed gap?"</div>
+          <div class="act-method">
+            25 production skills<br>
+            strace + tcpdump<br>
+            LLM predict from SKILL.md
+          </div>
+          <div class="act-finding">F1 = <span class="text-emph">0.431</span><br>bimodal · p = 0.030</div>
+        </div>
+        <div class="act">
+          <div class="act-label">Act 2 · Stress-test</div>
+          <div class="act-q">"Real, or single-tool / single-LLM / single-agent artefact?"</div>
+          <div class="act-method">
+            Static-regex baseline<br>
+            Codex cross-agent (n=7)<br>
+            Cross-LLM predict (n=25)
+          </div>
+          <div class="act-finding">
+            LLM <span class="text-emph">2.5×</span> regex<br>
+            Cross-LLM Jaccard <span class="text-emph">0.41</span><br>
+            Gap reproduces vendor-side
+          </div>
+        </div>
+        <div class="act">
+          <div class="act-label">Act 3 · Close the gap</div>
+          <div class="act-q">"Is it fixable? Can SKILL.md derive policy?"</div>
+          <div class="act-method">
+            Augmented SKILL.md ×3<br>
+            SKILL.md → egress allowlist
+          </div>
+          <div class="act-finding">
+            <span class="text-emph">+25pp</span> on thin md (L)<br>
+            <span class="text-emph">77% / 50%</span> policy<br>
+            with three asterisks
+          </div>
+        </div>
+        <div class="act">
+          <div class="act-label">Act 4 · Probe the adversary</div>
+          <div class="act-q">"What if the maintainer is the attacker?"</div>
+          <div class="act-method">
+            1 synthetic adversarial demo<br>
+            6-pattern mutation suite
+          </div>
+          <div class="act-finding">
+            Defense-in-depth <span class="text-emph">6 / 6</span><br>
+            L1: 83% → <span class="text-emph">0%</span> realistic<br>
+            Generator inherits malice (O)
+          </div>
+        </div>
+      </div>
+      <p class="text-small text-mute" style="margin-top: 20px; max-width: 44em;">
+        Each enrichment fed evidence back into the headline findings. Full chronology in <code>DECISIONS.md</code>.
+      </p>
+    </div>
+  </div>
+  <div class="footer"><span>DECISIONS.md · report.md §3 enrichments · §8.1 corrections</span><span class="right">journey</span></div>
+</section>
+
+
+<!-- ===================== S4 — HEADLINE F1 ===================== -->
+<section>
+  <div class="slide-inner">
+    <div class="eyebrow">Headline · n=25 production skills</div>
+    <h2>Hosts F1 = 0.431. Bimodal.</h2>
+    <div class="body">
+      <div class="split">
+        <div>
+          <div class="number">0.431</div>
+          <div class="number-caption">Mean hosts F1 · n=6 with defined F1</div>
+          <ul style="margin-top: 28px;">
+            <li>0.475 [0.399, 0.542] incl. aug variants (n=9)</li>
+            <li>High cluster F1 ≥ 0.95 — pure-text skills</li>
+            <li>Low cluster F1 &lt; 0.10 — CLI-wrappers</li>
+            <li>Mann-Whitney U=6, two-sided p=<span class="text-emph">0.030</span></li>
+          </ul>
+        </div>
+        <div class="fig">
+          <img src="figures/fig-01-f1-distribution.svg" alt="Per-skill F1 bar chart, bimodal distribution">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>analysis/stats.md L4-13 · report.md §4 · fig-01</span><span class="right">S4 · 10</span></div>
+</section>
+
+
+<!-- ===================== S5 — MECHANISM ===================== -->
+<section>
+  <div class="slide-inner">
+    <div class="eyebrow">Mechanism — Findings C + G</div>
+    <h2>Under-declaration is vendor telemetry</h2>
+    <div class="body">
+      <div class="split">
+        <div class="fig">
+          <img src="figures/fig-03-pred-vs-obs.svg" alt="Predicted vs observed host count scatter, points above y=x = under-prediction">
+          <div class="fig-caption">Points above y=x = under-prediction regime. Systematic upward bias is the headline empirical claim.</div>
+        </div>
+        <div>
+          <ul>
+            <li><code>sparrow.cloudflare.com</code> — wrangler</li>
+            <li><code>metrics.semgrep.dev</code> — semgrep</li>
+            <li><code>firebase-public.firebaseio.com</code> — firebase-tools</li>
+            <li>Reproduces under Codex CLI — <span class="text-emph">vendor-side</span>, not Claude-side</li>
+          </ul>
+          <p class="text-small text-mute" style="margin-top: 20px;">
+            Maintainer documents the verb; the wrapped CLI emits the beacon.
+            The gap is in the CLI, not in the skill author.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>report.md §5.1 — Findings C + G · fig-03</span><span class="right">S5 · 10</span></div>
+</section>
+
+
+<!-- ===================== S6 — MUTATION SUITE ===================== -->
+<section>
+  <div class="slide-inner">
+    <div class="eyebrow">Adversarial maintainer · mutation suite</div>
+    <h2>Defense-in-depth: 6 of 6 contained</h2>
+    <div class="body">
+      <div class="split">
+        <div class="fig">
+          <img src="figures/fig-06-mutation-suite.svg" alt="6×4 mutation × defense-layer detection-rate heatmap">
+        </div>
+        <div>
+          <ul>
+            <li><span class="text-emph">L1 static regex 83%</span> → <span class="text-accent">0% under realistic R3</span></li>
+            <li>L2 LLM predictor 67% — misses M4, M6</li>
+            <li>L3 Claude runtime 100%</li>
+            <li>L4 Codex runtime 100%</li>
+          </ul>
+          <p class="text-small text-mute" style="margin-top: 20px;">
+            No single layer catches all six. No attack survives all four.
+            Composition is necessary; composition is sufficient on this set.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>analysis/mutation-suite.md · mutation-suite-ablation.md · fig-06</span><span class="right">S6 · 10</span></div>
+</section>
+
+
+<!-- ===================== S7 — CROSS-LLM ===================== -->
+<section>
+  <div class="slide-inner">
+    <div class="eyebrow">Methodology · Finding N</div>
+    <h2>Predictor identity is load-bearing</h2>
+    <div class="body">
+      <div class="split">
+        <div class="fig">
+          <img src="figures/fig-02-predictor-variance.svg" alt="Pairwise Jaccard heatmap across three predictor sources on four IO axes">
+        </div>
+        <div>
+          <ul>
+            <li>Hosts Jaccard <span class="text-emph">0.41</span> — fresh-Claude ↔ Codex</li>
+            <li><span class="text-emph">0.43</span> — orig-Claude ↔ Codex</li>
+            <li><span class="text-emph">0.72</span> — context-only (same model, different home)</li>
+            <li>Paths axes drop to 0.17 – 0.21</li>
+          </ul>
+          <p class="text-small text-mute" style="margin-top: 20px;">
+            Cross-LLM variance dominates context-contamination variance at every axis.
+            Bimodal pattern is robust across predictors; absolute magnitudes are not.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>report.md §5.5 · analysis/stats.md §2 · fig-02</span><span class="right">S7 · 10</span></div>
+</section>
+
+
+<!-- ===================== S8 — CONSTRUCTIVE ===================== -->
+<section>
+  <div class="slide-inner">
+    <div class="eyebrow">Constructive answer · §6</div>
+    <h2>SKILL.md → policy: 77% / 50%</h2>
+    <div class="body">
+      <div class="split-66">
+        <div>
+          <p style="margin-bottom: 18px;">
+            On the 8 skills with non-empty observed network surface, an
+            LLM-extracted egress allowlist admits
+            <span class="text-emph">76.9%</span> of legitimate traffic
+            and flags <span class="text-emph">50%</span> as undeclared.
+          </p>
+          <div class="panel-accent">
+            <div class="label">Yes — with three asterisks</div>
+            <ol class="asterisks">
+              <li><span class="text-emph">Wildcard deflation</span> — Finding M. Expand <code>*.cloudflare.com</code> or pair with a telemetry-suffix deny-overlay.</li>
+              <li><span class="text-emph">Maintainer-reputation gate</span> — Finding O. Structured extraction inherits maintainer-supplied malice.</li>
+              <li><span class="text-emph">Per-agent baseline subtraction</span> — Finding H. Bootstrap dwarfs task work, 256× → 1×.</li>
+            </ol>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <div class="number number-md">77%</div>
+          <div class="number-caption" style="margin-bottom: 28px;">legitimate-allow · n=8</div>
+          <div class="number number-md">50%</div>
+          <div class="number-caption">telemetry-catch · n=8</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>report.md §6 · analysis/policy-eval.md</span><span class="right">S8 · 10</span></div>
+</section>
+
+
+<!-- ===================== S9 — LIMITS ===================== -->
+<section>
+  <div class="slide-inner">
+    <div class="eyebrow">Reflection · §7, §8.1</div>
+    <h2>Limits + what two more weeks would buy</h2>
+    <div class="body">
+      <div class="split" style="align-items: start;">
+        <div class="card">
+          <div class="col-label">Trace blind spots</div>
+          <ul>
+            <li>TLS payloads — hosts only, no URL-paths</li>
+            <li>Agent-tool-mediated IO — WebFetch, subagent</li>
+            <li>Async post-task callbacks</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="col-label">Two more weeks</div>
+          <ul>
+            <li>Full-25 cross-agent (currently n=7)</li>
+            <li>TLS interception via mitmproxy</li>
+            <li>Live iptables enforcement</li>
+            <li>Predictor extensions for M4, M6</li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-small text-mute" style="margin-top: 26px; max-width: 50em;">
+        Honest correction log in §8.1 — Docker → WSL2 pivot,
+        L1 = 100% → 83% fixture-contamination fix,
+        256× → 1× bootstrap decomposition, P3/P4 effort asymmetry.
+      </p>
+    </div>
+  </div>
+  <div class="footer"><span>report.md §7, §8.1 — Challenges &amp; corrections</span><span class="right">S9 · 10</span></div>
+</section>
+
+
+<!-- ===================== S10 — DEMO + CLOSE ===================== -->
+<section>
+  <div class="slide-inner">
+    <div class="eyebrow">Live demo · dashboard tour</div>
+    <h2>Walk the artifact</h2>
+    <div class="body">
+      <div>
+        <a class="demo-url" href="https://sirray03.github.io/agentic-skill-behavioral-audit/" target="_blank">sirray03.github.io/agentic-skill-behavioral-audit</a>
+        <p class="text-small text-mute" style="margin-top: 12px;">
+          Landing → Finding C → skill drill-down → mutation suite → policy
+        </p>
+      </div>
+
+      <div class="fragment" data-fragment-index="1" style="margin-top: 32px;">
+        <div class="col-label">Closing map — three subgoals × five-layer stack</div>
+        <div class="stack">
+          <div class="layer">
+            <span class="tag">L0</span>
+            <span class="label">Per-agent bootstrap-baseline filter</span>
+            <span class="subgoal">subgoal 2 — granularity</span>
+          </div>
+          <div class="layer">
+            <span class="tag">L1</span>
+            <span class="label">SKILL.md → per-skill egress allowlist (LLM extraction)</span>
+            <span class="subgoal">subgoal 1 — capability</span>
+          </div>
+          <div class="layer">
+            <span class="tag">L2</span>
+            <span class="label">Global telemetry-suffix deny-overlay</span>
+            <span class="subgoal">subgoal 2 — granularity</span>
+          </div>
+          <div class="layer">
+            <span class="tag">L3</span>
+            <span class="label">Maintainer-reputation gate on prediction rationale</span>
+            <span class="subgoal">subgoal 3 — static + semantic</span>
+          </div>
+          <div class="layer">
+            <span class="tag">L4</span>
+            <span class="label">Runtime alignment refusal (Claude / Codex)</span>
+            <span class="subgoal">subgoal 3 — static + semantic</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>report.md §8 final mapping · §5.7 layered policy stack</span><span class="right">S10 · 10</span></div>
+</section>
+
+
+<!-- ===================== BACKUP — FOREST PLOT ===================== -->
+<section data-state="backup">
+  <div class="slide-inner">
+    <div class="eyebrow">Backup · Figure 4 forest plot</div>
+    <h2>Aggregate F1 with 95% bootstrap CIs</h2>
+    <div class="body">
+      <div class="fig">
+        <img src="figures/fig-04-ci-forest.svg" alt="Forest plot of aggregate F1 metrics with 95% bootstrap CIs">
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>analysis/stats.md · fig-04</span><span class="right">backup</span></div>
+</section>
+
+<!-- ===================== BACKUP — FAILURE MODES ===================== -->
+<section data-state="backup">
+  <div class="slide-inner">
+    <div class="eyebrow">Backup · Failure-mode taxonomy</div>
+    <h2>24 hosts × 7 categories</h2>
+    <div class="body">
+      <div class="fig">
+        <img src="figures/fig-05-failure-modes.svg" alt="Failure-mode taxonomy donut + declared vs undeclared bars">
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>analysis/failure-mode-taxonomy.md · fig-05</span><span class="right">backup</span></div>
+</section>
+
+<!-- ===================== BACKUP — MUTATION MATRIX ===================== -->
+<section data-state="backup">
+  <div class="slide-inner">
+    <div class="eyebrow">Backup · Mutation × defense-layer raw table</div>
+    <h2>6 × 4 detection-rate matrix</h2>
+    <div class="body">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th></th><th>Mutation</th>
+            <th>L1 regex</th><th>L2 LLM</th><th>L3 Claude</th><th>L4 Codex</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="lbl">M1</td><td class="lbl">obfuscated-curl</td><td class="no">✗</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td></tr>
+          <tr><td class="lbl">M2</td><td class="lbl">dns-exfil</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td></tr>
+          <tr><td class="lbl">M3</td><td class="lbl">webfetch-indirection</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td></tr>
+          <tr><td class="lbl">M4</td><td class="lbl">bundled-sibling</td><td class="ok">✓</td><td class="no">✗</td><td class="ok">✓</td><td class="ok">✓</td></tr>
+          <tr><td class="lbl">M5</td><td class="lbl">time-bombed</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td></tr>
+          <tr><td class="lbl">M6</td><td class="lbl">dependency-confusion</td><td class="ok">✓</td><td class="no">✗</td><td class="ok">✓</td><td class="ok">✓</td></tr>
+          <tr class="total"><td></td><td class="lbl">per-layer rate</td><td>83%</td><td>67%</td><td>100%</td><td>100%</td></tr>
+        </tbody>
+      </table>
+      <p class="text-small text-mute" style="margin-top: 16px;">
+        L1 83% is the upper bound at full ruleset. Ablation: R1 (no <code>attacker-literal</code>) → 67%; R3 (minimal-realistic) → <span class="text-accent text-emph">0%</span>.
+      </p>
+    </div>
+  </div>
+  <div class="footer"><span>analysis/mutation-suite.md · mutation-suite-ablation.md</span><span class="right">backup</span></div>
+</section>
+
+<!-- ===================== BACKUP — McNEMAR ===================== -->
+<section data-state="backup">
+  <div class="slide-inner">
+    <div class="eyebrow">Backup · McNemar + Wilcoxon</div>
+    <h2>LLM vs static regex — paired test</h2>
+    <div class="body">
+      <ul>
+        <li>Static recall mean: 0.273</li>
+        <li>LLM xhigh recall mean: 0.682 — <span class="text-emph">2.50× ratio</span></li>
+        <li>McNemar two-sided exact p = <span class="text-emph">0.003</span> (n=11 incl. aug)</li>
+        <li>Wilcoxon signed-rank p = 0.047</li>
+        <li>Production-only (n=8): McNemar p ≈ 0.125 — direction holds, formal significance needs aug</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer"><span>analysis/stats.md §3</span><span class="right">backup</span></div>
+</section>
+
+<!-- ===================== BACKUP — AUGMENTATION ===================== -->
+<section data-state="backup">
+  <div class="slide-inner">
+    <div class="eyebrow">Backup · Finding L augmentation lift</div>
+    <h2>Thin SKILL.mds leave the most room</h2>
+    <div class="body">
+      <ul>
+        <li><code>firebase-hosting-basics</code> — hosts F1 <span class="text-emph">0.364 → 0.615</span> (+25pp)</li>
+        <li><code>wrangler</code> — minimal lift, wildcard already covered</li>
+        <li><code>semgrep</code> — minimal lift, predictor already inferred</li>
+        <li>Recommendation — "Observed Runtime Endpoints" section in every SKILL.md</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer"><span>report.md §5.6 · Finding L</span><span class="right">backup</span></div>
+</section>
+
+<!-- ===================== BACKUP — FINDING H ===================== -->
+<section data-state="backup">
+  <div class="slide-inner">
+    <div class="eyebrow">Backup · Finding H decomposition</div>
+    <h2>256× → 1× per-task</h2>
+    <div class="body">
+      <table class="matrix">
+        <thead><tr><th>Path-prefix</th><th>Writes</th></tr></thead>
+        <tbody>
+          <tr><td class="lbl"><code>plugins/&lt;vendor&gt;/...</code> Codex plugin manifest, 117 vendors</td><td>2541</td></tr>
+          <tr><td class="lbl"><code>~/.codex/</code> agent-state</td><td>104</td></tr>
+          <tr><td class="lbl"><code>.agents/skills/plugin-creator/...</code></td><td>5</td></tr>
+          <tr><td class="lbl"><code>/tmp/work-codex-wrangler/worker/...</code> task output</td><td>4</td></tr>
+          <tr><td class="lbl"><code>~/.config/codex/...</code></td><td>2</td></tr>
+          <tr class="total"><td class="lbl">After bootstrap-baseline subtraction</td><td>9 vs Claude 10</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="footer"><span>analysis/mechanism-investigation.md · report.md §5.3</span><span class="right">backup</span></div>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    controls: true,
+    progress: true,
+    slideNumber: false,
+    transition: 'none',
+    backgroundTransition: 'none',
+    width: 1280,
+    height: 800,
+    margin: 0,            // we handle padding inside .slide-inner
+    minScale: 0.4,
+    maxScale: 1.4,
+    center: false,
+    keyboard: true,
+    overview: true,
+    touch: true,
+  });
+</script>
+</body>
+</html>
